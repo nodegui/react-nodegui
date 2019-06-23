@@ -1,0 +1,24 @@
+{
+  "name": "@nodegui/react-nodegui",
+  "version": "1.0.0",
+  "description": "React Native for building cross platform desktop applications",
+  "main": "dist/",
+  "author": "Atul R <atulanand94@gmail.com>",
+  "private": false,
+  "license": "MIT",
+  "scripts": {
+    "build:lib": "tsc",
+    "demo": "tsc && node ./dist/demo.js",
+    "demo:watch": "tsc-watch --onSuccess \"npm run demo\""
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-reconciler": "^0.20.4"
+  },
+  "devDependencies": {
+    "@types/react-reconciler": "^0.18.0",
+    "prettier": "^1.18.2",
+    "tsc-watch": "^2.2.1",
+    "typescript": "^3.5.2"
+  }
+}
