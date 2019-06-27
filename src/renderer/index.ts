@@ -10,6 +10,9 @@ export const Renderer = {
     window.setCentralWidget(rootView);
 
     const containerInfo = rootView;
+    rootView.setStyleSheet(`
+        qproperty-flex: 1;
+    `);
     const isConcurrent = false; //TODO: Enable this
     const hydrate = false;
 
@@ -21,6 +24,7 @@ export const Renderer = {
 
     const parentComponent = null; // Since there is no parent (since this is the root fiber). We set parentComponent to null.
     reconciler.updateContainer(element, container, parentComponent, () => {
+      window.show();
       callback();
     }); // Start reconcilation and render the result
   }

@@ -16,6 +16,7 @@ export const Text = registerComponent({
     workInProgress
   ) => {
     const label = new QLabel();
+    label.setText((newProps as any).children);
     return label;
   },
   finalizeInitialChildren: (instance, newProps, rootInstance, context) => {

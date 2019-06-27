@@ -7,6 +7,7 @@ class App extends React.Component {
     return (
       <View>
         <Text>Hello</Text>
+        <Text>World</Text>
       </View>
     );
   }

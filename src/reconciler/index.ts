@@ -17,7 +17,6 @@ const HostConfig: Reconciler.HostConfig<
   any,
   any
 > = {
-  //TODO We will specify all required methods here
   now: Date.now,
   getRootHostContext: function(nextRootInstance) {
     let context = {
@@ -82,14 +81,20 @@ const HostConfig: Reconciler.HostConfig<
     );
   },
   prepareForCommit: function(rootNode) {
-    console.log("prepareForCommit", {
-      root: rootNode.constructor.name
-    });
+    // noop
   },
   resetAfterCommit: function(rootNode) {
-    console.log("resetAfterCommit", {
-      root: rootNode.constructor.name
-    });
+    // noop
+  },
+  appendChildToContainer: function(container, child: NodeWidget) {
+    let layout = container.layout;
+    if (!layout) {
+      const flexLayout = new FlexLayout();
+      flexLayout.setFlexNode(container.getFlexNode());
+      container.setLayout(flexLayout);
+      layout = flexLayout;
+    }
+    layout.addWidget(child);
   },
   supportsMutation: true
 };
