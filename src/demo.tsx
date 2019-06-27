@@ -1,16 +1,21 @@
-import ReactNodeGui from "./renderer";
+import { Renderer, View, Text } from ".";
 import React from "react";
+import { QMainWindow, QApplication } from "@nodegui/nodegui";
 
 class App extends React.Component {
   render() {
-    return "Hello";
+    return (
+      <View>
+        <Text>Hello</Text>
+      </View>
+    );
   }
 }
-//@ts-ignore
-global.win = { rootWin: true };
-//@ts-ignore
-const root = global.win;
+const app = new QApplication();
 
-ReactNodeGui.render(<App />, root, () => {
+const win = new QMainWindow();
+
+Renderer.render(<App />, win, () => {
   console.log("rendered");
+  app.exec();
 });

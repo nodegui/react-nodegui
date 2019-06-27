@@ -1,17 +1,13 @@
 import Reconciler from "react-reconciler";
-
-enum FiberType {
-  Text,
-  View,
-  Button
-}
+import { NodeWidget, QWidget, FlexLayout } from "@nodegui/nodegui";
+import { getComponent } from "../components/config";
 
 //@ts-ignore
 const HostConfig: Reconciler.HostConfig<
-  FiberType,
+  string,
   object,
-  any,
-  any,
+  QWidget,
+  NodeWidget,
   any,
   any,
   any,
@@ -23,53 +19,79 @@ const HostConfig: Reconciler.HostConfig<
 > = {
   //TODO We will specify all required methods here
   now: Date.now,
-  getRootHostContext: function(nextRootInstance: any) {
-    console.log("Root node", nextRootInstance);
+  getRootHostContext: function(nextRootInstance) {
     let context = {
-      // This can contain any data that you want to pass down to immediate child
+      name: "rootnode"
     };
     return context;
   },
   getChildHostContext: function(parentContext, fiberType, rootInstance) {
-    let context = {};
-    return context;
+    const { getContext } = getComponent(fiberType);
+    return getContext(parentContext, rootInstance);
   },
   shouldSetTextContent: function(type, nextProps) {
-    console.log("shouldSetTextContent", type, nextProps);
-    return false;
+    const { shouldSetTextContent } = getComponent(type);
+    return shouldSetTextContent(nextProps);
   },
-  createTextInstance: function(...args: any[]) {
-    console.log("createTextInstance", ...args);
+  createTextInstance: function(
+    newText,
+    rootContainerInstance,
+    context,
+    workInProgress
+  ) {
+    throw new Error(`Can't create text without <Text> for text: ${newText}`);
   },
-  createInstance: function(...args: any[]) {
-    console.log("createInstance", ...args);
+  createInstance: function(
+    type,
+    newProps,
+    rootContainerInstance,
+    context,
+    workInProgress
+  ) {
+    const { createInstance } = getComponent(type);
+    return createInstance(
+      newProps,
+      rootContainerInstance,
+      context,
+      workInProgress
+    );
   },
-  appendInitialChild: function(...args: any[]) {
-    console.log("appendInitialChild", ...args);
+  appendInitialChild: function(parentInstance, child: NodeWidget) {
+    let layout = parentInstance.layout;
+    if (!layout) {
+      const flexLayout = new FlexLayout();
+      flexLayout.setFlexNode(parentInstance.getFlexNode());
+      parentInstance.setLayout(flexLayout);
+      layout = flexLayout;
+    }
+    layout.addWidget(child);
   },
   finalizeInitialChildren: function(
     instance,
     type,
     newProps,
     rootContainerInstance,
-    currentHostContext
+    context
   ) {
-    console.log(
-      "finalizeInitialChildren",
+    const { finalizeInitialChildren } = getComponent(type);
+    return finalizeInitialChildren(
       instance,
-      type,
       newProps,
       rootContainerInstance,
-      currentHostContext
+      context
     );
-    return false;
   },
-  prepareForCommit: function(...args: any[]) {
-    console.log("prepareForCommit", ...args);
+  prepareForCommit: function(rootNode) {
+    console.log("prepareForCommit", {
+      root: rootNode.constructor.name
+    });
   },
-  resetAfterCommit: function(...args: any[]) {
-    console.log("resetAfterCommit", ...args);
-  }
+  resetAfterCommit: function(rootNode) {
+    console.log("resetAfterCommit", {
+      root: rootNode.constructor.name
+    });
+  },
+  supportsMutation: true
 };
 
 export default Reconciler(HostConfig);

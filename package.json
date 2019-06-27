@@ -2,14 +2,14 @@
   "name": "@nodegui/react-desktop",
   "version": "1.0.0",
   "description": "React Native for building cross platform desktop applications",
-  "main": "dist/",
+  "main": "dist",
   "author": "Atul R <atulanand94@gmail.com>",
   "private": false,
   "license": "MIT",
   "scripts": {
     "build:lib": "tsc",
-    "demo": "tsc && node ./dist/demo.js",
-    "demo:watch": "tsc-watch --onSuccess \"npm run demo\""
+    "dev": "tsc && node ./dist/demo.js",
+    "dev:watch": "tsc-watch --onSuccess \"npm run dev\""
   },
   "dependencies": {
     "react": "^16.8.6",

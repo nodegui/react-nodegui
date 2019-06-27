@@ -1,17 +1,27 @@
+import { QMainWindow, QWidget } from "@nodegui/nodegui";
 import reconciler from "../reconciler";
 
-const CustomRenderer = {
-  render(element: React.ReactNode, renderDom: any, callback: () => void) {
+export const Renderer = {
+  render(element: React.ReactNode, window: QMainWindow, callback: () => void) {
     // element: This is the react element for App component
-    // renderDom: This is the host root element to which the rendered app will be attached.
+    // window: This is the container that will contain the app.
     // callback: if specified will be called after render is done.
+    const rootView = new QWidget();
+    window.setCentralWidget(rootView);
 
-    const isAsync = false; // Disables async rendering
-    const container = reconciler.createContainer(renderDom, isAsync, false); // Creates root fiber node.
+    const containerInfo = rootView;
+    const isConcurrent = false; //TODO: Enable this
+    const hydrate = false;
+
+    const container = reconciler.createContainer(
+      containerInfo,
+      isConcurrent,
+      hydrate
+    ); // Creates root fiber node.
 
     const parentComponent = null; // Since there is no parent (since this is the root fiber). We set parentComponent to null.
-    reconciler.updateContainer(element, container, parentComponent, callback); // Start reconcilation and render the result
+    reconciler.updateContainer(element, container, parentComponent, () => {
+      callback();
+    }); // Start reconcilation and render the result
   }
 };
-
-export default CustomRenderer;
