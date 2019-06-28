@@ -8,11 +8,26 @@ export const Renderer = {
     // callback: if specified will be called after render is done.
     const rootView = new QWidget();
     window.setCentralWidget(rootView);
-
     const containerInfo = rootView;
     rootView.setStyleSheet(`
+      #divy {
+        background-color: yellow;
         qproperty-flex: 1;
+        qproperty-flexDirection: column;
+        qproperty-alignItems: "center";
+        qproperty-justifyContent: "space-between";
+        qproperty-alignSelf: 'stretch';
+        qproperty-justifySelf: 'stretch';
+      }
+      #hello {
+        qproperty-flex: 1;
+        color: blue;
+      }
+      #world {
+        color: red;
+      }
     `);
+
     const isConcurrent = false; //TODO: Enable this
     const hydrate = false;
 

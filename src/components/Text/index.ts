@@ -1,7 +1,34 @@
 import { registerComponent } from "../config";
 import { QLabel } from "@nodegui/nodegui";
 
-export const Text = registerComponent({
+interface TextProps {
+  id?: string;
+  styleSheet?: string;
+  visible?: boolean;
+  children?: string;
+  wordWrap?: boolean;
+}
+
+const propsSetter = (label: QLabel, newProps: object) => {
+  const props: TextProps = {
+    set children(text: string) {
+      label.setText(text);
+    },
+    set styleSheet(styleSheet: string) {
+      console.log("reached stylesheet ", styleSheet);
+      label.setStyleSheet(styleSheet);
+    },
+    set id(id: string) {
+      label.setObjectName(id);
+    },
+    set wordWrap(shouldWrap: boolean) {
+      label.setWordWrap(shouldWrap);
+    }
+  };
+  Object.assign(props, newProps);
+};
+
+export const Text = registerComponent<TextProps>({
   id: "text",
   getContext() {
     return { name: "text" };
@@ -16,7 +43,7 @@ export const Text = registerComponent({
     workInProgress
   ) => {
     const label = new QLabel();
-    label.setText((newProps as any).children);
+    propsSetter(label, newProps);
     return label;
   },
   finalizeInitialChildren: (instance, newProps, rootInstance, context) => {

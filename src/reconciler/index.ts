@@ -38,7 +38,7 @@ const HostConfig: Reconciler.HostConfig<
     context,
     workInProgress
   ) {
-    throw new Error(`Can't create text without <Text> for text: ${newText}`);
+    // throw new Error(`Can't create text without <Text> for text: ${newText}`);
   },
   createInstance: function(
     type,

@@ -19,7 +19,7 @@ export type ComponentConfig = {
   ) => boolean;
 };
 
-type ReactDesktopTag = string | React.ComponentType;
+type ReactDesktopTag<P> = string | React.ComponentType<P>;
 
 const components = new Map<string, ComponentConfig>();
 
@@ -31,10 +31,12 @@ export const getComponent = (id: string): ComponentConfig => {
   return config;
 };
 
-export const registerComponent = (config: ComponentConfig): ReactDesktopTag => {
+export function registerComponent<Props>(
+  config: ComponentConfig
+): ReactDesktopTag<Props> {
   if (components.has(config.id)) {
     throw `A component with id: ${config.id} already exists. This base component will be ignored`;
   }
   components.set(config.id, config);
   return config.id;
-};
+}

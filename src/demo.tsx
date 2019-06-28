@@ -5,9 +5,9 @@ import { QMainWindow, QApplication } from "@nodegui/nodegui";
 class App extends React.Component {
   render() {
     return (
-      <View>
-        <Text>Hello</Text>
-        <Text>World</Text>
+      <View id="divy">
+        <Text id="hello">Hello</Text>
+        <Text id="world">World</Text>
       </View>
     );
   }
