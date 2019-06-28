@@ -36,17 +36,12 @@ export const Text = registerComponent<TextProps>({
   shouldSetTextContent: () => {
     return true;
   },
-  createInstance: (
-    newProps,
-    rootInstance,
-    currentHostContext,
-    workInProgress
-  ) => {
+  createInstance: newProps => {
     const label = new QLabel();
     propsSetter(label, newProps);
     return label;
   },
-  finalizeInitialChildren: (instance, newProps, rootInstance, context) => {
+  finalizeInitialChildren: () => {
     return false;
   }
 });
