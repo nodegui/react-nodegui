@@ -6,6 +6,7 @@ export const Renderer = {
     // element: This is the react element for App component
     // window: This is the container that will contain the app.
     // callback: if specified will be called after render is done.
+    (global as any).win = window; // TODO: GENERATE SOME UNIQUE NAME
     const rootView = new QWidget();
     rootView.setObjectName("rootView");
     window.setCentralWidget(rootView);

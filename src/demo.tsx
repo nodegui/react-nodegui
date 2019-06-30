@@ -3,16 +3,24 @@ import React from "react";
 import { QMainWindow, QApplication } from "@nodegui/nodegui";
 
 class App extends React.Component {
+  state = {
+    value: "No Date"
+  };
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({ value: Date.now() });
+    }, 500);
+  }
   render() {
     return (
       <View id="divy">
         <Text id="hello">Hello</Text>
-        <Text id="world">World</Text>
+        <Text id="world">{`World ${this.state.value}`}</Text>
       </View>
     );
   }
 }
-const app = new QApplication();
+// const app = new QApplication();
 
 const win = new QMainWindow();
 win.resize(400, 400);
@@ -40,5 +48,5 @@ win.setStyleSheet(`
 
 Renderer.render(<App />, win, () => {
   console.log("rendered");
-  app.exec();
+  // app.exec();
 });

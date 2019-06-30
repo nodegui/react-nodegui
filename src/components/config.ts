@@ -1,6 +1,7 @@
 import { NodeWidget, QWidget } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
 
+type UpdatePayload = any;
 export type ComponentConfig = {
   id: string;
   getContext: (parentContext: any, rootInstance: QWidget) => any;
@@ -17,6 +18,19 @@ export type ComponentConfig = {
     rootContainerInstance: QWidget,
     context: any
   ) => boolean;
+  commitMount: (
+    instance: NodeWidget,
+    newProps: object,
+    internalInstanceHandle: any
+  ) => void;
+  // Update methods:
+  prepareUpdate: (
+    instance: NodeWidget,
+    oldProps: object,
+    newProps: object,
+    rootContainerInstance: QWidget,
+    hostContext: any
+  ) => UpdatePayload;
 };
 
 type ReactDesktopTag<P> = string | React.ComponentType<P>;

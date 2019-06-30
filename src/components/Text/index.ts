@@ -15,10 +15,10 @@ const propsSetter = (label: QLabel, newProps: object) => {
       label.setText(text);
     },
     set styleSheet(styleSheet: string) {
-      console.log("reached stylesheet ", styleSheet);
       label.setStyleSheet(styleSheet);
     },
     set id(id: string) {
+      console.log("label", id, " set id");
       label.setObjectName(id);
     },
     set wordWrap(shouldWrap: boolean) {
@@ -43,5 +43,18 @@ export const Text = registerComponent<TextProps>({
   },
   finalizeInitialChildren: () => {
     return false;
+  },
+  commitMount: (instance, newProps, internalInstanceHandle) => {
+    return;
+  },
+  prepareUpdate: (
+    instance,
+    oldProps,
+    newProps,
+    rootContainerInstance,
+    hostContext
+  ) => {
+    // console.log(oldProps, newProps, "Text");
+    propsSetter(instance as QLabel, newProps);
   }
 });

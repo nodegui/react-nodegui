@@ -86,6 +86,10 @@ const HostConfig: Reconciler.HostConfig<
   resetAfterCommit: function(rootNode) {
     // noop
   },
+  commitMount: function(instance, type, newProps, internalInstanceHandle) {
+    const { commitMount } = getComponent(type);
+    return commitMount(instance, newProps, internalInstanceHandle);
+  },
   appendChildToContainer: function(container, child: NodeWidget) {
     let layout = container.layout;
     if (!layout) {
@@ -95,6 +99,23 @@ const HostConfig: Reconciler.HostConfig<
       layout = flexLayout;
     }
     layout.addWidget(child);
+  },
+  prepareUpdate: function(
+    instance,
+    type,
+    oldProps,
+    newProps,
+    rootContainerInstance,
+    hostContext
+  ) {
+    const { prepareUpdate } = getComponent(type);
+    return prepareUpdate(
+      instance,
+      oldProps,
+      newProps,
+      rootContainerInstance,
+      hostContext
+    );
   },
   supportsMutation: true
 };

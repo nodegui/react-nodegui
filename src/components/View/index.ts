@@ -13,12 +13,10 @@ const propsSetter = (view: NodeWidget, newProps: object) => {
       shouldShow ? view.show() : view.hide();
     },
     set styleSheet(styleSheet: string) {
-      console.log("reached stylesheet ", styleSheet);
-
       view.setStyleSheet(styleSheet);
     },
     set id(id: string) {
-      console.log(id, "id set");
+      console.log("view", id, "id set");
       view.setObjectName(id);
     }
   };
@@ -45,5 +43,17 @@ export const View = registerComponent<ViewProps>({
   },
   finalizeInitialChildren: (instance, newProps, rootInstance, context) => {
     return false;
+  },
+  commitMount: (instance, newProps, internalInstanceHandle) => {
+    return;
+  },
+  prepareUpdate: (
+    instance,
+    oldProps,
+    newProps,
+    rootContainerInstance,
+    hostContext
+  ) => {
+    // console.log(oldProps, newProps, "View");
   }
 });
