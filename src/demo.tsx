@@ -1,6 +1,6 @@
 import { Renderer, View, Text } from ".";
 import React from "react";
-import { QMainWindow, QApplication } from "@nodegui/nodegui";
+import { QMainWindow } from "@nodegui/nodegui";
 
 class App extends React.Component {
   state = {
@@ -20,7 +20,6 @@ class App extends React.Component {
     );
   }
 }
-// const app = new QApplication();
 
 const win = new QMainWindow();
 win.resize(400, 400);
@@ -48,5 +47,4 @@ win.setStyleSheet(`
 
 Renderer.render(<App />, win, () => {
   console.log("rendered");
-  // app.exec();
 });

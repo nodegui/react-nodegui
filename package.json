@@ -16,6 +16,7 @@
     "react-reconciler": "^0.20.4"
   },
   "devDependencies": {
+    "@nodegui/test": "^0.0.4",
     "@types/node": "^12.0.10",
     "@types/react-reconciler": "^0.18.0",
     "prettier": "^1.18.2",
