@@ -1,5 +1,6 @@
 import { QMainWindow, QWidget } from "@nodegui/nodegui";
 import reconciler from "../reconciler";
+import { initDevtools } from "../utils/devtools";
 
 export const Renderer = {
   render(element: React.ReactNode, window: QMainWindow, callback: () => void) {
@@ -20,6 +21,7 @@ export const Renderer = {
       hydrate
     ); // Creates root fiber node.
 
+    initDevtools(reconciler); //TODO: Do it on dev mode only
     const parentComponent = null; // Since there is no parent (since this is the root fiber). We set parentComponent to null.
     reconciler.updateContainer(element, container, parentComponent, () => {
       window.show();

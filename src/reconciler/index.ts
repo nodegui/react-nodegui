@@ -1,7 +1,7 @@
 import Reconciler from "react-reconciler";
 import { NodeWidget, QWidget, FlexLayout } from "@nodegui/nodegui";
 import { getComponent } from "../components/config";
-
+import * as scheduler from "scheduler";
 //@ts-ignore
 const HostConfig: Reconciler.HostConfig<
   string,
@@ -117,7 +117,55 @@ const HostConfig: Reconciler.HostConfig<
       hostContext
     );
   },
-  supportsMutation: true
+  supportsMutation: true,
+  supportsPersistence: false,
+  supportsHydration: false,
+  //@ts-ignore
+  schedulePassiveEffects: (callback: any) => {
+    // For supporting useEffect hook
+    if (callback) {
+      return setTimeout(callback, 0);
+    }
+  },
+  cancelPassiveEffects: (cbHandler: any) => {
+    // For supporting useEffect hooks - cancellation
+    clearTimeout(cbHandler);
+  },
+  getPublicInstance: instance => {
+    //for supporting refs
+    return instance;
+  },
+  shouldDeprioritizeSubtree: (type, props) => {
+    // Use to deprioritize entire subtree based on props and types. For example if you dont need reconciler to calculate for hidden elements
+    return false;
+  },
+  // Fiber stuff I think
+  scheduleDeferredCallback: scheduler.unstable_scheduleCallback,
+  cancelDeferredCallback: scheduler.unstable_cancelCallback,
+  // shouldYield,
+  scheduleTimeout: setTimeout,
+  cancelTimeout: clearTimeout,
+  noTimeout: null,
+  isPrimaryRenderer: true
+
+  // -------------------
+  //      Mutation
+  //     (optional)
+  // -------------------
+  // appendChild,
+  // appendChildToContainer,
+  // commitTextUpdate,
+  // commitMount,
+  // commitUpdate,
+  // insertBefore,
+  // insertInContainerBefore,
+  // removeChild,
+  // removeChildFromContainer,
+  // resetTextContent,
+  // hideInstance,
+  // hideTextInstance,
+  // unhideInstance,
+  // unhideTextInstance,
 };
 
 export default Reconciler(HostConfig);

@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build:lib": "tsc",
-    "dev": "tsc && qode ./dist/demo.js",
+    "dev": "tsc && qode ./dist/src/demo.js",
     "dev:watch": "tsc-watch --onSuccess \"npm run dev\""
   },
   "dependencies": {
@@ -19,7 +19,9 @@
     "@nodegui/test": "^0.0.4",
     "@types/node": "^12.0.10",
     "@types/react-reconciler": "^0.18.0",
+    "@types/scheduler": "^0.12.1",
     "prettier": "^1.18.2",
+    "react-devtools": "^3.6.1",
     "tsc-watch": "^2.2.1",
     "typescript": "^3.5.2"
   }

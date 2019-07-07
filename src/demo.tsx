@@ -1,25 +1,45 @@
-import { Renderer, View, Text } from ".";
-import React from "react";
+import { Renderer, View, Text } from "./index";
+import React, { useEffect, useState, useRef } from "react";
 import { QMainWindow } from "@nodegui/nodegui";
 
-class App extends React.Component {
+const TestHook = () => {
+  const [value, setValue] = useState("No Date");
+  useEffect(() => {
+    setInterval(() => {
+      setValue(`My: ${Date.now()}`);
+    }, 1000);
+  }, []);
+  return (
+    <View>
+      <Text>{`Hooked: ${value}`}</Text>
+    </View>
+  );
+};
+class Test extends React.Component {
   state = {
-    value: "No Date"
+    value: "No"
   };
   componentDidMount() {
     setInterval(() => {
-      this.setState({ value: Date.now() });
+      this.setState({ value: `${Date.now()}` });
     }, 500);
   }
   render() {
-    return (
-      <View id="divy">
-        <Text id="hello">Hello</Text>
-        <Text id="world">{`World ${this.state.value}`}</Text>
-      </View>
-    );
+    return <Text id="yolo">{`Molo ${this.state.value}`}</Text>;
   }
 }
+
+const App = () => {
+  //@ts-ignore
+  return (
+    <View id="divy">
+      <Text id="hello">Hello</Text>
+      <Test />
+      <TestHook />
+      <Text id="world">{`World`}</Text>
+    </View>
+  );
+};
 
 const win = new QMainWindow();
 win.resize(400, 400);

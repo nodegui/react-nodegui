@@ -7,6 +7,7 @@ interface TextProps {
   visible?: boolean;
   children?: string;
   wordWrap?: boolean;
+  ref?: any;
 }
 
 const propsSetter = (label: QLabel, newProps: object) => {
