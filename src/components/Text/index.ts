@@ -19,7 +19,7 @@ const propsSetter = (label: QLabel, newProps: object) => {
       label.setStyleSheet(styleSheet);
     },
     set id(id: string) {
-      console.log("label", id, " set id");
+      // console.log("label", id, " set id");
       label.setObjectName(id);
     },
     set wordWrap(shouldWrap: boolean) {
