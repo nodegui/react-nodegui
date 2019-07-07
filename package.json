@@ -15,13 +15,17 @@
     "react": "^16.8.6",
     "react-reconciler": "^0.20.4"
   },
+  "resolutions": {
+    "react-devtools-core": "3.4.3",
+    "react-devtools": "3.4.3"
+  },
   "devDependencies": {
     "@nodegui/test": "^0.0.4",
     "@types/node": "^12.0.10",
     "@types/react-reconciler": "^0.18.0",
     "@types/scheduler": "^0.12.1",
     "prettier": "^1.18.2",
-    "react-devtools": "^3.6.1",
+    "react-devtools": "3.4.3",
     "tsc-watch": "^2.2.1",
     "typescript": "^3.5.2"
   }
