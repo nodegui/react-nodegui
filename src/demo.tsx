@@ -24,9 +24,19 @@ class Test extends React.Component {
     setInterval(() => {
       this.setState({ value: `${Date.now()}` });
     }, 500);
+    setInterval(() => {
+      this.setState((prevState: any) => ({
+        visible: !prevState.visible
+      }));
+    }, 300);
   }
   render() {
-    return <Text id="yolo">{`Molo ${this.state.value}`}</Text>;
+    return (
+      <Text
+        id="yolo"
+        visible={this.state.visible}
+      >{`Molo ${this.state.value}`}</Text>
+    );
   }
 }
 
