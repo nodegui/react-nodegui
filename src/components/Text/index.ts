@@ -1,32 +1,41 @@
 import { registerComponent } from "../config";
 import { QLabel } from "@nodegui/nodegui";
+import { categorizeProps } from "../../utils/helpers";
+import {
+  ViewProps,
+  setProps as setViewProps,
+  removeProps as removeViewProps
+} from "../View";
 
-interface TextProps {
-  id?: string;
-  styleSheet?: string;
-  visible?: boolean;
+interface TextProps extends ViewProps {
   children?: string;
   wordWrap?: boolean;
-  ref?: any;
 }
 
-const propsSetter = (label: QLabel, newProps: object) => {
-  const props: TextProps = {
+const setProps = (widget: QLabel, props: TextProps) => {
+  const setter: TextProps = {
     set children(text: string) {
-      label.setText(text);
-    },
-    set styleSheet(styleSheet: string) {
-      label.setStyleSheet(styleSheet);
-    },
-    set id(id: string) {
-      // console.log("label", id, " set id");
-      label.setObjectName(id);
+      widget.setText(text);
     },
     set wordWrap(shouldWrap: boolean) {
-      label.setWordWrap(shouldWrap);
+      widget.setWordWrap(shouldWrap);
     }
   };
-  Object.assign(props, newProps);
+  Object.assign(setter, props);
+  setViewProps(widget, props);
+};
+
+const removeProps = (widget: QLabel, props: TextProps) => {
+  const remover: TextProps = {
+    set children(oldText: string) {
+      widget.setText(``);
+    },
+    set wordWrap(oldShouldWrap: boolean) {
+      //noop
+    }
+  };
+  Object.assign(remover, props);
+  removeViewProps(widget, props);
 };
 
 export const Text = registerComponent<TextProps>({
@@ -39,7 +48,7 @@ export const Text = registerComponent<TextProps>({
   },
   createInstance: newProps => {
     const label = new QLabel();
-    propsSetter(label, newProps);
+    setProps(label, newProps);
     return label;
   },
   finalizeInitialChildren: () => {
@@ -55,7 +64,8 @@ export const Text = registerComponent<TextProps>({
     rootContainerInstance,
     hostContext
   ) => {
-    // console.log(oldProps, newProps, "Text");
-    propsSetter(instance as QLabel, newProps);
+    const { removed, updated } = categorizeProps(oldProps, newProps);
+    setProps(instance as QLabel, updated);
+    removeProps(instance as QLabel, removed);
   }
 });

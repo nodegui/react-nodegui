@@ -1,26 +1,41 @@
-import { registerComponent } from "../config";
 import { QWidget, NodeWidget } from "@nodegui/nodegui";
-
-interface ViewProps {
+import { registerComponent } from "../config";
+import { categorizeProps } from "../../utils/helpers";
+export interface ViewProps {
   id?: string;
   styleSheet?: string;
   visible?: boolean;
+  ref?: any;
 }
 
-const propsSetter = (view: NodeWidget, newProps: object) => {
-  const props: ViewProps = {
+export const setProps = (widget: NodeWidget, props: ViewProps) => {
+  const setter: ViewProps = {
     set visible(shouldShow: boolean) {
-      shouldShow ? view.show() : view.hide();
+      shouldShow ? widget.show() : widget.hide();
     },
     set styleSheet(styleSheet: string) {
-      view.setStyleSheet(styleSheet);
+      widget.setStyleSheet(styleSheet);
     },
     set id(id: string) {
-      console.log("view", id, "id set");
-      view.setObjectName(id);
+      widget.setObjectName(id);
     }
   };
-  Object.assign(props, newProps);
+  Object.assign(setter, props);
+};
+
+export const removeProps = (widget: NodeWidget, props: ViewProps) => {
+  const remover: ViewProps = {
+    set visible(oldShouldShow: boolean) {
+      // noop
+    },
+    set styleSheet(oldStyleSheet: string) {
+      widget.setStyleSheet(``);
+    },
+    set id(oldId: string) {
+      widget.setObjectName(``);
+    }
+  };
+  Object.assign(remover, props);
 };
 
 export const View = registerComponent<ViewProps>({
@@ -38,7 +53,7 @@ export const View = registerComponent<ViewProps>({
     workInProgress
   ) => {
     const widget = new QWidget();
-    propsSetter(widget, newProps);
+    setProps(widget, newProps);
     return widget;
   },
   finalizeInitialChildren: (instance, newProps, rootInstance, context) => {
@@ -54,6 +69,8 @@ export const View = registerComponent<ViewProps>({
     rootContainerInstance,
     hostContext
   ) => {
-    // console.log(oldProps, newProps, "View");
+    const { removed, updated } = categorizeProps(oldProps, newProps);
+    setProps(instance, updated);
+    removeProps(instance, removed);
   }
 });

@@ -17,7 +17,8 @@ const TestHook = () => {
 };
 class Test extends React.Component {
   state = {
-    value: "No"
+    value: "No",
+    visible: false
   };
   componentDidMount() {
     setInterval(() => {
@@ -30,7 +31,6 @@ class Test extends React.Component {
 }
 
 const App = () => {
-  //@ts-ignore
   return (
     <View id="divy">
       <Text id="hello">Hello</Text>
