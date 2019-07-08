@@ -1,18 +1,13 @@
 import { registerComponent } from "../config";
 import { QLabel } from "@nodegui/nodegui";
-import { categorizeProps } from "../../utils/helpers";
-import {
-  ViewProps,
-  setProps as setViewProps,
-  removeProps as removeViewProps
-} from "../View";
+import { ViewProps, setProps as setViewProps } from "../View";
 
 interface TextProps extends ViewProps {
   children?: string;
   wordWrap?: boolean;
 }
 
-const setProps = (widget: QLabel, props: TextProps) => {
+const setProps = (widget: QLabel, newProps: TextProps, oldProps: TextProps) => {
   const setter: TextProps = {
     set children(text: string) {
       widget.setText(text);
@@ -21,21 +16,8 @@ const setProps = (widget: QLabel, props: TextProps) => {
       widget.setWordWrap(shouldWrap);
     }
   };
-  Object.assign(setter, props);
-  setViewProps(widget, props);
-};
-
-const removeProps = (widget: QLabel, props: TextProps) => {
-  const remover: TextProps = {
-    set children(oldText: string) {
-      widget.setText(``);
-    },
-    set wordWrap(oldShouldWrap: boolean) {
-      //noop
-    }
-  };
-  Object.assign(remover, props);
-  removeViewProps(widget, props);
+  Object.assign(setter, newProps);
+  setViewProps(widget, newProps, oldProps);
 };
 
 export const Text = registerComponent<TextProps>({
@@ -48,7 +30,7 @@ export const Text = registerComponent<TextProps>({
   },
   createInstance: newProps => {
     const label = new QLabel();
-    setProps(label, newProps);
+    setProps(label, newProps, {});
     return label;
   },
   finalizeInitialChildren: () => {
@@ -64,8 +46,6 @@ export const Text = registerComponent<TextProps>({
     rootContainerInstance,
     hostContext
   ) => {
-    const { removed, updated } = categorizeProps(oldProps, newProps);
-    setProps(instance as QLabel, updated);
-    removeProps(instance as QLabel, removed);
+    setProps(instance as QLabel, newProps, oldProps);
   }
 });

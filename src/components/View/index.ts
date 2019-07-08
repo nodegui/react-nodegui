@@ -1,6 +1,5 @@
 import { QWidget, NodeWidget } from "@nodegui/nodegui";
 import { registerComponent } from "../config";
-import { categorizeProps } from "../../utils/helpers";
 export interface ViewProps {
   id?: string;
   styleSheet?: string;
@@ -8,7 +7,11 @@ export interface ViewProps {
   ref?: any;
 }
 
-export const setProps = (widget: NodeWidget, props: ViewProps) => {
+export const setProps = (
+  widget: NodeWidget,
+  newProps: ViewProps,
+  oldProps: ViewProps
+) => {
   const setter: ViewProps = {
     set visible(shouldShow: boolean) {
       shouldShow ? widget.show() : widget.hide();
@@ -20,22 +23,7 @@ export const setProps = (widget: NodeWidget, props: ViewProps) => {
       widget.setObjectName(id);
     }
   };
-  Object.assign(setter, props);
-};
-
-export const removeProps = (widget: NodeWidget, props: ViewProps) => {
-  const remover: ViewProps = {
-    set visible(oldShouldShow: boolean) {
-      // noop
-    },
-    set styleSheet(oldStyleSheet: string) {
-      widget.setStyleSheet(``);
-    },
-    set id(oldId: string) {
-      widget.setObjectName(``);
-    }
-  };
-  Object.assign(remover, props);
+  Object.assign(setter, newProps);
 };
 
 export const View = registerComponent<ViewProps>({
@@ -53,7 +41,7 @@ export const View = registerComponent<ViewProps>({
     workInProgress
   ) => {
     const widget = new QWidget();
-    setProps(widget, newProps);
+    setProps(widget, newProps, {});
     return widget;
   },
   finalizeInitialChildren: (instance, newProps, rootInstance, context) => {
@@ -69,8 +57,6 @@ export const View = registerComponent<ViewProps>({
     rootContainerInstance,
     hostContext
   ) => {
-    const { removed, updated } = categorizeProps(oldProps, newProps);
-    setProps(instance, updated);
-    removeProps(instance, removed);
+    setProps(instance, newProps, oldProps);
   }
 });
