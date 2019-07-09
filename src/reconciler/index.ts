@@ -39,6 +39,9 @@ const HostConfig: Reconciler.HostConfig<
     workInProgress
   ) {
     // throw new Error(`Can't create text without <Text> for text: ${newText}`);
+    console.warn(
+      "createTextInstance called when platform doesnt have host level text"
+    );
   },
   createInstance: function(
     type,
@@ -117,6 +120,23 @@ const HostConfig: Reconciler.HostConfig<
       hostContext
     );
   },
+  commitUpdate: function(
+    instance,
+    updatePayload,
+    type,
+    oldProps,
+    newProps,
+    finishedWork
+  ) {
+    const { commitUpdate } = getComponent(type);
+    return commitUpdate(
+      instance,
+      updatePayload,
+      oldProps,
+      newProps,
+      finishedWork
+    );
+  },
   appendChild: (parent, child) => {
     let layout = parent.layout;
     if (!layout) {
@@ -135,6 +155,19 @@ const HostConfig: Reconciler.HostConfig<
     }
     (layout as FlexLayout).removeWidget(child);
   },
+  commitTextUpdate: (textInstance, oldText, newText) => {
+    //noop since we manage all text using Text component
+    console.warn(
+      "commitTextUpdate called when platform doesnt have host level text"
+    );
+  },
+  resetTextContent: instance => {
+    console.warn("resetTextContent in reconciler triggered!");
+    // noop for now till we find when this method is triggered
+  },
+  // insertBefore, //TODO:
+  // insertInContainerBefore, //TODO:
+  // removeChildFromContainer, //TODO:
   supportsMutation: true,
   supportsPersistence: false,
   supportsHydration: false,
@@ -157,32 +190,32 @@ const HostConfig: Reconciler.HostConfig<
     // Use to deprioritize entire subtree based on props and types. For example if you dont need reconciler to calculate for hidden elements
     return false;
   },
+  hideInstance: (instance: NodeWidget) => {
+    instance.hide();
+  },
+  unhideInstance: (instance: NodeWidget, props: object) => {
+    instance.show();
+  },
+  hideTextInstance: (instance: any) => {
+    // noop since we dont have any host text
+    console.warn(
+      "hideTextInstance called when platform doesnt have host level text"
+    );
+  },
+  unhideTextInstance: (instance: NodeWidget, props: object) => {
+    // noop since we dont have any host text
+    console.warn(
+      "unhideTextInstance called when platform doesnt have host level text"
+    );
+  },
   // Fiber stuff I think
   scheduleDeferredCallback: scheduler.unstable_scheduleCallback,
   cancelDeferredCallback: scheduler.unstable_cancelCallback,
   // shouldYield,
   scheduleTimeout: setTimeout,
   cancelTimeout: clearTimeout,
-  noTimeout: null,
+  noTimeout: -1,
   isPrimaryRenderer: true
-
-  // -------------------
-  //      Mutation
-  //     (optional)
-  // -------------------
-  // appendChild,
-  // commitTextUpdate,
-  // commitMount,
-  // commitUpdate,
-  // insertBefore,
-  // insertInContainerBefore,
-  // removeChild,
-  // removeChildFromContainer,
-  // resetTextContent,
-  // hideInstance,
-  // hideTextInstance,
-  // unhideInstance,
-  // unhideTextInstance,
 };
 
 export default Reconciler(HostConfig);

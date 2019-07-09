@@ -46,6 +46,9 @@ export const Text = registerComponent<TextProps>({
     rootContainerInstance,
     hostContext
   ) => {
+    return true;
+  },
+  commitUpdate: (instance, updatePayload, oldProps, newProps, finishedWork) => {
     setProps(instance as QLabel, newProps, oldProps);
   }
 });

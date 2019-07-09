@@ -31,6 +31,13 @@ export type ComponentConfig = {
     rootContainerInstance: QWidget,
     hostContext: any
   ) => UpdatePayload;
+  commitUpdate: (
+    instance: NodeWidget,
+    updatePayload: any,
+    oldProps: object,
+    newProps: object,
+    finishedWork: Fiber
+  ) => void;
 };
 
 type ReactDesktopTag<P> = string | React.ComponentType<P>;

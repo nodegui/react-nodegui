@@ -1,5 +1,6 @@
 import { QWidget, NodeWidget } from "@nodegui/nodegui";
 import { registerComponent } from "../config";
+
 export interface ViewProps {
   id?: string;
   styleSheet?: string;
@@ -57,6 +58,9 @@ export const View = registerComponent<ViewProps>({
     rootContainerInstance,
     hostContext
   ) => {
+    return true;
+  },
+  commitUpdate: (instance, updatePayload, oldProps, newProps, finishedWork) => {
     setProps(instance, newProps, oldProps);
   }
 });
