@@ -208,17 +208,6 @@ const HostConfig: Reconciler.HostConfig<
   supportsMutation: true,
   supportsPersistence: false,
   supportsHydration: false,
-  //@ts-ignore
-  schedulePassiveEffects: (callback: any) => {
-    // For supporting useEffect hook
-    if (callback) {
-      return setTimeout(callback, 0);
-    }
-  },
-  cancelPassiveEffects: (cbHandler: any) => {
-    // For supporting useEffect hooks - cancellation
-    clearTimeout(cbHandler);
-  },
   getPublicInstance: instance => {
     //for supporting refs
     return instance;
@@ -230,6 +219,7 @@ const HostConfig: Reconciler.HostConfig<
     }
     return false;
   },
+  //@ts-ignore
   hideInstance: (instance: NodeWidget) => {
     instance.hide();
   },
@@ -249,6 +239,8 @@ const HostConfig: Reconciler.HostConfig<
     );
   },
   // Fiber stuff I think
+  schedulePassiveEffects: scheduler.unstable_scheduleCallback, // For supporting useEffect hook,
+  cancelPassiveEffects: scheduler.unstable_cancelCallback, // For supporting useEffect hooks - cancellation
   scheduleDeferredCallback: scheduler.unstable_scheduleCallback,
   cancelDeferredCallback: scheduler.unstable_cancelCallback,
   shouldYield: () => {
