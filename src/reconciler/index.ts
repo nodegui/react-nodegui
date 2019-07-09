@@ -40,8 +40,9 @@ const HostConfig: Reconciler.HostConfig<
   ) {
     // throw new Error(`Can't create text without <Text> for text: ${newText}`);
     console.warn(
-      "createTextInstance called when platform doesnt have host level text"
+      "createTextInstance called in reconciler when platform doesnt have host level text. "
     );
+    console.warn(`Use <Text /> component to add the text: ${newText}`);
   },
   createInstance: function(
     type,
@@ -59,6 +60,9 @@ const HostConfig: Reconciler.HostConfig<
     );
   },
   appendInitialChild: function(parentInstance, child: NodeWidget) {
+    if (!child) {
+      return;
+    }
     let layout = parentInstance.layout;
     if (!layout) {
       const flexLayout = new FlexLayout();
@@ -94,6 +98,9 @@ const HostConfig: Reconciler.HostConfig<
     return commitMount(instance, newProps, internalInstanceHandle);
   },
   appendChildToContainer: function(container, child: NodeWidget) {
+    if (!child) {
+      return;
+    }
     let layout = container.layout;
     if (!layout) {
       const flexLayout = new FlexLayout();
@@ -102,6 +109,24 @@ const HostConfig: Reconciler.HostConfig<
       layout = flexLayout;
     }
     layout.addWidget(child);
+  },
+  insertInContainerBefore: (container, child, beforeChild) => {
+    let layout = container.layout;
+    if (!layout) {
+      console.warn(
+        "container has no layout to insert child before another child"
+      );
+      return;
+    }
+    (layout as FlexLayout).insertChildBefore(child, beforeChild);
+  },
+  removeChildFromContainer: (container, child) => {
+    let layout = container.layout;
+    if (!layout) {
+      console.warn("container has no layout to remove child from");
+      return;
+    }
+    (layout as FlexLayout).removeWidget(child);
   },
   prepareUpdate: function(
     instance,
@@ -138,6 +163,9 @@ const HostConfig: Reconciler.HostConfig<
     );
   },
   appendChild: (parent, child) => {
+    if (!child) {
+      return;
+    }
     let layout = parent.layout;
     if (!layout) {
       const flexLayout = new FlexLayout();
@@ -147,10 +175,22 @@ const HostConfig: Reconciler.HostConfig<
     }
     (layout as FlexLayout).addWidget(child);
   },
+  insertBefore: (
+    parentInstance,
+    child: NodeWidget,
+    beforeChild: NodeWidget
+  ) => {
+    let layout = parentInstance.layout;
+    if (!layout) {
+      console.warn("parent has no layout to insert child before another child");
+      return;
+    }
+    (layout as FlexLayout).insertChildBefore(child, beforeChild);
+  },
   removeChild: (parent, child) => {
     let layout = parent.layout;
     if (!layout) {
-      console.log("parent has no layout to remove child from");
+      console.warn("parent has no layout to remove child from");
       return;
     }
     (layout as FlexLayout).removeWidget(child);
@@ -165,20 +205,6 @@ const HostConfig: Reconciler.HostConfig<
     console.warn("resetTextContent in reconciler triggered!");
     // noop for now till we find when this method is triggered
   },
-  insertBefore: (
-    parentInstance,
-    child: NodeWidget,
-    beforeChild: NodeWidget
-  ) => {
-    let layout = parentInstance.layout;
-    if (!layout) {
-      console.log("parent has no layout to insert child before another child");
-      return;
-    }
-    (layout as FlexLayout).insertChildBefore(child, beforeChild);
-  },
-  // insertInContainerBefore, //TODO:
-  // removeChildFromContainer, //TODO:
   supportsMutation: true,
   supportsPersistence: false,
   supportsHydration: false,

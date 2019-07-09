@@ -47,20 +47,22 @@ class Test extends React.Component {
 }
 
 const App = () => {
-  const [beforeChildVisible, setVisible] = useState(false);
+  const [beforeChildVisible, setVisible] = useState(true);
   useEffect(() => {
     setTimeout(() => {
-      setVisible(true);
+      setVisible(false);
     }, 1000);
   }, []);
   return (
-    <View id="divy">
-      <Text id="hello">Hello</Text>
+    <>
       {beforeChildVisible ? <Text>Ma BEFORE CHILD</Text> : null}
-      <Test />
-      <TestHook />
-      <Text id="world">{`World`}</Text>
-    </View>
+      <View id="divy">
+        <Text id="hello">Hello</Text>
+        <Test />
+        <TestHook />
+        <Text id="world">{`World`}</Text>
+      </View>
+    </>
   );
 };
 
