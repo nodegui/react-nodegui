@@ -12,7 +12,7 @@ export const Renderer = {
     rootView.setObjectName("rootView");
     window.setCentralWidget(rootView);
     const containerInfo = rootView;
-    const isConcurrent = false; //TODO: Enable this
+    const isConcurrent = true;
     const hydrate = false;
 
     const container = reconciler.createContainer(

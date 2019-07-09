@@ -225,6 +225,9 @@ const HostConfig: Reconciler.HostConfig<
   },
   shouldDeprioritizeSubtree: (type, props) => {
     // Use to deprioritize entire subtree based on props and types. For example if you dont need reconciler to calculate for hidden elements
+    if ((props as any).visible === false) {
+      return true;
+    }
     return false;
   },
   hideInstance: (instance: NodeWidget) => {
@@ -248,7 +251,11 @@ const HostConfig: Reconciler.HostConfig<
   // Fiber stuff I think
   scheduleDeferredCallback: scheduler.unstable_scheduleCallback,
   cancelDeferredCallback: scheduler.unstable_cancelCallback,
-  // shouldYield,
+  shouldYield: () => {
+    // When can renderer just rest and not do any work. Basically if shouldYield returns true the renderer would just sleep and pause.
+    // This method will be continuously polled by the reconciler to check if renderer should resume.
+    return false;
+  },
   scheduleTimeout: setTimeout,
   cancelTimeout: clearTimeout,
   noTimeout: -1,
