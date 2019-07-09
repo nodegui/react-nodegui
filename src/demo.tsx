@@ -2,12 +2,15 @@ import { Renderer, View, Text } from "./index";
 import React, { useEffect, useState, useRef } from "react";
 import { QMainWindow } from "@nodegui/nodegui";
 
+let interval: any = false;
 const TestHook = () => {
   const [value, setValue] = useState("No Date");
   useEffect(() => {
-    setInterval(() => {
-      setValue(`My: ${Date.now()}`);
-    }, 1000);
+    if (!interval) {
+      setInterval(() => {
+        setValue(`My: ${Date.now()}`);
+      }, 1000);
+    }
   }, []);
   return (
     <View>
@@ -32,10 +35,13 @@ class Test extends React.Component {
   }
   render() {
     return (
-      <Text
-        id="yolo"
-        visible={this.state.visible}
-      >{`Molo ${this.state.value}`}</Text>
+      <View>
+        <Text
+          id="yolo"
+          visible={this.state.visible}
+        >{`Molo ${this.state.value}`}</Text>
+        {this.state.visible && <Text>{`HIDDEN: ${this.state.value}`}</Text>}
+      </View>
     );
   }
 }

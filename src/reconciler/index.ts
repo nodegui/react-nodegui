@@ -117,6 +117,24 @@ const HostConfig: Reconciler.HostConfig<
       hostContext
     );
   },
+  appendChild: (parent, child) => {
+    let layout = parent.layout;
+    if (!layout) {
+      const flexLayout = new FlexLayout();
+      flexLayout.setFlexNode(parent.getFlexNode());
+      parent.setLayout(flexLayout);
+      layout = flexLayout;
+    }
+    (layout as FlexLayout).addWidget(child);
+  },
+  removeChild: (parent, child) => {
+    let layout = parent.layout;
+    if (!layout) {
+      console.log("parent has no layout to remove child from");
+      return;
+    }
+    (layout as FlexLayout).removeWidget(child);
+  },
   supportsMutation: true,
   supportsPersistence: false,
   supportsHydration: false,
@@ -153,7 +171,6 @@ const HostConfig: Reconciler.HostConfig<
   //     (optional)
   // -------------------
   // appendChild,
-  // appendChildToContainer,
   // commitTextUpdate,
   // commitMount,
   // commitUpdate,
