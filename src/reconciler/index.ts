@@ -165,7 +165,18 @@ const HostConfig: Reconciler.HostConfig<
     console.warn("resetTextContent in reconciler triggered!");
     // noop for now till we find when this method is triggered
   },
-  // insertBefore, //TODO:
+  insertBefore: (
+    parentInstance,
+    child: NodeWidget,
+    beforeChild: NodeWidget
+  ) => {
+    let layout = parentInstance.layout;
+    if (!layout) {
+      console.log("parent has no layout to insert child before another child");
+      return;
+    }
+    (layout as FlexLayout).insertChildBefore(child, beforeChild);
+  },
   // insertInContainerBefore, //TODO:
   // removeChildFromContainer, //TODO:
   supportsMutation: true,
