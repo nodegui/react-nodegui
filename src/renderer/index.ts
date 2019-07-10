@@ -12,7 +12,7 @@ export const Renderer = {
     rootView.setObjectName("rootView");
     window.setCentralWidget(rootView);
     const containerInfo = rootView;
-    const isConcurrent = true;
+    const isConcurrent = false; //disabling since there seems to be a bug with onclick listeneres (when called without a console.log inside them)
     const hydrate = false;
 
     const container = reconciler.createContainer(

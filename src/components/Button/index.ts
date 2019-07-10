@@ -1,35 +1,35 @@
 import { registerComponent } from "../config";
-import { QLabel } from "@nodegui/nodegui";
+import { QPushButton } from "@nodegui/nodegui";
 import { ViewProps, setProps as setViewProps } from "../View";
 
-interface TextProps extends ViewProps {
-  children?: string;
-  wordWrap?: boolean;
+interface ButtonProps extends ViewProps {
+  text?: string;
 }
 
-const setProps = (widget: QLabel, newProps: TextProps, oldProps: TextProps) => {
-  const setter: TextProps = {
-    set children(text: string) {
-      widget.setText(text);
-    },
-    set wordWrap(shouldWrap: boolean) {
-      widget.setWordWrap(shouldWrap);
+const setProps = (
+  widget: QPushButton,
+  newProps: ButtonProps,
+  oldProps: ButtonProps
+) => {
+  const setter: ButtonProps = {
+    set text(buttonText: string) {
+      widget.setText(buttonText);
     }
   };
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);
 };
 
-export const Text = registerComponent<TextProps>({
-  id: "text",
+export const Button = registerComponent<ButtonProps>({
+  id: "button",
   getContext() {
     return {};
   },
   shouldSetTextContent: () => {
-    return true;
+    return false;
   },
   createInstance: newProps => {
-    const widget = new QLabel();
+    const widget = new QPushButton();
     setProps(widget, newProps, {});
     return widget;
   },
@@ -49,6 +49,6 @@ export const Text = registerComponent<TextProps>({
     return true;
   },
   commitUpdate: (instance, updatePayload, oldProps, newProps, finishedWork) => {
-    setProps(instance as QLabel, newProps, oldProps);
+    setProps(instance as QPushButton, newProps, oldProps);
   }
 });

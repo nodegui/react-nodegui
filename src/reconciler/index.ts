@@ -2,7 +2,7 @@ import Reconciler from "react-reconciler";
 import { NodeWidget, QWidget, FlexLayout } from "@nodegui/nodegui";
 import { getComponent } from "../components/config";
 import * as scheduler from "scheduler";
-//@ts-ignore
+
 const HostConfig: Reconciler.HostConfig<
   string,
   object,

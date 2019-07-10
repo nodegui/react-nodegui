@@ -1,11 +1,15 @@
 import { QWidget, NodeWidget } from "@nodegui/nodegui";
 import { registerComponent } from "../config";
 
+export interface ListenerMap {
+  [key: string]: (payload?: any) => void;
+}
 export interface ViewProps {
   id?: string;
   styleSheet?: string;
   visible?: boolean;
   ref?: any;
+  on?: ListenerMap;
 }
 
 export const setProps = (
@@ -22,6 +26,26 @@ export const setProps = (
     },
     set id(id: string) {
       widget.setObjectName(id);
+    },
+    set on(listenerMap: ListenerMap) {
+      const listenerMapLatest = Object.assign({}, listenerMap);
+      const oldListenerMap = Object.assign({}, oldProps.on);
+
+      Object.entries(oldListenerMap).forEach(([eventType, oldEvtListener]) => {
+        const newEvtListener = listenerMapLatest[eventType];
+        if (oldEvtListener !== newEvtListener) {
+          widget.removeEventListener(eventType, oldEvtListener);
+        } else {
+          delete listenerMapLatest[eventType];
+        }
+      });
+
+      Object.entries(listenerMapLatest).forEach(
+        ([eventType, newEvtListener]) => {
+          console.log(newEvtListener.toString());
+          widget.addEventListener(eventType, newEvtListener);
+        }
+      );
     }
   };
   Object.assign(setter, newProps);
@@ -30,7 +54,7 @@ export const setProps = (
 export const View = registerComponent<ViewProps>({
   id: "view",
   getContext() {
-    return { name: "view" };
+    return {};
   },
   shouldSetTextContent: () => {
     return false;

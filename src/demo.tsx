@@ -1,66 +1,23 @@
-import { Renderer, View, Text } from "./index";
-import React, { useEffect, useState, useRef } from "react";
-import { QMainWindow } from "@nodegui/nodegui";
+import { Renderer, View, Text, Button } from "./index";
+import React from "react";
+import { QMainWindow, QWidgetEvents } from "@nodegui/nodegui";
 
-let interval: any = false;
-const TestHook = () => {
-  const [value, setValue] = useState("No Date");
-  useEffect(() => {
-    if (!interval) {
-      setInterval(() => {
-        setValue(`My: ${Date.now()}`);
-      }, 1000);
-    }
-  }, []);
-  return (
-    <View>
-      <Text>{`Hooked: ${value}`}</Text>
-    </View>
-  );
+const onMousePressMove = () => {
+  console.log("mouse pressed and moved");
 };
-class Test extends React.Component {
-  state = {
-    value: "No",
-    visible: false
-  };
-  componentDidMount() {
-    setInterval(() => {
-      this.setState({ value: `${Date.now()}` });
-    }, 500);
-    setInterval(() => {
-      this.setState((prevState: any) => ({
-        visible: !prevState.visible
-      }));
-    }, 300);
-  }
-  render() {
-    return (
-      <View>
-        <Text
-          id="yolo"
-          visible={this.state.visible}
-        >{`Molo ${this.state.value}`}</Text>
-        {this.state.visible && <Text>{`HIDDEN: ${this.state.value}`}</Text>}
-      </View>
-    );
-  }
-}
 
 const App = () => {
-  const [beforeChildVisible, setVisible] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setVisible(false);
-    }, 1000);
-  }, []);
   return (
     <>
-      {beforeChildVisible ? <Text>Ma BEFORE CHILD</Text> : null}
       <View id="divy">
-        <Text id="hello">Hello</Text>
-        <Test />
-        <TestHook />
+        <Text id="hello">{`${Date.now()}`}</Text>
         <Text id="world">{`World`}</Text>
+        <Button
+          on={{
+            [QWidgetEvents.MouseMove]: onMousePressMove
+          }}
+          text="I am a button"
+        />
       </View>
     </>
   );
