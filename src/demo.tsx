@@ -1,4 +1,13 @@
-import { Renderer, View, Text, Button } from "./index";
+import {
+  Renderer,
+  View,
+  Text,
+  Button,
+  CheckBox,
+  LineEdit,
+  ProgressBar,
+  RadioButton
+} from "./index";
 import React from "react";
 import {
   QMainWindow,
@@ -13,13 +22,15 @@ const onMousePressMove = (...args: any[]) => {
 const onClick = (...args: any[]) => {
   console.log("clicked", ...args);
 };
-
 const App = () => {
   return (
     <>
       <View id="divy">
         <Text id="hello">{`${Date.now()}`}</Text>
         <Text id="world">{`World`}</Text>
+        <CheckBox id="checky" visible={true} text="Yo Check me out!" />
+        <LineEdit id="liney" />
+        <RadioButton />
         <Button
           on={{
             [QWidgetEvents.MouseMove]: onMousePressMove,
@@ -27,6 +38,7 @@ const App = () => {
           }}
           text="I am a button"
         />
+        <ProgressBar />
       </View>
     </>
   );
@@ -35,12 +47,17 @@ const App = () => {
 const win = new QMainWindow();
 win.resize(400, 400);
 win.setStyleSheet(`
+  #checky {
+   
+  }
+  #liney {
+   
+  }
   QWidget#rootView {
     qproperty-flex: 1;
     qproperty-alignSelf: 'stretch';
   }
   #divy {
-    background-color: #80cbc4;
     qproperty-flex: 1;
     qproperty-flexDirection: column;
     qproperty-alignItems: "center";

@@ -10,7 +10,7 @@ export interface ViewProps {
   visible?: boolean;
   ref?: any;
   on?: ListenerMap;
-  setMouseTracked?: boolean;
+  mouseTracking?: boolean;
 }
 
 export const setProps = (
@@ -28,8 +28,8 @@ export const setProps = (
     set id(id: string) {
       widget.setObjectName(id);
     },
-    set setMouseTracked(isMouseTracked: boolean) {
-      widget.setMouseTracking(isMouseTracked);
+    set mouseTracking(isMouseTracked: boolean) {
+      widget.setMouseTracking(isMouseTracked); //TODO: add a getter for this in nodegui
     },
     set on(listenerMap: ListenerMap) {
       const listenerMapLatest = Object.assign({}, listenerMap);
@@ -46,7 +46,6 @@ export const setProps = (
 
       Object.entries(listenerMapLatest).forEach(
         ([eventType, newEvtListener]) => {
-          console.log(newEvtListener.toString());
           widget.addEventListener(eventType, newEvtListener);
         }
       );
