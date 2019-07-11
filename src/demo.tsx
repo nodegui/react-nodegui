@@ -6,26 +6,21 @@ import {
   QPushButtonEvents
 } from "@nodegui/nodegui";
 
-const onMousePressMove = () => {
-  console.log("mouse pressed and moved");
+const onMousePressMove = (...args: any[]) => {
+  console.log("mouse pressed and moved", ...args);
 };
 
-const onClick = () => {
-  console.log("clicked");
+const onClick = (...args: any[]) => {
+  console.log("clicked", ...args);
 };
 
 const App = () => {
   return (
     <>
-      <View
-        setMouseTracked={true}
-        on={{ [QWidgetEvents.MouseMove]: onMousePressMove }}
-        id="divy"
-      >
+      <View id="divy">
         <Text id="hello">{`${Date.now()}`}</Text>
         <Text id="world">{`World`}</Text>
         <Button
-          setMouseTracked={true}
           on={{
             [QWidgetEvents.MouseMove]: onMousePressMove,
             [QPushButtonEvents.clicked]: onClick
