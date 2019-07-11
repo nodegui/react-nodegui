@@ -1,20 +1,34 @@
 import { Renderer, View, Text, Button } from "./index";
 import React from "react";
-import { QMainWindow, QWidgetEvents } from "@nodegui/nodegui";
+import {
+  QMainWindow,
+  QWidgetEvents,
+  QPushButtonEvents
+} from "@nodegui/nodegui";
 
 const onMousePressMove = () => {
   console.log("mouse pressed and moved");
 };
 
+const onClick = () => {
+  console.log("clicked");
+};
+
 const App = () => {
   return (
     <>
-      <View id="divy">
+      <View
+        setMouseTracked={true}
+        on={{ [QWidgetEvents.MouseMove]: onMousePressMove }}
+        id="divy"
+      >
         <Text id="hello">{`${Date.now()}`}</Text>
         <Text id="world">{`World`}</Text>
         <Button
+          setMouseTracked={true}
           on={{
-            [QWidgetEvents.MouseMove]: onMousePressMove
+            [QWidgetEvents.MouseMove]: onMousePressMove,
+            [QPushButtonEvents.clicked]: onClick
           }}
           text="I am a button"
         />

@@ -10,6 +10,7 @@ export interface ViewProps {
   visible?: boolean;
   ref?: any;
   on?: ListenerMap;
+  setMouseTracked?: boolean;
 }
 
 export const setProps = (
@@ -26,6 +27,9 @@ export const setProps = (
     },
     set id(id: string) {
       widget.setObjectName(id);
+    },
+    set setMouseTracked(isMouseTracked: boolean) {
+      widget.setMouseTracking(isMouseTracked);
     },
     set on(listenerMap: ListenerMap) {
       const listenerMapLatest = Object.assign({}, listenerMap);
