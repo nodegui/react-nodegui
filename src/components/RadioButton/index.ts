@@ -2,7 +2,9 @@ import { registerComponent } from "../config";
 import { QRadioButton } from "@nodegui/nodegui";
 import { ViewProps, setProps as setViewProps } from "../View";
 
-interface RadioButtonProps extends ViewProps {}
+interface RadioButtonProps extends ViewProps {
+  text?: string;
+}
 
 const setProps = (
   widget: QRadioButton,
@@ -10,9 +12,9 @@ const setProps = (
   oldProps: RadioButtonProps
 ) => {
   const setter: RadioButtonProps = {
-    // set text(checkboxText: string) {
-    //   widget.setText(checkboxText);
-    // }
+    set text(checkboxText: string) {
+      widget.setText(checkboxText);
+    }
   };
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);

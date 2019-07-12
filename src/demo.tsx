@@ -30,7 +30,7 @@ const App = () => {
         <Text id="world">{`World`}</Text>
         <CheckBox id="checky" visible={true} text="Yo Check me out!" />
         <LineEdit id="liney" />
-        <RadioButton />
+        <RadioButton text="my radio button" />
         <Button
           on={{
             [QWidgetEvents.MouseMove]: onMousePressMove,
