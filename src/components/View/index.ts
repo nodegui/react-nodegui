@@ -11,6 +11,7 @@ export interface ViewProps {
   ref?: any;
   on?: ListenerMap;
   mouseTracking?: boolean;
+  enabled?: boolean;
 }
 
 export const setProps = (
@@ -30,6 +31,9 @@ export const setProps = (
     },
     set mouseTracking(isMouseTracked: boolean) {
       widget.setMouseTracking(isMouseTracked); //TODO: add a getter for this in nodegui
+    },
+    set enabled(enable: boolean) {
+      widget.setEnabled(enable);
     },
     set on(listenerMap: ListenerMap) {
       const listenerMapLatest = Object.assign({}, listenerMap);

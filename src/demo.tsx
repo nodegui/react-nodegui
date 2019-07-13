@@ -1,75 +1,240 @@
-import {
-  Renderer,
-  View,
-  Text,
-  Button,
-  CheckBox,
-  LineEdit,
-  ProgressBar,
-  RadioButton
-} from "./index";
-import React from "react";
-import {
-  QMainWindow,
-  QWidgetEvents,
-  QPushButtonEvents
-} from "@nodegui/nodegui";
+import { Renderer, View, Text, Button } from "./index";
+import React, { useReducer, Reducer } from "react";
+import { QMainWindow, QPushButtonEvents } from "@nodegui/nodegui";
 
-const onMousePressMove = (...args: any[]) => {
-  console.log("mouse pressed and moved", ...args);
+interface state {
+  display: string;
+  total: number;
+  pendingOp: string;
+  valueBuffer: string;
+}
+interface action {
+  type: "operation" | "value";
+  value: string;
+}
+const initialState: state = {
+  display: "",
+  total: 0,
+  pendingOp: "~",
+  valueBuffer: ""
 };
 
-const onClick = (...args: any[]) => {
-  console.log("clicked", ...args);
+const reducer: Reducer<state, action> = (state, action) => {
+  console.log("state", state);
+  const newState = { ...state };
+  switch (action.type) {
+    case "operation": {
+      switch (newState.pendingOp) {
+        case "+": {
+          newState.total = newState.total + parseFloat(state.valueBuffer);
+          break;
+        }
+        case "-": {
+          newState.total = newState.total - parseFloat(state.valueBuffer);
+          break;
+        }
+        case "*": {
+          newState.total = newState.total * parseFloat(state.valueBuffer);
+          break;
+        }
+        case "/": {
+          newState.total = newState.total / parseFloat(state.valueBuffer);
+          break;
+        }
+        case "=": {
+          break;
+        }
+        case "~": {
+          newState.total = parseFloat(state.valueBuffer);
+        }
+        default:
+      }
+      newState.valueBuffer = "";
+      newState.display = action.value;
+      if (action.value === "=") {
+        const total = newState.total;
+        Object.assign(newState, initialState);
+        newState.total = total;
+        newState.display = `${total}`;
+      }
+      if (action.value === "~") {
+        Object.assign(newState, initialState);
+      }
+      newState.pendingOp = `${action.value}`;
+      break;
+    }
+    case "value": {
+      if (state.pendingOp === "=") {
+        newState.pendingOp = "~";
+      }
+      if (!state.valueBuffer) {
+        newState.display = action.value;
+        newState.valueBuffer = `${action.value}`;
+      } else {
+        newState.display = `${state.display}` + `${action.value}`;
+        newState.valueBuffer += `${action.value}`;
+      }
+      break;
+    }
+    default:
+      throw new Error("Invalid operation");
+  }
+  console.log("newState", newState);
+  return newState;
 };
+
 const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const onOperator = (value: string) => () => {
+    dispatch({ type: "operation", value });
+  };
+  const onValue = (value: string) => () => {
+    dispatch({ type: "value", value });
+  };
   return (
-    <>
-      <View id="divy">
-        <Text id="hello">{`${Date.now()}`}</Text>
-        <Text id="world">{`World`}</Text>
-        <CheckBox id="checky" visible={true} text="Yo Check me out!" />
-        <LineEdit id="liney" />
-        <RadioButton text="my radio button" />
+    <View id="container">
+      <View id="row0">
         <Button
-          on={{
-            [QWidgetEvents.MouseMove]: onMousePressMove,
-            [QPushButtonEvents.clicked]: onClick
-          }}
-          text="I am a button"
+          id="opBtn"
+          text="AC"
+          on={{ [QPushButtonEvents.clicked]: onOperator("~") }}
         />
-        <ProgressBar />
+        <Text id="result">{state.display || "0"}</Text>
       </View>
-    </>
+      <View id="row1">
+        <Button
+          id="valueBtn"
+          text="7"
+          on={{ [QPushButtonEvents.clicked]: onValue("7") }}
+        />
+        <Button
+          id="valueBtn"
+          text="8"
+          on={{ [QPushButtonEvents.clicked]: onValue("8") }}
+        />
+        <Button
+          id="valueBtn"
+          text="9"
+          on={{ [QPushButtonEvents.clicked]: onValue("9") }}
+        />
+        <Button
+          id="opBtnY"
+          text="/"
+          on={{ [QPushButtonEvents.clicked]: onOperator("/") }}
+        />
+      </View>
+      <View id="row">
+        <Button
+          id="valueBtn"
+          text="4"
+          on={{ [QPushButtonEvents.clicked]: onValue("4") }}
+        />
+        <Button
+          id="valueBtn"
+          text="5"
+          on={{ [QPushButtonEvents.clicked]: onValue("5") }}
+        />
+        <Button
+          id="valueBtn"
+          text="6"
+          on={{ [QPushButtonEvents.clicked]: onValue("6") }}
+        />
+        <Button
+          id="opBtnY"
+          text="x"
+          on={{ [QPushButtonEvents.clicked]: onOperator("*") }}
+        />
+      </View>
+      <View id="row">
+        <Button
+          id="valueBtn"
+          text="1"
+          on={{ [QPushButtonEvents.clicked]: onValue("1") }}
+        />
+        <Button
+          id="valueBtn"
+          text="2"
+          on={{ [QPushButtonEvents.clicked]: onValue("2") }}
+        />
+        <Button
+          id="valueBtn"
+          text="3"
+          on={{ [QPushButtonEvents.clicked]: onValue("3") }}
+        />
+        <Button
+          id="opBtnY"
+          text="-"
+          on={{ [QPushButtonEvents.clicked]: onOperator("-") }}
+        />
+      </View>
+      <View id="row">
+        <Button
+          id="valueBtn"
+          text="0"
+          on={{ [QPushButtonEvents.clicked]: onValue("0") }}
+        />
+        <Button
+          id="valueBtn"
+          text="."
+          enabled={!state.valueBuffer.includes(".")}
+          on={{ [QPushButtonEvents.clicked]: onValue(".") }}
+        />
+        <Button
+          id="opBtn"
+          text="="
+          on={{ [QPushButtonEvents.clicked]: onOperator("=") }}
+        />
+        <Button
+          id="opBtnY"
+          text="+"
+          on={{ [QPushButtonEvents.clicked]: onOperator("+") }}
+        />
+      </View>
+    </View>
   );
 };
 
 const win = new QMainWindow();
-win.resize(400, 400);
+win.resize(230, 300);
 win.setStyleSheet(`
-  #checky {
-   
-  }
-  #liney {
-   
-  }
-  QWidget#rootView {
-    qproperty-flex: 1;
-    qproperty-alignSelf: 'stretch';
-  }
-  #divy {
+  #container {
     qproperty-flex: 1;
     qproperty-flexDirection: column;
-    qproperty-alignItems: "center";
-    qproperty-justifyContent: "space-around";
+    qproperty-minHeight: '100%';
   }
-  #hello {
-    color: blue;
-    font-weight: bold;
-    font-size: 25px;
+  #row, #row0, #row1 {
+    qproperty-flex: 1;
+    qproperty-alignItems: stretch;
+    qproperty-justifyContent: space-between;
+    qproperty-flexDirection: row;
+    background: #4B4B4B;
   }
-  #world {
-    color: red;
+  #row0 {
+    background: #1E1E1E;
+  }
+  #row1 {
+      background: #2E2E2E;  
+  }
+  #valueBtn, #opBtn, #opBtnY {
+    qproperty-minWidth: '25%';
+    qproperty-border: 1;
+    border: 1px solid black;
+    font-size: 20px;
+    color: white;
+  }
+  #opBtnY {
+    background: #FD8D0E;
+  }
+  #valueBtn:pressed, #opBtn:pressed, #opBtnY:pressed {
+    background: grey;
+  }
+  #result {
+    qproperty-alignment: 'AlignRight|AlignVCenter';
+    padding-right: 5px;
+    padding-left:5px;
+    qproperty-paddingHorizontal: 5px;
+    font-size: 40px;
+    qproperty-flex: 1;
   }
 `);
 
