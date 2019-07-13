@@ -67,7 +67,7 @@ const HostConfig: Reconciler.HostConfig<
     if (!child) {
       return;
     }
-    let layout = parent.layout || (parent as QMainWindow).centralWidgetLayout;
+    let layout = parent.layout;
     if (!layout) {
       const flexLayout = new FlexLayout();
       flexLayout.setFlexNode(parent.getFlexNode());
@@ -148,7 +148,7 @@ const HostConfig: Reconciler.HostConfig<
     if (!child) {
       return;
     }
-    let layout = parent.layout || (parent as QMainWindow).centralWidgetLayout;
+    let layout = parent.layout;
     if (!layout) {
       const flexLayout = new FlexLayout();
       flexLayout.setFlexNode(parent.getFlexNode());
@@ -158,7 +158,7 @@ const HostConfig: Reconciler.HostConfig<
     (layout as FlexLayout).addWidget(child);
   },
   insertBefore: (parent, child: NodeWidget, beforeChild: NodeWidget) => {
-    let layout = parent.layout || (parent as QMainWindow).centralWidgetLayout;
+    let layout = parent.layout;
     if (!layout) {
       console.warn("parent has no layout to insert child before another child");
       return;
@@ -166,7 +166,7 @@ const HostConfig: Reconciler.HostConfig<
     (layout as FlexLayout).insertChildBefore(child, beforeChild);
   },
   removeChild: (parent, child) => {
-    let layout = parent.layout || (parent as QMainWindow).centralWidgetLayout;
+    let layout = parent.layout;
     if (!layout) {
       console.warn("parent has no layout to remove child from");
       return;
