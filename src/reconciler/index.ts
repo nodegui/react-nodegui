@@ -1,12 +1,16 @@
 import Reconciler from "react-reconciler";
-import { NodeWidget, QWidget, FlexLayout } from "@nodegui/nodegui";
+import { NodeWidget, FlexLayout, QMainWindow } from "@nodegui/nodegui";
 import { getComponent } from "../components/config";
 import * as scheduler from "scheduler";
+import { instanceOf, any } from "prop-types";
+
+export type AppContainer = Set<NodeWidget>;
+export const appContainer: AppContainer = new Set<NodeWidget>();
 
 const HostConfig: Reconciler.HostConfig<
   string,
   object,
-  QWidget,
+  AppContainer,
   NodeWidget,
   any,
   any,
@@ -59,15 +63,15 @@ const HostConfig: Reconciler.HostConfig<
       workInProgress
     );
   },
-  appendInitialChild: function(parentInstance, child: NodeWidget) {
+  appendInitialChild: function(parent, child: NodeWidget) {
     if (!child) {
       return;
     }
-    let layout = parentInstance.layout;
+    let layout = parent.layout || (parent as QMainWindow).centralWidgetLayout;
     if (!layout) {
       const flexLayout = new FlexLayout();
-      flexLayout.setFlexNode(parentInstance.getFlexNode());
-      parentInstance.setLayout(flexLayout);
+      flexLayout.setFlexNode(parent.getFlexNode());
+      parent.setLayout(flexLayout);
       layout = flexLayout;
     }
     layout.addWidget(child);
@@ -98,35 +102,13 @@ const HostConfig: Reconciler.HostConfig<
     return commitMount(instance, newProps, internalInstanceHandle);
   },
   appendChildToContainer: function(container, child: NodeWidget) {
-    if (!child) {
-      return;
-    }
-    let layout = container.layout;
-    if (!layout) {
-      const flexLayout = new FlexLayout();
-      flexLayout.setFlexNode(container.getFlexNode());
-      container.setLayout(flexLayout);
-      layout = flexLayout;
-    }
-    layout.addWidget(child);
+    container.add(child);
   },
   insertInContainerBefore: (container, child, beforeChild) => {
-    let layout = container.layout;
-    if (!layout) {
-      console.warn(
-        "container has no layout to insert child before another child"
-      );
-      return;
-    }
-    (layout as FlexLayout).insertChildBefore(child, beforeChild);
+    container.add(child);
   },
   removeChildFromContainer: (container, child) => {
-    let layout = container.layout;
-    if (!layout) {
-      console.warn("container has no layout to remove child from");
-      return;
-    }
-    (layout as FlexLayout).removeWidget(child);
+    container.delete(child);
   },
   prepareUpdate: function(
     instance,
@@ -166,7 +148,7 @@ const HostConfig: Reconciler.HostConfig<
     if (!child) {
       return;
     }
-    let layout = parent.layout;
+    let layout = parent.layout || (parent as QMainWindow).centralWidgetLayout;
     if (!layout) {
       const flexLayout = new FlexLayout();
       flexLayout.setFlexNode(parent.getFlexNode());
@@ -175,12 +157,8 @@ const HostConfig: Reconciler.HostConfig<
     }
     (layout as FlexLayout).addWidget(child);
   },
-  insertBefore: (
-    parentInstance,
-    child: NodeWidget,
-    beforeChild: NodeWidget
-  ) => {
-    let layout = parentInstance.layout;
+  insertBefore: (parent, child: NodeWidget, beforeChild: NodeWidget) => {
+    let layout = parent.layout || (parent as QMainWindow).centralWidgetLayout;
     if (!layout) {
       console.warn("parent has no layout to insert child before another child");
       return;
@@ -188,7 +166,7 @@ const HostConfig: Reconciler.HostConfig<
     (layout as FlexLayout).insertChildBefore(child, beforeChild);
   },
   removeChild: (parent, child) => {
-    let layout = parent.layout;
+    let layout = parent.layout || (parent as QMainWindow).centralWidgetLayout;
     if (!layout) {
       console.warn("parent has no layout to remove child from");
       return;

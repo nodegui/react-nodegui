@@ -1,6 +1,7 @@
 import { Renderer, View, Text, Button } from "./index";
 import React, { useReducer, Reducer } from "react";
-import { QMainWindow, QPushButtonEvents } from "@nodegui/nodegui";
+import { QPushButtonEvents, QWidgetEvents } from "@nodegui/nodegui";
+import { Window } from "./components/Window";
 
 interface state {
   display: string;
@@ -20,32 +21,35 @@ const initialState: state = {
 };
 
 const reducer: Reducer<state, action> = (state, action) => {
-  console.log("state", state);
   const newState = { ...state };
   switch (action.type) {
     case "operation": {
       switch (newState.pendingOp) {
         case "+": {
-          newState.total = newState.total + parseFloat(state.valueBuffer);
+          newState.total =
+            newState.total + parseFloat(state.valueBuffer || "0");
           break;
         }
         case "-": {
-          newState.total = newState.total - parseFloat(state.valueBuffer);
+          newState.total =
+            newState.total - parseFloat(state.valueBuffer || "0");
           break;
         }
         case "*": {
-          newState.total = newState.total * parseFloat(state.valueBuffer);
+          newState.total =
+            newState.total * parseFloat(state.valueBuffer || "0");
           break;
         }
         case "/": {
-          newState.total = newState.total / parseFloat(state.valueBuffer);
+          newState.total =
+            newState.total / parseFloat(state.valueBuffer || "1");
           break;
         }
         case "=": {
           break;
         }
         case "~": {
-          newState.total = parseFloat(state.valueBuffer);
+          newState.total = parseFloat(state.valueBuffer || "0");
         }
         default:
       }
@@ -79,7 +83,6 @@ const reducer: Reducer<state, action> = (state, action) => {
     default:
       throw new Error("Invalid operation");
   }
-  console.log("newState", newState);
   return newState;
 };
 
@@ -91,116 +94,124 @@ const App = () => {
   const onValue = (value: string) => () => {
     dispatch({ type: "value", value });
   };
+  const onKeyRelease = () => {
+    console.log("key released");
+  };
   return (
-    <View id="container">
-      <View id="row0">
-        <Button
-          id="opBtn"
-          text="AC"
-          on={{ [QPushButtonEvents.clicked]: onOperator("~") }}
-        />
-        <Text id="result">{state.display || "0"}</Text>
-      </View>
-      <View id="row1">
-        <Button
-          id="valueBtn"
-          text="7"
-          on={{ [QPushButtonEvents.clicked]: onValue("7") }}
-        />
-        <Button
-          id="valueBtn"
-          text="8"
-          on={{ [QPushButtonEvents.clicked]: onValue("8") }}
-        />
-        <Button
-          id="valueBtn"
-          text="9"
-          on={{ [QPushButtonEvents.clicked]: onValue("9") }}
-        />
-        <Button
-          id="opBtnY"
-          text="/"
-          on={{ [QPushButtonEvents.clicked]: onOperator("/") }}
-        />
-      </View>
-      <View id="row">
-        <Button
-          id="valueBtn"
-          text="4"
-          on={{ [QPushButtonEvents.clicked]: onValue("4") }}
-        />
-        <Button
-          id="valueBtn"
-          text="5"
-          on={{ [QPushButtonEvents.clicked]: onValue("5") }}
-        />
-        <Button
-          id="valueBtn"
-          text="6"
-          on={{ [QPushButtonEvents.clicked]: onValue("6") }}
-        />
-        <Button
-          id="opBtnY"
-          text="x"
-          on={{ [QPushButtonEvents.clicked]: onOperator("*") }}
-        />
-      </View>
-      <View id="row">
-        <Button
-          id="valueBtn"
-          text="1"
-          on={{ [QPushButtonEvents.clicked]: onValue("1") }}
-        />
-        <Button
-          id="valueBtn"
-          text="2"
-          on={{ [QPushButtonEvents.clicked]: onValue("2") }}
-        />
-        <Button
-          id="valueBtn"
-          text="3"
-          on={{ [QPushButtonEvents.clicked]: onValue("3") }}
-        />
-        <Button
-          id="opBtnY"
-          text="-"
-          on={{ [QPushButtonEvents.clicked]: onOperator("-") }}
-        />
-      </View>
-      <View id="row">
-        <Button
-          id="valueBtn"
-          text="0"
-          on={{ [QPushButtonEvents.clicked]: onValue("0") }}
-        />
-        <Button
-          id="valueBtn"
-          text="."
-          enabled={!state.valueBuffer.includes(".")}
-          on={{ [QPushButtonEvents.clicked]: onValue(".") }}
-        />
-        <Button
-          id="opBtn"
-          text="="
-          on={{ [QPushButtonEvents.clicked]: onOperator("=") }}
-        />
-        <Button
-          id="opBtnY"
-          text="+"
-          on={{ [QPushButtonEvents.clicked]: onOperator("+") }}
-        />
-      </View>
-    </View>
+    <>
+      <Window styleSheet={styleSheet}>
+        <View on={{ [QWidgetEvents.KeyRelease]: onKeyRelease }} id="container">
+          <View id="row0">
+            <Button
+              id="opBtn"
+              text="AC"
+              on={{ [QPushButtonEvents.clicked]: onOperator("~") }}
+            />
+            <Text id="result">{state.display || "0"}</Text>
+          </View>
+          <View id="row1">
+            <Button
+              id="valueBtn"
+              text="7"
+              on={{ [QPushButtonEvents.clicked]: onValue("7") }}
+            />
+            <Button
+              id="valueBtn"
+              text="8"
+              on={{ [QPushButtonEvents.clicked]: onValue("8") }}
+            />
+            <Button
+              id="valueBtn"
+              text="9"
+              on={{ [QPushButtonEvents.clicked]: onValue("9") }}
+            />
+            <Button
+              id="opBtnY"
+              text="/"
+              on={{ [QPushButtonEvents.clicked]: onOperator("/") }}
+            />
+          </View>
+          <View id="row">
+            <Button
+              id="valueBtn"
+              text="4"
+              on={{ [QPushButtonEvents.clicked]: onValue("4") }}
+            />
+            <Button
+              id="valueBtn"
+              text="5"
+              on={{ [QPushButtonEvents.clicked]: onValue("5") }}
+            />
+            <Button
+              id="valueBtn"
+              text="6"
+              on={{ [QPushButtonEvents.clicked]: onValue("6") }}
+            />
+            <Button
+              id="opBtnY"
+              text="x"
+              on={{ [QPushButtonEvents.clicked]: onOperator("*") }}
+            />
+          </View>
+          <View id="row">
+            <Button
+              id="valueBtn"
+              text="1"
+              on={{ [QPushButtonEvents.clicked]: onValue("1") }}
+            />
+            <Button
+              id="valueBtn"
+              text="2"
+              on={{ [QPushButtonEvents.clicked]: onValue("2") }}
+            />
+            <Button
+              id="valueBtn"
+              text="3"
+              on={{ [QPushButtonEvents.clicked]: onValue("3") }}
+            />
+            <Button
+              id="opBtnY"
+              text="-"
+              on={{ [QPushButtonEvents.clicked]: onOperator("-") }}
+            />
+          </View>
+          <View id="row">
+            <Button
+              id="valueBtn"
+              text="0"
+              on={{ [QPushButtonEvents.clicked]: onValue("0") }}
+            />
+            <Button
+              id="valueBtn"
+              text="."
+              enabled={!state.valueBuffer.includes(".")}
+              on={{ [QPushButtonEvents.clicked]: onValue(".") }}
+            />
+            <Button
+              id="opBtn"
+              text="="
+              on={{ [QPushButtonEvents.clicked]: onOperator("=") }}
+            />
+            <Button
+              id="opBtnY"
+              text="+"
+              on={{ [QPushButtonEvents.clicked]: onOperator("+") }}
+            />
+          </View>
+        </View>
+      </Window>
+    </>
   );
 };
 
-const win = new QMainWindow();
-win.resize(230, 300);
-win.setStyleSheet(`
+// const win = new QMainWindow();
+// win.resize(230, 300);
+const styleSheet = `
   #container {
     qproperty-flex: 1;
     qproperty-flexDirection: column;
     qproperty-minHeight: '100%';
+    background: blue;
   }
   #row, #row0, #row1 {
     qproperty-flex: 1;
@@ -213,7 +224,7 @@ win.setStyleSheet(`
     background: #1E1E1E;
   }
   #row1 {
-      background: #2E2E2E;  
+      background: #2E2E2E;
   }
   #valueBtn, #opBtn, #opBtnY {
     qproperty-minWidth: '25%';
@@ -236,8 +247,8 @@ win.setStyleSheet(`
     font-size: 40px;
     qproperty-flex: 1;
   }
-`);
+`;
 
-Renderer.render(<App />, win, () => {
+Renderer.render(<App />, () => {
   console.log("rendered");
 });

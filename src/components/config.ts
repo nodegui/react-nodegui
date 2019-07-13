@@ -1,21 +1,22 @@
 import { NodeWidget, QWidget } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
+import { AppContainer } from "../reconciler";
 
 type UpdatePayload = any;
 export type ComponentConfig = {
   id: string;
-  getContext: (parentContext: any, rootInstance: QWidget) => any;
+  getContext: (parentContext: any, rootInstance: AppContainer) => any;
   shouldSetTextContent: (nextProps: object) => boolean;
   createInstance: (
     newProps: object,
-    rootInstance: QWidget,
+    rootInstance: AppContainer,
     context: any,
     workInProgress: Fiber
   ) => NodeWidget;
   finalizeInitialChildren: (
     instance: NodeWidget,
     newProps: object,
-    rootContainerInstance: QWidget,
+    rootContainerInstance: AppContainer,
     context: any
   ) => boolean;
   commitMount: (
@@ -28,7 +29,7 @@ export type ComponentConfig = {
     instance: NodeWidget,
     oldProps: object,
     newProps: object,
-    rootContainerInstance: QWidget,
+    rootContainerInstance: AppContainer,
     hostContext: any
   ) => UpdatePayload;
   commitUpdate: (
