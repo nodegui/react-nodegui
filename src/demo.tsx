@@ -1,6 +1,12 @@
 import { Renderer, View, Text, Button } from "./index";
 import React, { useReducer, Reducer } from "react";
-import { QPushButtonEvents, QWidgetEvents } from "@nodegui/nodegui";
+import {
+  QPushButtonEvents,
+  QMainWindowEvents,
+  QWidgetEvents,
+  QKeyEvent,
+  NativeEvent
+} from "@nodegui/nodegui";
 import { Window } from "./components/Window";
 
 interface state {
@@ -94,12 +100,28 @@ const App = () => {
   const onValue = (value: string) => () => {
     dispatch({ type: "value", value });
   };
-  const onKeyRelease = () => {
-    console.log("key released");
+  const onKeyRelease = (evt: NativeEvent) => {
+    const operatorKeys = ["~", "/", "*", "-", "=", "+"];
+    const valueKeys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."];
+    const keyEvt = new QKeyEvent(evt);
+    const keyText = keyEvt.text();
+    if (operatorKeys.includes(keyText)) {
+      dispatch({ type: "operation", value: keyText });
+    } else if (valueKeys.includes(keyText)) {
+      dispatch({ type: "value", value: keyText });
+    }
   };
+
   return (
     <>
-      <Window styleSheet={styleSheet}>
+      <Window
+        on={{
+          [QMainWindowEvents.KeyRelease]: onKeyRelease
+        }}
+        maxSize={{ width: 500, height: 700 }}
+        minSize={{ width: 200, height: 300 }}
+        styleSheet={styleSheet}
+      >
         <View on={{ [QWidgetEvents.KeyRelease]: onKeyRelease }} id="container">
           <View id="row0">
             <Button

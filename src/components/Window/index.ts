@@ -2,8 +2,15 @@ import { registerComponent } from "../config";
 import { QMainWindow, QWidget, FlexLayout } from "@nodegui/nodegui";
 import { ViewProps, setProps as setViewProps } from "../View";
 
+type WindowSize = {
+  width: number;
+  height: number;
+};
 interface WindowProps extends ViewProps {
   viewProps?: ViewProps;
+  fixedSize?: WindowSize | null;
+  minSize?: WindowSize;
+  maxSize?: WindowSize;
 }
 
 const setProps = (
@@ -12,6 +19,25 @@ const setProps = (
   oldProps: WindowProps
 ) => {
   const setter: WindowProps = {
+    set fixedSize(size: WindowSize | null) {
+      if (size) {
+        window.setFixedSize(size.width, size.height);
+      } else {
+        const minSize = newProps.minSize || { width: 0, height: 0 };
+        const maxSize = newProps.maxSize || {
+          width: 16777215,
+          height: 16777215
+        };
+        window.setMinimumSize(minSize.width, minSize.height);
+        window.setMaximumSize(maxSize.width, maxSize.height);
+      }
+    },
+    set minSize(size: WindowSize) {
+      window.setMinimumSize(size.width, size.height);
+    },
+    set maxSize(size: WindowSize) {
+      window.setMaximumSize(size.width, size.height);
+    },
     set viewProps(viewProps: object) {
       if (window.centralWidget) {
         const oldViewProps = oldProps.viewProps || {};
