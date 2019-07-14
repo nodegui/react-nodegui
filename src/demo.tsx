@@ -1,4 +1,4 @@
-import { Renderer, View, Text, Button } from "./index";
+import { Renderer, View, Text, Button, Window } from "./index";
 import React, { useReducer, Reducer } from "react";
 import {
   QPushButtonEvents,
@@ -7,7 +7,6 @@ import {
   QKeyEvent,
   NativeEvent
 } from "@nodegui/nodegui";
-import { Window } from "./components/Window";
 
 interface state {
   display: string;
