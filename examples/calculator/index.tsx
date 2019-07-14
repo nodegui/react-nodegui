@@ -267,6 +267,7 @@ const styleSheet = `
     qproperty-paddingHorizontal: 5px;
     font-size: 40px;
     qproperty-flex: 1;
+    color: white;
   }
 `;
 

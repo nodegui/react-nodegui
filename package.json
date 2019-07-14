@@ -20,7 +20,7 @@
     "react-devtools": "3.5.3"
   },
   "devDependencies": {
-    "@nodegui/test": "^0.0.4",
+    "@nodegui/test": "^0.0.7",
     "@types/node": "^12.0.10",
     "@types/react-reconciler": "^0.18.0",
     "@types/scheduler": "^0.12.1",
