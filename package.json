@@ -7,7 +7,7 @@
   "private": false,
   "license": "MIT",
   "scripts": {
-    "build:lib": "tsc",
+    "build": "tsc",
     "dev": "tsc && qode ./dist/src/demo.js",
     "dev:watch": "tsc-watch --onSuccess \"npm run dev\""
   },
