@@ -225,8 +225,6 @@ const App = () => {
   );
 };
 
-// const win = new QMainWindow();
-// win.resize(230, 300);
 const styleSheet = `
   #container {
     qproperty-flex: 1;
