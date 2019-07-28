@@ -1,8 +1,11 @@
 {
   "name": "@nodegui/react-desktop",
-  "version": "1.0.0",
+  "version": "0.0.5-alpha",
   "description": "React Native for building cross platform desktop applications",
-  "main": "dist",
+  "main": "dist/src/index.js",
+  "files": [
+    "dist"
+  ],
   "author": "Atul R <atulanand94@gmail.com>",
   "private": false,
   "license": "MIT",
@@ -12,19 +15,25 @@
     "dev:watch": "tsc-watch --onSuccess \"npm run dev\""
   },
   "dependencies": {
-    "react": "^16.8.6",
     "react-reconciler": "^0.20.4"
   },
   "resolutions": {
     "react-devtools-core": "3.5.3",
     "react-devtools": "3.5.3"
   },
+  "peerDependencies": {
+    "@nodegui/nodegui": "*",
+    "@nodegui/test": "*",
+    "react": "*"
+  },
   "devDependencies": {
+    "@nodegui/nodegui": "^0.0.4-alpha",
     "@nodegui/test": "^0.0.10",
     "@types/node": "^12.0.10",
     "@types/react-reconciler": "^0.18.0",
     "@types/scheduler": "^0.12.1",
     "prettier": "^1.18.2",
+    "react": "^16.8.6",
     "react-devtools": "3.5.3",
     "tsc-watch": "^2.2.1",
     "typescript": "^3.5.2"

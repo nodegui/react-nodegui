@@ -268,6 +268,9 @@ const styleSheet = `
   }
 `;
 
-Renderer.render(<App />, () => {
-  console.log("rendered");
+Renderer.render(<App />, {
+  onRender: () => {
+    console.log("Yo");
+  },
+  enableDevtools: false
 });

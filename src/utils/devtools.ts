@@ -1,4 +1,4 @@
-import pkg from "../../package.json";
+// import pkg from "../../package.json";
 import Reconciler from "../reconciler";
 
 export const initDevtools = (reconciler: typeof Reconciler) => {
@@ -19,8 +19,8 @@ export const initDevtools = (reconciler: typeof Reconciler) => {
     });
     reconciler.injectIntoDevTools({
       bundleType: 1,
-      version: pkg.version,
-      rendererPackageName: pkg.name
+      version: "1", //pkg.version,
+      rendererPackageName: "@nodegui/react-desktop" //pkg.name
     });
   }
 };
