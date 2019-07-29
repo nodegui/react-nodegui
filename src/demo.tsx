@@ -272,5 +272,5 @@ Renderer.render(<App />, {
   onRender: () => {
     console.log("Yo");
   },
-  enableDevtools: false
+  enableDevtools: true
 });

@@ -19,7 +19,7 @@ export const initDevtools = (reconciler: typeof Reconciler) => {
     });
     reconciler.injectIntoDevTools({
       bundleType: 1,
-      version: "1", //pkg.version,
+      version: "0.0.5-alpha", //pkg.version,
       rendererPackageName: "@nodegui/react-desktop" //pkg.name
     });
   }
