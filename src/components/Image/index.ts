@@ -1,10 +1,10 @@
 import { registerComponent } from "../config";
-import { QPixmap } from "@nodegui/nodegui";
+import { QPixmap, QLabelEvents, AspectRatioMode } from "@nodegui/nodegui";
 import { ViewProps, setProps as setViewProps } from "../View";
 import { ImageLabel } from "./ImageLabel";
-
 interface ImageProps extends ViewProps {
   src?: string;
+  aspectRatioMode?: AspectRatioMode;
 }
 
 const setProps = (
@@ -16,7 +16,9 @@ const setProps = (
     set src(imageUrl: string) {
       const pixMap = new QPixmap(imageUrl);
       widget.setPixmap(pixMap);
-      widget.scalePixmap(320, 120);
+    },
+    set aspectRatioMode(mode: AspectRatioMode) {
+      widget.setAspectRatioMode(mode);
     }
   };
   Object.assign(setter, newProps);
@@ -34,6 +36,10 @@ export const Image = registerComponent<ImageProps>({
   createInstance: newProps => {
     const widget = new ImageLabel();
     setProps(widget, newProps, {});
+    widget.addEventListener(QLabelEvents.Resize, () => {
+      const size = widget.size();
+      widget.scalePixmap(size.width, size.height);
+    });
     return widget;
   },
   finalizeInitialChildren: () => {
