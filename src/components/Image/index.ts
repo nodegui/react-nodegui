@@ -16,6 +16,8 @@ const setProps = (
     set src(imageUrl: string) {
       const pixMap = new QPixmap(imageUrl);
       widget.setPixmap(pixMap);
+      const size = widget.size();
+      widget.scalePixmap(size.width, size.height);
     },
     set aspectRatioMode(mode: AspectRatioMode) {
       widget.setAspectRatioMode(mode);

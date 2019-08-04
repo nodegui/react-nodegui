@@ -1,4 +1,11 @@
-import { Renderer, View, Button, Window, Image, LineEdit } from "./index";
+import {
+  Renderer,
+  View,
+  Button,
+  Window,
+  Image,
+  LineEdit
+} from "../../src/index";
 import React, { useEffect, useRef, useMemo, useState } from "react";
 import {
   AspectRatioMode,

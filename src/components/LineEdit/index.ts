@@ -5,6 +5,7 @@ import { ViewProps, setProps as setViewProps } from "../View";
 interface LineEditProps extends ViewProps {
   children?: string;
   text?: string;
+  placeholderText?: string;
 }
 
 const setProps = (
@@ -13,9 +14,12 @@ const setProps = (
   oldProps: LineEditProps
 ) => {
   const setter: LineEditProps = {
-    // set text(checkboxText: string) {
-    //   widget.setText(checkboxText);
-    // }
+    set text(text: string) {
+      widget.setText(text);
+    },
+    set placeholderText(text: string) {
+      widget.setPlaceholderText(text);
+    }
   };
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);
