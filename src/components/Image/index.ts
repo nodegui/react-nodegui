@@ -14,6 +14,9 @@ const setProps = (
 ) => {
   const setter: ImageProps = {
     set src(imageUrl: string) {
+      if (!imageUrl) {
+        return;
+      }
       const pixMap = new QPixmap(imageUrl);
       widget.setPixmap(pixMap);
       const size = widget.size();

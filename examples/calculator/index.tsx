@@ -118,7 +118,7 @@ const App = () => {
           [QMainWindowEvents.KeyRelease]: onKeyRelease
         }}
         maxSize={{ width: 500, height: 700 }}
-        minSize={{ width: 200, height: 300 }}
+        minSize={{ width: 300, height: 400 }}
         styleSheet={styleSheet}
       >
         <View on={{ [QWidgetEvents.KeyRelease]: onKeyRelease }} id="container">
@@ -225,31 +225,27 @@ const App = () => {
   );
 };
 
-// const win = new QMainWindow();
-// win.resize(230, 300);
 const styleSheet = `
   #container {
-    qproperty-flex: 1;
-    qproperty-flexDirection: column;
-    qproperty-minHeight: '100%';
-    background: blue;
+    flex: 1;
+    flex-direction: column;
+    min-height: '100%';
   }
   #row, #row0, #row1 {
-    qproperty-flex: 1;
-    qproperty-alignItems: stretch;
-    qproperty-justifyContent: space-between;
-    qproperty-flexDirection: row;
+    flex: 1;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-direction: row;
     background: #4B4B4B;
   }
   #row0 {
     background: #1E1E1E;
   }
   #row1 {
-      background: #2E2E2E;
+    background: #2E2E2E;
   }
   #valueBtn, #opBtn, #opBtnY {
-    qproperty-minWidth: '25%';
-    qproperty-border: 1;
+    min-width: '25%';
     border: 1px solid black;
     font-size: 20px;
     color: white;
@@ -262,11 +258,9 @@ const styleSheet = `
   }
   #result {
     qproperty-alignment: 'AlignRight|AlignVCenter';
-    padding-right: 5px;
-    padding-left:5px;
-    qproperty-paddingHorizontal: 5px;
+    padding-horizontal: 5px;
     font-size: 40px;
-    qproperty-flex: 1;
+    flex: 1;
     color: white;
   }
 `;

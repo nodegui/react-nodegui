@@ -67,22 +67,22 @@ const App = () => {
 
 const styleSheet = `
   #container {
-    qproperty-flex: 1;
-    qproperty-minHeight: '100%';
+    flex: 1;
+    min-height: '100%';
   }
   #controls {
-    qproperty-flexDirection: 'row';
-    qproperty-justifyContent: 'space-around';
-    qproperty-alignItems: 'center';
-    qproperty-paddingHorizontal: 20;
-    qproperty-paddingVertical: 10;
+    flex-direction: 'row';
+    justify-content: 'space-around';
+    align-items: 'center';
+    padding-horizontal: 20;
+    padding-vertical: 10;
   }
   #img {
-    qproperty-flex: 1;
+    flex: 1;
     qproperty-alignment: 'AlignCenter';
   }
   #textField {
-    qproperty-flex: 1;
+    flex: 1;
   }
 `;
 

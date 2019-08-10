@@ -6,6 +6,7 @@ export interface ListenerMap {
 }
 export interface ViewProps {
   id?: string;
+  style?: string; // Inline style from NodeGui
   styleSheet?: string;
   visible?: boolean;
   ref?: any;
@@ -22,6 +23,12 @@ export const setProps = (
   const setter: ViewProps = {
     set visible(shouldShow: boolean) {
       shouldShow ? widget.show() : widget.hide();
+    },
+    set style(inlineStyle: string) {
+      if (newProps.styleSheet) {
+        console.warn("Both styleSheet and inlineStyle can't be used together");
+      }
+      widget.setInlineStyle(inlineStyle);
     },
     set styleSheet(styleSheet: string) {
       widget.setStyleSheet(styleSheet);
