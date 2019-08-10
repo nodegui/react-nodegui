@@ -1,4 +1,9 @@
-import { QWidget, NodeWidget } from "@nodegui/nodegui";
+import {
+  QWidget,
+  NodeWidget,
+  WidgetAttribute,
+  WindowType
+} from "@nodegui/nodegui";
 import { registerComponent } from "../config";
 
 export interface ListenerMap {
@@ -13,6 +18,9 @@ export interface ViewProps {
   on?: ListenerMap;
   mouseTracking?: boolean;
   enabled?: boolean;
+  attributes?: WidgetAttribute[];
+  windowFlags?: WindowType[];
+  windowOpacity?: Number;
 }
 
 export const setProps = (
@@ -60,6 +68,29 @@ export const setProps = (
           widget.addEventListener(eventType, newEvtListener);
         }
       );
+    },
+    set attributes(attributes: WidgetAttribute[]) {
+      const oldAttributes = oldProps.attributes || [];
+      const newAttributes = attributes || [];
+      oldAttributes.forEach(eachOldAttribute => {
+        widget.setAttribute(eachOldAttribute, false);
+      });
+      newAttributes.forEach(eachNewAttribute => {
+        widget.setAttribute(eachNewAttribute, true);
+      });
+    },
+    set windowFlags(windowTypes: WindowType[]) {
+      const oldFlags = oldProps.windowFlags || [];
+      const newFlags = windowTypes || [];
+      oldFlags.forEach(eachOldFlag => {
+        widget.setWindowFlag(eachOldFlag, false);
+      });
+      newFlags.forEach(eachNewWindowFlag => {
+        widget.setWindowFlag(eachNewWindowFlag, true);
+      });
+    },
+    set windowOpacity(opacity: Number) {
+      widget.setWindowOpacity(opacity);
     }
   };
   Object.assign(setter, newProps);

@@ -9,8 +9,6 @@ export class ImageLabel extends QLabel {
   };
   setAspectRatioMode = (mode: AspectRatioMode) => {
     this.aspectRatioMode = mode;
-    // const size = this.size();
-    // this.scalePixmap(size.width, size.height);
   };
   scalePixmap = (width: number, height: number) => {
     if (this.originalPixmap) {
