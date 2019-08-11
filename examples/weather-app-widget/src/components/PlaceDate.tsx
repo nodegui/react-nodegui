@@ -19,12 +19,14 @@ const placeStyle = `
     flex: 1;
     font-size: 20px; 
     qproperty-alignment: 'AlignCenter';
+    color: white;
 `;
 
 const dateStyle = `
     flex: 1;
     font-size: 12px;
     qproperty-alignment: 'AlignCenter';
+    color: white;
 `;
 
 const containerStyle = `

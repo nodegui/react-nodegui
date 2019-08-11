@@ -23,6 +23,7 @@ const currentTempStyle = `
     font-size: 20px; 
     width: 100px;
     qproperty-alignment: AlignCenter;
+    color: white;
 `;
 
 const temperatureBoxStyle = `
@@ -40,5 +41,6 @@ const smallBox = `
 
 const smallInfo = `
     width: 150px;
+    color: white;
     qproperty-alignment: AlignCenter;
 `;

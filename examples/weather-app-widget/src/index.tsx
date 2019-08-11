@@ -13,6 +13,7 @@ import {
   QApplication,
   QPushButtonEvents
 } from "@nodegui/nodegui";
+import os from 'os';
 import { getCurrentWeather } from "./utils/weather";
 import { WeatherIcon } from "./components/WeatherIcon";
 import { TemperatureBox } from "./components/TemperatureBox";
@@ -83,6 +84,10 @@ const App = () => {
 };
 
 const stylesheet = `
+  #win {
+    background-color: black;
+    color: white;
+  }
   #container {
     height: '100%';
   }
@@ -113,9 +118,11 @@ const buttonBox = `
 const initWindow = (win: QMainWindow) => {
   win.hide(); //https://forum.qt.io/topic/60642/framelesswindowhint-fails-at-runtime-on-mainwindow
   win.resize(300, 300);
-  win.setAttribute(WidgetAttribute.WA_NoSystemBackground, true);
-  win.setAttribute(WidgetAttribute.WA_TranslucentBackground, true);
-  win.setWindowFlag(WindowType.FramelessWindowHint, true);
+  if(os.platform() === 'darwin'){
+  // win.setAttribute(WidgetAttribute.WA_NoSystemBackground, true);
+  // win.setAttribute(WidgetAttribute.WA_TranslucentBackground, true);
+  // win.setWindowFlag(WindowType.FramelessWindowHint, true);
+  }
   win.show();
 };
 

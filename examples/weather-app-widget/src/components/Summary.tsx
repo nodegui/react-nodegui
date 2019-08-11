@@ -21,4 +21,5 @@ const containerStyle = `
 `;
 
 const textStyle = `
+  color: white;
 `;
