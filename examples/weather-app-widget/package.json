@@ -1,0 +1,22 @@
+{
+  "name": "react-desktop-starter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Atul R <atulanand94@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "tsc && qode ./dist/index.js"
+  },
+  "dependencies": {
+    "@nodegui/nodegui": "^0.0.12",
+    "@nodegui/react-desktop": "0.0.7",
+    "axios": "^0.19.0",
+    "dateformat": "^3.0.3",
+    "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "@types/node": "^12.6.8",
+    "typescript": "^3.5.3"
+  }
+}

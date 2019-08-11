@@ -1,18 +1,23 @@
 import React from "react";
-import { Image } from "../../../src/index";
+import { Image } from "@nodegui/react-desktop";
 import path from "path";
 import { AspectRatioMode } from "@nodegui/nodegui";
 
-const assetUrl =
-  "/Users/atulr/Project/personal/react-desktop/examples/weather-widget/assets/icons";
+const rootDir = path.resolve(__dirname, "../..");
+const assetUrl = path.resolve(rootDir, "src/assets/icons");
 
 type WeatherIconProps = {
   icon: string;
+  [key: string]: any;
 };
 export const WeatherIcon = React.memo<WeatherIconProps>(props => {
   const iconId = props.icon || "na";
   const imageUrl = `${path.resolve(assetUrl, `${iconId}.png`)}`;
   return (
-    <Image src={imageUrl} aspectRatioMode={AspectRatioMode.KeepAspectRatio} />
+    <Image
+      {...props}
+      src={imageUrl}
+      aspectRatioMode={AspectRatioMode.KeepAspectRatio}
+    />
   );
 });
