@@ -85,8 +85,7 @@ const App = () => {
 
 const stylesheet = `
   #win {
-    background-color: black;
-    color: white;
+    background-color: transparent;
   }
   #container {
     height: '100%';
@@ -118,10 +117,11 @@ const buttonBox = `
 const initWindow = (win: QMainWindow) => {
   win.hide(); //https://forum.qt.io/topic/60642/framelesswindowhint-fails-at-runtime-on-mainwindow
   win.resize(300, 300);
-  if(os.platform() === 'darwin'){
-  // win.setAttribute(WidgetAttribute.WA_NoSystemBackground, true);
-  // win.setAttribute(WidgetAttribute.WA_TranslucentBackground, true);
-  // win.setWindowFlag(WindowType.FramelessWindowHint, true);
+
+  win.setWindowFlag(WindowType.FramelessWindowHint, true);
+  win.setWindowFlag(WindowType.Widget, true);
+  if (os.platform() === "darwin") {
+    win.setAttribute(WidgetAttribute.WA_TranslucentBackground, true);
   }
   win.show();
 };
