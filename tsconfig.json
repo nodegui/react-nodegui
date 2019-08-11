@@ -60,5 +60,6 @@
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
     "resolveJsonModule": true
   },
-  "include": ["."]
+  "include": ["."],
+  "exclude": ["examples", "dist"]
 }

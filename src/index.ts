@@ -8,3 +8,4 @@ export { ProgressBar } from "./components/ProgressBar";
 export { RadioButton } from "./components/RadioButton";
 export { Image } from "./components/Image";
 export { Window } from "./components/Window";
+export { useEventHandler } from "./hooks";
