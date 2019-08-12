@@ -1,6 +1,8 @@
 # NodeGUI React Desktop
 
-Building **performant**, **native** and **cross-platform** desktop applications with **JavaScript** + powerful **CSS like styling**. React Desktop is powered by **React** and **Qt5** which makes it CPU and memory efficient as compared to other chromium based solutions like electron. React Desktop is essentially a React renderer for [NodeGUI](https://github.com/nodegui/nodegui).
+Build **performant**, **native** and **cross-platform** desktop applications with **JavaScript** + powerful **CSS like styling**.🚀
+
+React Desktop is powered by **React** ⚛️ and **Qt5** 💚 which makes it CPU and memory efficient as compared to other chromium based solutions like electron. React Desktop is essentially a React renderer for [NodeGUI](https://github.com/nodegui/nodegui).
 
 Visit: https://nodegui.github.io/nodegui for docs.
 
