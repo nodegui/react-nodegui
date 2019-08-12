@@ -1,6 +1,6 @@
 {
   "name": "@nodegui/react-desktop",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React Native for building cross platform desktop applications",
   "main": "dist/src/index.js",
   "files": [
@@ -11,7 +11,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc && qode ./dist/src/demo.js",
+    "dev": "tsc && qode ./dist/demo.js",
     "dev:watch": "tsc-watch --onSuccess \"npm run dev\""
   },
   "dependencies": {
