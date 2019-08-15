@@ -6,7 +6,7 @@ This example showcases how to build a basic weather widget app.
 
 **Mac:**
 
-<img alt="demo_mac" src="https://github.com/master-atul/react-nodegui/raw/master/examples/weather-app-widget/weather_widget_mac.png" height="400" />
+<img alt="demo_mac" src="https://github.com/nodegui/react-nodegui/raw/master/examples/weather-app-widget/weather_widget_mac.png" height="400" />
 
 To run the demo:
 
