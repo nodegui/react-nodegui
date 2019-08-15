@@ -1,8 +1,8 @@
-# NodeGUI React Desktop
+# React NodeGUI
 
 Build **performant**, **native** and **cross-platform** desktop applications with **JavaScript** + powerful **CSS like styling**.🚀
 
-React Desktop is powered by **React** ⚛️ and **Qt5** 💚 which makes it CPU and memory efficient as compared to other chromium based solutions like electron. React Desktop is essentially a React renderer for [NodeGUI](https://github.com/nodegui/nodegui).
+React NodeGUI is powered by **React** ⚛️ and **Qt5** 💚 which makes it CPU and memory efficient as compared to other chromium based solutions like electron. React NodeGUI is essentially a React renderer for [NodeGUI](https://github.com/nodegui/nodegui).
 
 Visit: https://nodegui.github.io/nodegui for docs.
 
@@ -16,13 +16,12 @@ Visit: https://nodegui.github.io/nodegui for docs.
 <img alt="demo_mac" src="https://github.com/nodegui/nodegui/raw/master/examples/calculator/calculator_mac.png" height="280" />
 </div>
 
-<div style="display:inline; margin: 0 auto;"><img alt="kitchen" src="https://github.com/nodegui/nodegui/raw/master/extras/assets/kitchen.png" height="280" /><img alt="demo_mac" src="https://github.com/master-atul/react-desktop/raw/master/examples/weather-app-widget/weather_widget_mac.png" height="280" /><img alt="demo_win" src="https://github.com/master-atul/react-desktop/raw/master/examples/image-view/image_view_win.jpg" height="280" />
+<div style="display:inline; margin: 0 auto;"><img alt="kitchen" src="https://github.com/nodegui/nodegui/raw/master/extras/assets/kitchen.png" height="280" /><img alt="demo_mac" src="https://github.com/master-atul/react-nodegui/raw/master/examples/weather-app-widget/weather_widget_mac.png" height="280" /><img alt="demo_win" src="https://github.com/master-atul/react-nodegui/raw/master/examples/image-view/image_view_win.jpg" height="280" />
 </div>
-
 
 **More screenshots?**
 
-[See examples](https://github.com/nodegui/react-desktop/tree/master/examples/)
+[See examples](https://github.com/nodegui/react-nodegui/tree/master/examples/)
 
 ## Features
 
@@ -46,7 +45,7 @@ Visit: https://nodegui.github.io/nodegui for docs.
 
 ## Getting Started
 
-- Check out [react-desktop-starter](https://github.com/nodegui/react-desktop-starter) to get up and running with your own React Desktop app!
+- Check out [react-nodegui-starter](https://github.com/nodegui/react-nodegui-starter) to get up and running with your own React NodeGUI app!
 - Read through the [docs](https://nodegui.github.io/nodegui)
 
 ## Docs for contributing

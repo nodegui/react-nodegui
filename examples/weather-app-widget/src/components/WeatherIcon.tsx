@@ -1,5 +1,5 @@
 import React from "react";
-import { Image } from "@nodegui/react-desktop";
+import { Image } from "@nodegui/react-nodegui";
 import path from "path";
 import { AspectRatioMode } from "@nodegui/nodegui";
 

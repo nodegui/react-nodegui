@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "@nodegui/react-desktop";
+import { View, Text } from "@nodegui/react-nodegui";
 
 type TempProps = {
   now: number;

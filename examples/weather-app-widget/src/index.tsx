@@ -4,7 +4,7 @@ import {
   View,
   Button,
   useEventHandler
-} from "@nodegui/react-desktop";
+} from "@nodegui/react-nodegui";
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import {
   QMainWindow,

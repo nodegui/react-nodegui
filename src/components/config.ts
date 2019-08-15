@@ -41,7 +41,7 @@ export type ComponentConfig = {
   ) => void;
 };
 
-type ReactDesktopTag<P> = string | React.ComponentType<P>;
+type ReactNodeGuiTag<P> = string | React.ComponentType<P>;
 
 const components = new Map<string, ComponentConfig>();
 
@@ -55,7 +55,7 @@ export const getComponent = (id: string): ComponentConfig => {
 
 export function registerComponent<Props>(
   config: ComponentConfig
-): ReactDesktopTag<Props> {
+): ReactNodeGuiTag<Props> {
   if (components.has(config.id)) {
     throw `A component with id: ${config.id} already exists. This base component will be ignored`;
   }
