@@ -6,6 +6,7 @@ interface LineEditProps extends ViewProps {
   children?: string;
   text?: string;
   placeholderText?: string;
+  readOnly?: boolean;
 }
 
 const setProps = (
@@ -19,6 +20,9 @@ const setProps = (
     },
     set placeholderText(text: string) {
       widget.setPlaceholderText(text);
+    },
+    set readOnly(isReadOnly: boolean) {
+      widget.setReadOnly(isReadOnly);
     }
   };
   Object.assign(setter, newProps);
