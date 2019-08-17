@@ -4,6 +4,7 @@ import { ViewProps, setProps as setViewProps } from "../View";
 
 interface ButtonProps extends ViewProps {
   text?: string;
+  isFlat?: boolean;
 }
 
 const setProps = (
@@ -14,6 +15,9 @@ const setProps = (
   const setter: ButtonProps = {
     set text(buttonText: string) {
       widget.setText(buttonText);
+    },
+    set isFlat(isFlat: boolean) {
+      widget.setFlat(isFlat);
     }
   };
   Object.assign(setter, newProps);
