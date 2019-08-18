@@ -1,10 +1,11 @@
 import { registerComponent } from "../config";
-import { QPushButton } from "@nodegui/nodegui";
+import { QPushButton, QIcon } from "@nodegui/nodegui";
 import { ViewProps, setProps as setViewProps } from "../View";
 
 interface ButtonProps extends ViewProps {
   text?: string;
   isFlat?: boolean;
+  icon?: string;
 }
 
 const setProps = (
@@ -18,6 +19,10 @@ const setProps = (
     },
     set isFlat(isFlat: boolean) {
       widget.setFlat(isFlat);
+    },
+    set icon(iconUrl: string) {
+      const icon = new QIcon(iconUrl);
+      widget.setIcon(icon);
     }
   };
   Object.assign(setter, newProps);
