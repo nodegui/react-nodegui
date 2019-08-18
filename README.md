@@ -1,5 +1,5 @@
 # React NodeGUI
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 
 Build **performant**, **native** and **cross-platform** desktop applications with **JavaScript** + powerful **CSS like styling**.🚀
 
@@ -85,6 +85,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="http://rahulgaba.com"><img src="https://avatars3.githubusercontent.com/u/7898942?v=4" width="100px;" alt="Rahul Gaba"/><br /><sub><b>Rahul Gaba</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=rgabs" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/kakulgupta"><img src="https://avatars3.githubusercontent.com/u/10727047?v=4" width="100px;" alt="Kakul Gupta"/><br /><sub><b>Kakul Gupta</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=kakulgupta" title="Code">💻</a></td>
   </tr>
 </table>
 
