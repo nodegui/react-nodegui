@@ -16,7 +16,7 @@ const setProps = (
 ) => {
   const setter: LineEditProps = {
     set text(text: string) {
-      widget.setText(text);
+      text ? widget.setText(text) : widget.clear();
     },
     set placeholderText(text: string) {
       widget.setPlaceholderText(text);
