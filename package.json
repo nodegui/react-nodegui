@@ -11,15 +11,10 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc && qode ./dist/demo.js",
-    "dev:watch": "tsc-watch --onSuccess \"npm run dev\""
+    "dev": "tsc && qode ./dist/demo.js"
   },
   "dependencies": {
     "react-reconciler": "^0.20.4"
-  },
-  "resolutions": {
-    "react-devtools-core": "3.5.3",
-    "react-devtools": "3.5.3"
   },
   "peerDependencies": {
     "@nodegui/nodegui": "*",
@@ -33,8 +28,6 @@
     "@types/scheduler": "^0.12.1",
     "prettier": "^1.18.2",
     "react": "^16.8.6",
-    "react-devtools": "3.5.3",
-    "tsc-watch": "^2.2.1",
     "typescript": "^3.5.2"
   }
 }

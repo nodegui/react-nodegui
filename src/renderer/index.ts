@@ -1,12 +1,15 @@
 import reconciler, { appContainer } from "../reconciler";
-import { initDevtools } from "../utils/devtools";
+import { Reconciler } from "react-reconciler";
+import { NodeWidget } from "@nodegui/nodegui";
+
+type NodeGuiReconciler = Reconciler<NodeWidget, any, Set<NodeWidget>, any>;
 
 type Options = {
-  enableDevtools?: boolean;
   onRender?: () => void;
+  onInit?: (reconciler: NodeGuiReconciler) => void;
 };
 const defaultOptions = {
-  enableDevtools: false,
+  onInit: () => {},
   onRender: () => {}
 };
 
@@ -24,9 +27,8 @@ export const Renderer = {
       hydrate
     ); // Creates root fiber node.
 
-    if (rendererOptions.enableDevtools) {
-      initDevtools(reconciler);
-    }
+    rendererOptions.onInit(reconciler);
+
     const parentComponent = null; // Since there is no parent (since this is the root fiber). We set parentComponent to null.
     reconciler.updateContainer(element, container, parentComponent, () => {
       rendererOptions.onRender();
