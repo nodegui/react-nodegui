@@ -88,6 +88,5 @@ const styleSheet = `
 Renderer.render(<App />, {
   onRender: () => {
     console.log("Yo");
-  },
-  enableDevtools: true
+  }
 });
