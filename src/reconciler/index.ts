@@ -215,16 +215,6 @@ const HostConfig: Reconciler.HostConfig<
       "unhideTextInstance called when platform doesnt have host level text"
     );
   },
-  // Fiber stuff I think
-  schedulePassiveEffects: scheduler.unstable_scheduleCallback, // For supporting useEffect hook,
-  cancelPassiveEffects: scheduler.unstable_cancelCallback, // For supporting useEffect hooks - cancellation
-  scheduleDeferredCallback: scheduler.unstable_scheduleCallback,
-  cancelDeferredCallback: scheduler.unstable_cancelCallback,
-  shouldYield: () => {
-    // When can renderer just rest and not do any work. Basically if shouldYield returns true the renderer would just sleep and pause.
-    // This method will be continuously polled by the reconciler to check if renderer should resume.
-    return false;
-  },
   scheduleTimeout: setTimeout,
   cancelTimeout: clearTimeout,
   noTimeout: -1,

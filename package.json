@@ -14,20 +14,19 @@
     "dev": "tsc && qode ./dist/demo.js"
   },
   "dependencies": {
-    "react-reconciler": "^0.20.4"
+    "react-reconciler": "^0.21.0"
   },
   "peerDependencies": {
     "@nodegui/nodegui": "*",
     "@nodegui/qode": "*",
-    "react": "*"
+    "react": "16.9.0"
   },
   "devDependencies": {
     "@nodegui/nodegui": "^0.1.5",
     "@types/node": "^12.0.10",
     "@types/react-reconciler": "^0.18.0",
-    "@types/scheduler": "^0.12.1",
     "prettier": "^1.18.2",
-    "react": "^16.8.6",
+    "react": "^16.9.0",
     "typescript": "^3.5.2"
   }
 }
