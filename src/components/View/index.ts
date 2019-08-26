@@ -6,17 +6,10 @@ import {
 } from "@nodegui/nodegui";
 import { registerComponent } from "../config";
 
-type Geometry = {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-};
 export interface ListenerMap {
   [key: string]: (payload?: any) => void;
 }
 export interface ViewProps {
-  geometry?: Geometry;
   id?: string;
   style?: string; // Inline style from NodeGui
   styleSheet?: string;
@@ -36,14 +29,6 @@ export const setProps = (
   oldProps: ViewProps
 ) => {
   const setter: ViewProps = {
-    set geometry(geometry: Geometry) {
-      widget.setGeometry(
-        geometry.x,
-        geometry.y,
-        geometry.width,
-        geometry.height
-      );
-    },
     set visible(shouldShow: boolean) {
       shouldShow ? widget.show() : widget.hide();
     },

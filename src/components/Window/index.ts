@@ -6,11 +6,18 @@ type WindowSize = {
   width: number;
   height: number;
 };
+type Geometry = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
 interface WindowProps extends ViewProps {
   viewProps?: ViewProps;
   fixedSize?: WindowSize | null;
   minSize?: WindowSize;
   maxSize?: WindowSize;
+  geometry?: Geometry;
 }
 
 const setProps = (
@@ -31,6 +38,14 @@ const setProps = (
         window.setMinimumSize(minSize.width, minSize.height);
         window.setMaximumSize(maxSize.width, maxSize.height);
       }
+    },
+    set geometry(geometry: Geometry) {
+      window.setGeometry(
+        geometry.x,
+        geometry.y,
+        geometry.width,
+        geometry.height
+      );
     },
     set minSize(size: WindowSize) {
       window.setMinimumSize(size.width, size.height);
