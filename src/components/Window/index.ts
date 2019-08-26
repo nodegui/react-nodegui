@@ -76,7 +76,7 @@ export const Window = registerComponent<WindowProps>({
   shouldSetTextContent: () => {
     return false;
   },
-  createInstance: (newProps) => {
+  createInstance: newProps => {
     const window = new QMainWindow();
     const rootView = new QWidget();
     const rootViewLayout = new FlexLayout();
