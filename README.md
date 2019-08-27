@@ -32,7 +32,7 @@ Visit: https://nodegui.github.io/nodegui for docs.
 - ✅ Complete Nodejs api support (Currently runs on Node v12.x - and is easily upgradable). Hence has access to all nodejs compatible npm modules.
 - 🎪 Native widget event listener support. supports all event available from Qt / NodeJs.
 - 💸 Can be used for Commercial applications.
-- 🕵️‍♂️ Good Devtools support (hot reload, live reload, debugging etc).
+- 🕵️‍♂️ Good Devtools support (supports react-devtools, node debugger).
 - 📚 Good documentation and website.
 - 🧙‍♂️ Good documentation for contributors.
 - 🦹🏻‍♀️ Good support for dark mode (Thanks to QT).
