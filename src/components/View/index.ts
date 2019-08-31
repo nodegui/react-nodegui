@@ -1,4 +1,11 @@
-import { QWidget, NodeWidget } from "@nodegui/nodegui";
+import {
+  QWidget,
+  NodeWidget,
+  WindowState,
+  CursorShape,
+  QCursor,
+  QIcon
+} from "@nodegui/nodegui";
 import { registerComponent } from "../config";
 
 type Geometry = {
@@ -19,6 +26,10 @@ export interface ViewProps {
   mouseTracking?: boolean;
   enabled?: boolean;
   windowOpacity?: Number;
+  windowTitle?: string;
+  windowState?: WindowState;
+  windowIcon?: QIcon;
+  cursor?: CursorShape | QCursor;
   on?: ListenerMap;
   ref?: any;
 }
@@ -60,6 +71,18 @@ export const setProps = (
     },
     set windowOpacity(opacity: Number) {
       widget.setWindowOpacity(opacity);
+    },
+    set windowTitle(title: string) {
+      widget.setWindowTitle(title);
+    },
+    set windowState(state: WindowState) {
+      widget.setWindowState(state);
+    },
+    set cursor(cursor: CursorShape | QCursor) {
+      widget.setCursor(cursor);
+    },
+    set windowIcon(icon: QIcon) {
+      widget.setWindowIcon(icon);
     },
     set on(listenerMap: ListenerMap) {
       const listenerMapLatest = Object.assign({}, listenerMap);
