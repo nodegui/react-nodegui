@@ -1,5 +1,6 @@
 export { Renderer } from "./renderer";
 export { View } from "./components/View";
+export { Window } from "./components/Window";
 export { Text } from "./components/Text";
 export { Button } from "./components/Button";
 export { CheckBox } from "./components/CheckBox";
@@ -8,5 +9,4 @@ export { PlainTextEdit } from "./components/PlainTextEdit";
 export { ProgressBar } from "./components/ProgressBar";
 export { RadioButton } from "./components/RadioButton";
 export { Image } from "./components/Image";
-export { Window } from "./components/Window";
 export { useEventHandler } from "./hooks";

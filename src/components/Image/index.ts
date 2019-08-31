@@ -1,8 +1,8 @@
 import { registerComponent } from "../config";
 import { QPixmap, QLabelEvents, AspectRatioMode } from "@nodegui/nodegui";
-import { ViewProps, setProps as setViewProps } from "../View";
 import { ImageLabel } from "./ImageLabel";
-interface ImageProps extends ViewProps {
+import { TextProps, setProps as setTextProps } from "../Text";
+interface ImageProps extends TextProps {
   src?: string;
   aspectRatioMode?: AspectRatioMode;
 }
@@ -27,7 +27,7 @@ const setProps = (
     }
   };
   Object.assign(setter, newProps);
-  setViewProps(widget, newProps, oldProps);
+  setTextProps(widget, newProps, oldProps);
 };
 
 export const Image = registerComponent<ImageProps>({

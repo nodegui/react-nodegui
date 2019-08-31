@@ -2,12 +2,16 @@ import { registerComponent } from "../config";
 import { QLabel } from "@nodegui/nodegui";
 import { ViewProps, setProps as setViewProps } from "../View";
 
-interface TextProps extends ViewProps {
+export interface TextProps extends ViewProps {
   children?: string | number;
   wordWrap?: boolean;
 }
 
-const setProps = (widget: QLabel, newProps: TextProps, oldProps: TextProps) => {
+export const setProps = (
+  widget: QLabel,
+  newProps: TextProps,
+  oldProps: TextProps
+) => {
   const setter: TextProps = {
     set children(text: string | number) {
       widget.setText(text);
