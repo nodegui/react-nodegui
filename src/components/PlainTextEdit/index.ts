@@ -1,11 +1,11 @@
-
 import { registerComponent } from "../config";
-import { QPlainTextEdit, QPlainTextEditEvents } from "@nodegui/nodegui";
+import { QPlainTextEdit } from "@nodegui/nodegui";
 import { ViewProps, setProps as setViewProps } from "../View";
 
 interface PlainTextEditProps extends ViewProps {
   children?: string;
   text?: string;
+  readOnly?: boolean;
 }
 
 const setProps = (
@@ -17,6 +17,9 @@ const setProps = (
     set text(text: string) {
       text ? widget.setPlainText(text) : widget.clear();
     },
+    set readOnly(isReadOnly: boolean) {
+      widget.setReadOnly(isReadOnly);
+    }
   };
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);

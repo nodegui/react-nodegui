@@ -4,8 +4,8 @@ import { ViewProps, setProps as setViewProps } from "../View";
 
 interface ButtonProps extends ViewProps {
   text?: string;
-  isFlat?: boolean;
-  icon?: string;
+  flat?: boolean;
+  icon?: QIcon;
 }
 
 const setProps = (
@@ -17,11 +17,10 @@ const setProps = (
     set text(buttonText: string) {
       widget.setText(buttonText);
     },
-    set isFlat(isFlat: boolean) {
+    set flat(isFlat: boolean) {
       widget.setFlat(isFlat);
     },
-    set icon(iconUrl: string) {
-      const icon = new QIcon(iconUrl);
+    set icon(icon: QIcon) {
       widget.setIcon(icon);
     }
   };

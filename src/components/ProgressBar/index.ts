@@ -1,8 +1,13 @@
 import { registerComponent } from "../config";
-import { QProgressBar } from "@nodegui/nodegui";
+import { QProgressBar, Orientation } from "@nodegui/nodegui";
 import { ViewProps, setProps as setViewProps } from "../View";
 
-interface ProgressBarProps extends ViewProps {}
+interface ProgressBarProps extends ViewProps {
+  value?: number;
+  minimum?: number;
+  maximum?: number;
+  orientation?: Orientation;
+}
 
 const setProps = (
   widget: QProgressBar,
@@ -10,9 +15,18 @@ const setProps = (
   oldProps: ProgressBarProps
 ) => {
   const setter: ProgressBarProps = {
-    // set text(checkboxText: string) {
-    //   widget.setText(checkboxText);
-    // }
+    set value(val: number) {
+      widget.setValue(val);
+    },
+    set minimum(min: number) {
+      widget.setMinimum(min);
+    },
+    set maximum(max: number) {
+      widget.setMaximum(max);
+    },
+    set orientation(orientation: Orientation) {
+      widget.setOrientation(orientation);
+    }
   };
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);

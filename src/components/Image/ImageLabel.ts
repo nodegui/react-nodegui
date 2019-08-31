@@ -4,10 +4,12 @@ export class ImageLabel extends QLabel {
   originalPixmap?: QPixmap;
   aspectRatioMode?: AspectRatioMode;
   setPixmap = (pixmap: QPixmap) => {
+    // react:✓
     super.setPixmap(pixmap);
     this.originalPixmap = pixmap;
   };
   setAspectRatioMode = (mode: AspectRatioMode) => {
+    // react:✓ TODO://getter
     this.aspectRatioMode = mode;
   };
   scalePixmap = (width: number, height: number) => {
