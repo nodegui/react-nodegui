@@ -1,5 +1,5 @@
 # React NodeGUI
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors)
 
 Build **performant**, **native** and **cross-platform** desktop applications with **JavaScript** + powerful **CSS like styling**.🚀
 
@@ -88,6 +88,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/kakulgupta"><img src="https://avatars3.githubusercontent.com/u/10727047?v=4" width="100px;" alt="Kakul Gupta"/><br /><sub><b>Kakul Gupta</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=kakulgupta" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Nicify"><img src="https://avatars3.githubusercontent.com/u/24217275?v=4" width="100px;" alt="Eva1ent"/><br /><sub><b>Eva1ent</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=Nicify" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/slidinghotdog"><img src="https://avatars3.githubusercontent.com/u/33790211?v=4" width="100px;" alt="slidinghotdog"/><br /><sub><b>slidinghotdog</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=slidinghotdog" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/roysommer/"><img src="https://avatars2.githubusercontent.com/u/6681893?v=4" width="100px;" alt="Roy Sommer"/><br /><sub><b>Roy Sommer</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=illBeRoy" title="Code">💻</a></td>
   </tr>
 </table>
 
