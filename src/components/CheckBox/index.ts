@@ -5,6 +5,7 @@ import { ViewProps, setProps as setViewProps } from "../View";
 interface CheckBoxProps extends ViewProps {
   children?: string;
   text?: string;
+  checked?: boolean;
 }
 
 const setProps = (
@@ -15,6 +16,10 @@ const setProps = (
   const setter: CheckBoxProps = {
     set text(checkboxText: string) {
       widget.setText(checkboxText);
+    },
+
+    set checked(isChecked: boolean) {
+      widget.setChecked(isChecked);
     }
   };
   Object.assign(setter, newProps);
