@@ -17,7 +17,6 @@ const setProps = (
     set text(checkboxText: string) {
       widget.setText(checkboxText);
     },
-
     set checked(isChecked: boolean) {
       widget.setChecked(isChecked);
     }
