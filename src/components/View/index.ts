@@ -15,14 +15,14 @@ type Geometry = {
   height: number;
 };
 
-type ViewSize = {
+type Size = {
   width: number;
   height: number;
 };
-type ViewSizeWithFixed = ViewSize & {
+type ViewSize = Size & {
   fixed?: boolean;
 };
-type ViewPos = {
+type Position = {
   x: number;
   y: number;
 };
@@ -42,10 +42,10 @@ export interface ViewProps {
   windowState?: WindowState;
   cursor?: CursorShape | QCursor;
   windowIcon?: QIcon;
-  minSize?: ViewSize;
-  maxSize?: ViewSize;
-  size?: ViewSizeWithFixed;
-  pos?: ViewPos;
+  minSize?: Size;
+  maxSize?: Size;
+  size?: ViewSize;
+  pos?: Position;
   on?: ListenerMap;
   ref?: any;
 }
@@ -100,13 +100,13 @@ export const setProps = (
     set windowIcon(icon: QIcon) {
       widget.setWindowIcon(icon);
     },
-    set minSize(size: ViewSize) {
+    set minSize(size: Size) {
       widget.setMinimumSize(size.width, size.height);
     },
-    set maxSize(size: ViewSize) {
+    set maxSize(size: Size) {
       widget.setMaximumSize(size.width, size.height);
     },
-    set size(size: ViewSizeWithFixed) {
+    set size(size: ViewSize) {
       if (size.fixed) {
         widget.setFixedSize(size.width, size.height);
       } else {
@@ -120,7 +120,7 @@ export const setProps = (
         widget.resize(size.width, size.height);
       }
     },
-    set pos(position: ViewPos) {
+    set pos(position: Position) {
       widget.move(position.x, position.y);
     },
     set on(listenerMap: ListenerMap) {
