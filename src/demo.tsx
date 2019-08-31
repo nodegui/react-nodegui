@@ -1,6 +1,8 @@
 import { Renderer, Window } from "./index";
-import React, { useEffect, useRef } from "react";
-import { QMainWindow } from "@nodegui/nodegui";
+import React, { useEffect, useRef, useState } from "react";
+import { QMainWindow, QPushButtonEvents } from "@nodegui/nodegui";
+import { Button } from "./components/Button";
+import { useEventHandler } from "./hooks";
 
 const App = () => {
   const winRef = useRef<QMainWindow>(null);
@@ -9,11 +11,22 @@ const App = () => {
       winRef.current.resize(800, 450);
     }
   }, []);
+  const [resizeable, setResizeable] = useState(true);
+  const btnHandler = useEventHandler(
+    {
+      [QPushButtonEvents.clicked]: () => {
+        console.log("clicked");
+        setResizeable(!resizeable);
+      }
+    },
+    [resizeable]
+  );
+  const size = { width: 200, height: 200, fixed: !resizeable };
 
   return (
-    <>
-      <Window ref={winRef} styleSheet={styleSheet}></Window>
-    </>
+    <Window size={size} ref={winRef} styleSheet={styleSheet}>
+      <Button text={resizeable ? "❌" : "✅"} on={btnHandler} />
+    </Window>
   );
 };
 

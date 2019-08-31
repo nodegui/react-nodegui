@@ -14,13 +14,25 @@ type Geometry = {
   width: number;
   height: number;
 };
+
+type ViewSize = {
+  width: number;
+  height: number;
+};
+type ViewSizeWithFixed = ViewSize & {
+  fixed?: boolean;
+};
+type ViewPos = {
+  x: number;
+  y: number;
+};
 export interface ListenerMap {
   [key: string]: (payload?: any) => void;
 }
 export interface ViewProps {
   visible?: boolean;
   styleSheet?: string;
-  style?: string; // Inline style from NodeGui
+  style?: string;
   geometry?: Geometry;
   id?: string;
   mouseTracking?: boolean;
@@ -28,8 +40,12 @@ export interface ViewProps {
   windowOpacity?: Number;
   windowTitle?: string;
   windowState?: WindowState;
-  windowIcon?: QIcon;
   cursor?: CursorShape | QCursor;
+  windowIcon?: QIcon;
+  minSize?: ViewSize;
+  maxSize?: ViewSize;
+  size?: ViewSizeWithFixed;
+  pos?: ViewPos;
   on?: ListenerMap;
   ref?: any;
 }
@@ -83,6 +99,29 @@ export const setProps = (
     },
     set windowIcon(icon: QIcon) {
       widget.setWindowIcon(icon);
+    },
+    set minSize(size: ViewSize) {
+      widget.setMinimumSize(size.width, size.height);
+    },
+    set maxSize(size: ViewSize) {
+      widget.setMaximumSize(size.width, size.height);
+    },
+    set size(size: ViewSizeWithFixed) {
+      if (size.fixed) {
+        widget.setFixedSize(size.width, size.height);
+      } else {
+        const minSize = newProps.minSize || { width: 0, height: 0 };
+        const maxSize = newProps.maxSize || {
+          width: 16777215,
+          height: 16777215
+        };
+        widget.setMinimumSize(minSize.width, minSize.height);
+        widget.setMaximumSize(maxSize.width, maxSize.height);
+        widget.resize(size.width, size.height);
+      }
+    },
+    set pos(position: ViewPos) {
+      widget.move(position.x, position.y);
     },
     set on(listenerMap: ListenerMap) {
       const listenerMapLatest = Object.assign({}, listenerMap);
