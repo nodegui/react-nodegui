@@ -1,7 +1,6 @@
 import Reconciler from "react-reconciler";
 import { NodeWidget, FlexLayout } from "@nodegui/nodegui";
 import { getComponent } from "../components/config";
-import * as scheduler from "scheduler";
 
 export type AppContainer = Set<NodeWidget>;
 export const appContainer: AppContainer = new Set<NodeWidget>();

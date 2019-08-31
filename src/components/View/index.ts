@@ -1,9 +1,4 @@
-import {
-  QWidget,
-  NodeWidget,
-  WidgetAttribute,
-  WindowType
-} from "@nodegui/nodegui";
+import { QWidget, NodeWidget } from "@nodegui/nodegui";
 import { registerComponent } from "../config";
 
 type Geometry = {
@@ -16,18 +11,16 @@ export interface ListenerMap {
   [key: string]: (payload?: any) => void;
 }
 export interface ViewProps {
+  visible?: boolean;
+  styleSheet?: string;
+  style?: string; // Inline style from NodeGui
   geometry?: Geometry;
   id?: string;
-  style?: string; // Inline style from NodeGui
-  styleSheet?: string;
-  visible?: boolean;
-  ref?: any;
-  on?: ListenerMap;
   mouseTracking?: boolean;
   enabled?: boolean;
-  attributes?: WidgetAttribute[];
-  windowFlags?: WindowType[];
   windowOpacity?: Number;
+  on?: ListenerMap;
+  ref?: any;
 }
 
 export const setProps = (
@@ -36,6 +29,18 @@ export const setProps = (
   oldProps: ViewProps
 ) => {
   const setter: ViewProps = {
+    set visible(shouldShow: boolean) {
+      shouldShow ? widget.show() : widget.hide();
+    },
+    set styleSheet(styleSheet: string) {
+      widget.setStyleSheet(styleSheet);
+    },
+    set style(inlineStyle: string) {
+      if (newProps.styleSheet) {
+        console.warn("Both styleSheet and inlineStyle can't be used together");
+      }
+      widget.setInlineStyle(inlineStyle);
+    },
     set geometry(geometry: Geometry) {
       widget.setGeometry(
         geometry.x,
@@ -44,26 +49,17 @@ export const setProps = (
         geometry.height
       );
     },
-    set visible(shouldShow: boolean) {
-      shouldShow ? widget.show() : widget.hide();
-    },
-    set style(inlineStyle: string) {
-      if (newProps.styleSheet) {
-        console.warn("Both styleSheet and inlineStyle can't be used together");
-      }
-      widget.setInlineStyle(inlineStyle);
-    },
-    set styleSheet(styleSheet: string) {
-      widget.setStyleSheet(styleSheet);
-    },
     set id(id: string) {
       widget.setObjectName(id);
     },
     set mouseTracking(isMouseTracked: boolean) {
-      widget.setMouseTracking(isMouseTracked); //TODO: add a getter for this in nodegui
+      widget.setMouseTracking(isMouseTracked);
     },
     set enabled(enable: boolean) {
       widget.setEnabled(enable);
+    },
+    set windowOpacity(opacity: Number) {
+      widget.setWindowOpacity(opacity);
     },
     set on(listenerMap: ListenerMap) {
       const listenerMapLatest = Object.assign({}, listenerMap);
@@ -83,29 +79,6 @@ export const setProps = (
           widget.addEventListener(eventType, newEvtListener);
         }
       );
-    },
-    set attributes(attributes: WidgetAttribute[]) {
-      const oldAttributes = oldProps.attributes || [];
-      const newAttributes = attributes || [];
-      oldAttributes.forEach(eachOldAttribute => {
-        widget.setAttribute(eachOldAttribute, false);
-      });
-      newAttributes.forEach(eachNewAttribute => {
-        widget.setAttribute(eachNewAttribute, true);
-      });
-    },
-    set windowFlags(windowTypes: WindowType[]) {
-      const oldFlags = oldProps.windowFlags || [];
-      const newFlags = windowTypes || [];
-      oldFlags.forEach(eachOldFlag => {
-        widget.setWindowFlag(eachOldFlag, false);
-      });
-      newFlags.forEach(eachNewWindowFlag => {
-        widget.setWindowFlag(eachNewWindowFlag, true);
-      });
-    },
-    set windowOpacity(opacity: Number) {
-      widget.setWindowOpacity(opacity);
     }
   };
   Object.assign(setter, newProps);
