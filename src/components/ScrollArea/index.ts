@@ -1,7 +1,8 @@
-import { registerComponent } from "../config";
-import { QScrollArea } from "@nodegui/nodegui";
+import { registerComponent, ComponentConfig } from "../config";
+import { QScrollArea, NodeWidget } from "@nodegui/nodegui";
 import { ViewProps, setProps as setViewProps } from "../View";
 import { ReactElement } from "react";
+import { Fiber } from "react-reconciler";
 
 export interface ScrollAreaProps extends ViewProps {
   children?: ReactElement;
@@ -22,35 +23,32 @@ export const setProps = (
   setViewProps(widget, newProps, oldProps);
 };
 
-export const ScrollArea = registerComponent<ScrollAreaProps>({
-  id: "ScrollArea",
-  getContext() {
-    return {};
-  },
-  shouldSetTextContent: () => {
-    return true;
-  },
-  createInstance: newProps => {
+class ScrollAreaConfig extends ComponentConfig {
+  id = "scrollarea";
+  shouldSetTextContent(nextProps: object): boolean {
+    return false;
+  }
+  createInstance(
+    newProps: object,
+    rootInstance: Set<NodeWidget>,
+    context: any,
+    workInProgress: Fiber
+  ): NodeWidget {
     const widget = new QScrollArea();
     setProps(widget, newProps, {});
     return widget;
-  },
-  finalizeInitialChildren: () => {
-    return false;
-  },
-  commitMount: (instance, newProps, internalInstanceHandle) => {
-    return;
-  },
-  prepareUpdate: (
-    instance,
-    oldProps,
-    newProps,
-    rootContainerInstance,
-    hostContext
-  ) => {
-    return true;
-  },
-  commitUpdate: (instance, updatePayload, oldProps, newProps, finishedWork) => {
+  }
+  commitUpdate(
+    instance: NodeWidget,
+    updatePayload: any,
+    oldProps: object,
+    newProps: object,
+    finishedWork: Fiber
+  ): void {
     setProps(instance as QScrollArea, newProps, oldProps);
   }
-});
+}
+
+export const ScrollArea = registerComponent<ScrollAreaProps>(
+  new ScrollAreaConfig()
+);

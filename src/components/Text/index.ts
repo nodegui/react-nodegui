@@ -1,7 +1,7 @@
-import { registerComponent } from "../config";
-import { QLabel } from "@nodegui/nodegui";
+import { QLabel, NodeWidget } from "@nodegui/nodegui";
+import { Fiber } from "react-reconciler";
 import { ViewProps, setProps as setViewProps } from "../View";
-
+import { registerComponent, ComponentConfig } from "../config";
 export interface TextProps extends ViewProps {
   children?: string | number;
   wordWrap?: boolean;
@@ -24,35 +24,30 @@ export const setProps = (
   setViewProps(widget, newProps, oldProps);
 };
 
-export const Text = registerComponent<TextProps>({
-  id: "text",
-  getContext() {
-    return {};
-  },
-  shouldSetTextContent: () => {
+class TextConfig extends ComponentConfig {
+  id = "text";
+  shouldSetTextContent(nextProps: object): boolean {
     return true;
-  },
-  createInstance: newProps => {
+  }
+  createInstance(
+    newProps: object,
+    rootInstance: Set<NodeWidget>,
+    context: any,
+    workInProgress: Fiber
+  ): NodeWidget {
     const widget = new QLabel();
     setProps(widget, newProps, {});
     return widget;
-  },
-  finalizeInitialChildren: () => {
-    return false;
-  },
-  commitMount: (instance, newProps, internalInstanceHandle) => {
-    return;
-  },
-  prepareUpdate: (
-    instance,
-    oldProps,
-    newProps,
-    rootContainerInstance,
-    hostContext
-  ) => {
-    return true;
-  },
-  commitUpdate: (instance, updatePayload, oldProps, newProps, finishedWork) => {
+  }
+  commitUpdate(
+    instance: NodeWidget,
+    updatePayload: any,
+    oldProps: object,
+    newProps: object,
+    finishedWork: Fiber
+  ): void {
     setProps(instance as QLabel, newProps, oldProps);
   }
-});
+}
+
+export const Text = registerComponent<TextProps>(new TextConfig());

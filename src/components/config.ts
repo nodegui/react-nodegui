@@ -1,45 +1,53 @@
-import { NodeWidget, QWidget } from "@nodegui/nodegui";
+import { NodeWidget } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
 import { AppContainer } from "../reconciler";
 
 type UpdatePayload = any;
-export type ComponentConfig = {
-  id: string;
-  getContext: (parentContext: any, rootInstance: AppContainer) => any;
-  shouldSetTextContent: (nextProps: object) => boolean;
-  createInstance: (
+export abstract class ComponentConfig {
+  abstract id: string;
+  getContext(parentContext: any, rootInstance: AppContainer) {
+    return {};
+  }
+  abstract shouldSetTextContent(nextProps: object): boolean;
+  abstract createInstance(
     newProps: object,
     rootInstance: AppContainer,
     context: any,
     workInProgress: Fiber
-  ) => NodeWidget;
-  finalizeInitialChildren: (
+  ): NodeWidget;
+  finalizeInitialChildren(
     instance: NodeWidget,
     newProps: object,
     rootContainerInstance: AppContainer,
     context: any
-  ) => boolean;
-  commitMount: (
+  ) {
+    return false;
+  }
+  commitMount(
     instance: NodeWidget,
     newProps: object,
     internalInstanceHandle: any
-  ) => void;
+  ) {
+    return;
+  }
   // Update methods:
-  prepareUpdate: (
+  prepareUpdate(
     instance: NodeWidget,
     oldProps: object,
     newProps: object,
     rootContainerInstance: AppContainer,
     hostContext: any
-  ) => UpdatePayload;
-  commitUpdate: (
+  ): UpdatePayload {
+    return true;
+  }
+  abstract commitUpdate(
     instance: NodeWidget,
     updatePayload: any,
     oldProps: object,
     newProps: object,
     finishedWork: Fiber
-  ) => void;
-};
+  ): void;
+}
 
 type ReactNodeGuiTag<P> = string | React.ComponentType<P>;
 

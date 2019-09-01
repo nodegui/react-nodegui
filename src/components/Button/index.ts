@@ -1,7 +1,7 @@
-import { registerComponent } from "../config";
-import { QPushButton, QIcon } from "@nodegui/nodegui";
+import { QPushButton, QIcon, NodeWidget } from "@nodegui/nodegui";
+import { Fiber } from "react-reconciler";
 import { ViewProps, setProps as setViewProps } from "../View";
-
+import { registerComponent, ComponentConfig } from "../config";
 interface ButtonProps extends ViewProps {
   text?: string;
   flat?: boolean;
@@ -28,35 +28,30 @@ const setProps = (
   setViewProps(widget, newProps, oldProps);
 };
 
-export const Button = registerComponent<ButtonProps>({
-  id: "button",
-  getContext() {
-    return {};
-  },
-  shouldSetTextContent: () => {
-    return false;
-  },
-  createInstance: newProps => {
+class ButtonConfig extends ComponentConfig {
+  id = "button";
+  shouldSetTextContent(nextProps: object): boolean {
+    return true;
+  }
+  createInstance(
+    newProps: object,
+    rootInstance: Set<NodeWidget>,
+    context: any,
+    workInProgress: Fiber
+  ): NodeWidget {
     const widget = new QPushButton();
     setProps(widget, newProps, {});
     return widget;
-  },
-  finalizeInitialChildren: () => {
-    return false;
-  },
-  commitMount: (instance, newProps, internalInstanceHandle) => {
-    return;
-  },
-  prepareUpdate: (
-    instance,
-    oldProps,
-    newProps,
-    rootContainerInstance,
-    hostContext
-  ) => {
-    return true;
-  },
-  commitUpdate: (instance, updatePayload, oldProps, newProps, finishedWork) => {
+  }
+  commitUpdate(
+    instance: NodeWidget,
+    updatePayload: any,
+    oldProps: object,
+    newProps: object,
+    finishedWork: Fiber
+  ): void {
     setProps(instance as QPushButton, newProps, oldProps);
   }
-});
+}
+
+export const Button = registerComponent<ButtonProps>(new ButtonConfig());

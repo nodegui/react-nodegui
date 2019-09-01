@@ -6,7 +6,8 @@ import {
   QCursor,
   QIcon
 } from "@nodegui/nodegui";
-import { registerComponent } from "../config";
+import { registerComponent, ComponentConfig } from "../config";
+import { Fiber } from "react-reconciler";
 
 type Geometry = {
   x: number;
@@ -146,40 +147,30 @@ export const setProps = (
   Object.assign(setter, newProps);
 };
 
-export const View = registerComponent<ViewProps>({
-  id: "view",
-  getContext() {
-    return {};
-  },
-  shouldSetTextContent: () => {
+class ViewConfig extends ComponentConfig {
+  id = "view";
+  shouldSetTextContent() {
     return false;
-  },
-  createInstance: (
-    newProps,
-    rootInstance,
-    currentHostContext,
-    workInProgress
-  ) => {
+  }
+  createInstance(
+    newProps: object,
+    rootInstance: Set<NodeWidget>,
+    context: any,
+    workInProgress: Fiber
+  ): NodeWidget {
     const widget = new QWidget();
     setProps(widget, newProps, {});
     return widget;
-  },
-  finalizeInitialChildren: (instance, newProps, rootInstance, context) => {
-    return false;
-  },
-  commitMount: (instance, newProps, internalInstanceHandle) => {
-    return;
-  },
-  prepareUpdate: (
-    instance,
-    oldProps,
-    newProps,
-    rootContainerInstance,
-    hostContext
-  ) => {
-    return true;
-  },
-  commitUpdate: (instance, updatePayload, oldProps, newProps, finishedWork) => {
+  }
+  commitUpdate(
+    instance: NodeWidget,
+    updatePayload: any,
+    oldProps: object,
+    newProps: object,
+    finishedWork: Fiber
+  ): void {
     setProps(instance, newProps, oldProps);
   }
-});
+}
+
+export const View = registerComponent<ViewProps>(new ViewConfig());

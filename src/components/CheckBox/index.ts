@@ -1,6 +1,7 @@
-import { registerComponent } from "../config";
-import { QCheckBox } from "@nodegui/nodegui";
+import { QCheckBox, NodeWidget } from "@nodegui/nodegui";
+import { Fiber } from "react-reconciler";
 import { ViewProps, setProps as setViewProps } from "../View";
+import { registerComponent, ComponentConfig } from "../config";
 
 interface CheckBoxProps extends ViewProps {
   children?: string;
@@ -25,35 +26,30 @@ const setProps = (
   setViewProps(widget, newProps, oldProps);
 };
 
-export const CheckBox = registerComponent<CheckBoxProps>({
-  id: "checkbox",
-  getContext() {
-    return {};
-  },
-  shouldSetTextContent: () => {
+class CheckBoxConfig extends ComponentConfig {
+  id = "checkbox";
+  shouldSetTextContent(nextProps: object): boolean {
     return true;
-  },
-  createInstance: newProps => {
+  }
+  createInstance(
+    newProps: object,
+    rootInstance: Set<NodeWidget>,
+    context: any,
+    workInProgress: Fiber
+  ): NodeWidget {
     const widget = new QCheckBox();
     setProps(widget, newProps, {});
     return widget;
-  },
-  finalizeInitialChildren: () => {
-    return false;
-  },
-  commitMount: (instance, newProps, internalInstanceHandle) => {
-    return;
-  },
-  prepareUpdate: (
-    instance,
-    oldProps,
-    newProps,
-    rootContainerInstance,
-    hostContext
-  ) => {
-    return true;
-  },
-  commitUpdate: (instance, updatePayload, oldProps, newProps, finishedWork) => {
+  }
+  commitUpdate(
+    instance: NodeWidget,
+    updatePayload: any,
+    oldProps: object,
+    newProps: object,
+    finishedWork: Fiber
+  ): void {
     setProps(instance as QCheckBox, newProps, oldProps);
   }
-});
+}
+
+export const CheckBox = registerComponent<CheckBoxProps>(new CheckBoxConfig());

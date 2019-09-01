@@ -1,7 +1,7 @@
-import { registerComponent } from "../config";
-import { QLineEdit } from "@nodegui/nodegui";
+import { QLineEdit, NodeWidget } from "@nodegui/nodegui";
+import { Fiber } from "react-reconciler";
 import { ViewProps, setProps as setViewProps } from "../View";
-
+import { registerComponent, ComponentConfig } from "../config";
 interface LineEditProps extends ViewProps {
   children?: string;
   text?: string;
@@ -29,35 +29,30 @@ const setProps = (
   setViewProps(widget, newProps, oldProps);
 };
 
-export const LineEdit = registerComponent<LineEditProps>({
-  id: "linedit",
-  getContext() {
-    return {};
-  },
-  shouldSetTextContent: () => {
+class LineEditConfig extends ComponentConfig {
+  id = "linedit";
+  shouldSetTextContent(nextProps: object): boolean {
     return true;
-  },
-  createInstance: newProps => {
+  }
+  createInstance(
+    newProps: object,
+    rootInstance: Set<NodeWidget>,
+    context: any,
+    workInProgress: Fiber
+  ): NodeWidget {
     const widget = new QLineEdit();
     setProps(widget, newProps, {});
     return widget;
-  },
-  finalizeInitialChildren: () => {
-    return false;
-  },
-  commitMount: (instance, newProps, internalInstanceHandle) => {
-    return;
-  },
-  prepareUpdate: (
-    instance,
-    oldProps,
-    newProps,
-    rootContainerInstance,
-    hostContext
-  ) => {
-    return true;
-  },
-  commitUpdate: (instance, updatePayload, oldProps, newProps, finishedWork) => {
+  }
+  commitUpdate(
+    instance: NodeWidget,
+    updatePayload: any,
+    oldProps: object,
+    newProps: object,
+    finishedWork: Fiber
+  ): void {
     setProps(instance as QLineEdit, newProps, oldProps);
   }
-});
+}
+
+export const LineEdit = registerComponent<LineEditProps>(new LineEditConfig());

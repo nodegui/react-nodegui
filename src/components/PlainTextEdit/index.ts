@@ -1,6 +1,7 @@
-import { registerComponent } from "../config";
-import { QPlainTextEdit } from "@nodegui/nodegui";
+import { QPlainTextEdit, NodeWidget } from "@nodegui/nodegui";
 import { ViewProps, setProps as setViewProps } from "../View";
+import { registerComponent, ComponentConfig } from "../config";
+import { Fiber } from "react-reconciler";
 
 interface PlainTextEditProps extends ViewProps {
   children?: string;
@@ -25,35 +26,32 @@ const setProps = (
   setViewProps(widget, newProps, oldProps);
 };
 
-export const PlainTextEdit = registerComponent<PlainTextEditProps>({
-  id: "plaintextedit",
-  getContext() {
-    return {};
-  },
-  shouldSetTextContent: () => {
+class PlainTextEditConfig extends ComponentConfig {
+  id = "plaintextedit";
+  shouldSetTextContent(nextProps: object): boolean {
     return true;
-  },
-  createInstance: newProps => {
+  }
+  createInstance(
+    newProps: object,
+    rootInstance: Set<NodeWidget>,
+    context: any,
+    workInProgress: Fiber
+  ): NodeWidget {
     const widget = new QPlainTextEdit();
     setProps(widget, newProps, {});
     return widget;
-  },
-  finalizeInitialChildren: () => {
-    return false;
-  },
-  commitMount: (instance, newProps, internalInstanceHandle) => {
-    return;
-  },
-  prepareUpdate: (
-    instance,
-    oldProps,
-    newProps,
-    rootContainerInstance,
-    hostContext
-  ) => {
-    return true;
-  },
-  commitUpdate: (instance, updatePayload, oldProps, newProps, finishedWork) => {
+  }
+  commitUpdate(
+    instance: NodeWidget,
+    updatePayload: any,
+    oldProps: object,
+    newProps: object,
+    finishedWork: Fiber
+  ): void {
     setProps(instance as QPlainTextEdit, newProps, oldProps);
   }
-});
+}
+
+export const PlainTextEdit = registerComponent<PlainTextEditProps>(
+  new PlainTextEditConfig()
+);

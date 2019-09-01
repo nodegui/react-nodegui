@@ -1,5 +1,11 @@
-import { registerComponent } from "../config";
-import { QPixmap, QLabelEvents, AspectRatioMode } from "@nodegui/nodegui";
+import {
+  QPixmap,
+  QLabelEvents,
+  AspectRatioMode,
+  NodeWidget
+} from "@nodegui/nodegui";
+import { Fiber } from "react-reconciler";
+import { registerComponent, ComponentConfig } from "../config";
 import { ImageLabel } from "./ImageLabel";
 import { TextProps, setProps as setTextProps } from "../Text";
 interface ImageProps extends TextProps {
@@ -30,15 +36,17 @@ const setProps = (
   setTextProps(widget, newProps, oldProps);
 };
 
-export const Image = registerComponent<ImageProps>({
-  id: "image",
-  getContext() {
-    return {};
-  },
-  shouldSetTextContent: () => {
-    return false;
-  },
-  createInstance: newProps => {
+class ImageConfig extends ComponentConfig {
+  id = "image";
+  shouldSetTextContent(nextProps: object): boolean {
+    return true;
+  }
+  createInstance(
+    newProps: object,
+    rootInstance: Set<NodeWidget>,
+    context: any,
+    workInProgress: Fiber
+  ): NodeWidget {
     const widget = new ImageLabel();
     setProps(widget, newProps, {});
     widget.addEventListener(QLabelEvents.Resize, () => {
@@ -46,23 +54,16 @@ export const Image = registerComponent<ImageProps>({
       widget.scalePixmap(size.width, size.height);
     });
     return widget;
-  },
-  finalizeInitialChildren: () => {
-    return false;
-  },
-  commitMount: (instance, newProps, internalInstanceHandle) => {
-    return;
-  },
-  prepareUpdate: (
-    instance,
-    oldProps,
-    newProps,
-    rootContainerInstance,
-    hostContext
-  ) => {
-    return true;
-  },
-  commitUpdate: (instance, updatePayload, oldProps, newProps, finishedWork) => {
+  }
+  commitUpdate(
+    instance: NodeWidget,
+    updatePayload: any,
+    oldProps: object,
+    newProps: object,
+    finishedWork: Fiber
+  ): void {
     setProps(instance as ImageLabel, newProps, oldProps);
   }
-});
+}
+
+export const Image = registerComponent<ImageProps>(new ImageConfig());

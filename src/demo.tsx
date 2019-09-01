@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { QMainWindow, QPushButtonEvents } from "@nodegui/nodegui";
 import { Button } from "./components/Button";
 import { useEventHandler } from "./hooks";
+import { ScrollArea } from "./components/ScrollArea";
+import { View } from "./components/View";
 
 const App = () => {
   const winRef = useRef<QMainWindow>(null);
@@ -22,10 +24,12 @@ const App = () => {
     [resizeable]
   );
   const size = { width: 200, height: 200, fixed: !resizeable };
-
   return (
     <Window size={size} ref={winRef} styleSheet={styleSheet}>
       <Button text={resizeable ? "❌" : "✅"} on={btnHandler} />
+      <ScrollArea>
+        <View />
+      </ScrollArea>
     </Window>
   );
 };

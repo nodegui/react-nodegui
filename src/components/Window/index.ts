@@ -1,6 +1,7 @@
-import { registerComponent } from "../config";
-import { QMainWindow, QWidget, FlexLayout } from "@nodegui/nodegui";
+import { registerComponent, ComponentConfig } from "../config";
+import { QMainWindow, QWidget, FlexLayout, NodeWidget } from "@nodegui/nodegui";
 import { ViewProps, setProps as setViewProps } from "../View";
+import { Fiber } from "react-reconciler";
 interface WindowProps extends ViewProps {
   centralWidgetProps?: ViewProps;
 }
@@ -30,15 +31,17 @@ const setProps = (
   setViewProps(window, newProps, oldProps);
 };
 
-export const Window = registerComponent<WindowProps>({
-  id: "window",
-  getContext() {
-    return {};
-  },
-  shouldSetTextContent: () => {
+class WindowConfig extends ComponentConfig {
+  id = "window";
+  shouldSetTextContent(nextProps: object): boolean {
     return false;
-  },
-  createInstance: newProps => {
+  }
+  createInstance(
+    newProps: object,
+    rootInstance: Set<NodeWidget>,
+    context: any,
+    workInProgress: Fiber
+  ): NodeWidget {
     const window = new QMainWindow();
     const rootView = new QWidget();
     const rootViewLayout = new FlexLayout();
@@ -47,26 +50,34 @@ export const Window = registerComponent<WindowProps>({
     window.setCentralWidget(rootView);
     setProps(window, newProps, {});
     return window;
-  },
-  finalizeInitialChildren: () => {
+  }
+  finalizeInitialChildren(
+    instance: NodeWidget,
+    newProps: object,
+    rootContainerInstance: Set<NodeWidget>,
+    context: any
+  ): boolean {
     return true;
-  },
-  commitMount: (instance, newProps: WindowProps, internalInstanceHandle) => {
+  }
+  commitMount(
+    instance: NodeWidget,
+    newProps: WindowProps,
+    internalInstanceHandle: any
+  ): void {
     if (newProps.visible !== false) {
       instance.show();
     }
     return;
-  },
-  prepareUpdate: (
-    instance,
-    oldProps,
-    newProps,
-    rootContainerInstance,
-    hostContext
-  ) => {
-    return true;
-  },
-  commitUpdate: (instance, updatePayload, oldProps, newProps, finishedWork) => {
+  }
+  commitUpdate(
+    instance: NodeWidget,
+    updatePayload: any,
+    oldProps: object,
+    newProps: object,
+    finishedWork: Fiber
+  ): void {
     setProps(instance as QMainWindow, newProps, oldProps);
   }
-});
+}
+
+export const Window = registerComponent<WindowProps>(new WindowConfig());

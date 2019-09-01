@@ -1,6 +1,7 @@
-import { registerComponent } from "../config";
-import { QDial } from "@nodegui/nodegui";
+import { Fiber } from "react-reconciler";
+import { QDial, NodeWidget } from "@nodegui/nodegui";
 import { ViewProps, setProps as setViewProps } from "../View";
+import { registerComponent, ComponentConfig } from "../config";
 
 export interface DialProps extends ViewProps {
   notchesVisible?: boolean;
@@ -28,35 +29,30 @@ export const setProps = (
   setViewProps(widget, newProps, oldProps);
 };
 
-export const Dial = registerComponent<DialProps>({
-  id: "dial",
-  getContext() {
-    return {};
-  },
-  shouldSetTextContent: () => {
+class DialConfig extends ComponentConfig {
+  id = "dial";
+  shouldSetTextContent(nextProps: object): boolean {
     return true;
-  },
-  createInstance: newProps => {
+  }
+  createInstance(
+    newProps: object,
+    rootInstance: Set<NodeWidget>,
+    context: any,
+    workInProgress: Fiber
+  ): NodeWidget {
     const widget = new QDial();
     setProps(widget, newProps, {});
     return widget;
-  },
-  finalizeInitialChildren: () => {
-    return false;
-  },
-  commitMount: (instance, newProps, internalInstanceHandle) => {
-    return;
-  },
-  prepareUpdate: (
-    instance,
-    oldProps,
-    newProps,
-    rootContainerInstance,
-    hostContext
-  ) => {
-    return true;
-  },
-  commitUpdate: (instance, updatePayload, oldProps, newProps, finishedWork) => {
+  }
+  commitUpdate(
+    instance: NodeWidget,
+    updatePayload: any,
+    oldProps: object,
+    newProps: object,
+    finishedWork: Fiber
+  ): void {
     setProps(instance as QDial, newProps, oldProps);
   }
-});
+}
+
+export const Dial = registerComponent<DialProps>(new DialConfig());
