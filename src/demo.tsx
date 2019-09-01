@@ -1,36 +1,60 @@
-import { Renderer, Window } from "./index";
-import React, { useEffect, useRef, useState } from "react";
-import { QMainWindow, QPushButtonEvents } from "@nodegui/nodegui";
-import { Button } from "./components/Button";
-import { useEventHandler } from "./hooks";
-import { ScrollArea } from "./components/ScrollArea";
-import { View } from "./components/View";
+import { Renderer, View, Button, Window, Image, LineEdit } from "./index";
+import React, { useEffect, useRef, useMemo, useState } from "react";
+import {
+  AspectRatioMode,
+  QMainWindow,
+  QLineEditEvents,
+  QPushButtonEvents
+} from "@nodegui/nodegui";
 
 const App = () => {
   const winRef = useRef<QMainWindow>(null);
+  const [fileUrl, setFileUrl] = useState();
+  const [imageSrc, setImageSrc] = useState();
   useEffect(() => {
     if (winRef.current) {
       winRef.current.resize(800, 450);
     }
   }, []);
-  const [resizeable, setResizeable] = useState(true);
-  const btnHandler = useEventHandler(
-    {
-      [QPushButtonEvents.clicked]: () => {
-        console.log("clicked");
-        setResizeable(!resizeable);
+  const lineEditHandler = useMemo(
+    () => ({
+      [QLineEditEvents.textChanged]: (text: string) => {
+        setFileUrl(text);
       }
-    },
-    [resizeable]
+    }),
+    []
   );
-  const size = { width: 200, height: 200, fixed: !resizeable };
+
+  const loadButtonHandler = useMemo(
+    () => ({
+      [QPushButtonEvents.clicked]: () => {
+        setImageSrc(fileUrl);
+      }
+    }),
+    [fileUrl]
+  );
+
   return (
-    <Window size={size} ref={winRef} styleSheet={styleSheet}>
-      <Button text={resizeable ? "❌" : "✅"} on={btnHandler} />
-      <ScrollArea>
-        <View />
-      </ScrollArea>
-    </Window>
+    <>
+      <Window ref={winRef} styleSheet={styleSheet}>
+        <View id="container">
+          <View id="controls">
+            <LineEdit
+              on={lineEditHandler}
+              id="textField"
+              text={fileUrl}
+              placeholderText="Absolute path to an image"
+            />
+            <Button text="Load Image" on={loadButtonHandler} />
+          </View>
+          <Image
+            id="img"
+            aspectRatioMode={AspectRatioMode.KeepAspectRatio}
+            src={imageSrc}
+          />
+        </View>
+      </Window>
+    </>
   );
 };
 
@@ -38,6 +62,20 @@ const styleSheet = `
   #container {
     flex: 1;
     min-height: '100%';
+  }
+  #controls {
+    flex-direction: 'row';
+    justify-content: 'space-around';
+    align-items: 'center';
+    padding-horizontal: 20;
+    padding-vertical: 10;
+  }
+  #img {
+    flex: 1;
+    qproperty-alignment: 'AlignCenter';
+  }
+  #textField {
+    flex: 1;
   }
 `;
 
