@@ -64,8 +64,6 @@ https://github.com/nodegui/nodegui/tree/master/docs/development
 
 ## Funding
 
-## Funding
-
 React NodeGUI is an open source project and requires your support. If you like this project, please consider supporting my work with Ko-fi. Alternatively, Issues on React NodeGui can be funded by anyone via Issuehunt and the amount will be distributed to respective contributors.
 
 <p align="center">
