@@ -62,6 +62,18 @@ https://github.com/nodegui/nodegui/tree/master/docs/development
 
 `npm run build [--qt_home_dir=/path/to/qt]`
 
+## Funding
+
+## Funding
+
+React NodeGUI is an open source project and requires your support. If you like this project, please consider supporting my work with Ko-fi. Alternatively, Issues on React NodeGui can be funded by anyone via Issuehunt and the amount will be distributed to respective contributors.
+
+<p align="center">
+ <a href="https://ko-fi.com/E1E510AV9"><img alt="ko-fi" src="https://www.ko-fi.com/img/githubbutton_sm.svg" height="30px" /></a> &nbsp; &nbsp; 
+ <a href="https://issuehunt.io/r/nodegui/react-nodegui"><img alt="issuehunt" src="https://github.com/BoostIO/issuehunt-materials/raw/master/v1/issuehunt-button-v1.svg?sanitize=true"  height="30px" /></a>
+</p>
+
+
 ### LICENSE
 
 MIT
