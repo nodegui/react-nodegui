@@ -71,8 +71,11 @@ React NodeGUI is an open source project and requires your support. If you like t
  <a href="https://issuehunt.io/r/nodegui/react-nodegui"><img alt="issuehunt" src="https://github.com/BoostIO/issuehunt-materials/raw/master/v1/issuehunt-button-v1.svg?sanitize=true"  height="36px" /></a>
 </p>
 
+## Special Thanks
 
-### LICENSE
+- [Logo: Thanks to Vishwas Shetty from the Noun Project.](https://github.com/nodegui/nodegui/blob/master/extras/legal/logo/thanks.md) 
+
+## License
 
 MIT
 
