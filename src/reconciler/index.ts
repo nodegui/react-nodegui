@@ -1,6 +1,6 @@
 import Reconciler from "react-reconciler";
 import { NodeWidget, FlexLayout } from "@nodegui/nodegui";
-import { getComponent } from "../components/config";
+import { getComponentByTagName } from "../components/config";
 
 export type AppContainer = Set<NodeWidget>;
 export const appContainer: AppContainer = new Set<NodeWidget>();
@@ -27,11 +27,11 @@ const HostConfig: Reconciler.HostConfig<
     return context;
   },
   getChildHostContext: function(parentContext, fiberType, rootInstance) {
-    const { getContext } = getComponent(fiberType);
+    const { getContext } = getComponentByTagName(fiberType);
     return getContext(parentContext, rootInstance);
   },
   shouldSetTextContent: function(type, nextProps) {
-    const { shouldSetTextContent } = getComponent(type);
+    const { shouldSetTextContent } = getComponentByTagName(type);
     return shouldSetTextContent(nextProps);
   },
   createTextInstance: function(
@@ -53,7 +53,7 @@ const HostConfig: Reconciler.HostConfig<
     context,
     workInProgress
   ) {
-    const { createInstance } = getComponent(type);
+    const { createInstance } = getComponentByTagName(type);
     return createInstance(
       newProps,
       rootContainerInstance,
@@ -81,7 +81,7 @@ const HostConfig: Reconciler.HostConfig<
     rootContainerInstance,
     context
   ) {
-    const { finalizeInitialChildren } = getComponent(type);
+    const { finalizeInitialChildren } = getComponentByTagName(type);
     return finalizeInitialChildren(
       instance,
       newProps,
@@ -96,7 +96,7 @@ const HostConfig: Reconciler.HostConfig<
     // noop
   },
   commitMount: function(instance, type, newProps, internalInstanceHandle) {
-    const { commitMount } = getComponent(type);
+    const { commitMount } = getComponentByTagName(type);
     return commitMount(instance, newProps, internalInstanceHandle);
   },
   appendChildToContainer: function(container, child: NodeWidget) {
@@ -116,7 +116,7 @@ const HostConfig: Reconciler.HostConfig<
     rootContainerInstance,
     hostContext
   ) {
-    const { prepareUpdate } = getComponent(type);
+    const { prepareUpdate } = getComponentByTagName(type);
     return prepareUpdate(
       instance,
       oldProps,
@@ -133,7 +133,7 @@ const HostConfig: Reconciler.HostConfig<
     newProps,
     finishedWork
   ) {
-    const { commitUpdate } = getComponent(type);
+    const { commitUpdate } = getComponentByTagName(type);
     return commitUpdate(
       instance,
       updatePayload,

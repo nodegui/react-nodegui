@@ -4,7 +4,7 @@ import { AppContainer } from "../reconciler";
 
 type UpdatePayload = any;
 export abstract class ComponentConfig {
-  abstract id: string;
+  abstract tagName: string;
   getContext(parentContext: any, rootInstance: AppContainer) {
     return {};
   }
@@ -53,10 +53,10 @@ type ReactNodeGuiTag<P> = string | React.ComponentType<P>;
 
 const components = new Map<string, ComponentConfig>();
 
-export const getComponent = (id: string): ComponentConfig => {
-  const config = components.get(id);
+export const getComponentByTagName = (tagName: string): ComponentConfig => {
+  const config = components.get(tagName);
   if (!config) {
-    throw `Unknown component ${id}`;
+    throw `Unknown component ${tagName}`;
   }
   return config;
 };
@@ -64,9 +64,9 @@ export const getComponent = (id: string): ComponentConfig => {
 export function registerComponent<Props>(
   config: ComponentConfig
 ): ReactNodeGuiTag<Props> {
-  if (components.has(config.id)) {
-    throw `A component with id: ${config.id} already exists. This base component will be ignored`;
+  if (components.has(config.tagName)) {
+    throw `A component with tagName: ${config.tagName} already exists. This base component will be ignored`;
   }
-  components.set(config.id, config);
-  return config.id;
+  components.set(config.tagName, config);
+  return config.tagName;
 }

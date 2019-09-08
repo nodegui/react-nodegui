@@ -1,40 +1,9 @@
-import { QProgressBar, NodeWidget, Orientation } from "@nodegui/nodegui";
+import { NodeWidget } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
-import { ViewProps, setProps as setViewProps } from "../View";
 import { registerComponent, ComponentConfig } from "../config";
-
-interface ProgressBarProps extends ViewProps {
-  value?: number;
-  minimum?: number;
-  maximum?: number;
-  orientation?: Orientation;
-}
-
-const setProps = (
-  widget: QProgressBar,
-  newProps: ProgressBarProps,
-  oldProps: ProgressBarProps
-) => {
-  const setter: ProgressBarProps = {
-    set value(val: number) {
-      widget.setValue(val);
-    },
-    set minimum(min: number) {
-      widget.setMinimum(min);
-    },
-    set maximum(max: number) {
-      widget.setMaximum(max);
-    },
-    set orientation(orientation: Orientation) {
-      widget.setOrientation(orientation);
-    }
-  };
-  Object.assign(setter, newProps);
-  setViewProps(widget, newProps, oldProps);
-};
-
+import { RNProgressBar, setProps, ProgressBarProps } from "./RNProgressBar";
 class ProgressBarConfig extends ComponentConfig {
-  id = "progressbar";
+  tagName = RNProgressBar.tagName;
   shouldSetTextContent(nextProps: object): boolean {
     return false;
   }
@@ -44,7 +13,7 @@ class ProgressBarConfig extends ComponentConfig {
     context: any,
     workInProgress: Fiber
   ): NodeWidget {
-    const widget = new QProgressBar();
+    const widget = new RNProgressBar();
     setProps(widget, newProps, {});
     return widget;
   }
@@ -55,7 +24,7 @@ class ProgressBarConfig extends ComponentConfig {
     newProps: object,
     finishedWork: Fiber
   ): void {
-    setProps(instance as QProgressBar, newProps, oldProps);
+    setProps(instance as RNProgressBar, newProps, oldProps);
   }
 }
 

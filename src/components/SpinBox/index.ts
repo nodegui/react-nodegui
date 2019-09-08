@@ -1,49 +1,9 @@
-import { QSpinBox, NodeWidget } from "@nodegui/nodegui";
+import { NodeWidget } from "@nodegui/nodegui";
 import { registerComponent, ComponentConfig } from "../config";
-import { ViewProps, setProps as setViewProps } from "../View";
 import { Fiber } from "react-reconciler";
-
-type Range = {
-  minimum: number;
-  maximum: number;
-};
-
-export interface SpinBoxProps extends ViewProps {
-  prefix?: string;
-  suffix?: string;
-  singleStep?: number;
-  range?: Range;
-  value?: number;
-}
-
-export const setProps = (
-  widget: QSpinBox,
-  newProps: SpinBoxProps,
-  oldProps: SpinBoxProps
-) => {
-  const setter: SpinBoxProps = {
-    set prefix(prefix: string) {
-      widget.setPrefix(prefix);
-    },
-    set suffix(suffix: string) {
-      widget.setSuffix(suffix);
-    },
-    set singleStep(step: number) {
-      widget.setSingleStep(step);
-    },
-    set range(range: Range) {
-      widget.setRange(range.minimum, range.maximum);
-    },
-    set value(value: number) {
-      widget.setValue(value);
-    }
-  };
-  Object.assign(setter, newProps);
-  setViewProps(widget, newProps, oldProps);
-};
-
+import { RNSpinBox, setProps, SpinBoxProps } from "./RNSpinBox";
 class SpinBoxConfig extends ComponentConfig {
-  id = "spinbox";
+  tagName = RNSpinBox.tagName;
   shouldSetTextContent(nextProps: object): boolean {
     return true;
   }
@@ -53,7 +13,7 @@ class SpinBoxConfig extends ComponentConfig {
     context: any,
     workInProgress: Fiber
   ): NodeWidget {
-    const widget = new QSpinBox();
+    const widget = new RNSpinBox();
     setProps(widget, newProps, {});
     return widget;
   }
@@ -64,7 +24,7 @@ class SpinBoxConfig extends ComponentConfig {
     newProps: object,
     finishedWork: Fiber
   ): void {
-    setProps(instance as QSpinBox, newProps, oldProps);
+    setProps(instance as RNSpinBox, newProps, oldProps);
   }
 }
 
