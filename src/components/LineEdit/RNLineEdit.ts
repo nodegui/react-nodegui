@@ -1,7 +1,20 @@
-import { QLineEdit } from "@nodegui/nodegui";
+import { QLineEdit, NodeWidget } from "@nodegui/nodegui";
 import { ViewProps, setProps as setViewProps } from "../View/RNView";
-
-export class RNLineEdit extends QLineEdit {
+import { RNWidget } from "../config";
+import { throwUnsupported } from "../../utils/helpers";
+export class RNLineEdit extends QLineEdit implements RNWidget {
+  appendInitialChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  appendChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  removeChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
   static tagName = "linedit";
 }
 

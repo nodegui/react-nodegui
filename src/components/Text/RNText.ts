@@ -1,7 +1,21 @@
-import { QLabel } from "@nodegui/nodegui";
+import { QLabel, NodeWidget } from "@nodegui/nodegui";
 import { ViewProps, setProps as setViewProps } from "../View/RNView";
+import { RNWidget } from "../config";
+import { throwUnsupported } from "../../utils/helpers";
 
-export class RNText extends QLabel {
+export class RNText extends QLabel implements RNWidget {
+  appendInitialChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  appendChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  removeChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
   static tagName = "text";
 }
 

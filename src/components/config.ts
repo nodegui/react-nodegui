@@ -3,6 +3,13 @@ import { Fiber } from "react-reconciler";
 import { AppContainer } from "../reconciler";
 
 type UpdatePayload = any;
+export abstract class RNWidget extends NodeWidget {
+  static tagName: string;
+  abstract appendInitialChild(child: NodeWidget): void;
+  abstract appendChild(child: NodeWidget): void;
+  abstract insertBefore(child: NodeWidget, beforeChild: NodeWidget): void;
+  abstract removeChild(child: NodeWidget): void;
+}
 export abstract class ComponentConfig {
   abstract tagName: string;
   getContext(parentContext: any, rootInstance: AppContainer) {

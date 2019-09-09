@@ -1,7 +1,21 @@
-import { QLabel, QPixmap, AspectRatioMode } from "@nodegui/nodegui";
+import { QLabel, QPixmap, AspectRatioMode, NodeWidget } from "@nodegui/nodegui";
 import { TextProps, setProps as setTextProps } from "../Text/RNText";
+import { RNWidget } from "../config";
+import { throwUnsupported } from "../../utils/helpers";
 
-export class RNImage extends QLabel {
+export class RNImage extends QLabel implements RNWidget {
+  appendInitialChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  appendChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  removeChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
   static tagName = "image";
   originalPixmap?: QPixmap;
   aspectRatioMode?: AspectRatioMode;

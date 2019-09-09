@@ -4,8 +4,10 @@ import {
   QCursor,
   CursorShape,
   NodeWidget,
-  QIcon
+  QIcon,
+  FlexLayout
 } from "@nodegui/nodegui";
+import { RNWidget } from "../config";
 
 export interface ViewProps {
   visible?: boolean;
@@ -28,8 +30,37 @@ export interface ViewProps {
   ref?: any;
 }
 
-export class RNView extends QWidget {
+export class RNView extends QWidget implements RNWidget {
+  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+    if (!this.layout) {
+      console.warn("parent has no layout to insert child before another child");
+      return;
+    }
+    (this.layout as FlexLayout).insertChildBefore(child, beforeChild);
+  }
   static tagName = "view";
+  appendInitialChild(child: NodeWidget): void {
+    this.appendChild(child);
+  }
+  appendChild(child: NodeWidget): void {
+    if (!child) {
+      return;
+    }
+    if (!this.layout) {
+      const flexLayout = new FlexLayout();
+      flexLayout.setFlexNode(this.getFlexNode());
+      this.setLayout(flexLayout);
+      this.layout = flexLayout;
+    }
+    this.layout.addWidget(child);
+  }
+  removeChild(child: NodeWidget) {
+    if (!this.layout) {
+      console.warn("parent has no layout to remove child from");
+      return;
+    }
+    (this.layout as FlexLayout).removeWidget(child);
+  }
 }
 
 export const setProps = (

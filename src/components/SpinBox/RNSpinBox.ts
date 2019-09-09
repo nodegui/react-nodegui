@@ -1,9 +1,24 @@
-import { QSpinBox } from "@nodegui/nodegui";
+import { QSpinBox, NodeWidget } from "@nodegui/nodegui";
 import { ViewProps, setProps as setViewProps } from "../View/RNView";
+import { RNWidget } from "../config";
+import { throwUnsupported } from "../../utils/helpers";
 
-export class RNSpinBox extends QSpinBox {
+export class RNSpinBox extends QSpinBox implements RNWidget {
+  appendInitialChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  appendChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  removeChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
   static tagName = "spinbox";
 }
+
 type Range = {
   minimum: number;
   maximum: number;

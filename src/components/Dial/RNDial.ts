@@ -1,7 +1,20 @@
-import { QDial } from "@nodegui/nodegui";
+import { QDial, NodeWidget } from "@nodegui/nodegui";
 import { ViewProps, setProps as setViewProps } from "../View/RNView";
-
-export class RNDial extends QDial {
+import { RNWidget } from "../config";
+import { throwUnsupported } from "../../utils/helpers";
+export class RNDial extends QDial implements RNWidget {
+  appendInitialChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  appendChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  removeChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
   static tagName = "dial";
 }
 

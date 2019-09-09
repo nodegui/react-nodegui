@@ -1,5 +1,5 @@
 import { registerComponent, ComponentConfig } from "../config";
-import { QScrollArea, NodeWidget } from "@nodegui/nodegui";
+import { NodeWidget } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
 import { RNScrollArea, setProps, ScrollAreaProps } from "./RNScrollArea";
 
@@ -25,7 +25,7 @@ class ScrollAreaConfig extends ComponentConfig {
     newProps: object,
     finishedWork: Fiber
   ): void {
-    setProps(instance as QScrollArea, newProps, oldProps);
+    setProps(instance as RNScrollArea, newProps, oldProps);
   }
 }
 

@@ -1,11 +1,11 @@
-import { Renderer, View, Button, Window, Image, LineEdit } from "./index";
+import { Renderer, View, Button, Window, LineEdit, Text } from "./index";
 import React, { useEffect, useRef, useMemo, useState } from "react";
 import {
-  AspectRatioMode,
   QMainWindow,
   QLineEditEvents,
   QPushButtonEvents
 } from "@nodegui/nodegui";
+import { ScrollArea } from "./components/ScrollArea";
 
 const App = () => {
   const winRef = useRef<QMainWindow>(null);
@@ -47,11 +47,11 @@ const App = () => {
             />
             <Button text="Load Image" on={loadButtonHandler} />
           </View>
-          <Image
-            id="img"
-            aspectRatioMode={AspectRatioMode.KeepAspectRatio}
-            src={imageSrc}
-          />
+          {/* <ScrollArea style={`width:400px;height:400px;`}> */}
+          <View style={`width: 600px; height:600px;`}>
+            <Text>Hello</Text>
+          </View>
+          {/* </ScrollArea> */}
         </View>
       </Window>
     </>

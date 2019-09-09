@@ -1,7 +1,21 @@
 import { ViewProps, setProps as setViewProps } from "../View/RNView";
-import { QCheckBox } from "@nodegui/nodegui";
+import { QCheckBox, NodeWidget } from "@nodegui/nodegui";
+import { RNWidget } from "../config";
+import { throwUnsupported } from "../../utils/helpers";
 
-export class RNCheckBox extends QCheckBox {
+export class RNCheckBox extends QCheckBox implements RNWidget {
+  appendInitialChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  appendChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  removeChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
   static tagName = "checkbox";
 }
 
