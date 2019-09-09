@@ -47,11 +47,19 @@ const App = () => {
             />
             <Button text="Load Image" on={loadButtonHandler} />
           </View>
-          {/* <ScrollArea style={`width:400px;height:400px;`}> */}
-          <View style={`width: 600px; height:600px;`}>
-            <Text>Hello</Text>
-          </View>
-          {/* </ScrollArea> */}
+          <ScrollArea style={`width:400px;height:400px;`}>
+            <View
+              style={`
+              min-width: 0; 
+              min-height:0;
+              height:500px;
+              width: 500px;
+              background-color:green;
+              `}
+            >
+              <Text>Hello</Text>
+            </View>
+          </ScrollArea>
         </View>
       </Window>
     </>
