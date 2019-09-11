@@ -1,36 +1,9 @@
 import { Fiber } from "react-reconciler";
-import { QDial, NodeWidget } from "@nodegui/nodegui";
-import { ViewProps, setProps as setViewProps } from "../View";
+import { NodeWidget } from "@nodegui/nodegui";
 import { registerComponent, ComponentConfig } from "../config";
-
-export interface DialProps extends ViewProps {
-  notchesVisible?: boolean;
-  wrapping?: boolean;
-  notchTarget?: number;
-}
-
-export const setProps = (
-  widget: QDial,
-  newProps: DialProps,
-  oldProps: DialProps
-) => {
-  const setter: DialProps = {
-    set notchesVisible(notchesVisible: boolean) {
-      widget.setNotchesVisible(notchesVisible);
-    },
-    set wrapping(wrapping: boolean) {
-      widget.setWrapping(wrapping);
-    },
-    set notchTarget(notchTarget: number) {
-      widget.setNotchTarget(notchTarget);
-    }
-  };
-  Object.assign(setter, newProps);
-  setViewProps(widget, newProps, oldProps);
-};
-
+import { RNDial, setProps, DialProps } from "./RNDial";
 class DialConfig extends ComponentConfig {
-  id = "dial";
+  tagName = RNDial.tagName;
   shouldSetTextContent(nextProps: object): boolean {
     return true;
   }
@@ -40,7 +13,7 @@ class DialConfig extends ComponentConfig {
     context: any,
     workInProgress: Fiber
   ): NodeWidget {
-    const widget = new QDial();
+    const widget = new RNDial();
     setProps(widget, newProps, {});
     return widget;
   }
@@ -51,7 +24,7 @@ class DialConfig extends ComponentConfig {
     newProps: object,
     finishedWork: Fiber
   ): void {
-    setProps(instance as QDial, newProps, oldProps);
+    setProps(instance as RNDial, newProps, oldProps);
   }
 }
 

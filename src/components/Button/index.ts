@@ -1,35 +1,10 @@
-import { QPushButton, QIcon, NodeWidget } from "@nodegui/nodegui";
+import { NodeWidget } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
-import { ViewProps, setProps as setViewProps } from "../View";
 import { registerComponent, ComponentConfig } from "../config";
-interface ButtonProps extends ViewProps {
-  text?: string;
-  flat?: boolean;
-  icon?: QIcon;
-}
-
-const setProps = (
-  widget: QPushButton,
-  newProps: ButtonProps,
-  oldProps: ButtonProps
-) => {
-  const setter: ButtonProps = {
-    set text(buttonText: string) {
-      widget.setText(buttonText);
-    },
-    set flat(isFlat: boolean) {
-      widget.setFlat(isFlat);
-    },
-    set icon(icon: QIcon) {
-      widget.setIcon(icon);
-    }
-  };
-  Object.assign(setter, newProps);
-  setViewProps(widget, newProps, oldProps);
-};
+import { setProps, ButtonProps, RNButton } from "./RNButton";
 
 class ButtonConfig extends ComponentConfig {
-  id = "button";
+  tagName = RNButton.tagName;
   shouldSetTextContent(nextProps: object): boolean {
     return true;
   }
@@ -39,7 +14,7 @@ class ButtonConfig extends ComponentConfig {
     context: any,
     workInProgress: Fiber
   ): NodeWidget {
-    const widget = new QPushButton();
+    const widget = new RNButton();
     setProps(widget, newProps, {});
     return widget;
   }
@@ -50,7 +25,7 @@ class ButtonConfig extends ComponentConfig {
     newProps: object,
     finishedWork: Fiber
   ): void {
-    setProps(instance as QPushButton, newProps, oldProps);
+    setProps(instance as RNButton, newProps, oldProps);
   }
 }
 

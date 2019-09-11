@@ -1,36 +1,9 @@
-import { QLineEdit, NodeWidget } from "@nodegui/nodegui";
+import { NodeWidget } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
-import { ViewProps, setProps as setViewProps } from "../View";
 import { registerComponent, ComponentConfig } from "../config";
-interface LineEditProps extends ViewProps {
-  children?: string;
-  text?: string;
-  placeholderText?: string;
-  readOnly?: boolean;
-}
-
-const setProps = (
-  widget: QLineEdit,
-  newProps: LineEditProps,
-  oldProps: LineEditProps
-) => {
-  const setter: LineEditProps = {
-    set text(text: string) {
-      text ? widget.setText(text) : widget.clear();
-    },
-    set placeholderText(text: string) {
-      widget.setPlaceholderText(text);
-    },
-    set readOnly(isReadOnly: boolean) {
-      widget.setReadOnly(isReadOnly);
-    }
-  };
-  Object.assign(setter, newProps);
-  setViewProps(widget, newProps, oldProps);
-};
-
+import { setProps, LineEditProps, RNLineEdit } from "./RNLineEdit";
 class LineEditConfig extends ComponentConfig {
-  id = "linedit";
+  tagName = RNLineEdit.tagName;
   shouldSetTextContent(nextProps: object): boolean {
     return true;
   }
@@ -40,7 +13,7 @@ class LineEditConfig extends ComponentConfig {
     context: any,
     workInProgress: Fiber
   ): NodeWidget {
-    const widget = new QLineEdit();
+    const widget = new RNLineEdit();
     setProps(widget, newProps, {});
     return widget;
   }
@@ -51,7 +24,7 @@ class LineEditConfig extends ComponentConfig {
     newProps: object,
     finishedWork: Fiber
   ): void {
-    setProps(instance as QLineEdit, newProps, oldProps);
+    setProps(instance as RNLineEdit, newProps, oldProps);
   }
 }
 

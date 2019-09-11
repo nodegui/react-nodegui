@@ -1,27 +1,9 @@
-import { QRadioButton, NodeWidget } from "@nodegui/nodegui";
+import { NodeWidget } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
-import { ViewProps, setProps as setViewProps } from "../View";
 import { registerComponent, ComponentConfig } from "../config";
-interface RadioButtonProps extends ViewProps {
-  text?: string;
-}
-
-const setProps = (
-  widget: QRadioButton,
-  newProps: RadioButtonProps,
-  oldProps: RadioButtonProps
-) => {
-  const setter: RadioButtonProps = {
-    set text(checkboxText: string) {
-      widget.setText(checkboxText);
-    }
-  };
-  Object.assign(setter, newProps);
-  setViewProps(widget, newProps, oldProps);
-};
-
+import { RNRadioButton, setProps, RadioButtonProps } from "./RNRadioButton";
 class RadioButtonConfig extends ComponentConfig {
-  id = "radiobutton";
+  tagName = RNRadioButton.tagName;
   shouldSetTextContent(nextProps: object): boolean {
     return true;
   }
@@ -31,7 +13,7 @@ class RadioButtonConfig extends ComponentConfig {
     context: any,
     workInProgress: Fiber
   ): NodeWidget {
-    const widget = new QRadioButton();
+    const widget = new RNRadioButton();
     setProps(widget, newProps, {});
     return widget;
   }
@@ -42,7 +24,7 @@ class RadioButtonConfig extends ComponentConfig {
     newProps: object,
     finishedWork: Fiber
   ): void {
-    setProps(instance as QRadioButton, newProps, oldProps);
+    setProps(instance as RNRadioButton, newProps, oldProps);
   }
 }
 

@@ -1,6 +1,6 @@
 import Reconciler from "react-reconciler";
-import { NodeWidget, FlexLayout } from "@nodegui/nodegui";
-import { getComponent } from "../components/config";
+import { NodeWidget } from "@nodegui/nodegui";
+import { getComponentByTagName, RNWidget } from "../components/config";
 
 export type AppContainer = Set<NodeWidget>;
 export const appContainer: AppContainer = new Set<NodeWidget>();
@@ -27,11 +27,11 @@ const HostConfig: Reconciler.HostConfig<
     return context;
   },
   getChildHostContext: function(parentContext, fiberType, rootInstance) {
-    const { getContext } = getComponent(fiberType);
+    const { getContext } = getComponentByTagName(fiberType);
     return getContext(parentContext, rootInstance);
   },
   shouldSetTextContent: function(type, nextProps) {
-    const { shouldSetTextContent } = getComponent(type);
+    const { shouldSetTextContent } = getComponentByTagName(type);
     return shouldSetTextContent(nextProps);
   },
   createTextInstance: function(
@@ -53,7 +53,7 @@ const HostConfig: Reconciler.HostConfig<
     context,
     workInProgress
   ) {
-    const { createInstance } = getComponent(type);
+    const { createInstance } = getComponentByTagName(type);
     return createInstance(
       newProps,
       rootContainerInstance,
@@ -61,18 +61,8 @@ const HostConfig: Reconciler.HostConfig<
       workInProgress
     );
   },
-  appendInitialChild: function(parent, child: NodeWidget) {
-    if (!child) {
-      return;
-    }
-    let layout = parent.layout;
-    if (!layout) {
-      const flexLayout = new FlexLayout();
-      flexLayout.setFlexNode(parent.getFlexNode());
-      parent.setLayout(flexLayout);
-      layout = flexLayout;
-    }
-    layout.addWidget(child);
+  appendInitialChild: function(parent: RNWidget, child: NodeWidget) {
+    parent.appendInitialChild(child);
   },
   finalizeInitialChildren: function(
     instance,
@@ -81,7 +71,7 @@ const HostConfig: Reconciler.HostConfig<
     rootContainerInstance,
     context
   ) {
-    const { finalizeInitialChildren } = getComponent(type);
+    const { finalizeInitialChildren } = getComponentByTagName(type);
     return finalizeInitialChildren(
       instance,
       newProps,
@@ -96,7 +86,7 @@ const HostConfig: Reconciler.HostConfig<
     // noop
   },
   commitMount: function(instance, type, newProps, internalInstanceHandle) {
-    const { commitMount } = getComponent(type);
+    const { commitMount } = getComponentByTagName(type);
     return commitMount(instance, newProps, internalInstanceHandle);
   },
   appendChildToContainer: function(container, child: NodeWidget) {
@@ -116,7 +106,7 @@ const HostConfig: Reconciler.HostConfig<
     rootContainerInstance,
     hostContext
   ) {
-    const { prepareUpdate } = getComponent(type);
+    const { prepareUpdate } = getComponentByTagName(type);
     return prepareUpdate(
       instance,
       oldProps,
@@ -133,7 +123,7 @@ const HostConfig: Reconciler.HostConfig<
     newProps,
     finishedWork
   ) {
-    const { commitUpdate } = getComponent(type);
+    const { commitUpdate } = getComponentByTagName(type);
     return commitUpdate(
       instance,
       updatePayload,
@@ -142,34 +132,18 @@ const HostConfig: Reconciler.HostConfig<
       finishedWork
     );
   },
-  appendChild: (parent, child) => {
-    if (!child) {
-      return;
-    }
-    let layout = parent.layout;
-    if (!layout) {
-      const flexLayout = new FlexLayout();
-      flexLayout.setFlexNode(parent.getFlexNode());
-      parent.setLayout(flexLayout);
-      layout = flexLayout;
-    }
-    (layout as FlexLayout).addWidget(child);
+  appendChild: (parent: RNWidget, child: NodeWidget) => {
+    parent.appendChild(child);
   },
-  insertBefore: (parent, child: NodeWidget, beforeChild: NodeWidget) => {
-    let layout = parent.layout;
-    if (!layout) {
-      console.warn("parent has no layout to insert child before another child");
-      return;
-    }
-    (layout as FlexLayout).insertChildBefore(child, beforeChild);
+  insertBefore: (
+    parent: RNWidget,
+    child: NodeWidget,
+    beforeChild: NodeWidget
+  ) => {
+    parent.insertBefore(child, beforeChild);
   },
-  removeChild: (parent, child) => {
-    let layout = parent.layout;
-    if (!layout) {
-      console.warn("parent has no layout to remove child from");
-      return;
-    }
-    (layout as FlexLayout).removeWidget(child);
+  removeChild: (parent: RNWidget, child: NodeWidget) => {
+    parent.removeChild(child);
   },
   commitTextUpdate: (textInstance, oldText, newText) => {
     //noop since we manage all text using Text component

@@ -1,33 +1,10 @@
-import { QCheckBox, NodeWidget } from "@nodegui/nodegui";
+import { NodeWidget } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
-import { ViewProps, setProps as setViewProps } from "../View";
 import { registerComponent, ComponentConfig } from "../config";
-
-interface CheckBoxProps extends ViewProps {
-  children?: string;
-  text?: string;
-  checked?: boolean;
-}
-
-const setProps = (
-  widget: QCheckBox,
-  newProps: CheckBoxProps,
-  oldProps: CheckBoxProps
-) => {
-  const setter: CheckBoxProps = {
-    set text(checkboxText: string) {
-      widget.setText(checkboxText);
-    },
-    set checked(isChecked: boolean) {
-      widget.setChecked(isChecked);
-    }
-  };
-  Object.assign(setter, newProps);
-  setViewProps(widget, newProps, oldProps);
-};
+import { RNCheckBox, setProps, CheckBoxProps } from "./RNCheckbox";
 
 class CheckBoxConfig extends ComponentConfig {
-  id = "checkbox";
+  tagName = RNCheckBox.tagName;
   shouldSetTextContent(nextProps: object): boolean {
     return true;
   }
@@ -37,7 +14,7 @@ class CheckBoxConfig extends ComponentConfig {
     context: any,
     workInProgress: Fiber
   ): NodeWidget {
-    const widget = new QCheckBox();
+    const widget = new RNCheckBox();
     setProps(widget, newProps, {});
     return widget;
   }
@@ -48,7 +25,7 @@ class CheckBoxConfig extends ComponentConfig {
     newProps: object,
     finishedWork: Fiber
   ): void {
-    setProps(instance as QCheckBox, newProps, oldProps);
+    setProps(instance as RNCheckBox, newProps, oldProps);
   }
 }
 
