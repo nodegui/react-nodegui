@@ -19,7 +19,6 @@ export class RNLineEdit extends QLineEdit implements RNWidget {
 }
 
 export interface LineEditProps extends ViewProps {
-  children?: string;
   text?: string;
   placeholderText?: string;
   readOnly?: boolean;

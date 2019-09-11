@@ -60,6 +60,7 @@ export class RNView extends QWidget implements RNWidget {
       return;
     }
     (this.layout as FlexLayout).removeWidget(child);
+    child.close();
   }
 }
 

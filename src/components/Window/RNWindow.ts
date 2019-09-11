@@ -26,6 +26,7 @@ export class RNWindow extends QMainWindow implements RNWidget {
       return;
     }
     (this.layout as FlexLayout).removeWidget(child);
+    child.close();
   }
 }
 

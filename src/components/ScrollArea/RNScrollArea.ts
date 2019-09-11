@@ -4,8 +4,11 @@ import { RNWidget } from "../config";
 
 export class RNScrollArea extends QScrollArea implements RNWidget {
   removeChild(child: NodeWidget): void {
-    throw new Error("Method not implemented.");
-    //TODO: IMPLEMENT THIS
+    const removedChild = this.takeWidget();
+    if (removedChild) {
+      removedChild.close();
+    }
+    child.close();
   }
   appendInitialChild(child: NodeWidget): void {
     this.setWidget(child);

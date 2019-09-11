@@ -20,7 +20,6 @@ export class RNCheckBox extends QCheckBox implements RNWidget {
 }
 
 export interface CheckBoxProps extends ViewProps {
-  children?: string;
   text?: string;
   checked?: boolean;
 }

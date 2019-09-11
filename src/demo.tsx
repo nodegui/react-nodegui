@@ -9,29 +9,20 @@ import { ScrollArea } from "./components/ScrollArea";
 
 const App = () => {
   const winRef = useRef<QMainWindow>(null);
-  const [fileUrl, setFileUrl] = useState();
-  const [imageSrc, setImageSrc] = useState();
+  const [value, setValue] = useState(false);
   useEffect(() => {
     if (winRef.current) {
       winRef.current.resize(800, 450);
     }
   }, []);
-  const lineEditHandler = useMemo(
-    () => ({
-      [QLineEditEvents.textChanged]: (text: string) => {
-        setFileUrl(text);
-      }
-    }),
-    []
-  );
 
-  const loadButtonHandler = useMemo(
+  const toggleHandler = useMemo(
     () => ({
       [QPushButtonEvents.clicked]: () => {
-        setImageSrc(fileUrl);
+        setValue(!value);
       }
     }),
-    [fileUrl]
+    [value]
   );
 
   return (
@@ -39,26 +30,45 @@ const App = () => {
       <Window ref={winRef} styleSheet={styleSheet}>
         <View id="container">
           <View id="controls">
-            <LineEdit
-              on={lineEditHandler}
-              id="textField"
-              text={fileUrl}
-              placeholderText="Absolute path to an image"
-            />
-            <Button text="Load Image" on={loadButtonHandler} />
+            <Button text="Toggle scollwidget" on={toggleHandler} />
           </View>
           <ScrollArea style={`width:400px;height:400px;`}>
-            <View
-              style={`
+            {value ? (
+              <View
+                style={`
+                min-width: 0; 
               min-width: 0; 
-              min-height:0;
-              height:500px;
-              width: 500px;
-              background-color:green;
+                min-width: 0; 
+                min-height:0;
+                height:500px;
+                width: 500px;
+                background-color:green;
               `}
-            >
-              <Text>Hello</Text>
-            </View>
+              >
+                <Text>Hello</Text>
+                <View
+                  style={`
+                  height: '50%';
+                  width: '50%';
+                  background-color: pink;
+                `}
+                ></View>
+              </View>
+            ) : (
+              <View
+                style={`
+                min-width: 0; 
+                min-width: 0; 
+                min-width: 0; 
+                min-height:0;
+                height:500px;
+                width: 500px;
+                background-color:blue;
+              `}
+              >
+                <Text>World</Text>
+              </View>
+            )}
           </ScrollArea>
         </View>
       </Window>

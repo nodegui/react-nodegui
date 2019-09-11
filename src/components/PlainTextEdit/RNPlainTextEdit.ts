@@ -20,9 +20,9 @@ export class RNPlainTextEdit extends QPlainTextEdit implements RNWidget {
 }
 
 export interface PlainTextEditProps extends ViewProps {
-  children?: string;
   text?: string;
   readOnly?: boolean;
+  placeholderText?: string;
 }
 
 export const setProps = (
@@ -36,6 +36,9 @@ export const setProps = (
     },
     set readOnly(isReadOnly: boolean) {
       widget.setReadOnly(isReadOnly);
+    },
+    set placeholderText(text: string) {
+      widget.setPlaceholderText(text);
     }
   };
   Object.assign(setter, newProps);
