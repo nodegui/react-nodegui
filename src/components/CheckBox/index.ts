@@ -1,7 +1,7 @@
 import { NodeWidget } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
 import { registerComponent, ComponentConfig } from "../config";
-import { RNCheckBox, setProps, CheckBoxProps } from "./RNCheckbox";
+import { RNCheckBox, setProps, CheckBoxProps } from "./RNCheckBox";
 
 class CheckBoxConfig extends ComponentConfig {
   tagName = RNCheckBox.tagName;
