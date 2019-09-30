@@ -10,6 +10,8 @@ Visit: https://nodegui.github.io/nodegui for docs.
 
 <img alt="logo" src="https://github.com/nodegui/nodegui/raw/master/extras/logo/nodegui.png" height="200" />
 
+> This project is in active development. It should be okay for smaller projects but anything complex - electron is the way to go for now. 🚧
+
 ## How does it look?
 
 <div style="display:inline; margin: 0 auto;">
