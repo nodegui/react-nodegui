@@ -41,12 +41,6 @@ Visit: https://nodegui.github.io/nodegui for docs.
 - 🦹🏻‍♀️ Good support for dark mode (Thanks to QT).
 - 🏅First class Typescript support. (Works on regular JS projects too 😉).
 
-## Current focus:
-
-- [ ] (Partial support is present) Easily exstensible for creating custom native widgets (like react native).
-- [ ] (Partial) Should have a decent list of stylable native widgets.
-- [ ] Easy build and packaging process.
-
 ## Getting Started
 
 - Check out [react-nodegui-starter](https://github.com/nodegui/react-nodegui-starter) to get up and running with your own React NodeGUI app!
@@ -59,6 +53,8 @@ Looking to contribute? If you wish to implement a new widget/add more features a
 Contributing developer docs link:
 
 https://github.com/nodegui/nodegui/tree/master/docs/development
+
+Please read: https://github.com/nodegui/.github/blob/master/CONTRIBUTING.md
 
 ## Building
 
@@ -76,6 +72,10 @@ React NodeGUI is an open source project and requires your support. If you like t
 ## Special Thanks
 
 - [Logo: Thanks to Vishwas Shetty from the Noun Project.](https://github.com/nodegui/nodegui/blob/master/extras/legal/logo/thanks.md) 
+
+## Code of Conduct
+
+https://github.com/nodegui/.github/blob/master/CODE_OF_CONDUCT.md
 
 ## License
 
