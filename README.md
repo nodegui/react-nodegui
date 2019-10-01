@@ -1,8 +1,9 @@
 # React NodeGUI
+
 [![Join the NodeGUI community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/nodegui)
 [![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors)
 
-Build **performant**, **native** and **cross-platform** desktop applications with **JavaScript** + powerful **CSS like styling**.🚀
+Build **performant**, **native** and **cross-platform** desktop applications with React.🚀
 
 React NodeGUI is powered by **React** ⚛️ and **Qt5** 💚 which makes it CPU and memory efficient as compared to other chromium based solutions like electron. React NodeGUI is essentially a React renderer for [NodeGUI](https://github.com/nodegui/nodegui).
 
@@ -71,7 +72,7 @@ React NodeGUI is an open source project and requires your support. If you like t
 
 ## Special Thanks
 
-- [Logo: Thanks to Vishwas Shetty from the Noun Project.](https://github.com/nodegui/nodegui/blob/master/extras/legal/logo/thanks.md) 
+- [Logo: Thanks to Vishwas Shetty from the Noun Project.](https://github.com/nodegui/nodegui/blob/master/extras/legal/logo/thanks.md)
 
 ## Code of Conduct
 

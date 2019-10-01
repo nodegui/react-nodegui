@@ -1,0 +1,29 @@
+import React from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Layout from "@theme/Layout";
+import { Try } from "../components/Try";
+import { Hero } from "../components/Hero";
+import { Features } from "../components/Features";
+import { CreateNativeApps } from "../components/CreateNativeApps";
+import { CodeExample } from "../components/CodeExample";
+import "./styles.module.css";
+
+function Home() {
+  const context = useDocusaurusContext();
+  const { siteConfig = {} } = context;
+  return (
+    <Layout
+      title={`Hello from ${siteConfig.title}`}
+      description="Build performant, native and cross-platform desktop applications with React 🚀"
+    >
+      <Hero />
+      <main>
+        <Features />
+        <CreateNativeApps />
+        <CodeExample />
+        <Try />
+      </main>
+    </Layout>
+  );
+}
+export default Home;
