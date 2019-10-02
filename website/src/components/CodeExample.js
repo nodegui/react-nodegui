@@ -18,7 +18,7 @@ export const CodeExample = () => {
   const ColumnTwo = () => {
     return (
       <div>
-        <h3>Written in JavaScript—rendered with native code by Qt</h3>
+        <h3>Written in React—rendered with native code by Qt</h3>
         <p>
           Apps can be built completely in JavaScript. This enables native app
           development for whole new teams of developers, and can let existing

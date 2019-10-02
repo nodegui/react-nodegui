@@ -9,14 +9,13 @@ const Image = styled.img`
 
 export const CreateNativeApps = () => {
   const ColumnOne = () => {
-    return <Image src="img/demo.png" />;
+    return <Image src="/img/demo.png" />;
   };
   const ColumnTwo = () => {
     return (
       <div>
         <h3>
-          Create native apps for Windows, MacOs and Linux using JavaScript and
-          CSS
+          Create native apps for Windows, MacOs and Linux using React and CSS
         </h3>
 
         <p>
@@ -26,11 +25,11 @@ export const CreateNativeApps = () => {
         </p>
 
         <p>
-          NodeGui widgets are built on top of{" "}
+          React NodeGui widgets are built on top of{" "}
           <a href="https://www.qt.io/" target="_blank">
             Qt
           </a>{" "}
-          which is a mature dekstop apps framework. NodeGui widgets are
+          which is a mature dekstop apps framework. React NodeGui components are
           extremely customizable just like in the web but does{" "}
           <strong>NOT</strong> use a Web browser under the hood.
         </p>

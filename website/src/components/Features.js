@@ -5,13 +5,13 @@ import classnames from "classnames";
 
 const features = [
   {
-    title: <>Web Technologies</>,
-    imageUrl: "img/undraw_website_setup.svg",
+    title: <>Powered by React</>,
+    imageUrl: "img/undraw_react.svg",
     description: (
       <>
-        With NodeGui, you can build your app with familiar web technologies like
-        CSS and JavaScript. There is even a{" "}
-        <a href="https://react.nodegui.org">React based version</a>.
+        With React NodeGui, you can build truly native apps with React. If you
+        dont want to use React, there is also a pure{" "}
+        <a href="https://nodegui.org">JavaScript based version</a>.
       </>
     )
   },
@@ -20,8 +20,8 @@ const features = [
     imageUrl: "img/undraw_code_review.svg",
     description: (
       <>
-        NodeGui is an open source project maintained by an active community of
-        contributors.
+        React NodeGui is an open source project maintained by an active
+        community of contributors.
       </>
     )
   },
@@ -30,8 +30,7 @@ const features = [
     imageUrl: "img/undraw_windows.svg",
     description: (
       <>
-        Compatible with Mac, Windows, and Linux, NodeGui apps build and run on
-        three platforms.
+        React NodeGui apps build and run on Mac, Windows, and Linux platforms.
       </>
     )
   }
