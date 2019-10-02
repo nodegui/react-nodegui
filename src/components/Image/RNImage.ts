@@ -1,9 +1,43 @@
 import { QLabel, QPixmap, AspectRatioMode, NodeWidget } from "@nodegui/nodegui";
-import { TextProps, setProps as setTextProps } from "../Text/RNText";
+import { TextProps, setTextProps } from "../Text/RNText";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
 
+export interface ImageProps extends TextProps {
+  src?: string;
+  aspectRatioMode?: AspectRatioMode;
+}
+
+const setImageProps = (
+  widget: RNImage,
+  newProps: ImageProps,
+  oldProps: ImageProps
+) => {
+  const setter: ImageProps = {
+    set src(imageUrl: string) {
+      if (!imageUrl) {
+        return;
+      }
+      const pixMap = new QPixmap(imageUrl);
+      widget.setPixmap(pixMap);
+      const size = widget.size();
+      widget.scalePixmap(size.width, size.height);
+    },
+    set aspectRatioMode(mode: AspectRatioMode) {
+      widget.setAspectRatioMode(mode);
+    }
+  };
+  Object.assign(setter, newProps);
+  setTextProps(widget, newProps, oldProps);
+};
+
+/**
+ * @ignore
+ */
 export class RNImage extends QLabel implements RNWidget {
+  setProps(newProps: ImageProps, oldProps: ImageProps): void {
+    setImageProps(this, newProps, oldProps);
+  }
   appendInitialChild(child: NodeWidget): void {
     throwUnsupported(this);
   }
@@ -36,31 +70,3 @@ export class RNImage extends QLabel implements RNWidget {
     }
   };
 }
-
-export interface ImageProps extends TextProps {
-  src?: string;
-  aspectRatioMode?: AspectRatioMode;
-}
-
-export const setProps = (
-  widget: RNImage,
-  newProps: ImageProps,
-  oldProps: ImageProps
-) => {
-  const setter: ImageProps = {
-    set src(imageUrl: string) {
-      if (!imageUrl) {
-        return;
-      }
-      const pixMap = new QPixmap(imageUrl);
-      widget.setPixmap(pixMap);
-      const size = widget.size();
-      widget.scalePixmap(size.width, size.height);
-    },
-    set aspectRatioMode(mode: AspectRatioMode) {
-      widget.setAspectRatioMode(mode);
-    }
-  };
-  Object.assign(setter, newProps);
-  setTextProps(widget, newProps, oldProps);
-};

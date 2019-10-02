@@ -4,7 +4,7 @@ import { NodeWidget } from "@nodegui/nodegui";
 
 type NodeGuiReconciler = Reconciler<NodeWidget, any, Set<NodeWidget>, any>;
 
-type Options = {
+export type RendererOptions = {
   onRender?: () => void;
   onInit?: (reconciler: NodeGuiReconciler) => void;
 };
@@ -14,7 +14,7 @@ const defaultOptions = {
 };
 
 export const Renderer = {
-  render(element: React.ReactNode, options?: Options) {
+  render(element: React.ReactNode, options?: RendererOptions) {
     const containerInfo = appContainer;
     const isConcurrent = false; //disabling since there seems to be a bug with onclick listeneres (when called without a console.log inside them)
     const hydrate = false;

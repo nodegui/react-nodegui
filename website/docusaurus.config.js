@@ -15,7 +15,11 @@ module.exports = {
       },
       links: [
         { to: "docs/guides/getting-started", label: "Docs", position: "right" },
-        { to: "docs/api/QApplication", label: "API", position: "right" },
+        {
+          to: "docs/api/interfaces/buttonprops",
+          label: "API",
+          position: "right"
+        },
         { to: "blog", label: "Blog", position: "right" },
         {
           href: "https://github.com/nodegui/react-nodegui",
@@ -31,7 +35,7 @@ module.exports = {
           title: "Docs",
           items: [
             { to: "docs/guides/getting-started", label: "Getting Started" },
-            { to: "docs/api/QApplication", label: "API" }
+            { to: "docs/api/interfaces/buttonprops", label: "API" }
           ]
         },
         {

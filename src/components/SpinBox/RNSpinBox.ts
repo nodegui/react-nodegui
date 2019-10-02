@@ -1,28 +1,7 @@
 import { QSpinBox, NodeWidget } from "@nodegui/nodegui";
-import { ViewProps, setProps as setViewProps } from "../View/RNView";
+import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
-
-export class RNSpinBox extends QSpinBox implements RNWidget {
-  appendInitialChild(child: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  appendChild(child: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  removeChild(child: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  static tagName = "spinbox";
-}
-
-type Range = {
-  minimum: number;
-  maximum: number;
-};
 
 export interface SpinBoxProps extends ViewProps {
   prefix?: string;
@@ -32,7 +11,7 @@ export interface SpinBoxProps extends ViewProps {
   value?: number;
 }
 
-export const setProps = (
+const setSpinBoxProps = (
   widget: RNSpinBox,
   newProps: SpinBoxProps,
   oldProps: SpinBoxProps
@@ -56,4 +35,31 @@ export const setProps = (
   };
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);
+};
+
+/**
+ * @ignore
+ */
+export class RNSpinBox extends QSpinBox implements RNWidget {
+  setProps(newProps: SpinBoxProps, oldProps: SpinBoxProps): void {
+    setSpinBoxProps(this, newProps, oldProps);
+  }
+  appendInitialChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  appendChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  removeChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  static tagName = "spinbox";
+}
+
+type Range = {
+  minimum: number;
+  maximum: number;
 };

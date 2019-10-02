@@ -1,31 +1,41 @@
 import { registerComponent, ComponentConfig } from "../config";
-import { NodeWidget } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
-import { RNScrollArea, setProps, ScrollAreaProps } from "./RNScrollArea";
+import { RNScrollArea, ScrollAreaProps } from "./RNScrollArea";
+import { AppContainer } from "../../reconciler";
 
 class ScrollAreaConfig extends ComponentConfig {
   tagName = RNScrollArea.tagName;
-  shouldSetTextContent(nextProps: object): boolean {
+  shouldSetTextContent(nextProps: ScrollAreaProps): boolean {
     return false;
   }
   createInstance(
-    newProps: object,
-    rootInstance: Set<NodeWidget>,
+    newProps: ScrollAreaProps,
+    rootInstance: AppContainer,
     context: any,
     workInProgress: Fiber
-  ): NodeWidget {
+  ): RNScrollArea {
     const widget = new RNScrollArea();
-    setProps(widget, newProps, {});
+    widget.setProps(newProps, {});
     return widget;
   }
+  commitMount(
+    instance: RNScrollArea,
+    newProps: ScrollAreaProps,
+    internalInstanceHandle: any
+  ): void {
+    if (newProps.visible !== false) {
+      instance.show();
+    }
+    return;
+  }
   commitUpdate(
-    instance: NodeWidget,
+    instance: RNScrollArea,
     updatePayload: any,
-    oldProps: object,
-    newProps: object,
+    oldProps: ScrollAreaProps,
+    newProps: ScrollAreaProps,
     finishedWork: Fiber
   ): void {
-    setProps(instance as RNScrollArea, newProps, oldProps);
+    instance.setProps(newProps, oldProps);
   }
 }
 

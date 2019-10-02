@@ -1,13 +1,13 @@
 import Reconciler from "react-reconciler";
 import { NodeWidget } from "@nodegui/nodegui";
-import { getComponentByTagName, RNWidget } from "../components/config";
+import { getComponentByTagName, RNWidget, RNProps } from "../components/config";
 
 export type AppContainer = Set<NodeWidget>;
 export const appContainer: AppContainer = new Set<NodeWidget>();
 
 const HostConfig: Reconciler.HostConfig<
   string,
-  object,
+  RNProps,
   AppContainer,
   NodeWidget,
   any,
@@ -173,7 +173,7 @@ const HostConfig: Reconciler.HostConfig<
   hideInstance: (instance: NodeWidget) => {
     instance.hide();
   },
-  unhideInstance: (instance: NodeWidget, props: object) => {
+  unhideInstance: (instance: NodeWidget, Props: RNProps) => {
     instance.show();
   },
   hideTextInstance: (instance: any) => {
@@ -182,7 +182,7 @@ const HostConfig: Reconciler.HostConfig<
       "hideTextInstance called when platform doesnt have host level text"
     );
   },
-  unhideTextInstance: (instance: NodeWidget, props: object) => {
+  unhideTextInstance: (instance: NodeWidget, Props: RNProps) => {
     // noop since we dont have any host text
     console.warn(
       "unhideTextInstance called when platform doesnt have host level text"

@@ -1,30 +1,48 @@
-import { NodeWidget } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
 import { registerComponent, ComponentConfig } from "../config";
-import { RNText, TextProps, setProps } from "./RNText";
+import { RNText, TextProps } from "./RNText";
+import { AppContainer } from "../../reconciler";
 class TextConfig extends ComponentConfig {
   tagName = RNText.tagName;
-  shouldSetTextContent(nextProps: object): boolean {
+  shouldSetTextContent(nextProps: TextProps): boolean {
     return true;
   }
   createInstance(
-    newProps: object,
-    rootInstance: Set<NodeWidget>,
+    newProps: TextProps,
+    rootInstance: AppContainer,
     context: any,
     workInProgress: Fiber
-  ): NodeWidget {
+  ): RNText {
     const widget = new RNText();
-    setProps(widget, newProps, {});
+    widget.setProps(newProps, {});
     return widget;
   }
+  commitMount(
+    instance: RNText,
+    newProps: TextProps,
+    internalInstanceHandle: any
+  ): void {
+    if (newProps.visible !== false) {
+      instance.show();
+    }
+    return;
+  }
+  finalizeInitialChildren(
+    instance: RNText,
+    newProps: TextProps,
+    rootContainerInstance: AppContainer,
+    context: any
+  ): boolean {
+    return true;
+  }
   commitUpdate(
-    instance: NodeWidget,
+    instance: RNText,
     updatePayload: any,
-    oldProps: object,
-    newProps: object,
+    oldProps: TextProps,
+    newProps: TextProps,
     finishedWork: Fiber
   ): void {
-    setProps(instance as RNText, newProps, oldProps);
+    instance.setProps(newProps, oldProps);
   }
 }
 

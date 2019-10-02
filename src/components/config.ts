@@ -3,8 +3,11 @@ import { Fiber } from "react-reconciler";
 import { AppContainer } from "../reconciler";
 
 type UpdatePayload = any;
+
+export interface RNProps {}
 export abstract class RNWidget extends NodeWidget {
   static tagName: string;
+  abstract setProps(newProps: RNProps, oldProps: RNProps): void;
   abstract appendInitialChild(child: NodeWidget): void;
   abstract appendChild(child: NodeWidget): void;
   abstract insertBefore(child: NodeWidget, beforeChild: NodeWidget): void;
@@ -15,16 +18,16 @@ export abstract class ComponentConfig {
   getContext(parentContext: any, rootInstance: AppContainer) {
     return {};
   }
-  abstract shouldSetTextContent(nextProps: object): boolean;
+  abstract shouldSetTextContent(nextProps: RNProps): boolean;
   abstract createInstance(
-    newProps: object,
+    newProps: RNProps,
     rootInstance: AppContainer,
     context: any,
     workInProgress: Fiber
   ): NodeWidget;
   finalizeInitialChildren(
     instance: NodeWidget,
-    newProps: object,
+    newProps: RNProps,
     rootContainerInstance: AppContainer,
     context: any
   ) {
@@ -32,7 +35,7 @@ export abstract class ComponentConfig {
   }
   commitMount(
     instance: NodeWidget,
-    newProps: object,
+    newProps: RNProps,
     internalInstanceHandle: any
   ) {
     return;
@@ -40,8 +43,8 @@ export abstract class ComponentConfig {
   // Update methods:
   prepareUpdate(
     instance: NodeWidget,
-    oldProps: object,
-    newProps: object,
+    oldProps: RNProps,
+    newProps: RNProps,
     rootContainerInstance: AppContainer,
     hostContext: any
   ): UpdatePayload {
@@ -50,8 +53,8 @@ export abstract class ComponentConfig {
   abstract commitUpdate(
     instance: NodeWidget,
     updatePayload: any,
-    oldProps: object,
-    newProps: object,
+    oldProps: RNProps,
+    newProps: RNProps,
     finishedWork: Fiber
   ): void;
 }

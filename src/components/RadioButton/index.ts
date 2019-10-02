@@ -1,30 +1,40 @@
-import { NodeWidget } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
 import { registerComponent, ComponentConfig } from "../config";
-import { RNRadioButton, setProps, RadioButtonProps } from "./RNRadioButton";
+import { RNRadioButton, RadioButtonProps } from "./RNRadioButton";
+import { AppContainer } from "../../reconciler";
 class RadioButtonConfig extends ComponentConfig {
   tagName = RNRadioButton.tagName;
-  shouldSetTextContent(nextProps: object): boolean {
+  shouldSetTextContent(nextProps: RadioButtonProps): boolean {
     return true;
   }
   createInstance(
-    newProps: object,
-    rootInstance: Set<NodeWidget>,
+    newProps: RadioButtonProps,
+    rootInstance: AppContainer,
     context: any,
     workInProgress: Fiber
-  ): NodeWidget {
+  ): RNRadioButton {
     const widget = new RNRadioButton();
-    setProps(widget, newProps, {});
+    widget.setProps(newProps, {});
     return widget;
   }
+  commitMount(
+    instance: RNRadioButton,
+    newProps: RadioButtonProps,
+    internalInstanceHandle: any
+  ): void {
+    if (newProps.visible !== false) {
+      instance.show();
+    }
+    return;
+  }
   commitUpdate(
-    instance: NodeWidget,
+    instance: RNRadioButton,
     updatePayload: any,
-    oldProps: object,
-    newProps: object,
+    oldProps: RadioButtonProps,
+    newProps: RadioButtonProps,
     finishedWork: Fiber
   ): void {
-    setProps(instance as RNRadioButton, newProps, oldProps);
+    instance.setProps(newProps, oldProps);
   }
 }
 

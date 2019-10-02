@@ -65,7 +65,7 @@ $ npm start
 ## What else other than a basic window?
 
 React NodeGui has support for basic components like View (similar to div), CheckBox, PushButton and many more.
-You can take a look at the list of native widgets that React NodeGui currently supports here : [Native widgets in React NodeGui](/docs/api/View).
+You can take a look at the list of native widgets that React NodeGui currently supports here : [Native widgets in React NodeGui](/docs/api/interfaces/viewprops).
 With time more native components and APIs will be added to React NodeGui. Apart from modules in React NodeGui, you also have access to the entire node modules ecosystem. Thus, any node module that you can use with Node.js, can be used with React NodeGui. This makes it extremely powerful.
 
 Fine, I want something more custom and beautiful than just native looking widgets. What do I do?

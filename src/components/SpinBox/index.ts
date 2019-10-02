@@ -1,30 +1,48 @@
-import { NodeWidget } from "@nodegui/nodegui";
 import { registerComponent, ComponentConfig } from "../config";
 import { Fiber } from "react-reconciler";
-import { RNSpinBox, setProps, SpinBoxProps } from "./RNSpinBox";
+import { RNSpinBox, SpinBoxProps } from "./RNSpinBox";
+import { AppContainer } from "../../reconciler";
 class SpinBoxConfig extends ComponentConfig {
   tagName = RNSpinBox.tagName;
-  shouldSetTextContent(nextProps: object): boolean {
+  shouldSetTextContent(nextProps: SpinBoxProps): boolean {
     return true;
   }
   createInstance(
-    newProps: object,
-    rootInstance: Set<NodeWidget>,
+    newProps: SpinBoxProps,
+    rootInstance: AppContainer,
     context: any,
     workInProgress: Fiber
-  ): NodeWidget {
+  ): RNSpinBox {
     const widget = new RNSpinBox();
-    setProps(widget, newProps, {});
+    widget.setProps(newProps, {});
     return widget;
   }
+  finalizeInitialChildren(
+    instance: RNSpinBox,
+    newProps: SpinBoxProps,
+    rootContainerInstance: AppContainer,
+    context: any
+  ): boolean {
+    return true;
+  }
+  commitMount(
+    instance: RNSpinBox,
+    newProps: SpinBoxProps,
+    internalInstanceHandle: any
+  ): void {
+    if (newProps.visible !== false) {
+      instance.show();
+    }
+    return;
+  }
   commitUpdate(
-    instance: NodeWidget,
+    instance: RNSpinBox,
     updatePayload: any,
-    oldProps: object,
-    newProps: object,
+    oldProps: SpinBoxProps,
+    newProps: SpinBoxProps,
     finishedWork: Fiber
   ): void {
-    setProps(instance as RNSpinBox, newProps, oldProps);
+    instance.setProps(newProps, oldProps);
   }
 }
 

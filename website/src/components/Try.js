@@ -66,7 +66,10 @@ export const Try = () => {
                 Learn the basics
               </a>{" "}
               or dive deeper and take a{" "}
-              <a className="LinkBasics" href={"docs/api/QApplication"}>
+              <a
+                className="LinkBasics"
+                href={"docs/api/interfaces/buttonprops"}
+              >
                 look at the APIs.
               </a>
             </SubTitle>

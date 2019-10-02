@@ -1,30 +1,40 @@
-import { NodeWidget } from "@nodegui/nodegui";
 import { registerComponent, ComponentConfig } from "../config";
 import { Fiber } from "react-reconciler";
-import { RNView, setProps, ViewProps } from "./RNView";
+import { RNView, ViewProps } from "./RNView";
+import { AppContainer } from "../../reconciler";
 class ViewConfig extends ComponentConfig {
   tagName = RNView.tagName;
   shouldSetTextContent() {
     return false;
   }
   createInstance(
-    newProps: object,
-    rootInstance: Set<NodeWidget>,
+    newProps: ViewProps,
+    rootInstance: AppContainer,
     context: any,
     workInProgress: Fiber
-  ): NodeWidget {
+  ): RNView {
     const widget = new RNView();
-    setProps(widget, newProps, {});
+    widget.setProps(newProps, {});
     return widget;
   }
+  commitMount(
+    instance: RNView,
+    newProps: ViewProps,
+    internalInstanceHandle: any
+  ): void {
+    if (newProps.visible !== false) {
+      instance.show();
+    }
+    return;
+  }
   commitUpdate(
-    instance: NodeWidget,
+    instance: RNView,
     updatePayload: any,
-    oldProps: object,
-    newProps: object,
+    oldProps: ViewProps,
+    newProps: ViewProps,
     finishedWork: Fiber
   ): void {
-    setProps(instance, newProps, oldProps);
+    instance.setProps(newProps, oldProps);
   }
 }
 

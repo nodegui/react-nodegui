@@ -1,31 +1,49 @@
-import { NodeWidget } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
 import { registerComponent, ComponentConfig } from "../config";
-import { RNCheckBox, setProps, CheckBoxProps } from "./RNCheckBox";
+import { RNCheckBox, CheckBoxProps } from "./RNCheckBox";
+import { AppContainer } from "../../reconciler";
 
 class CheckBoxConfig extends ComponentConfig {
   tagName = RNCheckBox.tagName;
-  shouldSetTextContent(nextProps: object): boolean {
+  shouldSetTextContent(nextProps: CheckBoxProps): boolean {
     return true;
   }
   createInstance(
-    newProps: object,
-    rootInstance: Set<NodeWidget>,
+    newProps: CheckBoxProps,
+    rootInstance: AppContainer,
     context: any,
     workInProgress: Fiber
-  ): NodeWidget {
+  ): RNCheckBox {
     const widget = new RNCheckBox();
-    setProps(widget, newProps, {});
+    widget.setProps(newProps, {});
     return widget;
   }
+  finalizeInitialChildren(
+    instance: RNCheckBox,
+    newProps: CheckBoxProps,
+    rootContainerInstance: AppContainer,
+    context: any
+  ): boolean {
+    return true;
+  }
+  commitMount(
+    instance: RNCheckBox,
+    newProps: CheckBoxProps,
+    internalInstanceHandle: any
+  ): void {
+    if (newProps.visible !== false) {
+      instance.show();
+    }
+    return;
+  }
   commitUpdate(
-    instance: NodeWidget,
+    instance: RNCheckBox,
     updatePayload: any,
-    oldProps: object,
-    newProps: object,
+    oldProps: CheckBoxProps,
+    newProps: CheckBoxProps,
     finishedWork: Fiber
   ): void {
-    setProps(instance as RNCheckBox, newProps, oldProps);
+    instance.setProps(newProps, oldProps);
   }
 }
 

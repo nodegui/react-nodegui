@@ -1,30 +1,40 @@
-import { NodeWidget } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
 import { registerComponent, ComponentConfig } from "../config";
-import { RNProgressBar, setProps, ProgressBarProps } from "./RNProgressBar";
+import { RNProgressBar, ProgressBarProps } from "./RNProgressBar";
+import { AppContainer } from "../../reconciler";
 class ProgressBarConfig extends ComponentConfig {
   tagName = RNProgressBar.tagName;
-  shouldSetTextContent(nextProps: object): boolean {
+  shouldSetTextContent(nextProps: ProgressBarProps): boolean {
     return false;
   }
   createInstance(
-    newProps: object,
-    rootInstance: Set<NodeWidget>,
+    newProps: ProgressBarProps,
+    rootInstance: AppContainer,
     context: any,
     workInProgress: Fiber
-  ): NodeWidget {
+  ): RNProgressBar {
     const widget = new RNProgressBar();
-    setProps(widget, newProps, {});
+    widget.setProps(newProps, {});
     return widget;
   }
+  commitMount(
+    instance: RNProgressBar,
+    newProps: ProgressBarProps,
+    internalInstanceHandle: any
+  ): void {
+    if (newProps.visible !== false) {
+      instance.show();
+    }
+    return;
+  }
   commitUpdate(
-    instance: NodeWidget,
+    instance: RNProgressBar,
     updatePayload: any,
-    oldProps: object,
-    newProps: object,
+    oldProps: ProgressBarProps,
+    newProps: ProgressBarProps,
     finishedWork: Fiber
   ): void {
-    setProps(instance as RNProgressBar, newProps, oldProps);
+    instance.setProps(newProps, oldProps);
   }
 }
 

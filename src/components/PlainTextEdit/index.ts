@@ -1,34 +1,41 @@
-import { NodeWidget } from "@nodegui/nodegui";
 import { registerComponent, ComponentConfig } from "../config";
 import { Fiber } from "react-reconciler";
-import {
-  RNPlainTextEdit,
-  setProps,
-  PlainTextEditProps
-} from "./RNPlainTextEdit";
+import { RNPlainTextEdit, PlainTextEditProps } from "./RNPlainTextEdit";
+import { AppContainer } from "../../reconciler";
+
 class PlainTextEditConfig extends ComponentConfig {
   tagName = RNPlainTextEdit.tagName;
-  shouldSetTextContent(nextProps: object): boolean {
+  shouldSetTextContent(nextProps: PlainTextEditProps): boolean {
     return true;
   }
   createInstance(
-    newProps: object,
-    rootInstance: Set<NodeWidget>,
+    newProps: PlainTextEditProps,
+    rootInstance: AppContainer,
     context: any,
     workInProgress: Fiber
-  ): NodeWidget {
+  ): RNPlainTextEdit {
     const widget = new RNPlainTextEdit();
-    setProps(widget, newProps, {});
+    widget.setProps(newProps, {});
     return widget;
   }
+  commitMount(
+    instance: RNPlainTextEdit,
+    newProps: PlainTextEditProps,
+    internalInstanceHandle: any
+  ): void {
+    if (newProps.visible !== false) {
+      instance.show();
+    }
+    return;
+  }
   commitUpdate(
-    instance: NodeWidget,
+    instance: RNPlainTextEdit,
     updatePayload: any,
-    oldProps: object,
-    newProps: object,
+    oldProps: PlainTextEditProps,
+    newProps: PlainTextEditProps,
     finishedWork: Fiber
   ): void {
-    setProps(instance as RNPlainTextEdit, newProps, oldProps);
+    instance.setProps(newProps, oldProps);
   }
 }
 

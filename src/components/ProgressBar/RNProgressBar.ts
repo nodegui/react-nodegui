@@ -1,23 +1,7 @@
 import { QProgressBar, Orientation, NodeWidget } from "@nodegui/nodegui";
-import { ViewProps, setProps as setViewProps } from "../View/RNView";
+import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
-
-export class RNProgressBar extends QProgressBar implements RNWidget {
-  appendInitialChild(child: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  appendChild(child: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  removeChild(child: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  static tagName = "progressbar";
-}
 
 export interface ProgressBarProps extends ViewProps {
   value?: number;
@@ -26,7 +10,7 @@ export interface ProgressBarProps extends ViewProps {
   orientation?: Orientation;
 }
 
-export const setProps = (
+const setProgressBarProps = (
   widget: RNProgressBar,
   newProps: ProgressBarProps,
   oldProps: ProgressBarProps
@@ -48,3 +32,25 @@ export const setProps = (
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);
 };
+
+/**
+ * @ignore
+ */
+export class RNProgressBar extends QProgressBar implements RNWidget {
+  setProps(newProps: ProgressBarProps, oldProps: ProgressBarProps): void {
+    setProgressBarProps(this, newProps, oldProps);
+  }
+  appendInitialChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  appendChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  removeChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  static tagName = "progressbar";
+}

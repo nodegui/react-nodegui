@@ -1,8 +1,43 @@
 import { QMainWindow, NodeWidget, FlexLayout } from "@nodegui/nodegui";
-import { setProps as setViewProps, ViewProps } from "../View/RNView";
+import { setViewProps, ViewProps, RNView } from "../View/RNView";
 import { RNWidget } from "../config";
 
+export interface WindowProps extends ViewProps {
+  centralWidgetProps?: ViewProps;
+}
+
+const setWindowProps = (
+  window: RNWindow,
+  newProps: WindowProps,
+  oldProps: WindowProps
+) => {
+  const setter: WindowProps = {
+    set centralWidgetProps(centralWidgetProps: ViewProps) {
+      if (window.centralWidget) {
+        const oldcentralWidgetProps = oldProps.centralWidgetProps || {};
+        setViewProps(
+          window.centralWidget as RNView,
+          centralWidgetProps,
+          oldcentralWidgetProps
+        );
+      } else {
+        console.warn(
+          "Trying to set viewProps for main window but no central widget set."
+        );
+      }
+    }
+  };
+  Object.assign(setter, newProps);
+  setViewProps(window, newProps, oldProps);
+};
+
+/**
+ * @ignore
+ */
 export class RNWindow extends QMainWindow implements RNWidget {
+  setProps(newProps: WindowProps, oldProps: WindowProps): void {
+    setWindowProps(this, newProps, oldProps);
+  }
   static tagName = "mainwindow";
   appendInitialChild(child: NodeWidget): void {
     this.appendChild(child);
@@ -29,32 +64,3 @@ export class RNWindow extends QMainWindow implements RNWidget {
     child.close();
   }
 }
-
-export interface WindowProps extends ViewProps {
-  centralWidgetProps?: ViewProps;
-}
-
-export const setProps = (
-  window: RNWindow,
-  newProps: WindowProps,
-  oldProps: WindowProps
-) => {
-  const setter: WindowProps = {
-    set centralWidgetProps(centralWidgetProps: object) {
-      if (window.centralWidget) {
-        const oldcentralWidgetProps = oldProps.centralWidgetProps || {};
-        setViewProps(
-          window.centralWidget,
-          centralWidgetProps,
-          oldcentralWidgetProps
-        );
-      } else {
-        console.warn(
-          "Trying to set viewProps for main window but no central widget set."
-        );
-      }
-    }
-  };
-  Object.assign(setter, newProps);
-  setViewProps(window, newProps, oldProps);
-};

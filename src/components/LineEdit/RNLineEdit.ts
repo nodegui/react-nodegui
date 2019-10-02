@@ -1,22 +1,7 @@
 import { QLineEdit, NodeWidget } from "@nodegui/nodegui";
-import { ViewProps, setProps as setViewProps } from "../View/RNView";
+import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
-export class RNLineEdit extends QLineEdit implements RNWidget {
-  appendInitialChild(child: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  appendChild(child: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  removeChild(child: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  static tagName = "linedit";
-}
 
 export interface LineEditProps extends ViewProps {
   text?: string;
@@ -24,7 +9,7 @@ export interface LineEditProps extends ViewProps {
   readOnly?: boolean;
 }
 
-export const setProps = (
+const setLineEditProps = (
   widget: RNLineEdit,
   newProps: LineEditProps,
   oldProps: LineEditProps
@@ -43,3 +28,25 @@ export const setProps = (
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);
 };
+
+/**
+ * @ignore
+ */
+export class RNLineEdit extends QLineEdit implements RNWidget {
+  setProps(newProps: LineEditProps, oldProps: LineEditProps): void {
+    setLineEditProps(this, newProps, oldProps);
+  }
+  appendInitialChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  appendChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  removeChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  static tagName = "linedit";
+}

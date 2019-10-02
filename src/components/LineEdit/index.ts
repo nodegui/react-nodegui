@@ -1,30 +1,40 @@
-import { NodeWidget } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
 import { registerComponent, ComponentConfig } from "../config";
-import { setProps, LineEditProps, RNLineEdit } from "./RNLineEdit";
+import { LineEditProps, RNLineEdit } from "./RNLineEdit";
+import { AppContainer } from "../../reconciler";
 class LineEditConfig extends ComponentConfig {
   tagName = RNLineEdit.tagName;
-  shouldSetTextContent(nextProps: object): boolean {
+  shouldSetTextContent(nextProps: LineEditProps): boolean {
     return true;
   }
   createInstance(
-    newProps: object,
-    rootInstance: Set<NodeWidget>,
+    newProps: LineEditProps,
+    rootInstance: AppContainer,
     context: any,
     workInProgress: Fiber
-  ): NodeWidget {
+  ): RNLineEdit {
     const widget = new RNLineEdit();
-    setProps(widget, newProps, {});
+    widget.setProps(newProps, {});
     return widget;
   }
+  commitMount(
+    instance: RNLineEdit,
+    newProps: LineEditProps,
+    internalInstanceHandle: any
+  ): void {
+    if (newProps.visible !== false) {
+      instance.show();
+    }
+    return;
+  }
   commitUpdate(
-    instance: NodeWidget,
+    instance: RNLineEdit,
     updatePayload: any,
-    oldProps: object,
-    newProps: object,
+    oldProps: LineEditProps,
+    newProps: LineEditProps,
     finishedWork: Fiber
   ): void {
-    setProps(instance as RNLineEdit, newProps, oldProps);
+    instance.setProps(newProps, oldProps);
   }
 }
 

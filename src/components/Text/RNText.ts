@@ -1,30 +1,17 @@
 import { QLabel, NodeWidget } from "@nodegui/nodegui";
-import { ViewProps, setProps as setViewProps } from "../View/RNView";
+import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
-
-export class RNText extends QLabel implements RNWidget {
-  appendInitialChild(child: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  appendChild(child: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  removeChild(child: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  static tagName = "text";
-}
 
 export interface TextProps extends ViewProps {
   children?: string | number;
   wordWrap?: boolean;
 }
 
-export const setProps = (
+/**
+ * @ignore
+ */
+export const setTextProps = (
   widget: RNText,
   newProps: TextProps,
   oldProps: TextProps
@@ -40,3 +27,25 @@ export const setProps = (
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);
 };
+
+/**
+ * @ignore
+ */
+export class RNText extends QLabel implements RNWidget {
+  setProps(newProps: TextProps, oldProps: TextProps): void {
+    setTextProps(this, newProps, oldProps);
+  }
+  appendInitialChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  appendChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  removeChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  static tagName = "text";
+}

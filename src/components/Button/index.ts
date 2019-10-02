@@ -1,31 +1,48 @@
-import { NodeWidget } from "@nodegui/nodegui";
+import { ComponentConfig, registerComponent } from "../config";
 import { Fiber } from "react-reconciler";
-import { registerComponent, ComponentConfig } from "../config";
-import { setProps, ButtonProps, RNButton } from "./RNButton";
-
+import { RNButton, ButtonProps } from "./RNButton";
+import { AppContainer } from "../../reconciler";
 class ButtonConfig extends ComponentConfig {
   tagName = RNButton.tagName;
-  shouldSetTextContent(nextProps: object): boolean {
+  shouldSetTextContent(nextProps: ButtonProps): boolean {
     return true;
   }
   createInstance(
-    newProps: object,
-    rootInstance: Set<NodeWidget>,
+    newProps: ButtonProps,
+    rootInstance: AppContainer,
     context: any,
     workInProgress: Fiber
-  ): NodeWidget {
+  ): RNButton {
     const widget = new RNButton();
-    setProps(widget, newProps, {});
+    widget.setProps(newProps, {});
     return widget;
   }
+  commitMount(
+    instance: RNButton,
+    newProps: ButtonProps,
+    internalInstanceHandle: any
+  ): void {
+    if (newProps.visible !== false) {
+      instance.show();
+    }
+    return;
+  }
+  finalizeInitialChildren(
+    instance: RNButton,
+    newProps: ButtonProps,
+    rootContainerInstance: AppContainer,
+    context: any
+  ): boolean {
+    return true;
+  }
   commitUpdate(
-    instance: NodeWidget,
+    instance: RNButton,
     updatePayload: any,
-    oldProps: object,
-    newProps: object,
+    oldProps: ButtonProps,
+    newProps: ButtonProps,
     finishedWork: Fiber
   ): void {
-    setProps(instance as RNButton, newProps, oldProps);
+    instance.setProps(newProps, oldProps);
   }
 }
 

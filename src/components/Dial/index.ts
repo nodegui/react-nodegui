@@ -1,30 +1,40 @@
 import { Fiber } from "react-reconciler";
-import { NodeWidget } from "@nodegui/nodegui";
 import { registerComponent, ComponentConfig } from "../config";
-import { RNDial, setProps, DialProps } from "./RNDial";
+import { RNDial, DialProps } from "./RNDial";
+import { AppContainer } from "../../reconciler";
 class DialConfig extends ComponentConfig {
   tagName = RNDial.tagName;
-  shouldSetTextContent(nextProps: object): boolean {
+  shouldSetTextContent(nextProps: DialProps): boolean {
     return true;
   }
   createInstance(
-    newProps: object,
-    rootInstance: Set<NodeWidget>,
+    newProps: DialProps,
+    rootInstance: AppContainer,
     context: any,
     workInProgress: Fiber
-  ): NodeWidget {
+  ): RNDial {
     const widget = new RNDial();
-    setProps(widget, newProps, {});
+    widget.setProps(newProps, {});
     return widget;
   }
+  commitMount(
+    instance: RNDial,
+    newProps: DialProps,
+    internalInstanceHandle: any
+  ): void {
+    if (newProps.visible !== false) {
+      instance.show();
+    }
+    return;
+  }
   commitUpdate(
-    instance: NodeWidget,
+    instance: RNDial,
     updatePayload: any,
-    oldProps: object,
-    newProps: object,
+    oldProps: DialProps,
+    newProps: DialProps,
     finishedWork: Fiber
   ): void {
-    setProps(instance as RNDial, newProps, oldProps);
+    instance.setProps(newProps, oldProps);
   }
 }
 

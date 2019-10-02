@@ -1,23 +1,7 @@
 import { QPlainTextEdit, NodeWidget } from "@nodegui/nodegui";
-import { ViewProps, setProps as setViewProps } from "../View/RNView";
+import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
-
-export class RNPlainTextEdit extends QPlainTextEdit implements RNWidget {
-  appendInitialChild(child: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  appendChild(child: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  removeChild(child: NodeWidget): void {
-    throwUnsupported(this);
-  }
-  static tagName = "plaintextedit";
-}
 
 export interface PlainTextEditProps extends ViewProps {
   text?: string;
@@ -25,7 +9,7 @@ export interface PlainTextEditProps extends ViewProps {
   placeholderText?: string;
 }
 
-export const setProps = (
+const setPlainTextEditProps = (
   widget: RNPlainTextEdit,
   newProps: PlainTextEditProps,
   oldProps: PlainTextEditProps
@@ -44,3 +28,25 @@ export const setProps = (
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);
 };
+
+/**
+ * @ignore
+ */
+export class RNPlainTextEdit extends QPlainTextEdit implements RNWidget {
+  setProps(newProps: PlainTextEditProps, oldProps: PlainTextEditProps): void {
+    setPlainTextEditProps(this, newProps, oldProps);
+  }
+  appendInitialChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  appendChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  removeChild(child: NodeWidget): void {
+    throwUnsupported(this);
+  }
+  static tagName = "plaintextedit";
+}
