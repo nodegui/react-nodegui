@@ -1,0 +1,1063 @@
+{
+  "entrypoints": [
+    "main"
+  ],
+  "origins": {
+    "0": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      78,
+      79,
+      0
+    ],
+    "1": [
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      78,
+      79,
+      1
+    ],
+    "2": [
+      0,
+      1,
+      4,
+      5,
+      7,
+      9,
+      2
+    ],
+    "78": [
+      0,
+      1,
+      3,
+      78
+    ],
+    "@site/src/pages/index.js": [
+      0,
+      1,
+      78,
+      3
+    ],
+    "@theme/BlogListPage": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "@theme/BlogPostPage": [
+      0,
+      1,
+      2,
+      5
+    ],
+    "@theme/BlogTagsListPage": [
+      0,
+      1,
+      6
+    ],
+    "@theme/BlogTagsPostsPage": [
+      0,
+      1,
+      2,
+      7
+    ],
+    "@theme/DocLegacyItem": [
+      0,
+      8
+    ],
+    "@theme/DocLegacyPage": [
+      0,
+      1,
+      2,
+      9
+    ],
+    "@site/blog/2019-05-30-welcome.md": [
+      10
+    ],
+    "@site/blog/2019-05-30-welcome.md?truncated=true": [
+      11
+    ],
+    "@site/docs/api/globals.md": [
+      12
+    ],
+    "@site/docs/api/interfaces/buttonprops.md": [
+      13
+    ],
+    "@site/docs/api/interfaces/checkboxprops.md": [
+      14
+    ],
+    "@site/docs/api/interfaces/dialprops.md": [
+      15
+    ],
+    "@site/docs/api/interfaces/imageprops.md": [
+      16
+    ],
+    "@site/docs/api/interfaces/lineeditprops.md": [
+      17
+    ],
+    "@site/docs/api/interfaces/plaintexteditprops.md": [
+      18
+    ],
+    "@site/docs/api/interfaces/progressbarprops.md": [
+      19
+    ],
+    "@site/docs/api/interfaces/radiobuttonprops.md": [
+      20
+    ],
+    "@site/docs/api/interfaces/scrollareaprops.md": [
+      21
+    ],
+    "@site/docs/api/interfaces/spinboxprops.md": [
+      22
+    ],
+    "@site/docs/api/interfaces/textprops.md": [
+      23
+    ],
+    "@site/docs/api/interfaces/viewprops.md": [
+      24
+    ],
+    "@site/docs/api/interfaces/windowprops.md": [
+      25
+    ],
+    "@site/docs/doc1.md": [
+      26
+    ],
+    "@site/docs/guides/custom-nodegui-native-plugin.md": [
+      27
+    ],
+    "@site/docs/guides/debugging-in-vscode.md": [
+      28
+    ],
+    "@site/docs/guides/debugging.md": [
+      29
+    ],
+    "@site/docs/guides/getting-started.md": [
+      30
+    ],
+    "@site/docs/guides/handle-events.md": [
+      31
+    ],
+    "@site/docs/guides/images.md": [
+      32
+    ],
+    "@site/docs/guides/layout.md": [
+      33
+    ],
+    "@site/docs/guides/networking.md": [
+      34
+    ],
+    "@site/docs/guides/react-nodegui-architecture.md": [
+      35
+    ],
+    "@site/docs/guides/scroll-view.md": [
+      36
+    ],
+    "@site/docs/guides/styling.md": [
+      37
+    ],
+    "@site/docs/guides/tutorial.md": [
+      38
+    ],
+    "@site/docs/guides/using-native-node-modules.md": [
+      39
+    ],
+    "@site/docs/mdx.md": [
+      40
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-b5f.json": [
+      41
+    ],
+    "main": [
+      76,
+      42
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-blog/blog-c06.json": [
+      43
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-blog/blog-tags-hello-039.json": [
+      44
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-blog/blog-tags-nodegui-2a1.json": [
+      45
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-blog/blog-welcome-001.json": [
+      46
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-api-globals-561.json": [
+      47
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-api-interfaces-buttonprops-5f4.json": [
+      48
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-api-interfaces-checkboxprops-e9d.json": [
+      49
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-api-interfaces-dialprops-476.json": [
+      50
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-api-interfaces-imageprops-0d7.json": [
+      51
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-api-interfaces-lineeditprops-be3.json": [
+      52
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-api-interfaces-plaintexteditprops-09d.json": [
+      53
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-api-interfaces-progressbarprops-e09.json": [
+      54
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-api-interfaces-radiobuttonprops-bdf.json": [
+      55
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-api-interfaces-scrollareaprops-f8b.json": [
+      56
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-api-interfaces-spinboxprops-91e.json": [
+      57
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-api-interfaces-textprops-d26.json": [
+      58
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-api-interfaces-viewprops-0ab.json": [
+      59
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-api-interfaces-windowprops-d83.json": [
+      60
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-doc-1-6ac.json": [
+      61
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-guides-custom-nodegui-native-plugin-c98.json": [
+      62
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-guides-debugging-4fd.json": [
+      63
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-guides-debugging-in-vscode-bb6.json": [
+      64
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-guides-getting-started-ed9.json": [
+      65
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-guides-handle-events-d0d.json": [
+      66
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-guides-images-be2.json": [
+      67
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-guides-layout-6c3.json": [
+      68
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-guides-networking-682.json": [
+      69
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-guides-react-nodegui-architecture-69b.json": [
+      70
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-guides-scroll-view-b95.json": [
+      71
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-guides-styling-d4a.json": [
+      72
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-guides-tutorial-ebb.json": [
+      73
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-guides-using-native-node-modules-a3d.json": [
+      74
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-docs/docs-mdx-04f.json": [
+      75
+    ],
+    "runtime~main": [
+      42,
+      76
+    ],
+    "/Users/atulr/Project/nodegui/react-nodegui/website/.docusaurus/docusaurus-plugin-content-blog/blog-tags-tags-4c2.json": [
+      77
+    ],
+    "@theme/NotFound": [
+      0,
+      1,
+      79
+    ]
+  },
+  "assets": {
+    "0": {
+      "js": [
+        {
+          "file": "0.4f8d74d28cda57933267.js",
+          "hash": "14dfc4ebb2cf4ca20540",
+          "publicPath": "/0.4f8d74d28cda57933267.js"
+        }
+      ]
+    },
+    "1": {
+      "css": [
+        {
+          "file": "1.196ce05925ea6d776920.css",
+          "hash": "d923c7ed7bbeeaed3c57",
+          "publicPath": "/1.196ce05925ea6d776920.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "1.70633956d1ddd490d43d.js",
+          "hash": "d923c7ed7bbeeaed3c57",
+          "publicPath": "/1.70633956d1ddd490d43d.js"
+        }
+      ]
+    },
+    "2": {
+      "css": [
+        {
+          "file": "2.702de9bbb01fe4f46fa1.css",
+          "hash": "90b013cce943f784648e",
+          "publicPath": "/2.702de9bbb01fe4f46fa1.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "2.82d78f57fabef1c7cf46.js",
+          "hash": "90b013cce943f784648e",
+          "publicPath": "/2.82d78f57fabef1c7cf46.js"
+        }
+      ]
+    },
+    "3": {
+      "css": [
+        {
+          "file": "component---site-src-pages-index-jsc-4-f-f99.71bf8f44fd9ac59b6a50.css",
+          "hash": "3d22fc4388ab411c24fb",
+          "publicPath": "/component---site-src-pages-index-jsc-4-f-f99.71bf8f44fd9ac59b6a50.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "component---site-src-pages-index-jsc-4-f-f99.b9cef9db2954ddf600c6.js",
+          "hash": "3d22fc4388ab411c24fb",
+          "publicPath": "/component---site-src-pages-index-jsc-4-f-f99.b9cef9db2954ddf600c6.js"
+        }
+      ]
+    },
+    "4": {
+      "js": [
+        {
+          "file": "component---theme-blog-list-pagea-6-a-7ba.53f8f5bef6a344a5b828.js",
+          "hash": "b95a09d31d787d02e97e",
+          "publicPath": "/component---theme-blog-list-pagea-6-a-7ba.53f8f5bef6a344a5b828.js"
+        }
+      ]
+    },
+    "5": {
+      "js": [
+        {
+          "file": "component---theme-blog-post-pageccc-cab.5fc08e46bd6ac9f15e8b.js",
+          "hash": "6493bb8341683ae7f1a0",
+          "publicPath": "/component---theme-blog-post-pageccc-cab.5fc08e46bd6ac9f15e8b.js"
+        }
+      ]
+    },
+    "6": {
+      "js": [
+        {
+          "file": "component---theme-blog-tags-list-page-01-a-d0b.e72b573528a0cbf2c2ad.js",
+          "hash": "db629d218a5a7bd6e781",
+          "publicPath": "/component---theme-blog-tags-list-page-01-a-d0b.e72b573528a0cbf2c2ad.js"
+        }
+      ]
+    },
+    "7": {
+      "js": [
+        {
+          "file": "component---theme-blog-tags-posts-page-687-b6c.9c32a03fdeac4a6f20b6.js",
+          "hash": "6da57f08487d2486f429",
+          "publicPath": "/component---theme-blog-tags-posts-page-687-b6c.9c32a03fdeac4a6f20b6.js"
+        }
+      ]
+    },
+    "8": {
+      "css": [
+        {
+          "file": "component---theme-doc-legacy-item-031-769.1f1ce10374de019f5d3a.css",
+          "hash": "24fd90ec5bdba956c32b",
+          "publicPath": "/component---theme-doc-legacy-item-031-769.1f1ce10374de019f5d3a.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "component---theme-doc-legacy-item-031-769.2ab9c29b6d71d00e55a9.js",
+          "hash": "24fd90ec5bdba956c32b",
+          "publicPath": "/component---theme-doc-legacy-item-031-769.2ab9c29b6d71d00e55a9.js"
+        }
+      ]
+    },
+    "9": {
+      "css": [
+        {
+          "file": "component---theme-doc-legacy-page-9-e-7-ca5.3c38a2f40a51efdd72a0.css",
+          "hash": "451583777c2f5416c199",
+          "publicPath": "/component---theme-doc-legacy-page-9-e-7-ca5.3c38a2f40a51efdd72a0.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "component---theme-doc-legacy-page-9-e-7-ca5.fbacfdc991214d3dac67.js",
+          "hash": "451583777c2f5416c199",
+          "publicPath": "/component---theme-doc-legacy-page-9-e-7-ca5.fbacfdc991214d3dac67.js"
+        }
+      ]
+    },
+    "10": {
+      "js": [
+        {
+          "file": "content---blog-welcome-286-e55.3e70d8e680a5d8c264f8.js",
+          "hash": "866bdb8b9b9efe520b48",
+          "publicPath": "/content---blog-welcome-286-e55.3e70d8e680a5d8c264f8.js"
+        }
+      ]
+    },
+    "11": {
+      "js": [
+        {
+          "file": "content---blogaf-1-856.49f8226724561b4390b8.js",
+          "hash": "4fd0ece8d0dbfe2f2d43",
+          "publicPath": "/content---blogaf-1-856.49f8226724561b4390b8.js"
+        }
+      ]
+    },
+    "12": {
+      "js": [
+        {
+          "file": "content---docs-api-globals-2-b-9-564.30205a844589b6f1e24c.js",
+          "hash": "e77396d839f59ec341f6",
+          "publicPath": "/content---docs-api-globals-2-b-9-564.30205a844589b6f1e24c.js"
+        }
+      ]
+    },
+    "13": {
+      "js": [
+        {
+          "file": "content---docs-api-interfaces-buttonprops-148-2ca.12d3316f78c31855bc27.js",
+          "hash": "d60d7189f87ad3f37cb2",
+          "publicPath": "/content---docs-api-interfaces-buttonprops-148-2ca.12d3316f78c31855bc27.js"
+        }
+      ]
+    },
+    "14": {
+      "js": [
+        {
+          "file": "content---docs-api-interfaces-checkboxprops-3-d-7-a67.64a9bd4034967b7e566a.js",
+          "hash": "2986d73508f1a3dee105",
+          "publicPath": "/content---docs-api-interfaces-checkboxprops-3-d-7-a67.64a9bd4034967b7e566a.js"
+        }
+      ]
+    },
+    "15": {
+      "js": [
+        {
+          "file": "content---docs-api-interfaces-dialprops-09-a-a3d.f6b9a56069474237c101.js",
+          "hash": "d0746fbad9f1189d866b",
+          "publicPath": "/content---docs-api-interfaces-dialprops-09-a-a3d.f6b9a56069474237c101.js"
+        }
+      ]
+    },
+    "16": {
+      "js": [
+        {
+          "file": "content---docs-api-interfaces-imageprops-604-395.31748807772a7b003809.js",
+          "hash": "595b4bffd6fbce960c09",
+          "publicPath": "/content---docs-api-interfaces-imageprops-604-395.31748807772a7b003809.js"
+        }
+      ]
+    },
+    "17": {
+      "js": [
+        {
+          "file": "content---docs-api-interfaces-lineeditprops-2-af-4b4.c2786ae8a3a17c7823a6.js",
+          "hash": "4efde3daf297cbbb6e3f",
+          "publicPath": "/content---docs-api-interfaces-lineeditprops-2-af-4b4.c2786ae8a3a17c7823a6.js"
+        }
+      ]
+    },
+    "18": {
+      "js": [
+        {
+          "file": "content---docs-api-interfaces-plaintexteditprops-9-cd-b92.7762e4e2eb95c9c5e7bf.js",
+          "hash": "8331ecc2fd5b74c6a652",
+          "publicPath": "/content---docs-api-interfaces-plaintexteditprops-9-cd-b92.7762e4e2eb95c9c5e7bf.js"
+        }
+      ]
+    },
+    "19": {
+      "js": [
+        {
+          "file": "content---docs-api-interfaces-progressbarpropsbae-d0a.85a425270cc9d0e18022.js",
+          "hash": "0ddc87cacb5fe792114d",
+          "publicPath": "/content---docs-api-interfaces-progressbarpropsbae-d0a.85a425270cc9d0e18022.js"
+        }
+      ]
+    },
+    "20": {
+      "js": [
+        {
+          "file": "content---docs-api-interfaces-radiobuttonpropsb-67-6cd.70aad5c5bd2fccdc181d.js",
+          "hash": "4687ce5c464e956c976a",
+          "publicPath": "/content---docs-api-interfaces-radiobuttonpropsb-67-6cd.70aad5c5bd2fccdc181d.js"
+        }
+      ]
+    },
+    "21": {
+      "js": [
+        {
+          "file": "content---docs-api-interfaces-scrollareapropsd-66-162.43ade6f417a2a5923933.js",
+          "hash": "44a164cc1e860ef7269d",
+          "publicPath": "/content---docs-api-interfaces-scrollareapropsd-66-162.43ade6f417a2a5923933.js"
+        }
+      ]
+    },
+    "22": {
+      "js": [
+        {
+          "file": "content---docs-api-interfaces-spinboxpropsc-61-057.a99e2d37e8499bf365a6.js",
+          "hash": "fb2742e7df741a7d2447",
+          "publicPath": "/content---docs-api-interfaces-spinboxpropsc-61-057.a99e2d37e8499bf365a6.js"
+        }
+      ]
+    },
+    "23": {
+      "js": [
+        {
+          "file": "content---docs-api-interfaces-textprops-225-0d4.2ef4acca155f0ff74fa8.js",
+          "hash": "7910514b7a261628307b",
+          "publicPath": "/content---docs-api-interfaces-textprops-225-0d4.2ef4acca155f0ff74fa8.js"
+        }
+      ]
+    },
+    "24": {
+      "js": [
+        {
+          "file": "content---docs-api-interfaces-viewprops-825-621.997b2028216db1574121.js",
+          "hash": "9f3a704f1008d01633b6",
+          "publicPath": "/content---docs-api-interfaces-viewprops-825-621.997b2028216db1574121.js"
+        }
+      ]
+    },
+    "25": {
+      "js": [
+        {
+          "file": "content---docs-api-interfaces-windowprops-834-24c.2b0cecc33d10d6f4dd31.js",
+          "hash": "0b907ba50290c92f304f",
+          "publicPath": "/content---docs-api-interfaces-windowprops-834-24c.2b0cecc33d10d6f4dd31.js"
+        }
+      ]
+    },
+    "26": {
+      "js": [
+        {
+          "file": "content---docs-doc-1-b-2-f-e80.3dcaecf241a87ccd4847.js",
+          "hash": "545b80b2d8ebc10dce05",
+          "publicPath": "/content---docs-doc-1-b-2-f-e80.3dcaecf241a87ccd4847.js"
+        }
+      ]
+    },
+    "27": {
+      "js": [
+        {
+          "file": "content---docs-guides-custom-nodegui-native-plugin-632-9db.c6fa8542fc9df4d50fc3.js",
+          "hash": "afc7edf85a49efb5a0db",
+          "publicPath": "/content---docs-guides-custom-nodegui-native-plugin-632-9db.c6fa8542fc9df4d50fc3.js"
+        }
+      ]
+    },
+    "28": {
+      "js": [
+        {
+          "file": "content---docs-guides-debugging-in-vscodebd-7-cec.439a91e505d0b0b57614.js",
+          "hash": "7f7a8429844b9de91ff7",
+          "publicPath": "/content---docs-guides-debugging-in-vscodebd-7-cec.439a91e505d0b0b57614.js"
+        }
+      ]
+    },
+    "29": {
+      "js": [
+        {
+          "file": "content---docs-guides-debuggingf-3-f-cf5.7ac18f3635c47f92b239.js",
+          "hash": "a65fa172d033036420ce",
+          "publicPath": "/content---docs-guides-debuggingf-3-f-cf5.7ac18f3635c47f92b239.js"
+        }
+      ]
+    },
+    "30": {
+      "js": [
+        {
+          "file": "content---docs-guides-getting-startedc-9-e-20f.c4d79621bb2c53516911.js",
+          "hash": "6b919e6bd251d4a025fc",
+          "publicPath": "/content---docs-guides-getting-startedc-9-e-20f.c4d79621bb2c53516911.js"
+        }
+      ]
+    },
+    "31": {
+      "js": [
+        {
+          "file": "content---docs-guides-handle-events-160-4b0.b0eaede0d27f012954c0.js",
+          "hash": "91e0a04e37ffb6231d8e",
+          "publicPath": "/content---docs-guides-handle-events-160-4b0.b0eaede0d27f012954c0.js"
+        }
+      ]
+    },
+    "32": {
+      "js": [
+        {
+          "file": "content---docs-guides-images-991-065.72225c29170643fbb8cc.js",
+          "hash": "95c043839d9bf1ab5e74",
+          "publicPath": "/content---docs-guides-images-991-065.72225c29170643fbb8cc.js"
+        }
+      ]
+    },
+    "33": {
+      "js": [
+        {
+          "file": "content---docs-guides-layoutdf-5-a64.a26ed4ce20f221587826.js",
+          "hash": "f6e182be98d2b034804a",
+          "publicPath": "/content---docs-guides-layoutdf-5-a64.a26ed4ce20f221587826.js"
+        }
+      ]
+    },
+    "34": {
+      "js": [
+        {
+          "file": "content---docs-guides-networking-374-03e.0642e4cf15f25066b3f1.js",
+          "hash": "4d191e05b5133f8e4ce5",
+          "publicPath": "/content---docs-guides-networking-374-03e.0642e4cf15f25066b3f1.js"
+        }
+      ]
+    },
+    "35": {
+      "js": [
+        {
+          "file": "content---docs-guides-react-nodegui-architecture-8-f-6-cd9.15436d576d0c62cd07b4.js",
+          "hash": "5f853512fdfaa8ee9d7f",
+          "publicPath": "/content---docs-guides-react-nodegui-architecture-8-f-6-cd9.15436d576d0c62cd07b4.js"
+        }
+      ]
+    },
+    "36": {
+      "js": [
+        {
+          "file": "content---docs-guides-scroll-view-76-e-87c.3305cf6ba07e69664158.js",
+          "hash": "16fd2be2c136605abb98",
+          "publicPath": "/content---docs-guides-scroll-view-76-e-87c.3305cf6ba07e69664158.js"
+        }
+      ]
+    },
+    "37": {
+      "js": [
+        {
+          "file": "content---docs-guides-stylingfec-977.79b2690d398fa91707a1.js",
+          "hash": "f52c231f77f78437d192",
+          "publicPath": "/content---docs-guides-stylingfec-977.79b2690d398fa91707a1.js"
+        }
+      ]
+    },
+    "38": {
+      "js": [
+        {
+          "file": "content---docs-guides-tutoriale-53-6ab.46707ab3a34e59396afe.js",
+          "hash": "7966352c53ae525433c6",
+          "publicPath": "/content---docs-guides-tutoriale-53-6ab.46707ab3a34e59396afe.js"
+        }
+      ]
+    },
+    "39": {
+      "js": [
+        {
+          "file": "content---docs-guides-using-native-node-modules-3-ab-104.035573ac9f08abb845a0.js",
+          "hash": "2793f47270db56305692",
+          "publicPath": "/content---docs-guides-using-native-node-modules-3-ab-104.035573ac9f08abb845a0.js"
+        }
+      ]
+    },
+    "40": {
+      "js": [
+        {
+          "file": "content---docs-mdxce-3-7d1.1725ee3498b3dc9db991.js",
+          "hash": "a599857308a9858f464f",
+          "publicPath": "/content---docs-mdxce-3-7d1.1725ee3498b3dc9db991.js"
+        }
+      ]
+    },
+    "41": {
+      "js": [
+        {
+          "file": "docsMetadata---docs-287-445.687df411123a4bb4155c.js",
+          "hash": "9a6b6a22398d828c2f22",
+          "publicPath": "/docsMetadata---docs-287-445.687df411123a4bb4155c.js"
+        }
+      ]
+    },
+    "42": {
+      "css": [
+        {
+          "file": "main.f66713773e9ba37b90fe.css",
+          "hash": "de653807a490a277134d",
+          "publicPath": "/main.f66713773e9ba37b90fe.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "main.3053c523a7c4338dd1c2.js",
+          "hash": "de653807a490a277134d",
+          "publicPath": "/main.3053c523a7c4338dd1c2.js"
+        }
+      ]
+    },
+    "43": {
+      "js": [
+        {
+          "file": "metadata---blog-812-29e.7957b7245f06fd54134f.js",
+          "hash": "c67fe6c515c988b55a37",
+          "publicPath": "/metadata---blog-812-29e.7957b7245f06fd54134f.js"
+        }
+      ]
+    },
+    "44": {
+      "js": [
+        {
+          "file": "metadata---blog-tags-helloc-4-a-502.0ed01255faa5ab153c42.js",
+          "hash": "2c916f9266334d00410b",
+          "publicPath": "/metadata---blog-tags-helloc-4-a-502.0ed01255faa5ab153c42.js"
+        }
+      ]
+    },
+    "45": {
+      "js": [
+        {
+          "file": "metadata---blog-tags-nodeguif-6-f-b74.d6749a20a23a09dfb75c.js",
+          "hash": "7edb4c8ec4ec78d9da2c",
+          "publicPath": "/metadata---blog-tags-nodeguif-6-f-b74.d6749a20a23a09dfb75c.js"
+        }
+      ]
+    },
+    "46": {
+      "js": [
+        {
+          "file": "metadata---blog-welcome-76-d-de1.3fce61c9207ce9304fca.js",
+          "hash": "b2892ad9fd03a856003a",
+          "publicPath": "/metadata---blog-welcome-76-d-de1.3fce61c9207ce9304fca.js"
+        }
+      ]
+    },
+    "47": {
+      "js": [
+        {
+          "file": "metadata---docs-api-globalsb-8-a-2be.cfaf4b4a95990925ec1d.js",
+          "hash": "cf283a8ecb5f36548cef",
+          "publicPath": "/metadata---docs-api-globalsb-8-a-2be.cfaf4b4a95990925ec1d.js"
+        }
+      ]
+    },
+    "48": {
+      "js": [
+        {
+          "file": "metadata---docs-api-interfaces-buttonprops-297-03f.6fbd715a9fa57357ddaf.js",
+          "hash": "e958b609d139259a319c",
+          "publicPath": "/metadata---docs-api-interfaces-buttonprops-297-03f.6fbd715a9fa57357ddaf.js"
+        }
+      ]
+    },
+    "49": {
+      "js": [
+        {
+          "file": "metadata---docs-api-interfaces-checkboxprops-436-3f0.7d381f2449fd706dd74b.js",
+          "hash": "8e2ea1412b74789c24bc",
+          "publicPath": "/metadata---docs-api-interfaces-checkboxprops-436-3f0.7d381f2449fd706dd74b.js"
+        }
+      ]
+    },
+    "50": {
+      "js": [
+        {
+          "file": "metadata---docs-api-interfaces-dialprops-7-e-1-3df.278487b5f308a0690dee.js",
+          "hash": "2c780a3af036b56acc35",
+          "publicPath": "/metadata---docs-api-interfaces-dialprops-7-e-1-3df.278487b5f308a0690dee.js"
+        }
+      ]
+    },
+    "51": {
+      "js": [
+        {
+          "file": "metadata---docs-api-interfaces-imagepropsd-5-e-f9e.20033454841d13ed04cf.js",
+          "hash": "0591dd4995bc8a928477",
+          "publicPath": "/metadata---docs-api-interfaces-imagepropsd-5-e-f9e.20033454841d13ed04cf.js"
+        }
+      ]
+    },
+    "52": {
+      "js": [
+        {
+          "file": "metadata---docs-api-interfaces-lineeditpropsdd-0-228.ca8bcf55d1e579c7dfc8.js",
+          "hash": "c7f0b7c367cd39033104",
+          "publicPath": "/metadata---docs-api-interfaces-lineeditpropsdd-0-228.ca8bcf55d1e579c7dfc8.js"
+        }
+      ]
+    },
+    "53": {
+      "js": [
+        {
+          "file": "metadata---docs-api-interfaces-plaintexteditpropse-29-984.bec22337b230f738cada.js",
+          "hash": "c072a68ad0ba571dc83b",
+          "publicPath": "/metadata---docs-api-interfaces-plaintexteditpropse-29-984.bec22337b230f738cada.js"
+        }
+      ]
+    },
+    "54": {
+      "js": [
+        {
+          "file": "metadata---docs-api-interfaces-progressbarpropsa-42-d30.9c6eab334b51edb21e92.js",
+          "hash": "476965140381caaf7c6b",
+          "publicPath": "/metadata---docs-api-interfaces-progressbarpropsa-42-d30.9c6eab334b51edb21e92.js"
+        }
+      ]
+    },
+    "55": {
+      "js": [
+        {
+          "file": "metadata---docs-api-interfaces-radiobuttonprops-10-f-e85.cc9022e019c449c0b91f.js",
+          "hash": "5943b434700117e1902a",
+          "publicPath": "/metadata---docs-api-interfaces-radiobuttonprops-10-f-e85.cc9022e019c449c0b91f.js"
+        }
+      ]
+    },
+    "56": {
+      "js": [
+        {
+          "file": "metadata---docs-api-interfaces-scrollareaprops-54-d-b2e.18009b5bb8bfc03eb2f9.js",
+          "hash": "9dfc43aa917b0ef548e8",
+          "publicPath": "/metadata---docs-api-interfaces-scrollareaprops-54-d-b2e.18009b5bb8bfc03eb2f9.js"
+        }
+      ]
+    },
+    "57": {
+      "js": [
+        {
+          "file": "metadata---docs-api-interfaces-spinboxpropsea-7-eee.e58bccf64ac136cd5923.js",
+          "hash": "94ecc0a525f797c3e234",
+          "publicPath": "/metadata---docs-api-interfaces-spinboxpropsea-7-eee.e58bccf64ac136cd5923.js"
+        }
+      ]
+    },
+    "58": {
+      "js": [
+        {
+          "file": "metadata---docs-api-interfaces-textpropsd-69-022.176d2ae1af0c8e8bab19.js",
+          "hash": "31c4de8037394c5a6739",
+          "publicPath": "/metadata---docs-api-interfaces-textpropsd-69-022.176d2ae1af0c8e8bab19.js"
+        }
+      ]
+    },
+    "59": {
+      "js": [
+        {
+          "file": "metadata---docs-api-interfaces-viewprops-582-d44.ae2913ee7e20844f0353.js",
+          "hash": "d86665e3145f83828a57",
+          "publicPath": "/metadata---docs-api-interfaces-viewprops-582-d44.ae2913ee7e20844f0353.js"
+        }
+      ]
+    },
+    "60": {
+      "js": [
+        {
+          "file": "metadata---docs-api-interfaces-windowpropsad-2-806.6e73555859cb3667f51a.js",
+          "hash": "3d0e7968b605bb85483b",
+          "publicPath": "/metadata---docs-api-interfaces-windowpropsad-2-806.6e73555859cb3667f51a.js"
+        }
+      ]
+    },
+    "61": {
+      "js": [
+        {
+          "file": "metadata---docs-doc-1335-7d2.aadc938ef0781cf0640b.js",
+          "hash": "55df2331bdd2400894e4",
+          "publicPath": "/metadata---docs-doc-1335-7d2.aadc938ef0781cf0640b.js"
+        }
+      ]
+    },
+    "62": {
+      "js": [
+        {
+          "file": "metadata---docs-guides-custom-nodegui-native-plugin-6-f-7-9a5.629721faa0325ee73a4a.js",
+          "hash": "633591fdbec4648e95df",
+          "publicPath": "/metadata---docs-guides-custom-nodegui-native-plugin-6-f-7-9a5.629721faa0325ee73a4a.js"
+        }
+      ]
+    },
+    "63": {
+      "js": [
+        {
+          "file": "metadata---docs-guides-debugging-5-cb-5ab.9496df18a4f7cd9a7ff8.js",
+          "hash": "a711a94b719e887ca3a8",
+          "publicPath": "/metadata---docs-guides-debugging-5-cb-5ab.9496df18a4f7cd9a7ff8.js"
+        }
+      ]
+    },
+    "64": {
+      "js": [
+        {
+          "file": "metadata---docs-guides-debugging-in-vscode-337-46c.0d37518922eefc06c73e.js",
+          "hash": "6a745224459be3484b4e",
+          "publicPath": "/metadata---docs-guides-debugging-in-vscode-337-46c.0d37518922eefc06c73e.js"
+        }
+      ]
+    },
+    "65": {
+      "js": [
+        {
+          "file": "metadata---docs-guides-getting-started-910-b5c.5b2ab1a4ddf02cd4a001.js",
+          "hash": "6a9d00c80a1adda75a76",
+          "publicPath": "/metadata---docs-guides-getting-started-910-b5c.5b2ab1a4ddf02cd4a001.js"
+        }
+      ]
+    },
+    "66": {
+      "js": [
+        {
+          "file": "metadata---docs-guides-handle-events-2-b-6-444.3b9505f46e4f2d55d66e.js",
+          "hash": "99ebf7d77e545475725c",
+          "publicPath": "/metadata---docs-guides-handle-events-2-b-6-444.3b9505f46e4f2d55d66e.js"
+        }
+      ]
+    },
+    "67": {
+      "js": [
+        {
+          "file": "metadata---docs-guides-images-244-2cb.6424aad705b7125a85d2.js",
+          "hash": "b262318b9923fbd9beca",
+          "publicPath": "/metadata---docs-guides-images-244-2cb.6424aad705b7125a85d2.js"
+        }
+      ]
+    },
+    "68": {
+      "js": [
+        {
+          "file": "metadata---docs-guides-layoutd-56-b94.a6c7d2ad5dc0cebd707d.js",
+          "hash": "246fb1ea8ef180f52e71",
+          "publicPath": "/metadata---docs-guides-layoutd-56-b94.a6c7d2ad5dc0cebd707d.js"
+        }
+      ]
+    },
+    "69": {
+      "js": [
+        {
+          "file": "metadata---docs-guides-networking-053-cee.58adb8e96543cd28db5e.js",
+          "hash": "7a1c48f47cc54d59c638",
+          "publicPath": "/metadata---docs-guides-networking-053-cee.58adb8e96543cd28db5e.js"
+        }
+      ]
+    },
+    "70": {
+      "js": [
+        {
+          "file": "metadata---docs-guides-react-nodegui-architecture-608-7ee.0489c10559f696be38b6.js",
+          "hash": "d7dc332324bb67d7f001",
+          "publicPath": "/metadata---docs-guides-react-nodegui-architecture-608-7ee.0489c10559f696be38b6.js"
+        }
+      ]
+    },
+    "71": {
+      "js": [
+        {
+          "file": "metadata---docs-guides-scroll-viewdfd-cb7.c03bc5008a8ddff96e44.js",
+          "hash": "8a0060d1c8655660d4fe",
+          "publicPath": "/metadata---docs-guides-scroll-viewdfd-cb7.c03bc5008a8ddff96e44.js"
+        }
+      ]
+    },
+    "72": {
+      "js": [
+        {
+          "file": "metadata---docs-guides-styling-26-a-777.1d71d9b994cf0bf5d6dd.js",
+          "hash": "c9c149f1a8e08f10564d",
+          "publicPath": "/metadata---docs-guides-styling-26-a-777.1d71d9b994cf0bf5d6dd.js"
+        }
+      ]
+    },
+    "73": {
+      "js": [
+        {
+          "file": "metadata---docs-guides-tutoriala-79-c4d.8e7cb54ace8efe5d5cc8.js",
+          "hash": "a3146d753838194773cc",
+          "publicPath": "/metadata---docs-guides-tutoriala-79-c4d.8e7cb54ace8efe5d5cc8.js"
+        }
+      ]
+    },
+    "74": {
+      "js": [
+        {
+          "file": "metadata---docs-guides-using-native-node-modules-686-5c2.f2e437c87e6bff984300.js",
+          "hash": "4492997a89e6b4c44b81",
+          "publicPath": "/metadata---docs-guides-using-native-node-modules-686-5c2.f2e437c87e6bff984300.js"
+        }
+      ]
+    },
+    "75": {
+      "js": [
+        {
+          "file": "metadata---docs-mdx-4-c-0-fc7.3eb1c42e60791c44699c.js",
+          "hash": "f616657f1c081b7c4ef9",
+          "publicPath": "/metadata---docs-mdx-4-c-0-fc7.3eb1c42e60791c44699c.js"
+        }
+      ]
+    },
+    "76": {
+      "js": [
+        {
+          "file": "runtime~main.25b7774b90560bae8728.js",
+          "hash": "07bb93536d4baa1963b4",
+          "publicPath": "/runtime~main.25b7774b90560bae8728.js"
+        }
+      ]
+    },
+    "77": {
+      "js": [
+        {
+          "file": "tags---blog-tags-832-d4c.9e62646e2fbe07313b02.js",
+          "hash": "11a869dc91831c2b6357",
+          "publicPath": "/tags---blog-tags-832-d4c.9e62646e2fbe07313b02.js"
+        }
+      ]
+    },
+    "78": {
+      "js": [
+        {
+          "file": "78.24f3e9127847fd620fd6.js",
+          "hash": "1a6b9f9760ad85b1ebe4",
+          "publicPath": "/78.24f3e9127847fd620fd6.js"
+        }
+      ]
+    },
+    "79": {
+      "js": [
+        {
+          "file": "79.bebaca51238f11cea210.js",
+          "hash": "da17694d3631f7ba1fe5",
+          "publicPath": "/79.bebaca51238f11cea210.js"
+        }
+      ]
+    }
+  }
+}
