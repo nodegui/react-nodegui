@@ -45,7 +45,7 @@ Visit: https://react.nodegui.org for docs.
 ## Getting Started
 
 - Check out [react-nodegui-starter](https://github.com/nodegui/react-nodegui-starter) to get up and running with your own React NodeGUI app!
-- Read through the [docs](https://nodegui.github.io/nodegui)
+- Read through the [docs](https://react.nodegui.org)
 
 ## Docs for contributing
 
@@ -53,7 +53,7 @@ Looking to contribute? If you wish to implement a new widget/add more features a
 
 Contributing developer docs link:
 
-https://github.com/nodegui/nodegui/tree/master/docs/development
+https://github.com/nodegui/nodegui/tree/master/website/docs/development
 
 Please read: https://github.com/nodegui/.github/blob/master/CONTRIBUTING.md
 
