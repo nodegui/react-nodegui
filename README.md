@@ -7,7 +7,7 @@ Build **performant**, **native** and **cross-platform** desktop applications wit
 
 React NodeGUI is powered by **React** ⚛️ and **Qt5** 💚 which makes it CPU and memory efficient as compared to other chromium based solutions like electron. React NodeGUI is essentially a React renderer for [NodeGUI](https://github.com/nodegui/nodegui).
 
-Visit: https://nodegui.github.io/nodegui for docs.
+Visit: https://react.nodegui.org for docs.
 
 <img alt="logo" src="https://github.com/nodegui/nodegui/raw/master/extras/logo/nodegui.png" height="200" />
 
