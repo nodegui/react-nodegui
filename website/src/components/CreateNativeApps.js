@@ -29,7 +29,7 @@ export const CreateNativeApps = () => {
           <a href="https://www.qt.io/" target="_blank">
             Qt
           </a>{" "}
-          which is a mature dekstop apps framework. React NodeGui components are
+          which is a mature desktop apps framework. React NodeGui components are
           extremely customizable just like in the web but does{" "}
           <strong>NOT</strong> use a Web browser under the hood.
         </p>
