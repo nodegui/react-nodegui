@@ -10,6 +10,10 @@
   "author": "Atul R <atulanand94@gmail.com>",
   "private": false,
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodegui/react-nodegui.git"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsc && qode ./dist/demo.js",
@@ -21,7 +25,7 @@
   "peerDependencies": {
     "@nodegui/nodegui": "*",
     "@nodegui/qode": "*",
-    "react": "16.9.0"
+    "react": "^16.9.0"
   },
   "devDependencies": {
     "@nodegui/nodegui": "^0.2.1",
