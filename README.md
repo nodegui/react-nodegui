@@ -47,6 +47,10 @@ Visit: https://react.nodegui.org for docs.
 - Check out [react-nodegui-starter](https://github.com/nodegui/react-nodegui-starter) to get up and running with your own React NodeGUI app!
 - Read through the [docs](https://react.nodegui.org)
 
+**Community Guides**
+
+- https://blog.logrocket.com/electron-alternatives-exploring-nodegui-and-react-nodegui/ - Electron alternatives: Exploring NodeGUI and React NodeGUI by [Siegfried Grimbeek](https://blog.logrocket.com/author/siegfriedgrimbeek/).
+
 **Talks/Podcasts**
 
 <audio data-theme="night" data-src="https://changelog.com/jsparty/96/embed" src="https://cdn.changelog.com/uploads/jsparty/96/js-party-96.mp3" preload="none" class="changelog-episode" controls></audio><p><a href="https://changelog.com/jsparty/96">JS Party 96: Performant Node desktop apps with NodeGUI</a> – Listen on <a href="https://changelog.com/">Changelog.com</a></p>
