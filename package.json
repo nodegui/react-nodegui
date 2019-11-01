@@ -20,7 +20,7 @@
     "docs": "typedoc"
   },
   "dependencies": {
-    "react-reconciler": "^0.21.0"
+    "react-reconciler": "^0.23.0"
   },
   "peerDependencies": {
     "@nodegui/nodegui": "*",
