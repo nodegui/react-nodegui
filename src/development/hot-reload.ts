@@ -1,5 +1,6 @@
 import createProxy, { ReactProxyComponent } from "react-proxy";
 import React from "react";
+import "./types";
 
 export let appProxy: ReactProxyComponent; // need to export it so that it stays without being gc'd
 
