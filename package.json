@@ -20,10 +20,12 @@
     "docs": "typedoc"
   },
   "dependencies": {
+    "react-deep-force-update": "^2.1.3",
+    "react-proxy": "^2.0.8",
     "react-reconciler": "^0.21.0"
   },
   "peerDependencies": {
-    "@nodegui/nodegui": "*",
+    "@nodegui/nodegui": ">=0.3.0",
     "@nodegui/qode": "*",
     "react": "^16.9.0"
   },

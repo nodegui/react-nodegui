@@ -13,3 +13,4 @@ export { Dial } from "./components/Dial";
 export { SpinBox } from "./components/SpinBox";
 export { ScrollArea } from "./components/ScrollArea";
 export { useEventHandler } from "./hooks";
+export { hot, appProxy } from "./development/hot-reload";
