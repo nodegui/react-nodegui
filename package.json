@@ -1,6 +1,6 @@
 {
   "name": "@nodegui/react-nodegui",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "React Native for building cross platform desktop applications",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
