@@ -5,7 +5,15 @@ import { AppContainer } from "../reconciler";
 type UpdatePayload = any;
 
 export interface RNProps {}
-export abstract class RNWidget extends NodeWidget {
+export abstract class RNWidget extends NodeWidget implements RNComponent {
+  static tagName: string;
+  abstract setProps(newProps: RNProps, oldProps: RNProps): void;
+  abstract appendInitialChild(child: NodeWidget): void;
+  abstract appendChild(child: NodeWidget): void;
+  abstract insertBefore(child: NodeWidget, beforeChild: NodeWidget): void;
+  abstract removeChild(child: NodeWidget): void;
+}
+export abstract class RNComponent {
   static tagName: string;
   abstract setProps(newProps: RNProps, oldProps: RNProps): void;
   abstract appendInitialChild(child: NodeWidget): void;
@@ -24,9 +32,9 @@ export abstract class ComponentConfig {
     rootInstance: AppContainer,
     context: any,
     workInProgress: Fiber
-  ): NodeWidget;
+  ): RNComponent;
   finalizeInitialChildren(
-    instance: NodeWidget,
+    instance: RNComponent,
     newProps: RNProps,
     rootContainerInstance: AppContainer,
     context: any
@@ -34,7 +42,7 @@ export abstract class ComponentConfig {
     return false;
   }
   commitMount(
-    instance: NodeWidget,
+    instance: RNComponent,
     newProps: RNProps,
     internalInstanceHandle: any
   ) {
@@ -42,7 +50,7 @@ export abstract class ComponentConfig {
   }
   // Update methods:
   prepareUpdate(
-    instance: NodeWidget,
+    instance: RNComponent,
     oldProps: RNProps,
     newProps: RNProps,
     rootContainerInstance: AppContainer,
@@ -51,7 +59,7 @@ export abstract class ComponentConfig {
     return true;
   }
   abstract commitUpdate(
-    instance: NodeWidget,
+    instance: RNComponent,
     updatePayload: any,
     oldProps: RNProps,
     newProps: RNProps,

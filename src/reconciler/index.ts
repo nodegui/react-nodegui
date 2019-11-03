@@ -1,6 +1,11 @@
 import Reconciler from "react-reconciler";
 import { NodeWidget } from "@nodegui/nodegui";
-import { getComponentByTagName, RNWidget, RNProps } from "../components/config";
+import {
+  getComponentByTagName,
+  RNWidget,
+  RNProps,
+  RNComponent
+} from "../components/config";
 
 export type AppContainer = Set<NodeWidget>;
 export const appContainer: AppContainer = new Set<NodeWidget>();
@@ -9,7 +14,7 @@ const HostConfig: Reconciler.HostConfig<
   string,
   RNProps,
   AppContainer,
-  NodeWidget,
+  RNComponent,
   any,
   any,
   any,
