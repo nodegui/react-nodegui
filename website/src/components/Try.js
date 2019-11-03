@@ -58,6 +58,7 @@ export const Try = () => {
               </Code>
               <Code>cd react-nodegui-starter</Code>
               <Code>npm install</Code>
+              <Code>npm run dev</Code>
               <Code>npm start</Code>
             </Terminal>
             <SubTitle>

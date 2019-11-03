@@ -124,7 +124,9 @@ $ git clone https://github.com/nodegui/react-nodegui-starter
 $ cd react-nodegui-starter
 # Install dependencies
 $ npm install
-# Run the app
+# Run the dev server
+$ npm run dev
+# Run the app on a separate terminal tab or window
 $ npm start
 ```
 
