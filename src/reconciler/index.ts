@@ -101,10 +101,10 @@ const HostConfig: Reconciler.HostConfig<
     container.add(child);
   },
   removeChildFromContainer: (container, child) => {
+    container.delete(child);
     if (child.close) {
       child.close();
     }
-    container.delete(child);
   },
   prepareUpdate: function(
     instance,
@@ -152,6 +152,9 @@ const HostConfig: Reconciler.HostConfig<
   },
   removeChild: (parent: RNWidget, child: NodeWidget) => {
     parent.removeChild(child);
+    if (child.close) {
+      child.close();
+    }
   },
   commitTextUpdate: (textInstance, oldText, newText) => {
     //noop since we manage all text using Text component

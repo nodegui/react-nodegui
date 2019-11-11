@@ -65,7 +65,7 @@ export interface ViewProps extends RNProps {
   /**
    * This property holds the level of opacity for the window. [QWidget: setWindowOpacity](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetwindowopacityopacity)
    */
-  windowOpacity?: Number;
+  windowOpacity?: number;
   /**
    * Sets the window title property. [QWidget: setWindowTitle](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetwindowtitletitle)
    */
@@ -146,7 +146,7 @@ export const setViewProps = (
     set enabled(enable: boolean) {
       widget.setEnabled(enable);
     },
-    set windowOpacity(opacity: Number) {
+    set windowOpacity(opacity: number) {
       widget.setWindowOpacity(opacity);
     },
     set windowTitle(title: string) {
