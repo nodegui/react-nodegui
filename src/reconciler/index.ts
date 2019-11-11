@@ -101,6 +101,9 @@ const HostConfig: Reconciler.HostConfig<
     container.add(child);
   },
   removeChildFromContainer: (container, child) => {
+    if (child.close) {
+      child.close();
+    }
     container.delete(child);
   },
   prepareUpdate: function(
