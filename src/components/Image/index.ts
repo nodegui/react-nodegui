@@ -18,7 +18,7 @@ class ImageConfig extends ComponentConfig {
     widget.setProps(newProps, {});
     widget.addEventListener(QLabelEvents.Resize, () => {
       const size = widget.size();
-      widget.scalePixmap(size.width, size.height);
+      widget.scalePixmap(size.width(), size.height());
     });
     return widget;
   }

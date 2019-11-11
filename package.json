@@ -16,7 +16,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "tsc && qode ./dist/demo.js",
+    "dev": "tsc && qode --inspect ./dist/demo.js",
     "docs": "typedoc"
   },
   "dependencies": {
