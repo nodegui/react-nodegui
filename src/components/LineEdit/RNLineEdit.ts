@@ -1,4 +1,4 @@
-import { QLineEdit, NodeWidget } from "@nodegui/nodegui";
+import { QLineEdit, EchoMode, NodeWidget } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
@@ -7,6 +7,7 @@ export interface LineEditProps extends ViewProps {
   text?: string;
   placeholderText?: string;
   readOnly?: boolean;
+  echoMode?: EchoMode;
 }
 
 const setLineEditProps = (
@@ -23,6 +24,9 @@ const setLineEditProps = (
     },
     set readOnly(isReadOnly: boolean) {
       widget.setReadOnly(isReadOnly);
+    },
+    set echoMode(mode: EchoMode) {
+      widget.setEchoMode(mode);
     }
   };
   Object.assign(setter, newProps);
