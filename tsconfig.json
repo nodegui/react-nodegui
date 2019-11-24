@@ -4,7 +4,6 @@
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
-    "sourceMap": true,
     "outDir": "./dist",
     "strict": true,
     "moduleResolution": "node",
