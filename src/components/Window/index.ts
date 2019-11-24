@@ -20,7 +20,6 @@ class WindowConfig extends ComponentConfig {
     const rootViewLayout = new FlexLayout();
     rootViewLayout.setFlexNode(rootView.getFlexNode());
     rootView.setLayout(rootViewLayout);
-    rootView.setInlineStyle("width:'100%'; height:'100%';");
     window.setCentralWidget(rootView);
     window.setProps(newProps, {});
     return window;
