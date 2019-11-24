@@ -15,6 +15,7 @@ sidebar_label: "LineEditProps"
 ### Properties
 
 * [cursor](lineeditprops.md#optional-cursor)
+* [echoMode](lineeditprops.md#optional-echoMode)
 * [enabled](lineeditprops.md#optional-enabled)
 * [geometry](lineeditprops.md#optional-geometry)
 * [id](lineeditprops.md#optional-id)
@@ -45,6 +46,18 @@ sidebar_label: "LineEditProps"
 *Inherited from [ViewProps](viewprops.md).[cursor](viewprops.md#optional-cursor)*
 
 Sets the window mouse cursor. [QWidget: setCursor](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetcursorcursor)
+
+___
+
+### `Optional` echoMode
+
+• **echoMode**? : *EchoMode*
+
+Sets the property that determines how the text entered in the line edit is displayed (or echoed) to the user.
+
+The widget's display and the ability to copy or drag the text is affected by this setting.
+
+[QLineEdit: setEchoMode](https://docs.nodegui.org/docs/api/QLineEdit#lineeditsetechomode)
 
 ___
 
