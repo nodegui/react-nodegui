@@ -5,7 +5,8 @@ import {
   CursorShape,
   NodeWidget,
   QIcon,
-  FlexLayout
+  FlexLayout,
+  WidgetAttribute
 } from "@nodegui/nodegui";
 import { RNWidget, RNProps } from "../config";
 
@@ -106,6 +107,11 @@ export interface ViewProps extends RNProps {
    * Prop to set the ref. The ref will return the underlying nodegui widget.
    */
   ref?: any;
+  /**
+   * Prop to set the Widget Attributes. example:
+   * <View attributes={{Qt::WA_Disabled: true}} />
+   */
+  attributes?: WidgetAttributesMap;
 }
 
 /**
@@ -128,6 +134,7 @@ export const setViewProps = (
         console.warn("Both styleSheet and inlineStyle can't be used together");
       }
       widget.setInlineStyle(inlineStyle);
+      console.log(inlineStyle);
     },
     set geometry(geometry: Geometry) {
       widget.setGeometry(
@@ -202,6 +209,11 @@ export const setViewProps = (
           widget.addEventListener(eventType, newEvtListener);
         }
       );
+    },
+    set attributes(attributesMap: WidgetAttributesMap) {
+      Object.entries(attributesMap).forEach(([attribute, value]) => {
+        widget.setAttribute(Number(attribute), value);
+      });
     }
   };
   Object.assign(setter, newProps);
@@ -269,3 +281,7 @@ type Position = {
 interface ListenerMap {
   [key: string]: (payload?: any) => void;
 }
+
+type WidgetAttributesMap = {
+  [key: number]: boolean;
+};
