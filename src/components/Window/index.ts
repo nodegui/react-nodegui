@@ -1,5 +1,4 @@
 import { registerComponent, ComponentConfig } from "../config";
-import { QWidget, FlexLayout } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
 import { WindowProps, RNWindow } from "./RNWindow";
 import { AppContainer } from "../../reconciler";
@@ -16,11 +15,6 @@ class WindowConfig extends ComponentConfig {
     workInProgress: Fiber
   ): RNWindow {
     const window = new RNWindow();
-    const rootView = new QWidget();
-    const rootViewLayout = new FlexLayout();
-    rootViewLayout.setFlexNode(rootView.getFlexNode());
-    rootView.setLayout(rootViewLayout);
-    window.setCentralWidget(rootView);
     window.setProps(newProps, {});
     return window;
   }
