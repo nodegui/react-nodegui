@@ -2,9 +2,7 @@ import { QMainWindow, NodeWidget, FlexLayout } from "@nodegui/nodegui";
 import { setViewProps, ViewProps, RNView } from "../View/RNView";
 import { RNWidget } from "../config";
 
-export interface WindowProps extends ViewProps {
-  centralWidgetProps?: ViewProps;
-}
+export interface WindowProps extends ViewProps {}
 
 const setWindowProps = (
   window: RNWindow,
