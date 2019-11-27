@@ -1,7 +1,10 @@
-import { ViewProps, setViewProps } from "../View/RNView";
 import { QCheckBox, NodeWidget } from "@nodegui/nodegui";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
+import {
+  AbstractButtonProps,
+  setAbstractButtonProps
+} from "../AbstractComponents/RNAbstractButton";
 
 /**
  * The CheckBox component provides ability to add and manipulate native button widgets. It is based on
@@ -24,11 +27,7 @@ import { throwUnsupported } from "../../utils/helpers";
  *
  * ```
  */
-export interface CheckBoxProps extends ViewProps {
-  /**
-   * Sets the given text to the checkbox.. [QCheckBox: setText](https://docs.nodegui.org/docs/api/QCheckBox/#checkboxsettexttext)
-   */
-  text?: string;
+export interface CheckBoxProps extends AbstractButtonProps {
   /**
    * This property holds whether the button is checked. [QCheckBox: setChecked](https://docs.nodegui.org/docs/api/QCheckBox/#checkboxsetcheckedcheck)
    */
@@ -41,15 +40,12 @@ const setCheckBoxProps = (
   oldProps: CheckBoxProps
 ) => {
   const setter: CheckBoxProps = {
-    set text(checkboxText: string) {
-      widget.setText(checkboxText);
-    },
     set checked(isChecked: boolean) {
       widget.setChecked(isChecked);
     }
   };
   Object.assign(setter, newProps);
-  setViewProps(widget, newProps, oldProps);
+  setAbstractButtonProps(widget, newProps, oldProps);
 };
 
 /**

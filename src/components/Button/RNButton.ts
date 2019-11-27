@@ -1,5 +1,8 @@
-import { QIcon, QPushButton, NodeWidget } from "@nodegui/nodegui";
-import { ViewProps, setViewProps } from "../View/RNView";
+import { QPushButton, NodeWidget } from "@nodegui/nodegui";
+import {
+  AbstractButtonProps,
+  setAbstractButtonProps
+} from "../AbstractComponents/RNAbstractButton";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
 
@@ -24,19 +27,11 @@ import { throwUnsupported } from "../../utils/helpers";
  *
  * ```
  */
-export interface ButtonProps extends ViewProps {
-  /**
-   * Sets the given text to the button. [QPushButton: setText](https://docs.nodegui.org/docs/api/QPushButton#buttonsettexttext)
-   */
-  text?: string;
+export interface ButtonProps extends AbstractButtonProps {
   /**
    * Sets whether the button border is raised. [QPushButton: setFlat](https://docs.nodegui.org/docs/api/QPushButton#buttonsetflatisflat)
    */
   flat?: boolean;
-  /**
-   * Sets an icon in the button. [QPushButton: setIcon](https://docs.nodegui.org/docs/api/QPushButton#buttonseticonicon)
-   */
-  icon?: QIcon;
 }
 
 const setButtonProps = (
@@ -45,18 +40,12 @@ const setButtonProps = (
   oldProps: ButtonProps
 ) => {
   const setter: ButtonProps = {
-    set text(buttonText: string) {
-      widget.setText(buttonText);
-    },
     set flat(isFlat: boolean) {
       widget.setFlat(isFlat);
-    },
-    set icon(icon: QIcon) {
-      widget.setIcon(icon);
     }
   };
   Object.assign(setter, newProps);
-  setViewProps(widget, newProps, oldProps);
+  setAbstractButtonProps(widget, newProps, oldProps);
 };
 
 /**
