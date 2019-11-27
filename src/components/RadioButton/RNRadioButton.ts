@@ -1,10 +1,13 @@
 import { QRadioButton, NodeWidget } from "@nodegui/nodegui";
-import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
+import {
+  setAbstractButtonProps,
+  AbstractButtonProps
+} from "../AbstractComponents/RNAbstractButton";
 
-export interface RadioButtonProps extends ViewProps {
-  text?: string;
+export interface RadioButtonProps extends AbstractButtonProps {
+  // More to be added
 }
 
 const setRadioButtonProps = (
@@ -13,12 +16,10 @@ const setRadioButtonProps = (
   oldProps: RadioButtonProps
 ) => {
   const setter: RadioButtonProps = {
-    set text(checkboxText: string) {
-      widget.setText(checkboxText);
-    }
+    // more setters to be added
   };
   Object.assign(setter, newProps);
-  setViewProps(widget, newProps, oldProps);
+  setAbstractButtonProps(widget, newProps, oldProps);
 };
 
 /**

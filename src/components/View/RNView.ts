@@ -5,8 +5,7 @@ import {
   CursorShape,
   NodeWidget,
   QIcon,
-  FlexLayout,
-  WidgetAttribute
+  FlexLayout
 } from "@nodegui/nodegui";
 import { RNWidget, RNProps } from "../config";
 
@@ -112,13 +111,19 @@ export interface ViewProps extends RNProps {
    * <View attributes={{Qt::WA_Disabled: true}} />
    */
   attributes?: WidgetAttributesMap;
+
+  /**
+   * Prop to set the Widget flags. example:
+   * <View windowFlags={{Qt::SplashScreen: true}} />
+   */
+  windowFlags?: WindowFlagsMap;
 }
 
 /**
  * @ignore
  */
 export const setViewProps = (
-  widget: RNView,
+  widget: QWidget,
   newProps: ViewProps,
   oldProps: ViewProps
 ) => {
@@ -134,7 +139,6 @@ export const setViewProps = (
         console.warn("Both styleSheet and inlineStyle can't be used together");
       }
       widget.setInlineStyle(inlineStyle);
-      console.log(inlineStyle);
     },
     set geometry(geometry: Geometry) {
       widget.setGeometry(
@@ -214,6 +218,11 @@ export const setViewProps = (
       Object.entries(attributesMap).forEach(([attribute, value]) => {
         widget.setAttribute(Number(attribute), value);
       });
+    },
+    set windowFlags(windowFlagsMap: WindowFlagsMap) {
+      Object.entries(windowFlagsMap).forEach(([flag, value]) => {
+        widget.setWindowFlag(Number(flag), value);
+      });
     }
   };
   Object.assign(setter, newProps);
@@ -283,5 +292,9 @@ interface ListenerMap {
 }
 
 type WidgetAttributesMap = {
+  [key: number]: boolean;
+};
+
+type WindowFlagsMap = {
   [key: number]: boolean;
 };
