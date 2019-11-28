@@ -28,7 +28,7 @@ export class Renderer {
   }
   static render(element: React.ReactNode, options?: RendererOptions) {
     const containerInfo = appContainer;
-    const isConcurrent = false; //disabling since there seems to be a bug with onclick listeneres (when called without a console.log inside them)
+    const isConcurrent = true;
     const hydrate = false;
 
     const rendererOptions = Object.assign({}, defaultOptions, options);
