@@ -1,12 +1,19 @@
 import React from "react";
 import { Renderer, Button, Window, View } from "./index";
+import { AnimatedImage } from "./components/AnimatedImage";
 
 const App = () => {
   return (
     <Window>
       <View style={containerStyle}>
-        <Button style={buttonStyle} text={"Hello"} />
-        <Button style={buttonStyle} text={"World"} />
+        <View>
+          <Button style={buttonStyle} text={"Hello"} />
+          <Button style={buttonStyle} text={"World"} />
+        </View>
+        <AnimatedImage
+          style="width:200px; height: 150px;"
+          src="/Users/atulr/Project/nodegui/nodegui/src/lib/QtGui/__tests__/assets/fine.gif"
+        />
       </View>
     </Window>
   );
