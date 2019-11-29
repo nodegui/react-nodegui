@@ -1,4 +1,10 @@
-import { QLabel, QPixmap, AspectRatioMode, NodeWidget } from "@nodegui/nodegui";
+import {
+  QLabel,
+  QPixmap,
+  AspectRatioMode,
+  NodeWidget,
+  QSize
+} from "@nodegui/nodegui";
 import { TextProps, setTextProps } from "../Text/RNText";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
@@ -21,7 +27,7 @@ const setImageProps = (
       const pixMap = new QPixmap(imageUrl);
       widget.setPixmap(pixMap);
       const size = widget.size();
-      widget.scalePixmap(size.width(), size.height());
+      widget.scalePixmap(size);
     },
     set aspectRatioMode(mode: AspectRatioMode) {
       widget.setAspectRatioMode(mode);
@@ -58,15 +64,19 @@ export class RNImage extends QLabel implements RNWidget {
     super.setPixmap(pixmap);
     this.originalPixmap = pixmap;
   };
-  setAspectRatioMode = (mode: AspectRatioMode) => {
+  setAspectRatioMode(mode: AspectRatioMode) {
     // react:✓ TODO://getter
     this.aspectRatioMode = mode;
-  };
-  scalePixmap = (width: number, height: number) => {
+  }
+  scalePixmap(size: QSize) {
     if (this.originalPixmap) {
       return super.setPixmap(
-        this.originalPixmap.scaled(width, height, this.aspectRatioMode)
+        this.originalPixmap.scaled(
+          size.width(),
+          size.height(),
+          this.aspectRatioMode
+        )
       );
     }
-  };
+  }
 }
