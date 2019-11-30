@@ -6,6 +6,7 @@ import { throwUnsupported } from "../../utils/helpers";
 export interface TextProps extends ViewProps {
   children?: string | number;
   wordWrap?: boolean;
+  scaledContents?: boolean;
 }
 
 /**
@@ -22,6 +23,9 @@ export const setTextProps = (
     },
     set wordWrap(shouldWrap: boolean) {
       widget.setWordWrap(shouldWrap);
+    },
+    set scaledContents(scaled: boolean) {
+      widget.setProperty("scaledContents", scaled);
     }
   };
   Object.assign(setter, newProps);

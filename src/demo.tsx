@@ -1,6 +1,5 @@
 import React from "react";
-import { Renderer, Button, Window, View } from "./index";
-import { AnimatedImage } from "./components/AnimatedImage";
+import { Renderer, Button, Window, View, AnimatedImage } from "./index";
 
 const App = () => {
   return (
@@ -11,7 +10,7 @@ const App = () => {
           <Button style={buttonStyle} text={"World"} />
         </View>
         <AnimatedImage
-          style="width:200px; height: 150px;"
+          style="border: 1px solid blue; flex:1;"
           src="/Users/atulr/Project/nodegui/nodegui/src/lib/QtGui/__tests__/assets/fine.gif"
         />
       </View>

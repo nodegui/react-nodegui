@@ -15,6 +15,7 @@ class ImageConfig extends ComponentConfig {
     workInProgress: Fiber
   ): RNImage {
     const widget = new RNImage();
+    widget.setProperty("scaledContents", true);
     widget.setProps(newProps, {});
     widget.addEventListener(QLabelEvents.Resize, () => {
       widget.scalePixmap(widget.size());

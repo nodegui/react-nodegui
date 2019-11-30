@@ -33,6 +33,10 @@ export class RNScrollArea extends QScrollArea implements RNWidget {
     child.close();
   }
   appendInitialChild(child: NodeWidget): void {
+    if (this.contentWidget) {
+      console.warn("ScrollView can't have more than one child node");
+      return;
+    }
     this.setWidget(child);
   }
   appendChild(child: NodeWidget): void {
