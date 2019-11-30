@@ -1,10 +1,12 @@
 import { QLabel, NodeWidget, QMovie, QSize } from "@nodegui/nodegui";
 import { TextProps, setTextProps } from "../Text/RNText";
 import { RNWidget } from "../config";
-import { throwUnsupported } from "../../utils/helpers";
+import { throwUnsupported, isValidUrl } from "../../utils/helpers";
+import phin from "phin";
 
 export interface AnimatedImageProps extends TextProps {
   src?: string;
+  buffer?: Buffer;
 }
 
 const setAnimatedImageProps = (
@@ -13,15 +15,22 @@ const setAnimatedImageProps = (
   oldProps: AnimatedImageProps
 ) => {
   const setter: AnimatedImageProps = {
-    set src(imageUrl: string) {
-      if (!imageUrl) {
+    set src(imageUrlOrPath: string) {
+      if (!imageUrlOrPath) {
         return;
       }
+      getLoadedQMovie(imageUrlOrPath)
+        .then(movie => {
+          widget.setMovie(movie);
+          widget.movie()?.start();
+        })
+        .catch(console.warn);
+    },
+    set buffer(imageBuffer: Buffer) {
       const movie = new QMovie();
-      movie.setFileName(imageUrl);
+      movie.loadFromData(imageBuffer);
       widget.setMovie(movie);
-      const size = widget.size();
-      movie.setScaledSize(size);
+      widget.movie()?.start();
     }
   };
   Object.assign(setter, newProps);
@@ -52,4 +61,16 @@ export class RNAnimatedImage extends QLabel implements RNWidget {
     const movie = this.movie();
     movie?.setScaledSize(size);
   }
+}
+
+async function getLoadedQMovie(imageUrlOrPath: string): Promise<QMovie> {
+  const movie = new QMovie();
+  if (isValidUrl(imageUrlOrPath)) {
+    const res = await phin(imageUrlOrPath);
+    const imageBuffer = Buffer.from(res.body);
+    movie.loadFromData(imageBuffer);
+  } else {
+    movie.setFileName(imageUrlOrPath);
+  }
+  return movie;
 }

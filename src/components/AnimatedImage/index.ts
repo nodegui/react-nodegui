@@ -16,11 +16,8 @@ class AnimatedImageConfig extends ComponentConfig {
     workInProgress: Fiber
   ): RNAnimatedImage {
     const widget = new RNAnimatedImage();
+    widget.setProperty("scaledContents", true);
     widget.setProps(newProps, {});
-    widget.movie()?.start();
-    widget.addEventListener(QLabelEvents.Resize, () => {
-      widget.scaleMovie(widget.size());
-    });
     return widget;
   }
   commitMount(

@@ -31,6 +31,10 @@ export class RNWindow extends QMainWindow implements RNWidget {
     child.close();
   }
   appendInitialChild(child: NodeWidget): void {
+    if (this.centralWidget) {
+      console.warn("MainWindow can't have more than one child node");
+      return;
+    }
     this.setCentralWidget(child);
   }
   appendChild(child: NodeWidget): void {
