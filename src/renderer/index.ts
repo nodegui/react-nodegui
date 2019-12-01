@@ -52,3 +52,11 @@ export class Renderer {
     ); // Start reconcilation and render the result
   }
 }
+
+// When webpack bundles everthing into one js file, there is no require cache. Hence, all the modules are present in a single array.
+// When all the instructions from this bundled js file is executed and there are no more events left to listen to,
+// NodeJs tries to clear up everything. Since all the modules in the bundled file are in a single variable and there is nothing referencing it,
+// the gc is able to clean up even those. This is not the case in a regular nodejs app where we have require cache that keeps reference to all the modules.
+// Hence to prevent all the modules from being gc'ed we keep reference to one of the modules in the entire array of modules.
+// Here, we chose React, but it can be anything.
+(global as any).__REACT__ = React;
