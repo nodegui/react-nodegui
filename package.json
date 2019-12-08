@@ -27,17 +27,17 @@
     "react-reconciler": "^0.24.0"
   },
   "peerDependencies": {
-    "@nodegui/nodegui": ">=0.3.0",
+    "@nodegui/nodegui": ">=0.9.0",
     "@nodegui/qode": "*",
     "react": "^16.9.0"
   },
   "devDependencies": {
-    "@nodegui/nodegui": "^0.7.0",
+    "@nodegui/nodegui": "^0.9.0",
     "@types/node": "^12.0.10",
     "prettier": "^1.18.2",
     "react": "^16.9.0",
-    "typedoc": "^0.15.0",
-    "typedoc-plugin-markdown": "^2.2.7",
-    "typescript": "^3.5.2"
+    "typedoc": "^0.15.4",
+    "typedoc-plugin-markdown": "^2.2.14",
+    "typescript": "^3.7.3"
   }
 }
