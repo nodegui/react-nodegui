@@ -263,7 +263,7 @@ export class RNView extends QWidget implements RNWidget {
       console.warn("parent has no layout to remove child from");
       return;
     }
-    (this.layout as FlexLayout).removeWidget(child);
+    this.layout.removeWidget(child);
     child.close();
   }
 }
