@@ -3,7 +3,7 @@ import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 
 export interface ScrollAreaProps extends ViewProps {
-  // TODO add props
+  widgetResizable?: boolean;
 }
 
 const setScrollAreaProps = (
@@ -12,7 +12,9 @@ const setScrollAreaProps = (
   oldProps: ScrollAreaProps
 ) => {
   const setter: ScrollAreaProps = {
-    //TODO add props
+    set widgetResizable(resizable: boolean) {
+      widget.setWidgetResizable(resizable);
+    }
   };
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);
