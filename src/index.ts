@@ -13,5 +13,6 @@ export { RadioButton } from "./components/RadioButton";
 export { Dial } from "./components/Dial";
 export { SpinBox } from "./components/SpinBox";
 export { ScrollArea } from "./components/ScrollArea";
+export { ComboBox } from "./components/ComboBox";
 export { useEventHandler } from "./hooks";
 export { hot, appProxy } from "./development/hot-reload";
