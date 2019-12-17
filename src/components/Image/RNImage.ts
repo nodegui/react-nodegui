@@ -3,7 +3,8 @@ import {
   QPixmap,
   AspectRatioMode,
   NodeWidget,
-  QSize
+  QSize,
+  TransformationMode
 } from "@nodegui/nodegui";
 import { TextProps, setTextProps } from "../Text/RNText";
 import { RNWidget } from "../config";
@@ -13,6 +14,7 @@ import phin from "phin";
 export interface ImageProps extends TextProps {
   src?: string;
   aspectRatioMode?: AspectRatioMode;
+  transformationMode?: TransformationMode;
   buffer?: Buffer;
 }
 
@@ -37,6 +39,9 @@ const setImageProps = (
     },
     set aspectRatioMode(mode: AspectRatioMode) {
       widget.setAspectRatioMode(mode);
+    },
+    set transformationMode(mode: TransformationMode) {
+      widget.setTransformationMode(mode);
     }
   };
   Object.assign(setter, newProps);
@@ -65,6 +70,7 @@ export class RNImage extends QLabel implements RNWidget {
   static tagName = "image";
   originalPixmap?: QPixmap;
   aspectRatioMode?: AspectRatioMode;
+  transformationMode?: TransformationMode;
   setPixmap = (pixmap: QPixmap) => {
     // react:✓
     super.setPixmap(pixmap);
@@ -74,13 +80,18 @@ export class RNImage extends QLabel implements RNWidget {
     // react:✓ TODO://getter
     this.aspectRatioMode = mode;
   }
+  setTransformationMode(mode: TransformationMode) {
+    // react:✓ TODO://getter
+    this.transformationMode = mode;
+  }
   scalePixmap(size: QSize) {
     if (this.originalPixmap) {
       return super.setPixmap(
         this.originalPixmap.scaled(
           size.width(),
           size.height(),
-          this.aspectRatioMode
+          this.aspectRatioMode,
+          this.transformationMode
         )
       );
     }
