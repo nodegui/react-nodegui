@@ -79,10 +79,12 @@ export class RNImage extends QLabel implements RNWidget {
   setAspectRatioMode(mode: AspectRatioMode) {
     // react:✓ TODO://getter
     this.aspectRatioMode = mode;
+    this.scalePixmap(this.size());
   }
   setTransformationMode(mode: TransformationMode) {
     // react:✓ TODO://getter
     this.transformationMode = mode;
+    this.scalePixmap(this.size());
   }
   scalePixmap(size: QSize) {
     if (this.originalPixmap) {
