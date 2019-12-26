@@ -105,7 +105,7 @@ export interface ViewProps<Signals extends {}> extends RNProps {
   /**
    * Prop to set the event listener map. See [Handlong Events](/docs/guides/handle-events)
    */
-  on?: Partial<EventListeners | Signals>;
+  on?: Partial<WidgetEventListeners | Signals>;
   /**
    * Prop to set the ref. The ref will return the underlying nodegui widget.
    */
@@ -199,7 +199,7 @@ export function setViewProps<Signals extends {}>(
     set pos(position: Position) {
       widget.move(position.x, position.y);
     },
-    set on(listenerMap: Partial<EventListeners | Signals>) {
+    set on(listenerMap: Partial<WidgetEventListeners | Signals>) {
       const listenerMapLatest: any = Object.assign({}, listenerMap);
       const oldListenerMap = Object.assign({}, oldProps.on);
       Object.entries(oldListenerMap).forEach(([eventType, oldEvtListener]) => {
@@ -293,14 +293,14 @@ type Position = {
   y: number;
 };
 
-type EventListeners = {
-  [key in WidgetEventTypes]: (native?: NativeElement) => void;
-};
-
 type WidgetAttributesMap = {
   [key: number]: boolean;
 };
 
 type WindowFlagsMap = {
   [key: number]: boolean;
+};
+
+export type WidgetEventListeners = {
+  [key in WidgetEventTypes]: (native?: NativeElement) => void;
 };

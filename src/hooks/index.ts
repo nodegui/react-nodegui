@@ -1,15 +1,12 @@
 import { useMemo, DependencyList } from "react";
+import { WidgetEventListeners } from "../components/View/RNView";
 
-type EventHandlerMap = {
-  [key: string]: (...args: any[]) => void;
-};
-
-export const useEventHandler = (
-  eventHandlerMap: EventHandlerMap,
+export function useEventHandler<Signals>(
+  eventHandlerMap: Partial<WidgetEventListeners | Signals>,
   deps: DependencyList
-) => {
+) {
   const handler = useMemo(() => {
     return eventHandlerMap;
   }, deps);
   return handler;
-};
+}

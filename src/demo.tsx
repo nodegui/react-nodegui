@@ -7,7 +7,8 @@ import {
   AnimatedImage,
   ComboBox
 } from "./index";
-import { QIcon, QVariant } from "@nodegui/nodegui";
+import { QIcon, QVariant, QPushButtonSignals } from "@nodegui/nodegui";
+import { useEventHandler } from "./hooks";
 
 const items = [
   {
@@ -20,12 +21,18 @@ const items = [
   { text: "world" }
 ];
 
+const handler = useEventHandler<QPushButtonSignals>(
+  {
+    clicked: clicked => {}
+  },
+  []
+);
 const App = () => {
   return (
     <Window>
       <View style={containerStyle}>
         <View on={{}}>
-          <Button on={{}} style={buttonStyle} text={"Hello"} />
+          <Button on={handler} style={buttonStyle} text={"Hello"} />
           <Button style={buttonStyle} text={"World"} />
         </View>
         <ComboBox items={items} />
