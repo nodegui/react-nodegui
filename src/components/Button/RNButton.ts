@@ -1,4 +1,4 @@
-import { QPushButton, NodeWidget } from "@nodegui/nodegui";
+import { QPushButton, NodeWidget, QPushButtonSignals } from "@nodegui/nodegui";
 import {
   AbstractButtonProps,
   setAbstractButtonProps
@@ -27,7 +27,7 @@ import { throwUnsupported } from "../../utils/helpers";
  *
  * ```
  */
-export interface ButtonProps extends AbstractButtonProps {
+export interface ButtonProps extends AbstractButtonProps<QPushButtonSignals> {
   /**
    * Sets whether the button border is raised. [QPushButton: setFlat](https://docs.nodegui.org/docs/api/QPushButton#buttonsetflatisflat)
    */
@@ -52,16 +52,16 @@ const setButtonProps = (
  * @ignore
  */
 export class RNButton extends QPushButton implements RNWidget {
-  appendInitialChild(child: NodeWidget): void {
+  appendInitialChild(child: NodeWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget): void {
+  appendChild(child: NodeWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget): void {
+  removeChild(child: NodeWidget<any>): void {
     throwUnsupported(this);
   }
   setProps(newProps: ButtonProps, oldProps: ButtonProps) {

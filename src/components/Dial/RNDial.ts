@@ -1,9 +1,9 @@
-import { QDial, NodeWidget } from "@nodegui/nodegui";
+import { QDial, NodeWidget, QDialSignals } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
 
-export interface DialProps extends ViewProps {
+export interface DialProps extends ViewProps<QDialSignals> {
   notchesVisible?: boolean;
   wrapping?: boolean;
   notchTarget?: number;
@@ -36,16 +36,16 @@ export class RNDial extends QDial implements RNWidget {
   setProps(newProps: DialProps, oldProps: DialProps): void {
     setDialProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget): void {
+  appendInitialChild(child: NodeWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget): void {
+  appendChild(child: NodeWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget): void {
+  removeChild(child: NodeWidget<any>): void {
     throwUnsupported(this);
   }
   static tagName = "dial";

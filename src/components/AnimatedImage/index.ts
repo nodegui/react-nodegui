@@ -2,7 +2,6 @@ import { Fiber } from "react-reconciler";
 import { registerComponent, ComponentConfig } from "../config";
 import { RNAnimatedImage, AnimatedImageProps } from "./RNAnimatedImage";
 import { AppContainer } from "../../reconciler";
-import { QLabelEvents } from "@nodegui/nodegui";
 
 class AnimatedImageConfig extends ComponentConfig {
   tagName = RNAnimatedImage.tagName;

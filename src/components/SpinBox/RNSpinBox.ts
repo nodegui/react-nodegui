@@ -1,9 +1,9 @@
-import { QSpinBox, NodeWidget } from "@nodegui/nodegui";
+import { QSpinBox, NodeWidget, QSpinBoxSignals } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
 
-export interface SpinBoxProps extends ViewProps {
+export interface SpinBoxProps extends ViewProps<QSpinBoxSignals> {
   prefix?: string;
   suffix?: string;
   singleStep?: number;
@@ -44,16 +44,16 @@ export class RNSpinBox extends QSpinBox implements RNWidget {
   setProps(newProps: SpinBoxProps, oldProps: SpinBoxProps): void {
     setSpinBoxProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget): void {
+  appendInitialChild(child: NodeWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget): void {
+  appendChild(child: NodeWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget): void {
+  removeChild(child: NodeWidget<any>): void {
     throwUnsupported(this);
   }
   static tagName = "spinbox";

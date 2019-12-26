@@ -5,7 +5,10 @@ import {
   CursorShape,
   NodeWidget,
   QIcon,
-  FlexLayout
+  FlexLayout,
+  WidgetEventTypes,
+  NativeElement,
+  QWidgetSignals
 } from "@nodegui/nodegui";
 import { RNWidget, RNProps } from "../config";
 
@@ -33,7 +36,8 @@ import { RNWidget, RNProps } from "../config";
  *Renderer.render(<App />);
  * ```
  */
-export interface ViewProps extends RNProps {
+
+export interface ViewProps<Signals extends {}> extends RNProps {
   /**
    * Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui.org/docs/api/NodeWidget#widgetshow)
    */
@@ -101,7 +105,7 @@ export interface ViewProps extends RNProps {
   /**
    * Prop to set the event listener map. See [Handlong Events](/docs/guides/handle-events)
    */
-  on?: ListenerMap;
+  on?: Partial<EventListeners | Signals>;
   /**
    * Prop to set the ref. The ref will return the underlying nodegui widget.
    */
@@ -122,12 +126,12 @@ export interface ViewProps extends RNProps {
 /**
  * @ignore
  */
-export const setViewProps = (
-  widget: QWidget,
-  newProps: ViewProps,
-  oldProps: ViewProps
-) => {
-  const setter: ViewProps = {
+export function setViewProps<Signals extends {}>(
+  widget: NodeWidget<any>,
+  newProps: ViewProps<Signals>,
+  oldProps: ViewProps<Signals>
+) {
+  const setter: ViewProps<Signals> = {
     set visible(shouldShow: boolean) {
       shouldShow ? widget.show() : widget.hide();
     },
@@ -195,14 +199,13 @@ export const setViewProps = (
     set pos(position: Position) {
       widget.move(position.x, position.y);
     },
-    set on(listenerMap: ListenerMap) {
-      const listenerMapLatest = Object.assign({}, listenerMap);
+    set on(listenerMap: Partial<EventListeners | Signals>) {
+      const listenerMapLatest: any = Object.assign({}, listenerMap);
       const oldListenerMap = Object.assign({}, oldProps.on);
-
       Object.entries(oldListenerMap).forEach(([eventType, oldEvtListener]) => {
         const newEvtListener = listenerMapLatest[eventType];
         if (oldEvtListener !== newEvtListener) {
-          widget.removeEventListener(eventType, oldEvtListener);
+          widget.removeEventListener(eventType as any, oldEvtListener);
         } else {
           delete listenerMapLatest[eventType];
         }
@@ -210,7 +213,7 @@ export const setViewProps = (
 
       Object.entries(listenerMapLatest).forEach(
         ([eventType, newEvtListener]) => {
-          widget.addEventListener(eventType, newEvtListener);
+          widget.addEventListener(eventType as any, newEvtListener);
         }
       );
     },
@@ -226,16 +229,19 @@ export const setViewProps = (
     }
   };
   Object.assign(setter, newProps);
-};
+}
 
 /**
  * @ignore
  */
 export class RNView extends QWidget implements RNWidget {
-  setProps(newProps: ViewProps, oldProps: ViewProps): void {
+  setProps(
+    newProps: ViewProps<QWidgetSignals>,
+    oldProps: ViewProps<QWidgetSignals>
+  ): void {
     setViewProps(this, newProps, oldProps);
   }
-  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
     if (!this.layout) {
       console.warn("parent has no layout to insert child before another child");
       return;
@@ -243,10 +249,10 @@ export class RNView extends QWidget implements RNWidget {
     (this.layout as FlexLayout).insertChildBefore(child, beforeChild);
   }
   static tagName = "view";
-  appendInitialChild(child: NodeWidget): void {
+  appendInitialChild(child: NodeWidget<any>): void {
     this.appendChild(child);
   }
-  appendChild(child: NodeWidget): void {
+  appendChild(child: NodeWidget<any>): void {
     if (!child) {
       return;
     }
@@ -258,7 +264,7 @@ export class RNView extends QWidget implements RNWidget {
     }
     this.layout.addWidget(child);
   }
-  removeChild(child: NodeWidget) {
+  removeChild(child: NodeWidget<any>) {
     if (!this.layout) {
       console.warn("parent has no layout to remove child from");
       return;
@@ -287,9 +293,9 @@ type Position = {
   y: number;
 };
 
-interface ListenerMap {
-  [key: string]: (payload?: any) => void;
-}
+type EventListeners = {
+  [key in WidgetEventTypes]: (native?: NativeElement) => void;
+};
 
 type WidgetAttributesMap = {
   [key: number]: boolean;

@@ -1,8 +1,8 @@
-import { QLabelEvents } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
 import { registerComponent, ComponentConfig } from "../config";
 import { RNImage, ImageProps } from "./RNImage";
 import { AppContainer } from "../../reconciler";
+import { WidgetEventTypes } from "@nodegui/nodegui";
 class ImageConfig extends ComponentConfig {
   tagName = RNImage.tagName;
   shouldSetTextContent(nextProps: ImageProps): boolean {
@@ -17,7 +17,7 @@ class ImageConfig extends ComponentConfig {
     const widget = new RNImage();
     widget.setProperty("scaledContents", true);
     widget.setProps(newProps, {});
-    widget.addEventListener(QLabelEvents.Resize, () => {
+    widget.addEventListener(WidgetEventTypes.Resize, () => {
       widget.scalePixmap(widget.size());
     });
     return widget;
