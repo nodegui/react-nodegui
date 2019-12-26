@@ -6,7 +6,12 @@ import { RNComponent } from "../components/config";
 //@ts-ignore
 import deepForceUpdate from "react-deep-force-update";
 
-type NodeGuiReconciler = Reconciler<RNComponent, any, Set<NodeWidget>, any>;
+type NodeGuiReconciler = Reconciler<
+  RNComponent,
+  any,
+  Set<NodeWidget<any>>,
+  any
+>;
 
 export type RendererOptions = {
   onRender?: () => void;

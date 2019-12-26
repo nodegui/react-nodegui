@@ -2,13 +2,14 @@ import { registerComponent, ComponentConfig } from "../config";
 import { Fiber } from "react-reconciler";
 import { RNView, ViewProps } from "./RNView";
 import { AppContainer } from "../../reconciler";
+import { QWidgetSignals } from "@nodegui/nodegui";
 class ViewConfig extends ComponentConfig {
   tagName = RNView.tagName;
   shouldSetTextContent() {
     return false;
   }
   createInstance(
-    newProps: ViewProps,
+    newProps: ViewProps<QWidgetSignals>,
     rootInstance: AppContainer,
     context: any,
     workInProgress: Fiber
@@ -19,7 +20,7 @@ class ViewConfig extends ComponentConfig {
   }
   commitMount(
     instance: RNView,
-    newProps: ViewProps,
+    newProps: ViewProps<QWidgetSignals>,
     internalInstanceHandle: any
   ): void {
     if (newProps.visible !== false) {
@@ -30,12 +31,14 @@ class ViewConfig extends ComponentConfig {
   commitUpdate(
     instance: RNView,
     updatePayload: any,
-    oldProps: ViewProps,
-    newProps: ViewProps,
+    oldProps: ViewProps<QWidgetSignals>,
+    newProps: ViewProps<QWidgetSignals>,
     finishedWork: Fiber
   ): void {
     instance.setProps(newProps, oldProps);
   }
 }
 
-export const View = registerComponent<ViewProps>(new ViewConfig());
+export const View = registerComponent<ViewProps<QWidgetSignals>>(
+  new ViewConfig()
+);

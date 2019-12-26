@@ -5,21 +5,27 @@ import { AppContainer } from "../reconciler";
 type UpdatePayload = any;
 
 export interface RNProps {}
-export abstract class RNWidget extends NodeWidget implements RNComponent {
+export abstract class RNWidget extends NodeWidget<any> implements RNComponent {
   static tagName: string;
   abstract setProps(newProps: RNProps, oldProps: RNProps): void;
-  abstract appendInitialChild(child: NodeWidget): void;
-  abstract appendChild(child: NodeWidget): void;
-  abstract insertBefore(child: NodeWidget, beforeChild: NodeWidget): void;
-  abstract removeChild(child: NodeWidget): void;
+  abstract appendInitialChild(child: NodeWidget<any>): void;
+  abstract appendChild(child: NodeWidget<any>): void;
+  abstract insertBefore(
+    child: NodeWidget<any>,
+    beforeChild: NodeWidget<any>
+  ): void;
+  abstract removeChild(child: NodeWidget<any>): void;
 }
 export abstract class RNComponent {
   static tagName: string;
   abstract setProps(newProps: RNProps, oldProps: RNProps): void;
-  abstract appendInitialChild(child: NodeWidget): void;
-  abstract appendChild(child: NodeWidget): void;
-  abstract insertBefore(child: NodeWidget, beforeChild: NodeWidget): void;
-  abstract removeChild(child: NodeWidget): void;
+  abstract appendInitialChild(child: NodeWidget<any>): void;
+  abstract appendChild(child: NodeWidget<any>): void;
+  abstract insertBefore(
+    child: NodeWidget<any>,
+    beforeChild: NodeWidget<any>
+  ): void;
+  abstract removeChild(child: NodeWidget<any>): void;
 }
 export abstract class ComponentConfig {
   abstract tagName: string;

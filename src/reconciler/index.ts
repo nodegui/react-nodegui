@@ -7,8 +7,8 @@ import {
   RNComponent
 } from "../components/config";
 
-export type AppContainer = Set<NodeWidget>;
-export const appContainer: AppContainer = new Set<NodeWidget>();
+export type AppContainer = Set<NodeWidget<any>>;
+export const appContainer: AppContainer = new Set<NodeWidget<any>>();
 
 const HostConfig: Reconciler.HostConfig<
   string,
@@ -66,7 +66,7 @@ const HostConfig: Reconciler.HostConfig<
       workInProgress
     );
   },
-  appendInitialChild: function(parent: RNWidget, child: NodeWidget) {
+  appendInitialChild: function(parent: RNWidget, child: NodeWidget<any>) {
     parent.appendInitialChild(child);
   },
   finalizeInitialChildren: function(
@@ -94,7 +94,7 @@ const HostConfig: Reconciler.HostConfig<
     const { commitMount } = getComponentByTagName(type);
     return commitMount(instance, newProps, internalInstanceHandle);
   },
-  appendChildToContainer: function(container, child: NodeWidget) {
+  appendChildToContainer: function(container, child: NodeWidget<any>) {
     container.add(child);
   },
   insertInContainerBefore: (container, child, beforeChild) => {
@@ -140,17 +140,17 @@ const HostConfig: Reconciler.HostConfig<
       finishedWork
     );
   },
-  appendChild: (parent: RNWidget, child: NodeWidget) => {
+  appendChild: (parent: RNWidget, child: NodeWidget<any>) => {
     parent.appendChild(child);
   },
   insertBefore: (
     parent: RNWidget,
-    child: NodeWidget,
-    beforeChild: NodeWidget
+    child: NodeWidget<any>,
+    beforeChild: NodeWidget<any>
   ) => {
     parent.insertBefore(child, beforeChild);
   },
-  removeChild: (parent: RNWidget, child: NodeWidget) => {
+  removeChild: (parent: RNWidget, child: NodeWidget<any>) => {
     parent.removeChild(child);
     if (child.close) {
       child.close();
@@ -181,10 +181,10 @@ const HostConfig: Reconciler.HostConfig<
     return false;
   },
   //@ts-ignore
-  hideInstance: (instance: NodeWidget) => {
+  hideInstance: (instance: NodeWidget<any>) => {
     instance.hide();
   },
-  unhideInstance: (instance: NodeWidget, Props: RNProps) => {
+  unhideInstance: (instance: NodeWidget<any>, Props: RNProps) => {
     instance.show();
   },
   hideTextInstance: (instance: any) => {
@@ -193,7 +193,7 @@ const HostConfig: Reconciler.HostConfig<
       "hideTextInstance called when platform doesnt have host level text"
     );
   },
-  unhideTextInstance: (instance: NodeWidget, Props: RNProps) => {
+  unhideTextInstance: (instance: NodeWidget<any>, Props: RNProps) => {
     // noop since we dont have any host text
     console.warn(
       "unhideTextInstance called when platform doesnt have host level text"

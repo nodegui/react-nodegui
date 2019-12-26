@@ -23,7 +23,7 @@ import { QAbstractButton } from "@nodegui/nodegui";
  *
  * ```
  */
-export interface AbstractButtonProps extends ViewProps {
+export interface AbstractButtonProps<Signals> extends ViewProps<Signals> {
   /**
    * Sets the given text to the button. [QPushButton: setText](https://docs.nodegui.org/docs/api/QPushButton#buttonsettexttext)
    */
@@ -38,12 +38,12 @@ export interface AbstractButtonProps extends ViewProps {
   iconSize?: QSize;
 }
 
-export const setAbstractButtonProps = (
-  widget: QAbstractButton,
-  newProps: AbstractButtonProps,
-  oldProps: AbstractButtonProps
-) => {
-  const setter: AbstractButtonProps = {
+export function setAbstractButtonProps<Signals>(
+  widget: QAbstractButton<Signals>,
+  newProps: AbstractButtonProps<Signals>,
+  oldProps: AbstractButtonProps<Signals>
+) {
+  const setter: AbstractButtonProps<Signals> = {
     set text(buttonText: string) {
       widget.setText(buttonText);
     },
@@ -56,4 +56,4 @@ export const setAbstractButtonProps = (
   };
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);
-};
+}

@@ -1,9 +1,9 @@
-import { QLabel, NodeWidget } from "@nodegui/nodegui";
+import { QLabel, NodeWidget, QLabelSignals } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
 
-export interface TextProps extends ViewProps {
+export interface TextProps extends ViewProps<QLabelSignals> {
   children?: string | number;
   wordWrap?: boolean;
   scaledContents?: boolean;
@@ -39,16 +39,16 @@ export class RNText extends QLabel implements RNWidget {
   setProps(newProps: TextProps, oldProps: TextProps): void {
     setTextProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget): void {
+  appendInitialChild(child: NodeWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget): void {
+  appendChild(child: NodeWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget): void {
+  removeChild(child: NodeWidget<any>): void {
     throwUnsupported(this);
   }
   static tagName = "text";

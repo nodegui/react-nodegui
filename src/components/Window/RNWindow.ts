@@ -1,8 +1,8 @@
-import { QMainWindow, NodeWidget, FlexLayout } from "@nodegui/nodegui";
-import { setViewProps, ViewProps, RNView } from "../View/RNView";
+import { QMainWindow, NodeWidget, QMainWindowSignals } from "@nodegui/nodegui";
+import { setViewProps, ViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 
-export interface WindowProps extends ViewProps {}
+export interface WindowProps extends ViewProps<QMainWindowSignals> {}
 
 const setWindowProps = (
   window: RNWindow,
@@ -23,24 +23,24 @@ export class RNWindow extends QMainWindow implements RNWidget {
   setProps(newProps: WindowProps, oldProps: WindowProps): void {
     setWindowProps(this, newProps, oldProps);
   }
-  removeChild(child: NodeWidget) {
+  removeChild(child: NodeWidget<any>) {
     const removedChild = this.takeCentralWidget();
     if (removedChild) {
       removedChild.close();
     }
     child.close();
   }
-  appendInitialChild(child: NodeWidget): void {
+  appendInitialChild(child: NodeWidget<any>): void {
     if (this.centralWidget) {
       console.warn("MainWindow can't have more than one child node");
       return;
     }
     this.setCentralWidget(child);
   }
-  appendChild(child: NodeWidget): void {
+  appendChild(child: NodeWidget<any>): void {
     this.appendInitialChild(child);
   }
-  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
     this.appendInitialChild(child);
   }
   static tagName = "mainwindow";

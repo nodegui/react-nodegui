@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import {
   Renderer,
   Button,
@@ -7,7 +7,7 @@ import {
   AnimatedImage,
   ComboBox
 } from "./index";
-import { QIcon, QVariant, QComboBoxEvents, QComboBox } from "@nodegui/nodegui";
+import { QIcon, QVariant } from "@nodegui/nodegui";
 
 const items = [
   {
@@ -24,8 +24,8 @@ const App = () => {
   return (
     <Window>
       <View style={containerStyle}>
-        <View>
-          <Button style={buttonStyle} text={"Hello"} />
+        <View on={{}}>
+          <Button on={{}} style={buttonStyle} text={"Hello"} />
           <Button style={buttonStyle} text={"World"} />
         </View>
         <ComboBox items={items} />

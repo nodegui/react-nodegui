@@ -1,9 +1,14 @@
-import { QLineEdit, EchoMode, NodeWidget } from "@nodegui/nodegui";
+import {
+  QLineEdit,
+  EchoMode,
+  NodeWidget,
+  QLineEditSignals
+} from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
 
-export interface LineEditProps extends ViewProps {
+export interface LineEditProps extends ViewProps<QLineEditSignals> {
   text?: string;
   placeholderText?: string;
   readOnly?: boolean;
@@ -40,16 +45,16 @@ export class RNLineEdit extends QLineEdit implements RNWidget {
   setProps(newProps: LineEditProps, oldProps: LineEditProps): void {
     setLineEditProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget): void {
+  appendInitialChild(child: NodeWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget): void {
+  appendChild(child: NodeWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget): void {
+  removeChild(child: NodeWidget<any>): void {
     throwUnsupported(this);
   }
   static tagName = "linedit";

@@ -1,8 +1,8 @@
-import { QScrollArea, NodeWidget } from "@nodegui/nodegui";
+import { QScrollArea, NodeWidget, QScrollAreaSignals } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 
-export interface ScrollAreaProps extends ViewProps {
+export interface ScrollAreaProps extends ViewProps<QScrollAreaSignals> {
   widgetResizable?: boolean;
 }
 
@@ -27,24 +27,24 @@ export class RNScrollArea extends QScrollArea implements RNWidget {
   setProps(newProps: ScrollAreaProps, oldProps: ScrollAreaProps): void {
     setScrollAreaProps(this, newProps, oldProps);
   }
-  removeChild(child: NodeWidget): void {
+  removeChild(child: NodeWidget<any>): void {
     const removedChild = this.takeWidget();
     if (removedChild) {
       removedChild.close();
     }
     child.close();
   }
-  appendInitialChild(child: NodeWidget): void {
+  appendInitialChild(child: NodeWidget<any>): void {
     if (this.contentWidget) {
       console.warn("ScrollView can't have more than one child node");
       return;
     }
     this.setWidget(child);
   }
-  appendChild(child: NodeWidget): void {
+  appendChild(child: NodeWidget<any>): void {
     this.appendInitialChild(child);
   }
-  insertBefore(child: NodeWidget, beforeChild: NodeWidget): void {
+  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
     this.appendInitialChild(child);
   }
   static tagName = "scrollarea";
