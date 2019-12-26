@@ -112,13 +112,13 @@ export interface ViewProps<Signals extends {}> extends RNProps {
   ref?: any;
   /**
    * Prop to set the Widget Attributes. example:
-   * <View attributes={{Qt::WA_Disabled: true}} />
+   * `<View attributes={{[WidgetAttributes.WA_Disabled]: true}} />`
    */
   attributes?: WidgetAttributesMap;
 
   /**
    * Prop to set the Widget flags. example:
-   * <View windowFlags={{Qt::SplashScreen: true}} />
+   * `<View windowFlags={{[WindowType.SplashScreen]: true}} />`
    */
   windowFlags?: WindowFlagsMap;
 }
