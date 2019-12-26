@@ -1,4 +1,4 @@
-import { QIcon, QSize } from "@nodegui/nodegui";
+import { QIcon, QSize, QAbstractButtonSignals } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
 import { QAbstractButton } from "@nodegui/nodegui";
 
@@ -23,7 +23,8 @@ import { QAbstractButton } from "@nodegui/nodegui";
  *
  * ```
  */
-export interface AbstractButtonProps<Signals> extends ViewProps<Signals> {
+export interface AbstractButtonProps<Signals extends QAbstractButtonSignals>
+  extends ViewProps<Signals> {
   /**
    * Sets the given text to the button. [QPushButton: setText](https://docs.nodegui.org/docs/api/QPushButton#buttonsettexttext)
    */
@@ -38,7 +39,7 @@ export interface AbstractButtonProps<Signals> extends ViewProps<Signals> {
   iconSize?: QSize;
 }
 
-export function setAbstractButtonProps<Signals>(
+export function setAbstractButtonProps<Signals extends QAbstractButtonSignals>(
   widget: QAbstractButton<Signals>,
   newProps: AbstractButtonProps<Signals>,
   oldProps: AbstractButtonProps<Signals>

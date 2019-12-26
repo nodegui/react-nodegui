@@ -1,6 +1,6 @@
 {
   "name": "@nodegui/react-nodegui",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "React Native for building cross platform desktop applications",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -27,17 +27,17 @@
     "react-reconciler": "^0.24.0"
   },
   "peerDependencies": {
-    "@nodegui/nodegui": ">=0.9.0",
+    "@nodegui/nodegui": ">=0.12.0",
     "@nodegui/qode": "*",
     "react": "^16.9.0"
   },
   "devDependencies": {
-    "@nodegui/nodegui": "^0.11.0",
-    "@types/node": "^12.0.10",
+    "@nodegui/nodegui": "^0.12.0",
+    "@types/node": "^12.12.22",
     "prettier": "^1.18.2",
     "react": "^16.9.0",
     "typedoc": "^0.15.4",
     "typedoc-plugin-markdown": "^2.2.14",
-    "typescript": "^3.7.3"
+    "typescript": "^3.7.4"
   }
 }
