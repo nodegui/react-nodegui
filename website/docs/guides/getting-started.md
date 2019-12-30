@@ -9,7 +9,7 @@ instead of web servers.
 
 React NodeGui is a react renderer for [NodeGui](https://nodegui.org), which is an efficient JavaScript binding to a cross platform graphical user interface
 (GUI) library `Qt`. Qt is one of the most mature and efficient library for building desktop applications.
-This enabled React NodeGui to be extrememly memory and CPU efficient as compared to other popular Javascript Desktop GUI solutions. A hello world app built with React NodeGui runs on less than 20Mb of memory.
+This enabled React NodeGui to be extremely memory and CPU efficient as compared to other popular Javascript Desktop GUI solutions. A hello world app built with React NodeGui runs on less than 20Mb of memory.
 
 ## Developer environment
 
