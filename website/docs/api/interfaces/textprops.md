@@ -6,16 +6,19 @@ sidebar_label: "TextProps"
 
 ## Hierarchy
 
-  ↳ [ViewProps](viewprops.md)
+  ↳ [ViewProps](viewprops.md)‹QLabelSignals›
 
   ↳ **TextProps**
 
   ↳ [ImageProps](imageprops.md)
 
+  ↳ [AnimatedImageProps](animatedimageprops.md)
+
 ## Index
 
 ### Properties
 
+* [attributes](textprops.md#optional-attributes)
 * [children](textprops.md#optional-children)
 * [cursor](textprops.md#optional-cursor)
 * [enabled](textprops.md#optional-enabled)
@@ -27,10 +30,12 @@ sidebar_label: "TextProps"
 * [on](textprops.md#optional-on)
 * [pos](textprops.md#optional-pos)
 * [ref](textprops.md#optional-ref)
+* [scaledContents](textprops.md#optional-scaledcontents)
 * [size](textprops.md#optional-size)
 * [style](textprops.md#optional-style)
 * [styleSheet](textprops.md#optional-stylesheet)
 * [visible](textprops.md#optional-visible)
+* [windowFlags](textprops.md#optional-windowflags)
 * [windowIcon](textprops.md#optional-windowicon)
 * [windowOpacity](textprops.md#optional-windowopacity)
 * [windowState](textprops.md#optional-windowstate)
@@ -38,6 +43,17 @@ sidebar_label: "TextProps"
 * [wordWrap](textprops.md#optional-wordwrap)
 
 ## Properties
+
+### `Optional` attributes
+
+• **attributes**? : *WidgetAttributesMap*
+
+*Inherited from [ViewProps](viewprops.md).[attributes](viewprops.md#optional-attributes)*
+
+Prop to set the Widget Attributes. example:
+`<View attributes={{[WidgetAttributes.WA_Disabled]: true}} />`
+
+___
 
 ### `Optional` children
 
@@ -117,7 +133,7 @@ ___
 
 ### `Optional` on
 
-• **on**? : *ListenerMap*
+• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QLabelSignals›*
 
 *Inherited from [ViewProps](viewprops.md).[on](viewprops.md#optional-on)*
 
@@ -142,6 +158,12 @@ ___
 *Inherited from [ViewProps](viewprops.md).[ref](viewprops.md#optional-ref)*
 
 Prop to set the ref. The ref will return the underlying nodegui widget.
+
+___
+
+### `Optional` scaledContents
+
+• **scaledContents**? : *undefined | false | true*
 
 ___
 
@@ -185,6 +207,17 @@ Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui
 
 ___
 
+### `Optional` windowFlags
+
+• **windowFlags**? : *WindowFlagsMap*
+
+*Inherited from [ViewProps](viewprops.md).[windowFlags](viewprops.md#optional-windowflags)*
+
+Prop to set the Widget flags. example:
+`<View windowFlags={{[WindowType.SplashScreen]: true}} />`
+
+___
+
 ### `Optional` windowIcon
 
 • **windowIcon**? : *QIcon*
@@ -197,7 +230,7 @@ ___
 
 ### `Optional` windowOpacity
 
-• **windowOpacity**? : *Number*
+• **windowOpacity**? : *undefined | number*
 
 *Inherited from [ViewProps](viewprops.md).[windowOpacity](viewprops.md#optional-windowopacity)*
 

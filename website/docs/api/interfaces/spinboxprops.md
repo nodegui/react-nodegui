@@ -6,7 +6,7 @@ sidebar_label: "SpinBoxProps"
 
 ## Hierarchy
 
-  ↳ [ViewProps](viewprops.md)
+  ↳ [ViewProps](viewprops.md)‹QSpinBoxSignals›
 
   ↳ **SpinBoxProps**
 
@@ -14,6 +14,7 @@ sidebar_label: "SpinBoxProps"
 
 ### Properties
 
+* [attributes](spinboxprops.md#optional-attributes)
 * [cursor](spinboxprops.md#optional-cursor)
 * [enabled](spinboxprops.md#optional-enabled)
 * [geometry](spinboxprops.md#optional-geometry)
@@ -33,12 +34,24 @@ sidebar_label: "SpinBoxProps"
 * [suffix](spinboxprops.md#optional-suffix)
 * [value](spinboxprops.md#optional-value)
 * [visible](spinboxprops.md#optional-visible)
+* [windowFlags](spinboxprops.md#optional-windowflags)
 * [windowIcon](spinboxprops.md#optional-windowicon)
 * [windowOpacity](spinboxprops.md#optional-windowopacity)
 * [windowState](spinboxprops.md#optional-windowstate)
 * [windowTitle](spinboxprops.md#optional-windowtitle)
 
 ## Properties
+
+### `Optional` attributes
+
+• **attributes**? : *WidgetAttributesMap*
+
+*Inherited from [ViewProps](viewprops.md).[attributes](viewprops.md#optional-attributes)*
+
+Prop to set the Widget Attributes. example:
+`<View attributes={{[WidgetAttributes.WA_Disabled]: true}} />`
+
+___
 
 ### `Optional` cursor
 
@@ -112,7 +125,7 @@ ___
 
 ### `Optional` on
 
-• **on**? : *ListenerMap*
+• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QSpinBoxSignals›*
 
 *Inherited from [ViewProps](viewprops.md).[on](viewprops.md#optional-on)*
 
@@ -210,6 +223,17 @@ Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui
 
 ___
 
+### `Optional` windowFlags
+
+• **windowFlags**? : *WindowFlagsMap*
+
+*Inherited from [ViewProps](viewprops.md).[windowFlags](viewprops.md#optional-windowflags)*
+
+Prop to set the Widget flags. example:
+`<View windowFlags={{[WindowType.SplashScreen]: true}} />`
+
+___
+
 ### `Optional` windowIcon
 
 • **windowIcon**? : *QIcon*
@@ -222,7 +246,7 @@ ___
 
 ### `Optional` windowOpacity
 
-• **windowOpacity**? : *Number*
+• **windowOpacity**? : *undefined | number*
 
 *Inherited from [ViewProps](viewprops.md).[windowOpacity](viewprops.md#optional-windowopacity)*
 

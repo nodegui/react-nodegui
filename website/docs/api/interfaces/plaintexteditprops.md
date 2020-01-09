@@ -6,7 +6,7 @@ sidebar_label: "PlainTextEditProps"
 
 ## Hierarchy
 
-  ↳ [ViewProps](viewprops.md)
+  ↳ [ViewProps](viewprops.md)‹QPlainTextEditSignals›
 
   ↳ **PlainTextEditProps**
 
@@ -14,6 +14,7 @@ sidebar_label: "PlainTextEditProps"
 
 ### Properties
 
+* [attributes](plaintexteditprops.md#optional-attributes)
 * [cursor](plaintexteditprops.md#optional-cursor)
 * [enabled](plaintexteditprops.md#optional-enabled)
 * [geometry](plaintexteditprops.md#optional-geometry)
@@ -31,12 +32,24 @@ sidebar_label: "PlainTextEditProps"
 * [styleSheet](plaintexteditprops.md#optional-stylesheet)
 * [text](plaintexteditprops.md#optional-text)
 * [visible](plaintexteditprops.md#optional-visible)
+* [windowFlags](plaintexteditprops.md#optional-windowflags)
 * [windowIcon](plaintexteditprops.md#optional-windowicon)
 * [windowOpacity](plaintexteditprops.md#optional-windowopacity)
 * [windowState](plaintexteditprops.md#optional-windowstate)
 * [windowTitle](plaintexteditprops.md#optional-windowtitle)
 
 ## Properties
+
+### `Optional` attributes
+
+• **attributes**? : *WidgetAttributesMap*
+
+*Inherited from [ViewProps](viewprops.md).[attributes](viewprops.md#optional-attributes)*
+
+Prop to set the Widget Attributes. example:
+`<View attributes={{[WidgetAttributes.WA_Disabled]: true}} />`
+
+___
 
 ### `Optional` cursor
 
@@ -110,7 +123,7 @@ ___
 
 ### `Optional` on
 
-• **on**? : *ListenerMap*
+• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QPlainTextEditSignals›*
 
 *Inherited from [ViewProps](viewprops.md).[on](viewprops.md#optional-on)*
 
@@ -196,6 +209,17 @@ Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui
 
 ___
 
+### `Optional` windowFlags
+
+• **windowFlags**? : *WindowFlagsMap*
+
+*Inherited from [ViewProps](viewprops.md).[windowFlags](viewprops.md#optional-windowflags)*
+
+Prop to set the Widget flags. example:
+`<View windowFlags={{[WindowType.SplashScreen]: true}} />`
+
+___
+
 ### `Optional` windowIcon
 
 • **windowIcon**? : *QIcon*
@@ -208,7 +232,7 @@ ___
 
 ### `Optional` windowOpacity
 
-• **windowOpacity**? : *Number*
+• **windowOpacity**? : *undefined | number*
 
 *Inherited from [ViewProps](viewprops.md).[windowOpacity](viewprops.md#optional-windowopacity)*
 

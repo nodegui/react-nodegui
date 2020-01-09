@@ -26,7 +26,7 @@ Renderer.render(<App />);
 
 ## Hierarchy
 
-  ↳ [ViewProps](viewprops.md)
+  ↳ [AbstractButtonProps](abstractbuttonprops.md)‹QPushButtonSignals›
 
   ↳ **ButtonProps**
 
@@ -34,11 +34,13 @@ Renderer.render(<App />);
 
 ### Properties
 
+* [attributes](buttonprops.md#optional-attributes)
 * [cursor](buttonprops.md#optional-cursor)
 * [enabled](buttonprops.md#optional-enabled)
 * [flat](buttonprops.md#optional-flat)
 * [geometry](buttonprops.md#optional-geometry)
 * [icon](buttonprops.md#optional-icon)
+* [iconSize](buttonprops.md#optional-iconsize)
 * [id](buttonprops.md#optional-id)
 * [maxSize](buttonprops.md#optional-maxsize)
 * [minSize](buttonprops.md#optional-minsize)
@@ -51,12 +53,24 @@ Renderer.render(<App />);
 * [styleSheet](buttonprops.md#optional-stylesheet)
 * [text](buttonprops.md#optional-text)
 * [visible](buttonprops.md#optional-visible)
+* [windowFlags](buttonprops.md#optional-windowflags)
 * [windowIcon](buttonprops.md#optional-windowicon)
 * [windowOpacity](buttonprops.md#optional-windowopacity)
 * [windowState](buttonprops.md#optional-windowstate)
 * [windowTitle](buttonprops.md#optional-windowtitle)
 
 ## Properties
+
+### `Optional` attributes
+
+• **attributes**? : *WidgetAttributesMap*
+
+*Inherited from [ViewProps](viewprops.md).[attributes](viewprops.md#optional-attributes)*
+
+Prop to set the Widget Attributes. example:
+`<View attributes={{[WidgetAttributes.WA_Disabled]: true}} />`
+
+___
 
 ### `Optional` cursor
 
@@ -100,7 +114,19 @@ ___
 
 • **icon**? : *QIcon*
 
+*Inherited from [AbstractButtonProps](abstractbuttonprops.md).[icon](abstractbuttonprops.md#optional-icon)*
+
 Sets an icon in the button. [QPushButton: setIcon](https://docs.nodegui.org/docs/api/QPushButton#buttonseticonicon)
+
+___
+
+### `Optional` iconSize
+
+• **iconSize**? : *QSize*
+
+*Inherited from [AbstractButtonProps](abstractbuttonprops.md).[iconSize](abstractbuttonprops.md#optional-iconsize)*
+
+Sets an icon size in the button. [QPushButton: setIconSize](https://docs.nodegui.org/docs/api/QPushButton#buttonseticonsize)
 
 ___
 
@@ -146,7 +172,7 @@ ___
 
 ### `Optional` on
 
-• **on**? : *ListenerMap*
+• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QPushButtonSignals›*
 
 *Inherited from [ViewProps](viewprops.md).[on](viewprops.md#optional-on)*
 
@@ -208,6 +234,8 @@ ___
 
 • **text**? : *undefined | string*
 
+*Inherited from [AbstractButtonProps](abstractbuttonprops.md).[text](abstractbuttonprops.md#optional-text)*
+
 Sets the given text to the button. [QPushButton: setText](https://docs.nodegui.org/docs/api/QPushButton#buttonsettexttext)
 
 ___
@@ -219,6 +247,17 @@ ___
 *Inherited from [ViewProps](viewprops.md).[visible](viewprops.md#optional-visible)*
 
 Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui.org/docs/api/NodeWidget#widgetshow)
+
+___
+
+### `Optional` windowFlags
+
+• **windowFlags**? : *WindowFlagsMap*
+
+*Inherited from [ViewProps](viewprops.md).[windowFlags](viewprops.md#optional-windowflags)*
+
+Prop to set the Widget flags. example:
+`<View windowFlags={{[WindowType.SplashScreen]: true}} />`
 
 ___
 
@@ -234,7 +273,7 @@ ___
 
 ### `Optional` windowOpacity
 
-• **windowOpacity**? : *Number*
+• **windowOpacity**? : *undefined | number*
 
 *Inherited from [ViewProps](viewprops.md).[windowOpacity](viewprops.md#optional-windowopacity)*
 

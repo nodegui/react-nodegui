@@ -6,7 +6,7 @@ sidebar_label: "WindowProps"
 
 ## Hierarchy
 
-  ↳ [ViewProps](viewprops.md)
+  ↳ [ViewProps](viewprops.md)‹QMainWindowSignals›
 
   ↳ **WindowProps**
 
@@ -14,7 +14,7 @@ sidebar_label: "WindowProps"
 
 ### Properties
 
-* [centralWidgetProps](windowprops.md#optional-centralwidgetprops)
+* [attributes](windowprops.md#optional-attributes)
 * [cursor](windowprops.md#optional-cursor)
 * [enabled](windowprops.md#optional-enabled)
 * [geometry](windowprops.md#optional-geometry)
@@ -29,6 +29,7 @@ sidebar_label: "WindowProps"
 * [style](windowprops.md#optional-style)
 * [styleSheet](windowprops.md#optional-stylesheet)
 * [visible](windowprops.md#optional-visible)
+* [windowFlags](windowprops.md#optional-windowflags)
 * [windowIcon](windowprops.md#optional-windowicon)
 * [windowOpacity](windowprops.md#optional-windowopacity)
 * [windowState](windowprops.md#optional-windowstate)
@@ -36,9 +37,14 @@ sidebar_label: "WindowProps"
 
 ## Properties
 
-### `Optional` centralWidgetProps
+### `Optional` attributes
 
-• **centralWidgetProps**? : *[ViewProps](viewprops.md)*
+• **attributes**? : *WidgetAttributesMap*
+
+*Inherited from [ViewProps](viewprops.md).[attributes](viewprops.md#optional-attributes)*
+
+Prop to set the Widget Attributes. example:
+`<View attributes={{[WidgetAttributes.WA_Disabled]: true}} />`
 
 ___
 
@@ -114,7 +120,7 @@ ___
 
 ### `Optional` on
 
-• **on**? : *ListenerMap*
+• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QMainWindowSignals›*
 
 *Inherited from [ViewProps](viewprops.md).[on](viewprops.md#optional-on)*
 
@@ -182,6 +188,17 @@ Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui
 
 ___
 
+### `Optional` windowFlags
+
+• **windowFlags**? : *WindowFlagsMap*
+
+*Inherited from [ViewProps](viewprops.md).[windowFlags](viewprops.md#optional-windowflags)*
+
+Prop to set the Widget flags. example:
+`<View windowFlags={{[WindowType.SplashScreen]: true}} />`
+
+___
+
 ### `Optional` windowIcon
 
 • **windowIcon**? : *QIcon*
@@ -194,7 +211,7 @@ ___
 
 ### `Optional` windowOpacity
 
-• **windowOpacity**? : *Number*
+• **windowOpacity**? : *undefined | number*
 
 *Inherited from [ViewProps](viewprops.md).[windowOpacity](viewprops.md#optional-windowopacity)*
 

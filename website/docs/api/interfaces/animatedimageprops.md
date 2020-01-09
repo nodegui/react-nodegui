@@ -1,54 +1,46 @@
 ---
-id: "imageprops"
-title: "ImageProps"
-sidebar_label: "ImageProps"
+id: "animatedimageprops"
+title: "AnimatedImageProps"
+sidebar_label: "AnimatedImageProps"
 ---
 
 ## Hierarchy
 
   ↳ [TextProps](textprops.md)
 
-  ↳ **ImageProps**
+  ↳ **AnimatedImageProps**
 
 ## Index
 
 ### Properties
 
-* [aspectRatioMode](imageprops.md#optional-aspectratiomode)
-* [attributes](imageprops.md#optional-attributes)
-* [buffer](imageprops.md#optional-buffer)
-* [children](imageprops.md#optional-children)
-* [cursor](imageprops.md#optional-cursor)
-* [enabled](imageprops.md#optional-enabled)
-* [geometry](imageprops.md#optional-geometry)
-* [id](imageprops.md#optional-id)
-* [maxSize](imageprops.md#optional-maxsize)
-* [minSize](imageprops.md#optional-minsize)
-* [mouseTracking](imageprops.md#optional-mousetracking)
-* [on](imageprops.md#optional-on)
-* [pos](imageprops.md#optional-pos)
-* [ref](imageprops.md#optional-ref)
-* [scaledContents](imageprops.md#optional-scaledcontents)
-* [size](imageprops.md#optional-size)
-* [src](imageprops.md#optional-src)
-* [style](imageprops.md#optional-style)
-* [styleSheet](imageprops.md#optional-stylesheet)
-* [transformationMode](imageprops.md#optional-transformationmode)
-* [visible](imageprops.md#optional-visible)
-* [windowFlags](imageprops.md#optional-windowflags)
-* [windowIcon](imageprops.md#optional-windowicon)
-* [windowOpacity](imageprops.md#optional-windowopacity)
-* [windowState](imageprops.md#optional-windowstate)
-* [windowTitle](imageprops.md#optional-windowtitle)
-* [wordWrap](imageprops.md#optional-wordwrap)
+* [attributes](animatedimageprops.md#optional-attributes)
+* [buffer](animatedimageprops.md#optional-buffer)
+* [children](animatedimageprops.md#optional-children)
+* [cursor](animatedimageprops.md#optional-cursor)
+* [enabled](animatedimageprops.md#optional-enabled)
+* [geometry](animatedimageprops.md#optional-geometry)
+* [id](animatedimageprops.md#optional-id)
+* [maxSize](animatedimageprops.md#optional-maxsize)
+* [minSize](animatedimageprops.md#optional-minsize)
+* [mouseTracking](animatedimageprops.md#optional-mousetracking)
+* [on](animatedimageprops.md#optional-on)
+* [pos](animatedimageprops.md#optional-pos)
+* [ref](animatedimageprops.md#optional-ref)
+* [scaledContents](animatedimageprops.md#optional-scaledcontents)
+* [size](animatedimageprops.md#optional-size)
+* [src](animatedimageprops.md#optional-src)
+* [style](animatedimageprops.md#optional-style)
+* [styleSheet](animatedimageprops.md#optional-stylesheet)
+* [visible](animatedimageprops.md#optional-visible)
+* [windowFlags](animatedimageprops.md#optional-windowflags)
+* [windowIcon](animatedimageprops.md#optional-windowicon)
+* [windowOpacity](animatedimageprops.md#optional-windowopacity)
+* [windowState](animatedimageprops.md#optional-windowstate)
+* [windowTitle](animatedimageprops.md#optional-windowtitle)
+* [wordWrap](animatedimageprops.md#optional-wordwrap)
 
 ## Properties
-
-### `Optional` aspectRatioMode
-
-• **aspectRatioMode**? : *AspectRatioMode*
-
-___
 
 ### `Optional` attributes
 
@@ -216,12 +208,6 @@ ___
 *Inherited from [ViewProps](viewprops.md).[styleSheet](viewprops.md#optional-stylesheet)*
 
 Sets the property that holds the widget's style sheet. [QWidget: setStyleSheet](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetstylesheetstylesheet)
-
-___
-
-### `Optional` transformationMode
-
-• **transformationMode**? : *TransformationMode*
 
 ___
 

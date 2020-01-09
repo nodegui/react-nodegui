@@ -6,7 +6,7 @@ sidebar_label: "DialProps"
 
 ## Hierarchy
 
-  ↳ [ViewProps](viewprops.md)
+  ↳ [ViewProps](viewprops.md)‹QDialSignals›
 
   ↳ **DialProps**
 
@@ -14,6 +14,7 @@ sidebar_label: "DialProps"
 
 ### Properties
 
+* [attributes](dialprops.md#optional-attributes)
 * [cursor](dialprops.md#optional-cursor)
 * [enabled](dialprops.md#optional-enabled)
 * [geometry](dialprops.md#optional-geometry)
@@ -30,6 +31,7 @@ sidebar_label: "DialProps"
 * [style](dialprops.md#optional-style)
 * [styleSheet](dialprops.md#optional-stylesheet)
 * [visible](dialprops.md#optional-visible)
+* [windowFlags](dialprops.md#optional-windowflags)
 * [windowIcon](dialprops.md#optional-windowicon)
 * [windowOpacity](dialprops.md#optional-windowopacity)
 * [windowState](dialprops.md#optional-windowstate)
@@ -37,6 +39,17 @@ sidebar_label: "DialProps"
 * [wrapping](dialprops.md#optional-wrapping)
 
 ## Properties
+
+### `Optional` attributes
+
+• **attributes**? : *WidgetAttributesMap*
+
+*Inherited from [ViewProps](viewprops.md).[attributes](viewprops.md#optional-attributes)*
+
+Prop to set the Widget Attributes. example:
+`<View attributes={{[WidgetAttributes.WA_Disabled]: true}} />`
+
+___
 
 ### `Optional` cursor
 
@@ -122,7 +135,7 @@ ___
 
 ### `Optional` on
 
-• **on**? : *ListenerMap*
+• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QDialSignals›*
 
 *Inherited from [ViewProps](viewprops.md).[on](viewprops.md#optional-on)*
 
@@ -190,6 +203,17 @@ Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui
 
 ___
 
+### `Optional` windowFlags
+
+• **windowFlags**? : *WindowFlagsMap*
+
+*Inherited from [ViewProps](viewprops.md).[windowFlags](viewprops.md#optional-windowflags)*
+
+Prop to set the Widget flags. example:
+`<View windowFlags={{[WindowType.SplashScreen]: true}} />`
+
+___
+
 ### `Optional` windowIcon
 
 • **windowIcon**? : *QIcon*
@@ -202,7 +226,7 @@ ___
 
 ### `Optional` windowOpacity
 
-• **windowOpacity**? : *Number*
+• **windowOpacity**? : *undefined | number*
 
 *Inherited from [ViewProps](viewprops.md).[windowOpacity](viewprops.md#optional-windowopacity)*
 
