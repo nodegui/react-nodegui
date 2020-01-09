@@ -6,7 +6,7 @@ sidebar_label: "ProgressBarProps"
 
 ## Hierarchy
 
-  ↳ [ViewProps](viewprops.md)
+  ↳ [ViewProps](viewprops.md)‹QProgressBarSignals›
 
   ↳ **ProgressBarProps**
 
@@ -14,6 +14,7 @@ sidebar_label: "ProgressBarProps"
 
 ### Properties
 
+* [attributes](progressbarprops.md#optional-attributes)
 * [cursor](progressbarprops.md#optional-cursor)
 * [enabled](progressbarprops.md#optional-enabled)
 * [geometry](progressbarprops.md#optional-geometry)
@@ -32,12 +33,24 @@ sidebar_label: "ProgressBarProps"
 * [styleSheet](progressbarprops.md#optional-stylesheet)
 * [value](progressbarprops.md#optional-value)
 * [visible](progressbarprops.md#optional-visible)
+* [windowFlags](progressbarprops.md#optional-windowflags)
 * [windowIcon](progressbarprops.md#optional-windowicon)
 * [windowOpacity](progressbarprops.md#optional-windowopacity)
 * [windowState](progressbarprops.md#optional-windowstate)
 * [windowTitle](progressbarprops.md#optional-windowtitle)
 
 ## Properties
+
+### `Optional` attributes
+
+• **attributes**? : *WidgetAttributesMap*
+
+*Inherited from [ViewProps](viewprops.md).[attributes](viewprops.md#optional-attributes)*
+
+Prop to set the Widget Attributes. example:
+`<View attributes={{[WidgetAttributes.WA_Disabled]: true}} />`
+
+___
 
 ### `Optional` cursor
 
@@ -123,7 +136,7 @@ ___
 
 ### `Optional` on
 
-• **on**? : *ListenerMap*
+• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QProgressBarSignals›*
 
 *Inherited from [ViewProps](viewprops.md).[on](viewprops.md#optional-on)*
 
@@ -203,6 +216,17 @@ Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui
 
 ___
 
+### `Optional` windowFlags
+
+• **windowFlags**? : *WindowFlagsMap*
+
+*Inherited from [ViewProps](viewprops.md).[windowFlags](viewprops.md#optional-windowflags)*
+
+Prop to set the Widget flags. example:
+`<View windowFlags={{[WindowType.SplashScreen]: true}} />`
+
+___
+
 ### `Optional` windowIcon
 
 • **windowIcon**? : *QIcon*
@@ -215,7 +239,7 @@ ___
 
 ### `Optional` windowOpacity
 
-• **windowOpacity**? : *Number*
+• **windowOpacity**? : *undefined | number*
 
 *Inherited from [ViewProps](viewprops.md).[windowOpacity](viewprops.md#optional-windowopacity)*
 

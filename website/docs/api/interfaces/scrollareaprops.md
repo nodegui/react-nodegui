@@ -6,7 +6,7 @@ sidebar_label: "ScrollAreaProps"
 
 ## Hierarchy
 
-  ↳ [ViewProps](viewprops.md)
+  ↳ [ViewProps](viewprops.md)‹QScrollAreaSignals›
 
   ↳ **ScrollAreaProps**
 
@@ -14,6 +14,7 @@ sidebar_label: "ScrollAreaProps"
 
 ### Properties
 
+* [attributes](scrollareaprops.md#optional-attributes)
 * [cursor](scrollareaprops.md#optional-cursor)
 * [enabled](scrollareaprops.md#optional-enabled)
 * [geometry](scrollareaprops.md#optional-geometry)
@@ -28,12 +29,25 @@ sidebar_label: "ScrollAreaProps"
 * [style](scrollareaprops.md#optional-style)
 * [styleSheet](scrollareaprops.md#optional-stylesheet)
 * [visible](scrollareaprops.md#optional-visible)
+* [widgetResizable](scrollareaprops.md#optional-widgetresizable)
+* [windowFlags](scrollareaprops.md#optional-windowflags)
 * [windowIcon](scrollareaprops.md#optional-windowicon)
 * [windowOpacity](scrollareaprops.md#optional-windowopacity)
 * [windowState](scrollareaprops.md#optional-windowstate)
 * [windowTitle](scrollareaprops.md#optional-windowtitle)
 
 ## Properties
+
+### `Optional` attributes
+
+• **attributes**? : *WidgetAttributesMap*
+
+*Inherited from [ViewProps](viewprops.md).[attributes](viewprops.md#optional-attributes)*
+
+Prop to set the Widget Attributes. example:
+`<View attributes={{[WidgetAttributes.WA_Disabled]: true}} />`
+
+___
 
 ### `Optional` cursor
 
@@ -107,7 +121,7 @@ ___
 
 ### `Optional` on
 
-• **on**? : *ListenerMap*
+• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QScrollAreaSignals›*
 
 *Inherited from [ViewProps](viewprops.md).[on](viewprops.md#optional-on)*
 
@@ -175,6 +189,23 @@ Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui
 
 ___
 
+### `Optional` widgetResizable
+
+• **widgetResizable**? : *undefined | false | true*
+
+___
+
+### `Optional` windowFlags
+
+• **windowFlags**? : *WindowFlagsMap*
+
+*Inherited from [ViewProps](viewprops.md).[windowFlags](viewprops.md#optional-windowflags)*
+
+Prop to set the Widget flags. example:
+`<View windowFlags={{[WindowType.SplashScreen]: true}} />`
+
+___
+
 ### `Optional` windowIcon
 
 • **windowIcon**? : *QIcon*
@@ -187,7 +218,7 @@ ___
 
 ### `Optional` windowOpacity
 
-• **windowOpacity**? : *Number*
+• **windowOpacity**? : *undefined | number*
 
 *Inherited from [ViewProps](viewprops.md).[windowOpacity](viewprops.md#optional-windowopacity)*
 

@@ -6,7 +6,7 @@ sidebar_label: "LineEditProps"
 
 ## Hierarchy
 
-  ↳ [ViewProps](viewprops.md)
+  ↳ [ViewProps](viewprops.md)‹QLineEditSignals›
 
   ↳ **LineEditProps**
 
@@ -14,8 +14,9 @@ sidebar_label: "LineEditProps"
 
 ### Properties
 
+* [attributes](lineeditprops.md#optional-attributes)
 * [cursor](lineeditprops.md#optional-cursor)
-* [echoMode](lineeditprops.md#optional-echoMode)
+* [echoMode](lineeditprops.md#optional-echomode)
 * [enabled](lineeditprops.md#optional-enabled)
 * [geometry](lineeditprops.md#optional-geometry)
 * [id](lineeditprops.md#optional-id)
@@ -32,12 +33,24 @@ sidebar_label: "LineEditProps"
 * [styleSheet](lineeditprops.md#optional-stylesheet)
 * [text](lineeditprops.md#optional-text)
 * [visible](lineeditprops.md#optional-visible)
+* [windowFlags](lineeditprops.md#optional-windowflags)
 * [windowIcon](lineeditprops.md#optional-windowicon)
 * [windowOpacity](lineeditprops.md#optional-windowopacity)
 * [windowState](lineeditprops.md#optional-windowstate)
 * [windowTitle](lineeditprops.md#optional-windowtitle)
 
 ## Properties
+
+### `Optional` attributes
+
+• **attributes**? : *WidgetAttributesMap*
+
+*Inherited from [ViewProps](viewprops.md).[attributes](viewprops.md#optional-attributes)*
+
+Prop to set the Widget Attributes. example:
+`<View attributes={{[WidgetAttributes.WA_Disabled]: true}} />`
+
+___
 
 ### `Optional` cursor
 
@@ -52,12 +65,6 @@ ___
 ### `Optional` echoMode
 
 • **echoMode**? : *EchoMode*
-
-Sets the property that determines how the text entered in the line edit is displayed (or echoed) to the user.
-
-The widget's display and the ability to copy or drag the text is affected by this setting.
-
-[QLineEdit: setEchoMode](https://docs.nodegui.org/docs/api/QLineEdit#lineeditsetechomode)
 
 ___
 
@@ -123,7 +130,7 @@ ___
 
 ### `Optional` on
 
-• **on**? : *ListenerMap*
+• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QLineEditSignals›*
 
 *Inherited from [ViewProps](viewprops.md).[on](viewprops.md#optional-on)*
 
@@ -209,6 +216,17 @@ Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui
 
 ___
 
+### `Optional` windowFlags
+
+• **windowFlags**? : *WindowFlagsMap*
+
+*Inherited from [ViewProps](viewprops.md).[windowFlags](viewprops.md#optional-windowflags)*
+
+Prop to set the Widget flags. example:
+`<View windowFlags={{[WindowType.SplashScreen]: true}} />`
+
+___
+
 ### `Optional` windowIcon
 
 • **windowIcon**? : *QIcon*
@@ -221,7 +239,7 @@ ___
 
 ### `Optional` windowOpacity
 
-• **windowOpacity**? : *Number*
+• **windowOpacity**? : *undefined | number*
 
 *Inherited from [ViewProps](viewprops.md).[windowOpacity](viewprops.md#optional-windowopacity)*
 

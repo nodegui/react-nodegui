@@ -1,54 +1,56 @@
 ---
-id: "imageprops"
-title: "ImageProps"
-sidebar_label: "ImageProps"
+id: "comboboxprops"
+title: "ComboBoxProps"
+sidebar_label: "ComboBoxProps"
 ---
 
 ## Hierarchy
 
-  ↳ [TextProps](textprops.md)
+  ↳ [ViewProps](viewprops.md)‹QComboBoxSignals›
 
-  ↳ **ImageProps**
+  ↳ **ComboBoxProps**
 
 ## Index
 
 ### Properties
 
-* [aspectRatioMode](imageprops.md#optional-aspectratiomode)
-* [attributes](imageprops.md#optional-attributes)
-* [buffer](imageprops.md#optional-buffer)
-* [children](imageprops.md#optional-children)
-* [cursor](imageprops.md#optional-cursor)
-* [enabled](imageprops.md#optional-enabled)
-* [geometry](imageprops.md#optional-geometry)
-* [id](imageprops.md#optional-id)
-* [maxSize](imageprops.md#optional-maxsize)
-* [minSize](imageprops.md#optional-minsize)
-* [mouseTracking](imageprops.md#optional-mousetracking)
-* [on](imageprops.md#optional-on)
-* [pos](imageprops.md#optional-pos)
-* [ref](imageprops.md#optional-ref)
-* [scaledContents](imageprops.md#optional-scaledcontents)
-* [size](imageprops.md#optional-size)
-* [src](imageprops.md#optional-src)
-* [style](imageprops.md#optional-style)
-* [styleSheet](imageprops.md#optional-stylesheet)
-* [transformationMode](imageprops.md#optional-transformationmode)
-* [visible](imageprops.md#optional-visible)
-* [windowFlags](imageprops.md#optional-windowflags)
-* [windowIcon](imageprops.md#optional-windowicon)
-* [windowOpacity](imageprops.md#optional-windowopacity)
-* [windowState](imageprops.md#optional-windowstate)
-* [windowTitle](imageprops.md#optional-windowtitle)
-* [wordWrap](imageprops.md#optional-wordwrap)
+* [attributes](comboboxprops.md#optional-attributes)
+* [count](comboboxprops.md#optional-count)
+* [currentData](comboboxprops.md#optional-currentdata)
+* [currentIndex](comboboxprops.md#optional-currentindex)
+* [currentText](comboboxprops.md#optional-currenttext)
+* [cursor](comboboxprops.md#optional-cursor)
+* [duplicatesEnabled](comboboxprops.md#optional-duplicatesenabled)
+* [editable](comboboxprops.md#optional-editable)
+* [enabled](comboboxprops.md#optional-enabled)
+* [frame](comboboxprops.md#optional-frame)
+* [geometry](comboboxprops.md#optional-geometry)
+* [iconSize](comboboxprops.md#optional-iconsize)
+* [id](comboboxprops.md#optional-id)
+* [insertPolicy](comboboxprops.md#optional-insertpolicy)
+* [items](comboboxprops.md#optional-items)
+* [maxCount](comboboxprops.md#optional-maxcount)
+* [maxSize](comboboxprops.md#optional-maxsize)
+* [maxVisibleItems](comboboxprops.md#optional-maxvisibleitems)
+* [minSize](comboboxprops.md#optional-minsize)
+* [minimumContentsLength](comboboxprops.md#optional-minimumcontentslength)
+* [modelColumn](comboboxprops.md#optional-modelcolumn)
+* [mouseTracking](comboboxprops.md#optional-mousetracking)
+* [on](comboboxprops.md#optional-on)
+* [pos](comboboxprops.md#optional-pos)
+* [ref](comboboxprops.md#optional-ref)
+* [size](comboboxprops.md#optional-size)
+* [sizeAdjustPolicy](comboboxprops.md#optional-sizeadjustpolicy)
+* [style](comboboxprops.md#optional-style)
+* [styleSheet](comboboxprops.md#optional-stylesheet)
+* [visible](comboboxprops.md#optional-visible)
+* [windowFlags](comboboxprops.md#optional-windowflags)
+* [windowIcon](comboboxprops.md#optional-windowicon)
+* [windowOpacity](comboboxprops.md#optional-windowopacity)
+* [windowState](comboboxprops.md#optional-windowstate)
+* [windowTitle](comboboxprops.md#optional-windowtitle)
 
 ## Properties
-
-### `Optional` aspectRatioMode
-
-• **aspectRatioMode**? : *AspectRatioMode*
-
-___
 
 ### `Optional` attributes
 
@@ -61,17 +63,27 @@ Prop to set the Widget Attributes. example:
 
 ___
 
-### `Optional` buffer
+### `Optional` count
 
-• **buffer**? : *Buffer*
+• **count**? : *undefined | number*
 
 ___
 
-### `Optional` children
+### `Optional` currentData
 
-• **children**? : *string | number*
+• **currentData**? : *QVariant*
 
-*Inherited from [TextProps](textprops.md).[children](textprops.md#optional-children)*
+___
+
+### `Optional` currentIndex
+
+• **currentIndex**? : *undefined | number*
+
+___
+
+### `Optional` currentText
+
+• **currentText**? : *undefined | string*
 
 ___
 
@@ -85,6 +97,18 @@ Sets the window mouse cursor. [QWidget: setCursor](https://docs.nodegui.org/docs
 
 ___
 
+### `Optional` duplicatesEnabled
+
+• **duplicatesEnabled**? : *undefined | false | true*
+
+___
+
+### `Optional` editable
+
+• **editable**? : *undefined | false | true*
+
+___
+
 ### `Optional` enabled
 
 • **enabled**? : *undefined | false | true*
@@ -92,6 +116,12 @@ ___
 *Inherited from [ViewProps](viewprops.md).[enabled](viewprops.md#optional-enabled)*
 
 Sets the property that tells whether the widget is enabled. In general an enabled widget handles keyboard and mouse events; a disabled widget does not. [QWidget: setEnabled](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetenabledenabled)
+
+___
+
+### `Optional` frame
+
+• **frame**? : *undefined | false | true*
 
 ___
 
@@ -105,6 +135,12 @@ Sets the screen position as well as size of the widget. [QWidget: setGeometry](h
 
 ___
 
+### `Optional` iconSize
+
+• **iconSize**? : *QSize*
+
+___
+
 ### `Optional` id
 
 • **id**? : *undefined | string*
@@ -112,6 +148,24 @@ ___
 *Inherited from [ViewProps](viewprops.md).[id](viewprops.md#optional-id)*
 
 Sets the object name (id) of the widget in Qt. Object name can be analogous to id of an element in the web world. Using the objectName of the widget one can reference it in the Qt's stylesheet much like what we do with id in the web world. [QWidget: setObjectName](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetobjectnameobjectname)
+
+___
+
+### `Optional` insertPolicy
+
+• **insertPolicy**? : *InsertPolicy*
+
+___
+
+### `Optional` items
+
+• **items**? : *ComboBoxItem[]*
+
+___
+
+### `Optional` maxCount
+
+• **maxCount**? : *undefined | number*
 
 ___
 
@@ -125,6 +179,12 @@ Sets the maximum size of the widget. [QWidget: setMaximumSize](https://docs.node
 
 ___
 
+### `Optional` maxVisibleItems
+
+• **maxVisibleItems**? : *undefined | number*
+
+___
+
 ### `Optional` minSize
 
 • **minSize**? : *Size*
@@ -132,6 +192,18 @@ ___
 *Inherited from [ViewProps](viewprops.md).[minSize](viewprops.md#optional-minsize)*
 
 Sets the minimum size of the widget. [QWidget: setMinimumSize](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetminimumsizewidth-height)
+
+___
+
+### `Optional` minimumContentsLength
+
+• **minimumContentsLength**? : *undefined | number*
+
+___
+
+### `Optional` modelColumn
+
+• **modelColumn**? : *undefined | number*
 
 ___
 
@@ -147,7 +219,7 @@ ___
 
 ### `Optional` on
 
-• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QLabelSignals›*
+• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QComboBoxSignals›*
 
 *Inherited from [ViewProps](viewprops.md).[on](viewprops.md#optional-on)*
 
@@ -175,14 +247,6 @@ Prop to set the ref. The ref will return the underlying nodegui widget.
 
 ___
 
-### `Optional` scaledContents
-
-• **scaledContents**? : *undefined | false | true*
-
-*Inherited from [TextProps](textprops.md).[scaledContents](textprops.md#optional-scaledcontents)*
-
-___
-
 ### `Optional` size
 
 • **size**? : *ViewSize*
@@ -193,9 +257,9 @@ Sets both the minimum and maximum sizes of the widget. [QWidget: setFixedSize](h
 
 ___
 
-### `Optional` src
+### `Optional` sizeAdjustPolicy
 
-• **src**? : *undefined | string*
+• **sizeAdjustPolicy**? : *SizeAdjustPolicy*
 
 ___
 
@@ -216,12 +280,6 @@ ___
 *Inherited from [ViewProps](viewprops.md).[styleSheet](viewprops.md#optional-stylesheet)*
 
 Sets the property that holds the widget's style sheet. [QWidget: setStyleSheet](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetstylesheetstylesheet)
-
-___
-
-### `Optional` transformationMode
-
-• **transformationMode**? : *TransformationMode*
 
 ___
 
@@ -283,11 +341,3 @@ ___
 *Inherited from [ViewProps](viewprops.md).[windowTitle](viewprops.md#optional-windowtitle)*
 
 Sets the window title property. [QWidget: setWindowTitle](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetwindowtitletitle)
-
-___
-
-### `Optional` wordWrap
-
-• **wordWrap**? : *undefined | false | true*
-
-*Inherited from [TextProps](textprops.md).[wordWrap](textprops.md#optional-wordwrap)*

@@ -27,6 +27,10 @@ const buttonStyle = `
 Renderer.render(<App />);
 ```
 
+## Type parameters
+
+▪ **Signals**: *__type*
+
 ## Hierarchy
 
 * RNProps
@@ -37,9 +41,7 @@ Renderer.render(<App />);
 
   ↳ [TextProps](textprops.md)
 
-  ↳ [ButtonProps](buttonprops.md)
-
-  ↳ [CheckBoxProps](checkboxprops.md)
+  ↳ [AbstractButtonProps](abstractbuttonprops.md)
 
   ↳ [LineEditProps](lineeditprops.md)
 
@@ -47,18 +49,19 @@ Renderer.render(<App />);
 
   ↳ [ProgressBarProps](progressbarprops.md)
 
-  ↳ [RadioButtonProps](radiobuttonprops.md)
-
   ↳ [DialProps](dialprops.md)
 
   ↳ [SpinBoxProps](spinboxprops.md)
 
   ↳ [ScrollAreaProps](scrollareaprops.md)
 
+  ↳ [ComboBoxProps](comboboxprops.md)
+
 ## Index
 
 ### Properties
 
+* [attributes](viewprops.md#optional-attributes)
 * [cursor](viewprops.md#optional-cursor)
 * [enabled](viewprops.md#optional-enabled)
 * [geometry](viewprops.md#optional-geometry)
@@ -73,12 +76,22 @@ Renderer.render(<App />);
 * [style](viewprops.md#optional-style)
 * [styleSheet](viewprops.md#optional-stylesheet)
 * [visible](viewprops.md#optional-visible)
+* [windowFlags](viewprops.md#optional-windowflags)
 * [windowIcon](viewprops.md#optional-windowicon)
 * [windowOpacity](viewprops.md#optional-windowopacity)
 * [windowState](viewprops.md#optional-windowstate)
 * [windowTitle](viewprops.md#optional-windowtitle)
 
 ## Properties
+
+### `Optional` attributes
+
+• **attributes**? : *WidgetAttributesMap*
+
+Prop to set the Widget Attributes. example:
+`<View attributes={{[WidgetAttributes.WA_Disabled]: true}} />`
+
+___
 
 ### `Optional` cursor
 
@@ -138,7 +151,7 @@ ___
 
 ### `Optional` on
 
-• **on**? : *ListenerMap*
+• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | Signals›*
 
 Prop to set the event listener map. See [Handlong Events](/docs/guides/handle-events)
 
@@ -192,6 +205,15 @@ Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui
 
 ___
 
+### `Optional` windowFlags
+
+• **windowFlags**? : *WindowFlagsMap*
+
+Prop to set the Widget flags. example:
+`<View windowFlags={{[WindowType.SplashScreen]: true}} />`
+
+___
+
 ### `Optional` windowIcon
 
 • **windowIcon**? : *QIcon*
@@ -202,7 +224,7 @@ ___
 
 ### `Optional` windowOpacity
 
-• **windowOpacity**? : *Number*
+• **windowOpacity**? : *undefined | number*
 
 This property holds the level of opacity for the window. [QWidget: setWindowOpacity](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetwindowopacityopacity)
 

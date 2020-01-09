@@ -1,54 +1,74 @@
 ---
-id: "imageprops"
-title: "ImageProps"
-sidebar_label: "ImageProps"
+id: "abstractbuttonprops"
+title: "AbstractButtonProps"
+sidebar_label: "AbstractButtonProps"
 ---
+
+The Button component provides ability to add and manipulate native button widgets. It is based on
+[NodeGui's QPushButton](https://docs.nodegui.org/docs/api/QPushButton).
+## Example
+```javascript
+import React from "react";
+import { Renderer, Button, Window } from "@nodegui/react-nodegui";
+const App = () => {
+  return (
+    <Window>
+      <Button style={buttonStyle} text={"Hello World"} />
+    </Window>
+  );
+};
+const buttonStyle = `
+  color: white;
+`;
+Renderer.render(<App />);
+
+```
+
+## Type parameters
+
+▪ **Signals**: *QAbstractButtonSignals*
 
 ## Hierarchy
 
-  ↳ [TextProps](textprops.md)
+  ↳ [ViewProps](viewprops.md)‹Signals›
 
-  ↳ **ImageProps**
+  ↳ **AbstractButtonProps**
+
+  ↳ [ButtonProps](buttonprops.md)
+
+  ↳ [CheckBoxProps](checkboxprops.md)
+
+  ↳ [RadioButtonProps](radiobuttonprops.md)
 
 ## Index
 
 ### Properties
 
-* [aspectRatioMode](imageprops.md#optional-aspectratiomode)
-* [attributes](imageprops.md#optional-attributes)
-* [buffer](imageprops.md#optional-buffer)
-* [children](imageprops.md#optional-children)
-* [cursor](imageprops.md#optional-cursor)
-* [enabled](imageprops.md#optional-enabled)
-* [geometry](imageprops.md#optional-geometry)
-* [id](imageprops.md#optional-id)
-* [maxSize](imageprops.md#optional-maxsize)
-* [minSize](imageprops.md#optional-minsize)
-* [mouseTracking](imageprops.md#optional-mousetracking)
-* [on](imageprops.md#optional-on)
-* [pos](imageprops.md#optional-pos)
-* [ref](imageprops.md#optional-ref)
-* [scaledContents](imageprops.md#optional-scaledcontents)
-* [size](imageprops.md#optional-size)
-* [src](imageprops.md#optional-src)
-* [style](imageprops.md#optional-style)
-* [styleSheet](imageprops.md#optional-stylesheet)
-* [transformationMode](imageprops.md#optional-transformationmode)
-* [visible](imageprops.md#optional-visible)
-* [windowFlags](imageprops.md#optional-windowflags)
-* [windowIcon](imageprops.md#optional-windowicon)
-* [windowOpacity](imageprops.md#optional-windowopacity)
-* [windowState](imageprops.md#optional-windowstate)
-* [windowTitle](imageprops.md#optional-windowtitle)
-* [wordWrap](imageprops.md#optional-wordwrap)
+* [attributes](abstractbuttonprops.md#optional-attributes)
+* [cursor](abstractbuttonprops.md#optional-cursor)
+* [enabled](abstractbuttonprops.md#optional-enabled)
+* [geometry](abstractbuttonprops.md#optional-geometry)
+* [icon](abstractbuttonprops.md#optional-icon)
+* [iconSize](abstractbuttonprops.md#optional-iconsize)
+* [id](abstractbuttonprops.md#optional-id)
+* [maxSize](abstractbuttonprops.md#optional-maxsize)
+* [minSize](abstractbuttonprops.md#optional-minsize)
+* [mouseTracking](abstractbuttonprops.md#optional-mousetracking)
+* [on](abstractbuttonprops.md#optional-on)
+* [pos](abstractbuttonprops.md#optional-pos)
+* [ref](abstractbuttonprops.md#optional-ref)
+* [size](abstractbuttonprops.md#optional-size)
+* [style](abstractbuttonprops.md#optional-style)
+* [styleSheet](abstractbuttonprops.md#optional-stylesheet)
+* [text](abstractbuttonprops.md#optional-text)
+* [visible](abstractbuttonprops.md#optional-visible)
+* [windowFlags](abstractbuttonprops.md#optional-windowflags)
+* [windowIcon](abstractbuttonprops.md#optional-windowicon)
+* [windowOpacity](abstractbuttonprops.md#optional-windowopacity)
+* [windowState](abstractbuttonprops.md#optional-windowstate)
+* [windowTitle](abstractbuttonprops.md#optional-windowtitle)
 
 ## Properties
-
-### `Optional` aspectRatioMode
-
-• **aspectRatioMode**? : *AspectRatioMode*
-
-___
 
 ### `Optional` attributes
 
@@ -58,20 +78,6 @@ ___
 
 Prop to set the Widget Attributes. example:
 `<View attributes={{[WidgetAttributes.WA_Disabled]: true}} />`
-
-___
-
-### `Optional` buffer
-
-• **buffer**? : *Buffer*
-
-___
-
-### `Optional` children
-
-• **children**? : *string | number*
-
-*Inherited from [TextProps](textprops.md).[children](textprops.md#optional-children)*
 
 ___
 
@@ -102,6 +108,22 @@ ___
 *Inherited from [ViewProps](viewprops.md).[geometry](viewprops.md#optional-geometry)*
 
 Sets the screen position as well as size of the widget. [QWidget: setGeometry](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetgeometryx-y-width-height)
+
+___
+
+### `Optional` icon
+
+• **icon**? : *QIcon*
+
+Sets an icon in the button. [QPushButton: setIcon](https://docs.nodegui.org/docs/api/QPushButton#buttonseticonicon)
+
+___
+
+### `Optional` iconSize
+
+• **iconSize**? : *QSize*
+
+Sets an icon size in the button. [QPushButton: setIconSize](https://docs.nodegui.org/docs/api/QPushButton#buttonseticonsize)
 
 ___
 
@@ -147,7 +169,7 @@ ___
 
 ### `Optional` on
 
-• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QLabelSignals›*
+• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | Signals›*
 
 *Inherited from [ViewProps](viewprops.md).[on](viewprops.md#optional-on)*
 
@@ -175,14 +197,6 @@ Prop to set the ref. The ref will return the underlying nodegui widget.
 
 ___
 
-### `Optional` scaledContents
-
-• **scaledContents**? : *undefined | false | true*
-
-*Inherited from [TextProps](textprops.md).[scaledContents](textprops.md#optional-scaledcontents)*
-
-___
-
 ### `Optional` size
 
 • **size**? : *ViewSize*
@@ -190,12 +204,6 @@ ___
 *Inherited from [ViewProps](viewprops.md).[size](viewprops.md#optional-size)*
 
 Sets both the minimum and maximum sizes of the widget. [QWidget: setFixedSize](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetfixedsizewidth-height)
-
-___
-
-### `Optional` src
-
-• **src**? : *undefined | string*
 
 ___
 
@@ -219,9 +227,11 @@ Sets the property that holds the widget's style sheet. [QWidget: setStyleSheet](
 
 ___
 
-### `Optional` transformationMode
+### `Optional` text
 
-• **transformationMode**? : *TransformationMode*
+• **text**? : *undefined | string*
+
+Sets the given text to the button. [QPushButton: setText](https://docs.nodegui.org/docs/api/QPushButton#buttonsettexttext)
 
 ___
 
@@ -283,11 +293,3 @@ ___
 *Inherited from [ViewProps](viewprops.md).[windowTitle](viewprops.md#optional-windowtitle)*
 
 Sets the window title property. [QWidget: setWindowTitle](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetwindowtitletitle)
-
-___
-
-### `Optional` wordWrap
-
-• **wordWrap**? : *undefined | false | true*
-
-*Inherited from [TextProps](textprops.md).[wordWrap](textprops.md#optional-wordwrap)*

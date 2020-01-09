@@ -26,7 +26,7 @@ Renderer.render(<App />);
 
 ## Hierarchy
 
-  ↳ [ViewProps](viewprops.md)
+  ↳ [AbstractButtonProps](abstractbuttonprops.md)‹QCheckBoxSignals›
 
   ↳ **CheckBoxProps**
 
@@ -34,10 +34,13 @@ Renderer.render(<App />);
 
 ### Properties
 
+* [attributes](checkboxprops.md#optional-attributes)
 * [checked](checkboxprops.md#optional-checked)
 * [cursor](checkboxprops.md#optional-cursor)
 * [enabled](checkboxprops.md#optional-enabled)
 * [geometry](checkboxprops.md#optional-geometry)
+* [icon](checkboxprops.md#optional-icon)
+* [iconSize](checkboxprops.md#optional-iconsize)
 * [id](checkboxprops.md#optional-id)
 * [maxSize](checkboxprops.md#optional-maxsize)
 * [minSize](checkboxprops.md#optional-minsize)
@@ -50,12 +53,24 @@ Renderer.render(<App />);
 * [styleSheet](checkboxprops.md#optional-stylesheet)
 * [text](checkboxprops.md#optional-text)
 * [visible](checkboxprops.md#optional-visible)
+* [windowFlags](checkboxprops.md#optional-windowflags)
 * [windowIcon](checkboxprops.md#optional-windowicon)
 * [windowOpacity](checkboxprops.md#optional-windowopacity)
 * [windowState](checkboxprops.md#optional-windowstate)
 * [windowTitle](checkboxprops.md#optional-windowtitle)
 
 ## Properties
+
+### `Optional` attributes
+
+• **attributes**? : *WidgetAttributesMap*
+
+*Inherited from [ViewProps](viewprops.md).[attributes](viewprops.md#optional-attributes)*
+
+Prop to set the Widget Attributes. example:
+`<View attributes={{[WidgetAttributes.WA_Disabled]: true}} />`
+
+___
 
 ### `Optional` checked
 
@@ -92,6 +107,26 @@ ___
 *Inherited from [ViewProps](viewprops.md).[geometry](viewprops.md#optional-geometry)*
 
 Sets the screen position as well as size of the widget. [QWidget: setGeometry](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetgeometryx-y-width-height)
+
+___
+
+### `Optional` icon
+
+• **icon**? : *QIcon*
+
+*Inherited from [AbstractButtonProps](abstractbuttonprops.md).[icon](abstractbuttonprops.md#optional-icon)*
+
+Sets an icon in the button. [QPushButton: setIcon](https://docs.nodegui.org/docs/api/QPushButton#buttonseticonicon)
+
+___
+
+### `Optional` iconSize
+
+• **iconSize**? : *QSize*
+
+*Inherited from [AbstractButtonProps](abstractbuttonprops.md).[iconSize](abstractbuttonprops.md#optional-iconsize)*
+
+Sets an icon size in the button. [QPushButton: setIconSize](https://docs.nodegui.org/docs/api/QPushButton#buttonseticonsize)
 
 ___
 
@@ -137,7 +172,7 @@ ___
 
 ### `Optional` on
 
-• **on**? : *ListenerMap*
+• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QCheckBoxSignals›*
 
 *Inherited from [ViewProps](viewprops.md).[on](viewprops.md#optional-on)*
 
@@ -199,7 +234,9 @@ ___
 
 • **text**? : *undefined | string*
 
-Sets the given text to the checkbox.. [QCheckBox: setText](https://docs.nodegui.org/docs/api/QCheckBox/#checkboxsettexttext)
+*Inherited from [AbstractButtonProps](abstractbuttonprops.md).[text](abstractbuttonprops.md#optional-text)*
+
+Sets the given text to the button. [QPushButton: setText](https://docs.nodegui.org/docs/api/QPushButton#buttonsettexttext)
 
 ___
 
@@ -210,6 +247,17 @@ ___
 *Inherited from [ViewProps](viewprops.md).[visible](viewprops.md#optional-visible)*
 
 Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui.org/docs/api/NodeWidget#widgetshow)
+
+___
+
+### `Optional` windowFlags
+
+• **windowFlags**? : *WindowFlagsMap*
+
+*Inherited from [ViewProps](viewprops.md).[windowFlags](viewprops.md#optional-windowflags)*
+
+Prop to set the Widget flags. example:
+`<View windowFlags={{[WindowType.SplashScreen]: true}} />`
 
 ___
 
@@ -225,7 +273,7 @@ ___
 
 ### `Optional` windowOpacity
 
-• **windowOpacity**? : *Number*
+• **windowOpacity**? : *undefined | number*
 
 *Inherited from [ViewProps](viewprops.md).[windowOpacity](viewprops.md#optional-windowopacity)*
 
