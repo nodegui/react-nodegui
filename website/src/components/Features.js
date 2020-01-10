@@ -1,5 +1,5 @@
 import React from "react";
-import withBaseUrl from "@docusaurus/withBaseUrl";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "../pages/styles.module.css";
 import classnames from "classnames";
 
@@ -46,7 +46,7 @@ export const Features = () => {
                 <div className="text--center">
                   <img
                     className={styles.featureImage}
-                    src={withBaseUrl(imageUrl)}
+                    src={useBaseUrl(imageUrl)}
                     alt={title}
                   />
                 </div>

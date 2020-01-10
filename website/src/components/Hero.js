@@ -3,7 +3,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styled from "styled-components";
 import { Header, Container, H1, Center } from "./common";
 import styles from "../pages/styles.module.css";
-import withBaseUrl from "@docusaurus/withBaseUrl";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 const ActionButton = styled.a`
   ${props => {
@@ -56,7 +56,7 @@ function ActionContainer() {
       </ActionButton>
       <ActionButton
         type="secondary"
-        href={withBaseUrl("docs/guides/getting-started")}
+        href={useBaseUrl("docs/guides/getting-started")}
         target="_self"
       >
         Learn basics
