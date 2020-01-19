@@ -21,13 +21,13 @@ const items = [
   { text: "world" }
 ];
 
-const handler = useEventHandler<QPushButtonSignals>(
-  {
-    clicked: clicked => {}
-  },
-  []
-);
 const App = () => {
+  const handler = useEventHandler<QPushButtonSignals>(
+    {
+      clicked: clicked => { console.log("clicked"); }
+    },
+    []
+  );
   return (
     <Window>
       <View style={containerStyle}>
@@ -36,10 +36,11 @@ const App = () => {
           <Button style={buttonStyle} text={"World"} />
         </View>
         <ComboBox items={items} />
+        {/* commenting this out while I still figure out the error;
         <AnimatedImage
           style="border: 1px solid blue; flex:1;"
           src="/Users/atulr/Project/nodegui/nodegui/src/lib/QtGui/__tests__/assets/fine.gif"
-        />
+        /> */}
       </View>
     </Window>
   );
