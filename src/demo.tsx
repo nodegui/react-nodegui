@@ -5,7 +5,8 @@ import {
   Window,
   View,
   AnimatedImage,
-  ComboBox
+  ComboBox,
+  Text
 } from "./index";
 import { QIcon, QVariant, QPushButtonSignals } from "@nodegui/nodegui";
 import { useEventHandler } from "./hooks";
@@ -31,6 +32,13 @@ const App = () => {
   return (
     <Window>
       <View style={containerStyle}>
+        <Text openExternalLinks={true}>
+          {`<a 
+              style="color: white" 
+              href="https://react.nodegui.org/docs/guides/getting-started/">
+            docs
+          </a>`}
+        </Text>
         <View on={{}}>
           <Button on={handler} style={buttonStyle} text={"Hello"} />
           <Button style={buttonStyle} text={"World"} />
