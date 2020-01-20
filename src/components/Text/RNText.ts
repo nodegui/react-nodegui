@@ -7,6 +7,7 @@ export interface TextProps extends ViewProps<QLabelSignals> {
   children?: string | number;
   wordWrap?: boolean;
   scaledContents?: boolean;
+  openExternalLinks?: boolean;
 }
 
 /**
@@ -26,6 +27,9 @@ export const setTextProps = (
     },
     set scaledContents(scaled: boolean) {
       widget.setProperty("scaledContents", scaled);
+    },
+    set openExternalLinks(shouldOpenExternalLinks: boolean) {
+      widget.setProperty("openExternalLinks", shouldOpenExternalLinks);
     }
   };
   Object.assign(setter, newProps);
