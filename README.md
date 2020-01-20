@@ -109,19 +109,25 @@ People maintaining this project.
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="http://rahulgaba.com"><img src="https://avatars3.githubusercontent.com/u/7898942?v=4" width="100px;" alt="Rahul Gaba"/><br /><sub><b>Rahul Gaba</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=rgabs" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/kakulgupta"><img src="https://avatars3.githubusercontent.com/u/10727047?v=4" width="100px;" alt="Kakul Gupta"/><br /><sub><b>Kakul Gupta</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=kakulgupta" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/Nicify"><img src="https://avatars3.githubusercontent.com/u/24217275?v=4" width="100px;" alt="Eva1ent"/><br /><sub><b>Eva1ent</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=Nicify" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/slidinghotdog"><img src="https://avatars3.githubusercontent.com/u/33790211?v=4" width="100px;" alt="slidinghotdog"/><br /><sub><b>slidinghotdog</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=slidinghotdog" title="Code">💻</a></td>
-    <td align="center"><a href="https://www.linkedin.com/in/roysommer/"><img src="https://avatars2.githubusercontent.com/u/6681893?v=4" width="100px;" alt="Roy Sommer"/><br /><sub><b>Roy Sommer</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=illBeRoy" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/nateshmbhat"><img src="https://avatars1.githubusercontent.com/u/23279926?v=4" width="100px;" alt="Natesh M Bhat"/><br /><sub><b>Natesh M Bhat</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=nateshmbhat" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://www.greatapes.fi"><img src="https://avatars3.githubusercontent.com/u/3404389?v=4" width="100px;" alt="Mikko Sairio"/><br /><sub><b>Mikko Sairio</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=msairio" title="Code">💻</a></td>
+    <td align="center"><a href="http://rahulgaba.com"><img src="https://avatars3.githubusercontent.com/u/7898942?v=4" width="100px;" alt=""/><br /><sub><b>Rahul Gaba</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=rgabs" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/kakulgupta"><img src="https://avatars3.githubusercontent.com/u/10727047?v=4" width="100px;" alt=""/><br /><sub><b>Kakul Gupta</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=kakulgupta" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Nicify"><img src="https://avatars3.githubusercontent.com/u/24217275?v=4" width="100px;" alt=""/><br /><sub><b>Eva1ent</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=Nicify" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/slidinghotdog"><img src="https://avatars3.githubusercontent.com/u/33790211?v=4" width="100px;" alt=""/><br /><sub><b>slidinghotdog</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=slidinghotdog" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/roysommer/"><img src="https://avatars2.githubusercontent.com/u/6681893?v=4" width="100px;" alt=""/><br /><sub><b>Roy Sommer</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=illBeRoy" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/nateshmbhat"><img src="https://avatars1.githubusercontent.com/u/23279926?v=4" width="100px;" alt=""/><br /><sub><b>Natesh M Bhat</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=nateshmbhat" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://www.greatapes.fi"><img src="https://avatars3.githubusercontent.com/u/3404389?v=4" width="100px;" alt=""/><br /><sub><b>Mikko Sairio</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=msairio" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/shubhamzanwar"><img src="https://avatars0.githubusercontent.com/u/15626155?v=4" width="100px;" alt=""/><br /><sub><b>Shubham Zanwar</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=shubhamzanwar" title="Code">💻</a></td>
   </tr>
 </table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
