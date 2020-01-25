@@ -1,8 +1,33 @@
-import React, { useState } from "react";
-import { Renderer, Window, Button } from "./index";
-import { BoxView } from "./components/BoxView";
+import React from "react";
+import {
+  Renderer,
+  Button,
+  Window,
+  View,
+  AnimatedImage,
+  ComboBox,
+  Text,
+  MenuBar,
+  Menu,
+} from "./index";
+import {
+  QAction,
+  QApplication,
+  QIcon,
+  QVariant,
+  QPushButtonSignals,
+} from "@nodegui/nodegui";
 import { useEventHandler } from "./hooks";
 import { QPushButtonSignals, Direction } from "@nodegui/nodegui";
+
+const quitAction = new QAction();
+quitAction.setText("&Quit");
+quitAction.addEventListener("triggered", () => {
+  const app = QApplication.instance();
+  app.exit(0);
+});
+
+const fileActions: QAction[] = [quitAction];
 
 const App = () => {
   const [additionalButtons, setAdditionalButtons] = useState<string[]>([]);
@@ -21,8 +46,9 @@ const App = () => {
 
   const removeHandler = useEventHandler<QPushButtonSignals>(
     {
-      clicked: () =>
-        setAdditionalButtons((buttons) => buttons.slice(0, buttons.length - 1)),
+      clicked: (clicked) => {
+        console.log("clicked");
+      },
     },
     []
   );
@@ -37,14 +63,30 @@ const App = () => {
 
   return (
     <Window>
-      <BoxView direction={direction}>
-        <Button text="Add" on={addHandler} />
-        <Button text="Remove" on={removeHandler} />
-        <Button text="Toggle direction" on={toggleDirection} />
-        {additionalButtons.map((button) => (
-          <Button key={button} text={button} />
-        ))}
-      </BoxView>
+      <MenuBar>
+        <Menu title={"&File"} actions={fileActions} />
+        <Menu title={"&Edit"} />
+      </MenuBar>
+
+      <View style={containerStyle}>
+        <Text openExternalLinks={true}>
+          {`<a 
+              style="color: white" 
+              href="https://react.nodegui.org/docs/guides/getting-started/">
+            docs
+          </a>`}
+        </Text>
+        <View on={{}}>
+          <Button on={handler} style={buttonStyle} text={"Hello"} />
+          <Button style={buttonStyle} text={"World"} />
+        </View>
+        <ComboBox items={items} />
+        {/* commenting this out while I still figure out the error;
+        <AnimatedImage
+          style="border: 1px solid blue; flex:1;"
+          src="/Users/atulr/Project/nodegui/nodegui/src/lib/QtGui/__tests__/assets/fine.gif"
+        /> */}
+      </View>
     </Window>
   );
 };
