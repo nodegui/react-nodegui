@@ -5,7 +5,6 @@ import { throwUnsupported } from "../../utils/helpers";
 
 export interface MenuProps extends ViewProps<QMenuSignals> {
   title?: string;
-  action?: QAction;
   actions?: QAction[];
 }
 
@@ -17,9 +16,6 @@ const setMenuProps = (
   const setter: MenuProps = {
     set title(title: string) {
       widget.setTitle(title);
-    },
-    set action(action: QAction) {
-      widget.addAction(action);
     },
     set actions(actions: QAction[]) {
       actions.forEach(action => {

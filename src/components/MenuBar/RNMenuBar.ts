@@ -1,4 +1,4 @@
-import { NodeWidget, Orientation, QMenu, QMenuBar, QMenuBarSignals } from "@nodegui/nodegui";
+import { NodeWidget, QMenu, QMenuBar, QMenuBarSignals } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
@@ -24,8 +24,8 @@ export class RNMenuBar extends QMenuBar implements RNWidget {
   appendInitialChild(child: QMenu): void {
     this.addMenu(child);
   }
-  appendChild(child: QMenu): void {
-    this.addMenu(child);
+  appendChild(child: QMenu ): void {
+    this.appendInitialChild(child);
   }
   insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
     throwUnsupported(this);

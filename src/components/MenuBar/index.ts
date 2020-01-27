@@ -2,6 +2,7 @@ import { Fiber } from "react-reconciler";
 import { registerComponent, ComponentConfig } from "../config";
 import { RNMenuBar, MenuBarProps } from "./RNMenuBar";
 import { AppContainer } from "../../reconciler";
+
 class MenuBarConfig extends ComponentConfig {
   tagName = RNMenuBar.tagName;
   shouldSetTextContent(nextProps: MenuBarProps): boolean {

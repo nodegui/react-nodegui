@@ -29,6 +29,14 @@ quitAction.addEventListener("triggered", () => {
 
 const fileActions: QAction[] = [quitAction];
 
+const sayHi = new QAction();
+sayHi.setText("&Hello");
+sayHi.addEventListener("triggered", () => {
+  console.log("hello");
+});
+
+const randActions: QAction[] = [sayHi];
+
 const App = () => {
   const [additionalButtons, setAdditionalButtons] = useState<string[]>([]);
   const [direction, setDirection] = useState<Direction>(Direction.LeftToRight);
@@ -65,7 +73,7 @@ const App = () => {
     <Window>
       <MenuBar>
         <Menu title={"&File"} actions={fileActions} />
-        <Menu title={"&Edit"} />
+        <Menu title={"&Random"} actions={randActions} />
       </MenuBar>
 
       <View style={containerStyle}>

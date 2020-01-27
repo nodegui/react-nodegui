@@ -3,6 +3,7 @@ import { registerComponent, ComponentConfig } from "../config";
 import { RNMenu, MenuProps } from "./RNMenu";
 import { AppContainer } from "../../reconciler";
 class MenuConfig extends ComponentConfig {
+  
   tagName = RNMenu.tagName;
   shouldSetTextContent(nextProps: MenuProps): boolean {
     return false;
