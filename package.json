@@ -36,7 +36,7 @@
     "@types/node": "^13.1.1",
     "prettier": "^1.18.2",
     "react": "^16.9.0",
-    "typedoc": "^0.15.4",
+    "typedoc": "^0.16.9",
     "typedoc-plugin-markdown": "^2.2.14",
     "typescript": "^3.7.4"
   }
