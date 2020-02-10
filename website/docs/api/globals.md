@@ -1,6 +1,6 @@
 ---
 id: "globals"
-title: "@nodegui/react-nodegui"
+title: "@nodegui/react-nodegui - v0.4.0"
 sidebar_label: "Globals"
 ---
 
