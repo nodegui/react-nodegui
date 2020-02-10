@@ -17,7 +17,7 @@ export type RendererOptions = {
   onRender?: () => void;
   onInit?: (reconciler: NodeGuiReconciler) => void;
 };
-const defaultOptions = {
+const defaultOptions: RendererOptions = {
   onInit: () => {},
   onRender: () => {}
 };
@@ -44,7 +44,7 @@ export class Renderer {
       hydrate
     ); // Creates root fiber node.
 
-    rendererOptions.onInit(reconciler);
+    (rendererOptions.onInit as Function)(reconciler);
 
     const parentComponent = null; // Since there is no parent (since this is the root fiber). We set parentComponent to null.
     reconciler.updateContainer(
@@ -52,7 +52,7 @@ export class Renderer {
       Renderer.container,
       parentComponent,
       () => {
-        rendererOptions.onRender();
+        (rendererOptions.onRender as Function)();
       }
     ); // Start reconcilation and render the result
   }
