@@ -28,6 +28,7 @@ sidebar_label: "TextProps"
 * [minSize](textprops.md#optional-minsize)
 * [mouseTracking](textprops.md#optional-mousetracking)
 * [on](textprops.md#optional-on)
+* [openExternalLinks](textprops.md#optional-openexternallinks)
 * [pos](textprops.md#optional-pos)
 * [ref](textprops.md#optional-ref)
 * [scaledContents](textprops.md#optional-scaledcontents)
@@ -138,6 +139,12 @@ ___
 *Inherited from [ViewProps](viewprops.md).[on](viewprops.md#optional-on)*
 
 Prop to set the event listener map. See [Handlong Events](/docs/guides/handle-events)
+
+___
+
+### `Optional` openExternalLinks
+
+• **openExternalLinks**? : *undefined | false | true*
 
 ___
 

@@ -52,7 +52,16 @@ export const Try = () => {
         <Center>
           <H2>Give it a try</H2>
           <Description>
-            <SubTitle>1. Run these commands</SubTitle>
+            <SubTitle>1. Use the CRA template</SubTitle>
+            <Terminal>
+              <Code>
+                create-react-app --template react-nodegui rn-starter
+              </Code>
+              <Code>cd rn-starter</Code>
+              <Code>npm run dev</Code>
+              <Code>npm start</Code>
+            </Terminal>
+            <SubTitle>2. Run these commands</SubTitle>
             <Terminal>
               <Code>
                 git clone https://github.com/nodegui/react-nodegui-starter
@@ -63,7 +72,7 @@ export const Try = () => {
               <Code>npm start</Code>
             </Terminal>
             <SubTitle>
-              2.{" "}
+              3.{" "}
               <a className="LinkBasics" href={"docs/guides/getting-started"}>
                 Learn the basics
               </a>{" "}
