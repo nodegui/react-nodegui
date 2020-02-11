@@ -26,7 +26,7 @@ Visit: https://react.nodegui.org for docs.
 
 **More screenshots?**
 
-[See examples](https://github.com/nodegui/react-nodegui/tree/master/examples/)
+[See examples](https://github.com/nodegui/examples/)
 
 ## Features
 
