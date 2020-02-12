@@ -26,13 +26,6 @@ export const setTabProps = (
     set tabPosition(value: TabPosition) {
         widget.setTabPosition(value);
     },
-    set tabs(tabsContent: Array<TabsContent>) {
-        tabsContent.forEach(({content, icon, title}) => {
-            const contentWidget = getComponentByTagName(content.type);
-            const contentProps = content.props;
-            widget.addTab(contentWidget.createInstance(contentProps), icon, title)
-        })
-    }
   };
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);
@@ -46,16 +39,19 @@ export class RNTab extends QTabWidget implements RNWidget {
     setTabProps(this, newProps, oldProps);
   }
   appendInitialChild(child: NodeWidget<any>): void {
-    throwUnsupported(this);
+    this.addTab(child, new QIcon(),'sample');
   }
   appendChild(child: NodeWidget<any>): void {
-    throwUnsupported(this);
+    this.appendInitialChild(child);
   }
   insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
-    throwUnsupported(this);
+    //TODO: implement tabwidget indexof in nodegui before
+    this.appendInitialChild(child);
+
   }
   removeChild(child: NodeWidget<any>): void {
-    throwUnsupported(this);
+    // this.removeTab()
+    //TODO: implement tabwidget indexOf first.
   }
   static tagName = "tab";
 }

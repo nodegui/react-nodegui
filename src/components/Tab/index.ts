@@ -5,7 +5,7 @@ import { AppContainer } from "../../reconciler";
 class TabsConfig extends ComponentConfig {
   tagName = RNTab.tagName;
   shouldSetTextContent(nextProps: TabProps): boolean {
-    return true;
+    return false;
   }
   createInstance(
     newProps: TabProps,
@@ -22,7 +22,9 @@ class TabsConfig extends ComponentConfig {
     newProps: TabProps,
     internalInstanceHandle: any
   ): void {
-    instance.show();
+    if (newProps.visible !== false) {
+      instance.show();
+    }
   }
   finalizeInitialChildren(
     instance: RNTab,
