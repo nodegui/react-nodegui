@@ -6,7 +6,8 @@ import {
   View,
   AnimatedImage,
   ComboBox,
-  Text
+  Text,
+  Tabs
 } from "./index";
 import { QIcon, QVariant, QPushButtonSignals } from "@nodegui/nodegui";
 import { useEventHandler } from "./hooks";
@@ -31,8 +32,18 @@ const App = () => {
   );
   return (
     <Window>
-      <View style={containerStyle}>
-        <Text openExternalLinks={true}>
+      {/* <View style={containerStyle}> */}
+        <Tabs
+          tabPosition={0}
+          tabs={[{
+            title: 'Page1',
+            icon: new QIcon(
+              "/Users/atulr/Project/nodegui/nodegui/src/lib/QtGui/__tests__/assets/nodegui.png"
+            ),
+            content: <View><Button on={handler} style={buttonStyle} text={"Hello"} /></View>
+          }]}
+        />
+        {/* <Text openExternalLinks={true}>
           {`<a 
               style="color: white" 
               href="https://react.nodegui.org/docs/guides/getting-started/">
@@ -43,13 +54,13 @@ const App = () => {
           <Button on={handler} style={buttonStyle} text={"Hello"} />
           <Button style={buttonStyle} text={"World"} />
         </View>
-        <ComboBox items={items} />
+        <ComboBox items={items} /> */}
         {/* commenting this out while I still figure out the error;
         <AnimatedImage
           style="border: 1px solid blue; flex:1;"
           src="/Users/atulr/Project/nodegui/nodegui/src/lib/QtGui/__tests__/assets/fine.gif"
         /> */}
-      </View>
+      {/* </View> */}
     </Window>
   );
 };
