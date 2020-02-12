@@ -1,17 +1,17 @@
 import { QTabWidget, NodeWidget, QTabWidgetSignals, TabPosition, QIcon } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
-import { RNWidget } from "../config";
+import { RNWidget, getComponentByTagName } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
 
 export type TabsContent = {
     title: string,
     icon: QIcon,
-    content: NodeWidget<any>
+    content: JSX.Element
 }
 
 export interface TabProps extends ViewProps<QTabWidgetSignals> {
   tabPosition?: TabPosition
-  tabs: Array<TabsContent>
+  tabs?: TabsContent[]
 }
 
 /**
@@ -28,7 +28,9 @@ export const setTabProps = (
     },
     set tabs(tabsContent: Array<TabsContent>) {
         tabsContent.forEach(({content, icon, title}) => {
-            widget.addTab(content, icon, title)
+            const contentWidget = getComponentByTagName(content.type);
+            const contentProps = content.props;
+            widget.addTab(contentWidget.createInstance(contentProps), icon, title)
         })
     }
   };

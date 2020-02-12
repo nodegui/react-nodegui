@@ -16,7 +16,7 @@ export abstract class RNWidget extends NodeWidget<any> implements RNComponent {
   ): void;
   abstract removeChild(child: NodeWidget<any>): void;
 }
-export abstract class RNComponent {
+export abstract class RNComponent extends NodeWidget<any> {
   static tagName: string;
   abstract setProps(newProps: RNProps, oldProps: RNProps): void;
   abstract appendInitialChild(child: NodeWidget<any>): void;
@@ -35,9 +35,9 @@ export abstract class ComponentConfig {
   abstract shouldSetTextContent(nextProps: RNProps): boolean;
   abstract createInstance(
     newProps: RNProps,
-    rootInstance: AppContainer,
-    context: any,
-    workInProgress: Fiber
+    rootInstance?: AppContainer,
+    context?: any,
+    workInProgress?: Fiber
   ): RNComponent;
   finalizeInitialChildren(
     instance: RNComponent,
