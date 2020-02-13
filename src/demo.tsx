@@ -3,13 +3,14 @@ import {
   Renderer,
   Button,
   Window,
+  TabItem,
   View,
   AnimatedImage,
   ComboBox,
   Text,
   Tabs
 } from "./index";
-import { QIcon, QVariant, QPushButtonSignals } from "@nodegui/nodegui";
+import { QIcon, QVariant, QPushButtonSignals, QSize } from "@nodegui/nodegui";
 import { useEventHandler } from "./hooks";
 
 const items = [
@@ -26,19 +27,41 @@ const items = [
 const App = () => {
   const handler = useEventHandler<QPushButtonSignals>(
     {
-      clicked: clicked => { console.log("clicked"); }
+      clicked: clicked => {
+        console.log("clicked");
+      }
     },
     []
   );
   // TODO: need to figure out a way to add tab title and icon
   return (
     <Window>
-        <Tabs
-          tabPosition={0}
+      <Tabs tabPosition={0}>
+        <TabItem
+          title="asdsad"
+          icon={
+            new QIcon(
+              "/Users/atulr/Project/nodegui/nodegui/src/lib/QtGui/__tests__/assets/nodegui.png"
+            )
+          }
         >
-          <View><Button on={handler} style={buttonStyle} text={"Hello"} /></View>
-          <View><Button on={handler} style={buttonStyle} text={"Hello2"} /></View>
-        </Tabs>
+          <View>
+            <Button on={handler} style={buttonStyle} text={"Hello2"} />
+          </View>
+        </TabItem>
+        <TabItem
+          title="asdsad"
+          icon={
+            new QIcon(
+              "/Users/atulr/Project/nodegui/nodegui/src/lib/QtGui/__tests__/assets/nodegui.png"
+            )
+          }
+        >
+          <View>
+            <Button on={handler} style={buttonStyle} text={"Hello2"} />
+          </View>
+        </TabItem>
+      </Tabs>
     </Window>
   );
 };
