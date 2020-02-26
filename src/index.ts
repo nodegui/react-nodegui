@@ -1,3 +1,4 @@
+export { Slider } from "./components/Slider";
 export { Renderer } from "./renderer";
 export { View } from "./components/View";
 export { Window } from "./components/Window";
