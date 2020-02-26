@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Renderer,
   Button,
@@ -25,20 +25,22 @@ const items = [
 ];
 
 const App = () => {
+  const [titleCount, setTitleCount] = useState(0);
   const handler = useEventHandler<QPushButtonSignals>(
     {
-      clicked: clicked => {
-        console.log("clicked");
+      clicked: () => {
+        console.log(titleCount);
+        setTitleCount(titleCount + 1);
       }
     },
-    []
+    [titleCount]
   );
   // TODO: need to figure out a way to add tab title and icon
   return (
     <Window>
       <Tabs tabPosition={0}>
         <TabItem
-          title="asdsad"
+          title={`title-${titleCount}`}
           icon={
             new QIcon(
               "/Users/atulr/Project/nodegui/nodegui/src/lib/QtGui/__tests__/assets/nodegui.png"
@@ -46,19 +48,7 @@ const App = () => {
           }
         >
           <View>
-            <Button on={handler} style={buttonStyle} text={"Hello2"} />
-          </View>
-        </TabItem>
-        <TabItem
-          title="asdsad"
-          icon={
-            new QIcon(
-              "/Users/atulr/Project/nodegui/nodegui/src/lib/QtGui/__tests__/assets/nodegui.png"
-            )
-          }
-        >
-          <View>
-            <Button on={handler} style={buttonStyle} text={"Hello2"} />
+            <Button on={handler} style={buttonStyle} text={"change title"} />
           </View>
         </TabItem>
       </Tabs>
