@@ -1,4 +1,4 @@
-import { NodeWidget, QIcon, Component, NativeElement } from "@nodegui/nodegui";
+import { NodeWidget, QIcon, Component } from "@nodegui/nodegui";
 import { RNComponent, RNProps } from "../config";
 
 export interface TabItemProps {
@@ -33,9 +33,14 @@ export class RNTabItem extends Component implements RNComponent {
   actualTabWidget?: NodeWidget<any>;
   icon?: QIcon; // TODO: check what happens when icon or title is updated after initial set
   title?: string;
+  index?: number;
+
+  notifyUpdate(tabIndex: number, newProps: RNProps, oldProps: RNProps) {};
 
   setProps(newProps: RNProps, oldProps: RNProps): void {
+    console.log(newProps);
     setTabItemProps(this, newProps, oldProps);
+    this.notifyUpdate(this.index as number, newProps, oldProps);
   }
   appendInitialChild(child: NodeWidget<any>): void {
     if (this.actualTabWidget) {
