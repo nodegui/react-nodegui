@@ -7,7 +7,7 @@ import {
 } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
 import { RNComponent } from "../config";
-import { RNTabItem, TabItemProps } from "../TabItem/RNTabItem";
+import { RNTabItem, setTabItemProps } from "../TabItem/RNTabItem";
 
 export interface TabProps extends ViewProps<QTabWidgetSignals> {
   tabPosition?: TabPosition;
@@ -38,27 +38,15 @@ export class RNTab extends QTabWidget implements RNComponent {
     setTabProps(this, newProps, oldProps);
   }
 
-  handleChildrenUpdate(tabIndex: number, newProps: TabItemProps, oldProps: TabItemProps): void {
-    const {title: newTitle} = newProps;
-    const {title: oldTitle} = oldProps;
-    if(newTitle !== oldTitle) {
-      this.setTabText(tabIndex, newTitle as string);
-    }
-  }
-
   appendInitialChild(tabItem: RNTabItem): void {
     if (!(tabItem instanceof RNTabItem)) {
       throw new Error("Children of tab should be of type TabItem");
     }
-    const icon = tabItem.icon || new QIcon();
-    const title = tabItem.title || "";
+
     if (tabItem.actualTabWidget) {
-      tabItem.index = this.addTab(tabItem.actualTabWidget, icon, title);
-      tabItem.notifyUpdate = (
-        tabIndex: number, 
-        newProps: TabItemProps, 
-        oldProps: TabItemProps
-      ) => this.handleChildrenUpdate(tabIndex, newProps, oldProps);
+      this.addTab(tabItem.actualTabWidget, new QIcon(), "");
+      tabItem.parentTab = this;
+      setTabItemProps(tabItem, this, tabItem.initialProps, {});
     }
   }
   appendChild(child: RNTabItem): void {

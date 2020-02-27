@@ -1,5 +1,6 @@
 import { NodeWidget, QIcon, Component } from "@nodegui/nodegui";
 import { RNComponent, RNProps } from "../config";
+import { RNTab } from "../Tab/RNTab";
 
 export interface TabItemProps {
   title?: string;
@@ -10,16 +11,26 @@ export interface TabItemProps {
  * @ignore
  */
 export const setTabItemProps = (
-  widget: RNTabItem,
+  tabItem: RNTabItem,
+  parentTab: RNTab,
   newProps: TabItemProps,
   oldProps: TabItemProps
 ) => {
+  if (!tabItem.actualTabWidget) {
+    return;
+  }
+  const tabIndex = parentTab.indexOf(tabItem.actualTabWidget);
+  if (tabIndex < 0) {
+    console.error("TabItem is not part of the parent tab it references to");
+    return;
+  }
+
   const setter: TabItemProps = {
     set title(text: string) {
-      widget.title = text;
+      parentTab.setTabText(tabIndex, text);
     },
     set icon(qicon: QIcon) {
-      widget.icon = qicon;
+      parentTab.setTabIcon(tabIndex, qicon);
     }
   };
   Object.assign(setter, newProps);
@@ -31,16 +42,15 @@ export const setTabItemProps = (
 export class RNTabItem extends Component implements RNComponent {
   native: any;
   actualTabWidget?: NodeWidget<any>;
-  icon?: QIcon; // TODO: check what happens when icon or title is updated after initial set
-  title?: string;
-  index?: number;
+  initialProps: TabItemProps = {};
+  parentTab?: RNTab;
 
-  notifyUpdate(tabIndex: number, newProps: RNProps, oldProps: RNProps) {};
-
-  setProps(newProps: RNProps, oldProps: RNProps): void {
-    console.log(newProps);
-    setTabItemProps(this, newProps, oldProps);
-    this.notifyUpdate(this.index as number, newProps, oldProps);
+  setProps(newProps: TabItemProps, oldProps: TabItemProps): void {
+    if (this.parentTab) {
+      setTabItemProps(this, this.parentTab, newProps, oldProps);
+    } else {
+      this.initialProps = newProps;
+    }
   }
   appendInitialChild(child: NodeWidget<any>): void {
     if (this.actualTabWidget) {
