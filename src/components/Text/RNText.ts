@@ -1,10 +1,10 @@
-import { QLabel, NodeWidget, QLabelSignals } from "@nodegui/nodegui";
-import { ViewProps, setViewProps } from "../View/RNView";
-import { RNWidget } from "../config";
-import { throwUnsupported } from "../../utils/helpers";
+import { QLabel, NodeWidget, QLabelSignals } from '@nodegui/nodegui';
+import { ViewProps, setViewProps } from '../View/RNView';
+import { RNWidget } from '../config';
+import { throwUnsupported } from '../../utils/helpers';
 
 export interface TextProps extends ViewProps<QLabelSignals> {
-  children?: string | number;
+  children?: string | number | Array<string | number>;
   wordWrap?: boolean;
   scaledContents?: boolean;
   openExternalLinks?: boolean;
@@ -19,18 +19,20 @@ export const setTextProps = (
   oldProps: TextProps
 ) => {
   const setter: TextProps = {
-    set children(text: string | number) {
+    set children(text: string | number | Array<string | number>) {
+      text = Array.isArray(text) ? text.join('') : text;
+
       widget.setText(text);
     },
     set wordWrap(shouldWrap: boolean) {
       widget.setWordWrap(shouldWrap);
     },
     set scaledContents(scaled: boolean) {
-      widget.setProperty("scaledContents", scaled);
+      widget.setProperty('scaledContents', scaled);
     },
     set openExternalLinks(shouldOpenExternalLinks: boolean) {
-      widget.setProperty("openExternalLinks", shouldOpenExternalLinks);
-    }
+      widget.setProperty('openExternalLinks', shouldOpenExternalLinks);
+    },
   };
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);
@@ -55,5 +57,5 @@ export class RNText extends QLabel implements RNWidget {
   removeChild(child: NodeWidget<any>): void {
     throwUnsupported(this);
   }
-  static tagName = "text";
+  static tagName = 'text';
 }
