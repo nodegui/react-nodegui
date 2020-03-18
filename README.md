@@ -125,6 +125,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/shubhamzanwar"><img src="https://avatars0.githubusercontent.com/u/15626155?v=4" width="100px;" alt=""/><br /><sub><b>Shubham Zanwar</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=shubhamzanwar" title="Code">💻</a></td>
     <td align="center"><a href="https://matrunchyk.com"><img src="https://avatars0.githubusercontent.com/u/2089828?v=4" width="100px;" alt=""/><br /><sub><b>Serhii Matrunchyk</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=matrunchyk" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Solant"><img src="https://avatars2.githubusercontent.com/u/5971578?v=4" width="100px;" alt=""/><br /><sub><b>Solant</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=Solant" title="Code">💻</a></td>
+    <td align="center"><a href="https://cbp.io"><img src="https://avatars1.githubusercontent.com/u/995050?v=4" width="100px;" alt=""/><br /><sub><b>Christian Petersen</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=fnky" title="Code">💻</a></td>
   </tr>
 </table>
 
