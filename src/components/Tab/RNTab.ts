@@ -56,12 +56,15 @@ export class RNTab extends QTabWidget implements RNComponent {
     if (!(child instanceof RNTabItem)) {
       throw new Error("Children of tab should be of type TabItem");
     }
-    //TODO: implement tabwidget indexof in nodegui before
-    this.appendInitialChild(child);
+    // uncomment below code after new release of nodegui containing insertTab
+    // const index = this.indexOf(beforeChild.actualTabWidget as NodeWidget<any>);
+    // this.insertTab(index, child.actualTabWidget, new QIcon(), "");
+    // child.parentTab = this;
+    // setTabItemProps(child, this, child.initialProps, {});
   }
   removeChild(child: RNTabItem): void {
-    // this.removeTab()
-    //TODO: implement tabwidget indexOf first.
+    const childIndex = this.indexOf(child.actualTabWidget as NodeWidget<any>);
+    this.removeTab(childIndex);
   }
   static tagName = "tabwidget";
 }
