@@ -1,6 +1,6 @@
 {
   "name": "@nodegui/react-nodegui",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "React Native for building cross platform desktop applications",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -32,7 +32,7 @@
     "react": "^16.9.0"
   },
   "devDependencies": {
-    "@nodegui/nodegui": "http://master-release.nodegui.org",
+    "@nodegui/nodegui": "^0.15.2",
     "@types/node": "^13.1.1",
     "prettier": "^1.18.2",
     "react": "^16.9.0",

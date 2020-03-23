@@ -94,6 +94,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "fnky",
+      "name": "Christian Petersen",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/995050?v=4",
+      "profile": "https://cbp.io",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
