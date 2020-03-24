@@ -1,14 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Renderer,
   Button,
   Window,
+  TabItem,
   View,
   AnimatedImage,
   ComboBox,
-  Text
+  Text,
+  Tabs
 } from "./index";
-import { QIcon, QVariant, QPushButtonSignals } from "@nodegui/nodegui";
+import { QIcon, QVariant, QPushButtonSignals, QSize } from "@nodegui/nodegui";
 import { useEventHandler } from "./hooks";
 
 const items = [
@@ -23,33 +25,33 @@ const items = [
 ];
 
 const App = () => {
+  const [titleCount, setTitleCount] = useState(0);
   const handler = useEventHandler<QPushButtonSignals>(
     {
-      clicked: clicked => { console.log("clicked"); }
+      clicked: () => {
+        console.log(titleCount);
+        setTitleCount(titleCount + 1);
+      }
     },
-    []
+    [titleCount]
   );
+  // TODO: need to figure out a way to add tab title and icon
   return (
     <Window>
-      <View style={containerStyle}>
-        <Text openExternalLinks={true}>
-          {`<a 
-              style="color: white" 
-              href="https://react.nodegui.org/docs/guides/getting-started/">
-            docs
-          </a>`}
-        </Text>
-        <View on={{}}>
-          <Button on={handler} style={buttonStyle} text={"Hello"} />
-          <Button style={buttonStyle} text={"World"} />
-        </View>
-        <ComboBox items={items} />
-        {/* commenting this out while I still figure out the error;
-        <AnimatedImage
-          style="border: 1px solid blue; flex:1;"
-          src="/Users/atulr/Project/nodegui/nodegui/src/lib/QtGui/__tests__/assets/fine.gif"
-        /> */}
-      </View>
+      <Tabs tabPosition={0}>
+        <TabItem
+          title={`title-${titleCount}`}
+          icon={
+            new QIcon(
+              "/Users/atulr/Project/nodegui/nodegui/src/lib/QtGui/__tests__/assets/nodegui.png"
+            )
+          }
+        >
+          <View>
+            <Button on={handler} style={buttonStyle} text={"change title"} />
+          </View>
+        </TabItem>
+      </Tabs>
     </Window>
   );
 };

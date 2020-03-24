@@ -1,22 +1,20 @@
-import { NodeWidget } from "@nodegui/nodegui";
+import { NodeWidget, Component } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
 import { AppContainer } from "../reconciler";
 
 type UpdatePayload = any;
 
 export interface RNProps {}
-export abstract class RNWidget extends NodeWidget<any> implements RNComponent {
+
+export abstract class RNComponent {
   static tagName: string;
   abstract setProps(newProps: RNProps, oldProps: RNProps): void;
-  abstract appendInitialChild(child: NodeWidget<any>): void;
-  abstract appendChild(child: NodeWidget<any>): void;
-  abstract insertBefore(
-    child: NodeWidget<any>,
-    beforeChild: NodeWidget<any>
-  ): void;
-  abstract removeChild(child: NodeWidget<any>): void;
+  abstract appendInitialChild(child: Component): void;
+  abstract appendChild(child: Component): void;
+  abstract insertBefore(child: Component, beforeChild: Component): void;
+  abstract removeChild(child: Component): void;
 }
-export abstract class RNComponent {
+export abstract class RNWidget extends NodeWidget<any> implements RNComponent {
   static tagName: string;
   abstract setProps(newProps: RNProps, oldProps: RNProps): void;
   abstract appendInitialChild(child: NodeWidget<any>): void;
@@ -35,9 +33,9 @@ export abstract class ComponentConfig {
   abstract shouldSetTextContent(nextProps: RNProps): boolean;
   abstract createInstance(
     newProps: RNProps,
-    rootInstance: AppContainer,
-    context: any,
-    workInProgress: Fiber
+    rootInstance?: AppContainer,
+    context?: any,
+    workInProgress?: Fiber
   ): RNComponent;
   finalizeInitialChildren(
     instance: RNComponent,
