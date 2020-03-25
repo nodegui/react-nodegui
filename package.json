@@ -24,7 +24,7 @@
     "phin": "^3.4.1",
     "react-deep-force-update": "^2.1.3",
     "react-proxy": "^2.0.8",
-    "react-reconciler": "^0.24.0"
+    "react-reconciler": "^0.25.1"
   },
   "peerDependencies": {
     "@nodegui/nodegui": ">=0.17.0",
