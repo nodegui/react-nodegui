@@ -1,6 +1,6 @@
 ---
-sidebar_label: Custom NodeGui Plugin
-title: Custom NodeGui Plugin
+sidebar_label: Custom React NodeGui Plugin
+title: Custom React NodeGui Plugin
 ---
 
 WIP

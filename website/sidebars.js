@@ -29,7 +29,6 @@ module.exports = {
       "guides/networking"
     ],
     Guides: [
-      "guides/react-nodegui-architecture",
       "guides/debugging",
       "guides/debugging-in-vscode",
       "guides/using-native-node-modules",
