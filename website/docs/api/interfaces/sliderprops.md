@@ -1,54 +1,52 @@
 ---
-id: "comboboxprops"
-title: "ComboBoxProps"
-sidebar_label: "ComboBoxProps"
+id: "sliderprops"
+title: "SliderProps"
+sidebar_label: "SliderProps"
 ---
 
 ## Hierarchy
 
-  ↳ [ViewProps](viewprops.md)‹QComboBoxSignals›
+  ↳ [ViewProps](viewprops.md)‹QSliderSignals›
 
-  ↳ **ComboBoxProps**
+  ↳ **SliderProps**
 
 ## Index
 
 ### Properties
 
-* [attributes](comboboxprops.md#optional-attributes)
-* [count](comboboxprops.md#optional-count)
-* [currentData](comboboxprops.md#optional-currentdata)
-* [currentIndex](comboboxprops.md#optional-currentindex)
-* [currentText](comboboxprops.md#optional-currenttext)
-* [cursor](comboboxprops.md#optional-cursor)
-* [duplicatesEnabled](comboboxprops.md#optional-duplicatesenabled)
-* [editable](comboboxprops.md#optional-editable)
-* [enabled](comboboxprops.md#optional-enabled)
-* [frame](comboboxprops.md#optional-frame)
-* [geometry](comboboxprops.md#optional-geometry)
-* [iconSize](comboboxprops.md#optional-iconsize)
-* [id](comboboxprops.md#optional-id)
-* [insertPolicy](comboboxprops.md#optional-insertpolicy)
-* [items](comboboxprops.md#optional-items)
-* [maxCount](comboboxprops.md#optional-maxcount)
-* [maxSize](comboboxprops.md#optional-maxsize)
-* [maxVisibleItems](comboboxprops.md#optional-maxvisibleitems)
-* [minSize](comboboxprops.md#optional-minsize)
-* [minimumContentsLength](comboboxprops.md#optional-minimumcontentslength)
-* [modelColumn](comboboxprops.md#optional-modelcolumn)
-* [mouseTracking](comboboxprops.md#optional-mousetracking)
-* [on](comboboxprops.md#optional-on)
-* [pos](comboboxprops.md#optional-pos)
-* [ref](comboboxprops.md#optional-ref)
-* [size](comboboxprops.md#optional-size)
-* [sizeAdjustPolicy](comboboxprops.md#optional-sizeadjustpolicy)
-* [style](comboboxprops.md#optional-style)
-* [styleSheet](comboboxprops.md#optional-stylesheet)
-* [visible](comboboxprops.md#optional-visible)
-* [windowFlags](comboboxprops.md#optional-windowflags)
-* [windowIcon](comboboxprops.md#optional-windowicon)
-* [windowOpacity](comboboxprops.md#optional-windowopacity)
-* [windowState](comboboxprops.md#optional-windowstate)
-* [windowTitle](comboboxprops.md#optional-windowtitle)
+* [attributes](sliderprops.md#optional-attributes)
+* [cursor](sliderprops.md#optional-cursor)
+* [enabled](sliderprops.md#optional-enabled)
+* [geometry](sliderprops.md#optional-geometry)
+* [hasTracking](sliderprops.md#optional-hastracking)
+* [id](sliderprops.md#optional-id)
+* [invertedAppearance](sliderprops.md#optional-invertedappearance)
+* [invertedControls](sliderprops.md#optional-invertedcontrols)
+* [isSliderDown](sliderprops.md#optional-issliderdown)
+* [maxSize](sliderprops.md#optional-maxsize)
+* [maximum](sliderprops.md#optional-maximum)
+* [minSize](sliderprops.md#optional-minsize)
+* [minimum](sliderprops.md#optional-minimum)
+* [mouseTracking](sliderprops.md#optional-mousetracking)
+* [on](sliderprops.md#optional-on)
+* [orientation](sliderprops.md#optional-orientation)
+* [pageStep](sliderprops.md#optional-pagestep)
+* [pos](sliderprops.md#optional-pos)
+* [ref](sliderprops.md#optional-ref)
+* [singleStep](sliderprops.md#optional-singlestep)
+* [size](sliderprops.md#optional-size)
+* [sliderPosition](sliderprops.md#optional-sliderposition)
+* [style](sliderprops.md#optional-style)
+* [styleSheet](sliderprops.md#optional-stylesheet)
+* [tickInterval](sliderprops.md#optional-tickinterval)
+* [tickPosition](sliderprops.md#optional-tickposition)
+* [value](sliderprops.md#optional-value)
+* [visible](sliderprops.md#optional-visible)
+* [windowFlags](sliderprops.md#optional-windowflags)
+* [windowIcon](sliderprops.md#optional-windowicon)
+* [windowOpacity](sliderprops.md#optional-windowopacity)
+* [windowState](sliderprops.md#optional-windowstate)
+* [windowTitle](sliderprops.md#optional-windowtitle)
 
 ## Properties
 
@@ -63,30 +61,6 @@ Prop to set the Widget Attributes. example:
 
 ___
 
-### `Optional` count
-
-• **count**? : *undefined | number*
-
-___
-
-### `Optional` currentData
-
-• **currentData**? : *QVariant*
-
-___
-
-### `Optional` currentIndex
-
-• **currentIndex**? : *undefined | number*
-
-___
-
-### `Optional` currentText
-
-• **currentText**? : *undefined | string*
-
-___
-
 ### `Optional` cursor
 
 • **cursor**? : *CursorShape | QCursor*
@@ -94,18 +68,6 @@ ___
 *Inherited from [ViewProps](viewprops.md).[cursor](viewprops.md#optional-cursor)*
 
 Sets the window mouse cursor. [QWidget: setCursor](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetcursorcursor)
-
-___
-
-### `Optional` duplicatesEnabled
-
-• **duplicatesEnabled**? : *undefined | false | true*
-
-___
-
-### `Optional` editable
-
-• **editable**? : *undefined | false | true*
 
 ___
 
@@ -119,12 +81,6 @@ Sets the property that tells whether the widget is enabled. In general an enable
 
 ___
 
-### `Optional` frame
-
-• **frame**? : *undefined | false | true*
-
-___
-
 ### `Optional` geometry
 
 • **geometry**? : *[Geometry](../globals.md#geometry)*
@@ -135,9 +91,9 @@ Sets the screen position as well as size of the widget. [QWidget: setGeometry](h
 
 ___
 
-### `Optional` iconSize
+### `Optional` hasTracking
 
-• **iconSize**? : *QSize*
+• **hasTracking**? : *undefined | false | true*
 
 ___
 
@@ -151,21 +107,21 @@ Sets the object name (id) of the widget in Qt. Object name can be analogous to i
 
 ___
 
-### `Optional` insertPolicy
+### `Optional` invertedAppearance
 
-• **insertPolicy**? : *InsertPolicy*
-
-___
-
-### `Optional` items
-
-• **items**? : *[ComboBoxItem](../globals.md#comboboxitem)[]*
+• **invertedAppearance**? : *undefined | false | true*
 
 ___
 
-### `Optional` maxCount
+### `Optional` invertedControls
 
-• **maxCount**? : *undefined | number*
+• **invertedControls**? : *undefined | false | true*
+
+___
+
+### `Optional` isSliderDown
+
+• **isSliderDown**? : *undefined | false | true*
 
 ___
 
@@ -179,9 +135,9 @@ Sets the maximum size of the widget. [QWidget: setMaximumSize](https://docs.node
 
 ___
 
-### `Optional` maxVisibleItems
+### `Optional` maximum
 
-• **maxVisibleItems**? : *undefined | number*
+• **maximum**? : *undefined | number*
 
 ___
 
@@ -195,15 +151,9 @@ Sets the minimum size of the widget. [QWidget: setMinimumSize](https://docs.node
 
 ___
 
-### `Optional` minimumContentsLength
+### `Optional` minimum
 
-• **minimumContentsLength**? : *undefined | number*
-
-___
-
-### `Optional` modelColumn
-
-• **modelColumn**? : *undefined | number*
+• **minimum**? : *undefined | number*
 
 ___
 
@@ -219,11 +169,23 @@ ___
 
 ### `Optional` on
 
-• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QComboBoxSignals›*
+• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QSliderSignals›*
 
 *Inherited from [ViewProps](viewprops.md).[on](viewprops.md#optional-on)*
 
 Prop to set the event listener map. See [Handlong Events](/docs/guides/handle-events)
+
+___
+
+### `Optional` orientation
+
+• **orientation**? : *Orientation*
+
+___
+
+### `Optional` pageStep
+
+• **pageStep**? : *undefined | number*
 
 ___
 
@@ -247,6 +209,12 @@ Prop to set the ref. The ref will return the underlying nodegui widget.
 
 ___
 
+### `Optional` singleStep
+
+• **singleStep**? : *undefined | number*
+
+___
+
 ### `Optional` size
 
 • **size**? : *[ViewSize](../globals.md#viewsize)*
@@ -257,9 +225,9 @@ Sets both the minimum and maximum sizes of the widget. [QWidget: setFixedSize](h
 
 ___
 
-### `Optional` sizeAdjustPolicy
+### `Optional` sliderPosition
 
-• **sizeAdjustPolicy**? : *SizeAdjustPolicy*
+• **sliderPosition**? : *undefined | number*
 
 ___
 
@@ -280,6 +248,24 @@ ___
 *Inherited from [ViewProps](viewprops.md).[styleSheet](viewprops.md#optional-stylesheet)*
 
 Sets the property that holds the widget's style sheet. [QWidget: setStyleSheet](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetstylesheetstylesheet)
+
+___
+
+### `Optional` tickInterval
+
+• **tickInterval**? : *undefined | number*
+
+___
+
+### `Optional` tickPosition
+
+• **tickPosition**? : *TickPosition*
+
+___
+
+### `Optional` value
+
+• **value**? : *undefined | number*
 
 ___
 

@@ -1,10 +1,10 @@
 ---
 id: "index"
-title: "@nodegui/react-nodegui - v0.4.0"
+title: "@nodegui/react-nodegui"
 sidebar_label: "README"
 ---
 
-# React NodeGUI
+# React NodeGui
 
 [![Join the NodeGUI community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/nodegui)
 [![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors)
@@ -32,7 +32,7 @@ Visit: https://react.nodegui.org for docs.
 
 **More screenshots?**
 
-[See examples](https://github.com/nodegui/react-nodegui/tree/master/examples/)
+[See examples](https://github.com/nodegui/examples/)
 
 ## Features
 
@@ -128,6 +128,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/shubhamzanwar"><img src="https://avatars0.githubusercontent.com/u/15626155?v=4" width="100px;" alt=""/><br /><sub><b>Shubham Zanwar</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=shubhamzanwar" title="Code">💻</a></td>
+    <td align="center"><a href="https://matrunchyk.com"><img src="https://avatars0.githubusercontent.com/u/2089828?v=4" width="100px;" alt=""/><br /><sub><b>Serhii Matrunchyk</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=matrunchyk" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Solant"><img src="https://avatars2.githubusercontent.com/u/5971578?v=4" width="100px;" alt=""/><br /><sub><b>Solant</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=Solant" title="Code">💻</a></td>
+    <td align="center"><a href="https://cbp.io"><img src="https://avatars1.githubusercontent.com/u/995050?v=4" width="100px;" alt=""/><br /><sub><b>Christian Petersen</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=fnky" title="Code">💻</a></td>
   </tr>
 </table>
 

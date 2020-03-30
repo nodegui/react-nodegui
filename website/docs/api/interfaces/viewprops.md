@@ -29,13 +29,15 @@ Renderer.render(<App />);
 
 ## Type parameters
 
-▪ **Signals**: *__type*
+▪ **Signals**: *object*
 
 ## Hierarchy
 
 * RNProps
 
   ↳ **ViewProps**
+
+  ↳ [SliderProps](sliderprops.md)
 
   ↳ [WindowProps](windowprops.md)
 
@@ -56,6 +58,8 @@ Renderer.render(<App />);
   ↳ [ScrollAreaProps](scrollareaprops.md)
 
   ↳ [ComboBoxProps](comboboxprops.md)
+
+  ↳ [TabProps](tabprops.md)
 
 ## Index
 
@@ -86,7 +90,7 @@ Renderer.render(<App />);
 
 ### `Optional` attributes
 
-• **attributes**? : *WidgetAttributesMap*
+• **attributes**? : *[WidgetAttributesMap](../globals.md#widgetattributesmap)*
 
 Prop to set the Widget Attributes. example:
 `<View attributes={{[WidgetAttributes.WA_Disabled]: true}} />`
@@ -111,7 +115,7 @@ ___
 
 ### `Optional` geometry
 
-• **geometry**? : *Geometry*
+• **geometry**? : *[Geometry](../globals.md#geometry)*
 
 Sets the screen position as well as size of the widget. [QWidget: setGeometry](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetgeometryx-y-width-height)
 
@@ -127,7 +131,7 @@ ___
 
 ### `Optional` maxSize
 
-• **maxSize**? : *Size*
+• **maxSize**? : *[Size](../globals.md#size)*
 
 Sets the maximum size of the widget. [QWidget: setMaximumSize](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetmaximumsizewidth-height)
 
@@ -135,7 +139,7 @@ ___
 
 ### `Optional` minSize
 
-• **minSize**? : *Size*
+• **minSize**? : *[Size](../globals.md#size)*
 
 Sets the minimum size of the widget. [QWidget: setMinimumSize](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetminimumsizewidth-height)
 
@@ -159,7 +163,7 @@ ___
 
 ### `Optional` pos
 
-• **pos**? : *Position*
+• **pos**? : *[Position](../globals.md#position)*
 
 Sets the screen position of the widget. [QWidget: move](https://docs.nodegui.org/docs/api/NodeWidget#widgetmovex-y)
 
@@ -175,7 +179,7 @@ ___
 
 ### `Optional` size
 
-• **size**? : *ViewSize*
+• **size**? : *[ViewSize](../globals.md#viewsize)*
 
 Sets both the minimum and maximum sizes of the widget. [QWidget: setFixedSize](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetfixedsizewidth-height)
 
@@ -207,7 +211,7 @@ ___
 
 ### `Optional` windowFlags
 
-• **windowFlags**? : *WindowFlagsMap*
+• **windowFlags**? : *[WindowFlagsMap](../globals.md#windowflagsmap)*
 
 Prop to set the Widget flags. example:
 `<View windowFlags={{[WindowType.SplashScreen]: true}} />`

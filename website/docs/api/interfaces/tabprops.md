@@ -1,54 +1,40 @@
 ---
-id: "comboboxprops"
-title: "ComboBoxProps"
-sidebar_label: "ComboBoxProps"
+id: "tabprops"
+title: "TabProps"
+sidebar_label: "TabProps"
 ---
 
 ## Hierarchy
 
-  ↳ [ViewProps](viewprops.md)‹QComboBoxSignals›
+  ↳ [ViewProps](viewprops.md)‹QTabWidgetSignals›
 
-  ↳ **ComboBoxProps**
+  ↳ **TabProps**
 
 ## Index
 
 ### Properties
 
-* [attributes](comboboxprops.md#optional-attributes)
-* [count](comboboxprops.md#optional-count)
-* [currentData](comboboxprops.md#optional-currentdata)
-* [currentIndex](comboboxprops.md#optional-currentindex)
-* [currentText](comboboxprops.md#optional-currenttext)
-* [cursor](comboboxprops.md#optional-cursor)
-* [duplicatesEnabled](comboboxprops.md#optional-duplicatesenabled)
-* [editable](comboboxprops.md#optional-editable)
-* [enabled](comboboxprops.md#optional-enabled)
-* [frame](comboboxprops.md#optional-frame)
-* [geometry](comboboxprops.md#optional-geometry)
-* [iconSize](comboboxprops.md#optional-iconsize)
-* [id](comboboxprops.md#optional-id)
-* [insertPolicy](comboboxprops.md#optional-insertpolicy)
-* [items](comboboxprops.md#optional-items)
-* [maxCount](comboboxprops.md#optional-maxcount)
-* [maxSize](comboboxprops.md#optional-maxsize)
-* [maxVisibleItems](comboboxprops.md#optional-maxvisibleitems)
-* [minSize](comboboxprops.md#optional-minsize)
-* [minimumContentsLength](comboboxprops.md#optional-minimumcontentslength)
-* [modelColumn](comboboxprops.md#optional-modelcolumn)
-* [mouseTracking](comboboxprops.md#optional-mousetracking)
-* [on](comboboxprops.md#optional-on)
-* [pos](comboboxprops.md#optional-pos)
-* [ref](comboboxprops.md#optional-ref)
-* [size](comboboxprops.md#optional-size)
-* [sizeAdjustPolicy](comboboxprops.md#optional-sizeadjustpolicy)
-* [style](comboboxprops.md#optional-style)
-* [styleSheet](comboboxprops.md#optional-stylesheet)
-* [visible](comboboxprops.md#optional-visible)
-* [windowFlags](comboboxprops.md#optional-windowflags)
-* [windowIcon](comboboxprops.md#optional-windowicon)
-* [windowOpacity](comboboxprops.md#optional-windowopacity)
-* [windowState](comboboxprops.md#optional-windowstate)
-* [windowTitle](comboboxprops.md#optional-windowtitle)
+* [attributes](tabprops.md#optional-attributes)
+* [cursor](tabprops.md#optional-cursor)
+* [enabled](tabprops.md#optional-enabled)
+* [geometry](tabprops.md#optional-geometry)
+* [id](tabprops.md#optional-id)
+* [maxSize](tabprops.md#optional-maxsize)
+* [minSize](tabprops.md#optional-minsize)
+* [mouseTracking](tabprops.md#optional-mousetracking)
+* [on](tabprops.md#optional-on)
+* [pos](tabprops.md#optional-pos)
+* [ref](tabprops.md#optional-ref)
+* [size](tabprops.md#optional-size)
+* [style](tabprops.md#optional-style)
+* [styleSheet](tabprops.md#optional-stylesheet)
+* [tabPosition](tabprops.md#optional-tabposition)
+* [visible](tabprops.md#optional-visible)
+* [windowFlags](tabprops.md#optional-windowflags)
+* [windowIcon](tabprops.md#optional-windowicon)
+* [windowOpacity](tabprops.md#optional-windowopacity)
+* [windowState](tabprops.md#optional-windowstate)
+* [windowTitle](tabprops.md#optional-windowtitle)
 
 ## Properties
 
@@ -63,30 +49,6 @@ Prop to set the Widget Attributes. example:
 
 ___
 
-### `Optional` count
-
-• **count**? : *undefined | number*
-
-___
-
-### `Optional` currentData
-
-• **currentData**? : *QVariant*
-
-___
-
-### `Optional` currentIndex
-
-• **currentIndex**? : *undefined | number*
-
-___
-
-### `Optional` currentText
-
-• **currentText**? : *undefined | string*
-
-___
-
 ### `Optional` cursor
 
 • **cursor**? : *CursorShape | QCursor*
@@ -94,18 +56,6 @@ ___
 *Inherited from [ViewProps](viewprops.md).[cursor](viewprops.md#optional-cursor)*
 
 Sets the window mouse cursor. [QWidget: setCursor](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetcursorcursor)
-
-___
-
-### `Optional` duplicatesEnabled
-
-• **duplicatesEnabled**? : *undefined | false | true*
-
-___
-
-### `Optional` editable
-
-• **editable**? : *undefined | false | true*
 
 ___
 
@@ -119,12 +69,6 @@ Sets the property that tells whether the widget is enabled. In general an enable
 
 ___
 
-### `Optional` frame
-
-• **frame**? : *undefined | false | true*
-
-___
-
 ### `Optional` geometry
 
 • **geometry**? : *[Geometry](../globals.md#geometry)*
@@ -132,12 +76,6 @@ ___
 *Inherited from [ViewProps](viewprops.md).[geometry](viewprops.md#optional-geometry)*
 
 Sets the screen position as well as size of the widget. [QWidget: setGeometry](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetgeometryx-y-width-height)
-
-___
-
-### `Optional` iconSize
-
-• **iconSize**? : *QSize*
 
 ___
 
@@ -151,24 +89,6 @@ Sets the object name (id) of the widget in Qt. Object name can be analogous to i
 
 ___
 
-### `Optional` insertPolicy
-
-• **insertPolicy**? : *InsertPolicy*
-
-___
-
-### `Optional` items
-
-• **items**? : *[ComboBoxItem](../globals.md#comboboxitem)[]*
-
-___
-
-### `Optional` maxCount
-
-• **maxCount**? : *undefined | number*
-
-___
-
 ### `Optional` maxSize
 
 • **maxSize**? : *[Size](../globals.md#size)*
@@ -179,12 +99,6 @@ Sets the maximum size of the widget. [QWidget: setMaximumSize](https://docs.node
 
 ___
 
-### `Optional` maxVisibleItems
-
-• **maxVisibleItems**? : *undefined | number*
-
-___
-
 ### `Optional` minSize
 
 • **minSize**? : *[Size](../globals.md#size)*
@@ -192,18 +106,6 @@ ___
 *Inherited from [ViewProps](viewprops.md).[minSize](viewprops.md#optional-minsize)*
 
 Sets the minimum size of the widget. [QWidget: setMinimumSize](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetminimumsizewidth-height)
-
-___
-
-### `Optional` minimumContentsLength
-
-• **minimumContentsLength**? : *undefined | number*
-
-___
-
-### `Optional` modelColumn
-
-• **modelColumn**? : *undefined | number*
 
 ___
 
@@ -219,7 +121,7 @@ ___
 
 ### `Optional` on
 
-• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QComboBoxSignals›*
+• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QTabWidgetSignals›*
 
 *Inherited from [ViewProps](viewprops.md).[on](viewprops.md#optional-on)*
 
@@ -257,12 +159,6 @@ Sets both the minimum and maximum sizes of the widget. [QWidget: setFixedSize](h
 
 ___
 
-### `Optional` sizeAdjustPolicy
-
-• **sizeAdjustPolicy**? : *SizeAdjustPolicy*
-
-___
-
 ### `Optional` style
 
 • **style**? : *undefined | string*
@@ -280,6 +176,12 @@ ___
 *Inherited from [ViewProps](viewprops.md).[styleSheet](viewprops.md#optional-stylesheet)*
 
 Sets the property that holds the widget's style sheet. [QWidget: setStyleSheet](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetstylesheetstylesheet)
+
+___
+
+### `Optional` tabPosition
+
+• **tabPosition**? : *TabPosition*
 
 ___
 

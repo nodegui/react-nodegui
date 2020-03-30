@@ -39,7 +39,7 @@ sidebar_label: "WindowProps"
 
 ### `Optional` attributes
 
-• **attributes**? : *WidgetAttributesMap*
+• **attributes**? : *[WidgetAttributesMap](../globals.md#widgetattributesmap)*
 
 *Inherited from [ViewProps](viewprops.md).[attributes](viewprops.md#optional-attributes)*
 
@@ -70,7 +70,7 @@ ___
 
 ### `Optional` geometry
 
-• **geometry**? : *Geometry*
+• **geometry**? : *[Geometry](../globals.md#geometry)*
 
 *Inherited from [ViewProps](viewprops.md).[geometry](viewprops.md#optional-geometry)*
 
@@ -90,7 +90,7 @@ ___
 
 ### `Optional` maxSize
 
-• **maxSize**? : *Size*
+• **maxSize**? : *[Size](../globals.md#size)*
 
 *Inherited from [ViewProps](viewprops.md).[maxSize](viewprops.md#optional-maxsize)*
 
@@ -100,7 +100,7 @@ ___
 
 ### `Optional` minSize
 
-• **minSize**? : *Size*
+• **minSize**? : *[Size](../globals.md#size)*
 
 *Inherited from [ViewProps](viewprops.md).[minSize](viewprops.md#optional-minsize)*
 
@@ -130,7 +130,7 @@ ___
 
 ### `Optional` pos
 
-• **pos**? : *Position*
+• **pos**? : *[Position](../globals.md#position)*
 
 *Inherited from [ViewProps](viewprops.md).[pos](viewprops.md#optional-pos)*
 
@@ -150,7 +150,7 @@ ___
 
 ### `Optional` size
 
-• **size**? : *ViewSize*
+• **size**? : *[ViewSize](../globals.md#viewsize)*
 
 *Inherited from [ViewProps](viewprops.md).[size](viewprops.md#optional-size)*
 
@@ -190,7 +190,7 @@ ___
 
 ### `Optional` windowFlags
 
-• **windowFlags**? : *WindowFlagsMap*
+• **windowFlags**? : *[WindowFlagsMap](../globals.md#windowflagsmap)*
 
 *Inherited from [ViewProps](viewprops.md).[windowFlags](viewprops.md#optional-windowflags)*
 

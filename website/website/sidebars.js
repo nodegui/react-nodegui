@@ -4,6 +4,7 @@ module.exports = {
       "api/classes/renderer"
     ],
     "Interfaces": [
+      "api/interfaces/_react_proxy_.reactproxycomponent",
       "api/interfaces/abstractbuttonprops",
       "api/interfaces/animatedimageprops",
       "api/interfaces/buttonprops",
@@ -16,10 +17,16 @@ module.exports = {
       "api/interfaces/progressbarprops",
       "api/interfaces/radiobuttonprops",
       "api/interfaces/scrollareaprops",
+      "api/interfaces/sliderprops",
       "api/interfaces/spinboxprops",
+      "api/interfaces/tabitemprops",
+      "api/interfaces/tabprops",
       "api/interfaces/textprops",
       "api/interfaces/viewprops",
       "api/interfaces/windowprops"
+    ],
+    "Modules": [
+      "api/modules/_react_proxy_"
     ]
   }
 };
