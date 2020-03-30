@@ -77,6 +77,11 @@ module.exports = {
     },
     googleAnalytics: {
       trackingID: "UA-145065218-2"
+    },
+    algolia: {
+      apiKey: "6ab12d669678aeba3bdf10b89f0c8db3",
+      indexName: "nodegui_react",
+      algoliaOptions: {} // Optional, if provided by Algolia
     }
   },
   presets: [
