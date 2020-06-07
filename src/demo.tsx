@@ -1,10 +1,13 @@
 import React from "react";
-import { Renderer, Text, ScrollArea, Window } from "./index";
+import { Renderer, Text, ScrollArea, Window, View, Button } from "./index";
+import { GridView } from "./components/GridView";
+import { GridRow } from "./components/GridView/GridRow";
+import { GridColumn } from "./components/GridView/GridColumn";
 
 const App = () => {
   return (
     <Window>
-      <ScrollArea>
+      {/* <ScrollArea>
         <Text>
           {`
             Contrary to popular belief, 
@@ -43,7 +46,20 @@ const App = () => {
 
         `}
         </Text>
-      </ScrollArea>
+      </ScrollArea> */}
+      <View>
+        <GridView style="flex: 1">
+          {/* <View>
+            <Text>Test</Text>
+          </View> */}
+          <GridRow>
+            <GridColumn>
+              <Text>Hello</Text>
+            </GridColumn>
+          </GridRow>
+        </GridView>
+        <Button text="Button" />
+      </View>
     </Window>
   );
 };
