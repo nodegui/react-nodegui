@@ -75,6 +75,10 @@ export class RNGridRow extends Component implements RNComponent {
     this.appendChild(child);
   }
   appendChild(child: RNGridColumn): void {
+    if (!(child instanceof RNGridColumn)) {
+      throw new Error("GridColumn is the only supported child of GridRow");
+    }
+
     child.setParentRowAndUpdateProps(this, this.childColumns.length);
 
     this.childColumns.push(child);

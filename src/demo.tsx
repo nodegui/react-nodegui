@@ -49,9 +49,6 @@ const App = () => {
       </ScrollArea> */}
       <View>
         <GridView style="flex: 1">
-          {/* <View>
-            <Text>Test</Text>
-          </View> */}
           <GridRow>
             <GridColumn>
               <View style="background-color: red">

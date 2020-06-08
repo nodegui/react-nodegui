@@ -51,6 +51,10 @@ export class RNGridView extends QWidget implements RNComponent {
     this.appendChild(child);
   }
   appendChild(child: RNGridRow): void {
+    if (!(child instanceof RNGridRow)) {
+      throw new Error("GridRow is the only supported child of GridView");
+    }
+
     const updateChild = () => {
       child.setParentGridAndUpdateProps(this, this.childRows.length);
 
