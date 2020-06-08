@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@nodegui/nodegui": "^0.18.0",
-    "@types/node": "^13.9.3",
+    "@types/node": "^14.0.11",
     "prettier": "^1.18.2",
     "react": "^16.13.1",
     "typedoc": "^0.17.3",
