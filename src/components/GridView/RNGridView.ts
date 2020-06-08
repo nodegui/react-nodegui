@@ -3,6 +3,11 @@ import { QGridLayoutSignals, QGridLayout, QWidget } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
 import { RNComponent } from "../config";
 import { RNGridRow, GridRowProps } from "./GridRow/RNGridRow";
+import {
+  DataWithOffset,
+  offsetForIndex,
+  updateDisplacedChildren,
+} from "./utils";
 
 export interface GridViewProps extends ViewProps<QGridLayoutSignals> {
   children:
@@ -32,14 +37,16 @@ const setGridViewProps = (
 export class RNGridView extends QWidget implements RNComponent {
   native: any;
   layout?: QGridLayout;
-  childRows: RNGridRow[] = [];
+  childRows: Array<DataWithOffset<RNGridRow>> = [];
 
   updateChildren(startIndex = 0): void {
-    for (let i = startIndex; i < this.childRows.length; i++) {
-      const displacedChild = this.childRows[i];
-
-      displacedChild.setParentGridAndUpdateProps(this, i);
-    }
+    updateDisplacedChildren<RNGridRow, RNGridView>(
+      startIndex,
+      this.childRows,
+      this,
+      "height",
+      "setParentGridAndUpdateProps"
+    );
   }
 
   /* RNComponent */
@@ -56,9 +63,18 @@ export class RNGridView extends QWidget implements RNComponent {
     }
 
     const updateChild = () => {
-      child.setParentGridAndUpdateProps(this, this.childRows.length);
+      const offset = offsetForIndex<RNGridRow>(
+        this.childRows.length,
+        this.childRows,
+        "height"
+      );
 
-      this.childRows.push(child);
+      child.setParentGridAndUpdateProps(this, offset);
+
+      this.childRows.push({
+        offset,
+        data: child,
+      });
     };
 
     if (this.layout) {
@@ -74,7 +90,9 @@ export class RNGridView extends QWidget implements RNComponent {
     updateChild();
   }
   insertBefore(child: RNGridRow, beforeChild: RNGridRow): void {
-    const prevIndex = this.childRows.indexOf(beforeChild);
+    const prevIndex = this.childRows.findIndex(
+      ({ data }) => data === beforeChild
+    );
 
     if (prevIndex === -1) {
       throw new Error(
@@ -82,12 +100,21 @@ export class RNGridView extends QWidget implements RNComponent {
       );
     }
 
-    this.childRows.splice(prevIndex, 0, child);
+    const offset = offsetForIndex<RNGridRow>(
+      prevIndex,
+      this.childRows,
+      "height"
+    );
+
+    this.childRows.splice(prevIndex, 0, {
+      offset,
+      data: child,
+    });
     // Update displaced children
     this.updateChildren(prevIndex);
   }
   removeChild(child: RNGridRow): void {
-    const prevIndex = this.childRows.indexOf(child);
+    const prevIndex = this.childRows.findIndex(({ data }) => data === child);
 
     if (prevIndex !== -1) {
       this.childRows.splice(prevIndex, 1);

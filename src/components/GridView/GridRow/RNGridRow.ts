@@ -3,6 +3,11 @@ import { GridColumnProps, RNGridColumn } from "../GridColumn/RNGridColumn";
 import { Component } from "@nodegui/nodegui";
 import { RNComponent } from "../../config";
 import { RNGridView } from "../RNGridView";
+import {
+  DataWithOffset,
+  updateDisplacedChildren,
+  offsetForIndex,
+} from "../utils";
 
 export type GridRowProps = {
   children:
@@ -27,6 +32,9 @@ const setGridRowProps = (
         | Array<FunctionComponentElement<GridColumnProps>>
         | FunctionComponentElement<GridColumnProps>
     ) {},
+    set height(height: number) {
+      widget.height = height;
+    },
   };
   Object.assign(setter, newProps);
 };
@@ -35,8 +43,9 @@ export class RNGridRow extends Component implements RNComponent {
   native: any;
   parentGrid?: RNGridView;
   initialProps?: GridRowProps;
-  childColumns: RNGridColumn[] = [];
+  childColumns: Array<DataWithOffset<RNGridColumn>> = [];
   rowIndex?: number;
+  height?: number;
 
   setParentGridAndUpdateProps(parentGrid: RNGridView, index: number): void {
     this.parentGrid = parentGrid;
@@ -54,12 +63,13 @@ export class RNGridRow extends Component implements RNComponent {
   }
 
   updateChildren(startIndex = 0): void {
-    for (let i = startIndex; i < this.childColumns.length; i++) {
-      const displacedChild = this.childColumns[i];
-
-      console.log(displacedChild);
-      displacedChild.setParentRowAndUpdateProps(this, i);
-    }
+    updateDisplacedChildren<RNGridColumn, RNGridRow>(
+      startIndex,
+      this.childColumns,
+      this,
+      "width",
+      "setParentRowAndUpdateProps"
+    );
   }
 
   /* RNComponent */
@@ -79,12 +89,23 @@ export class RNGridRow extends Component implements RNComponent {
       throw new Error("GridColumn is the only supported child of GridRow");
     }
 
-    child.setParentRowAndUpdateProps(this, this.childColumns.length);
+    const offset = offsetForIndex<RNGridColumn>(
+      this.childColumns.length,
+      this.childColumns,
+      "width"
+    );
 
-    this.childColumns.push(child);
+    child.setParentRowAndUpdateProps(this, offset);
+
+    this.childColumns.push({
+      offset,
+      data: child,
+    });
   }
   insertBefore(child: RNGridColumn, beforeChild: RNGridColumn): void {
-    const prevIndex = this.childColumns.indexOf(beforeChild);
+    const prevIndex = this.childColumns.findIndex(
+      ({ data }) => data === beforeChild
+    );
 
     if (prevIndex === -1) {
       throw new Error(
@@ -92,12 +113,21 @@ export class RNGridRow extends Component implements RNComponent {
       );
     }
 
-    this.childColumns.splice(prevIndex, 0, child);
+    const offset = offsetForIndex<RNGridColumn>(
+      prevIndex,
+      this.childColumns,
+      "width"
+    );
+
+    this.childColumns.splice(prevIndex, 0, {
+      offset,
+      data: child,
+    });
     // Update displaced children
     this.updateChildren(prevIndex);
   }
   removeChild(child: RNGridColumn): void {
-    const prevIndex = this.childColumns.indexOf(child);
+    const prevIndex = this.childColumns.findIndex(({ data }) => data === child);
 
     if (prevIndex !== -1) {
       this.childColumns.splice(prevIndex, 1);

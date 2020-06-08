@@ -50,18 +50,18 @@ const App = () => {
       <View>
         <GridView style="flex: 1">
           <GridRow>
-            <GridColumn>
+            <GridColumn width={2}>
               <View style="background-color: red">
                 <Text>Hello</Text>
               </View>
             </GridColumn>
-            <GridColumn>
+            <GridColumn width={2}>
               <View style="background-color: blue">
                 <Text>Second Column</Text>
               </View>
             </GridColumn>
           </GridRow>
-          <GridRow>
+          <GridRow height={2}>
             <GridColumn>
               <View style="background-color: green">
                 <Text>Second row</Text>
@@ -71,6 +71,21 @@ const App = () => {
               <View style="background-color: purple">
                 <Text>Second Column</Text>
               </View>
+            </GridColumn>
+            <GridColumn>
+              <View style="background-color: purple">
+                <Text>Third Column</Text>
+              </View>
+            </GridColumn>
+            <GridColumn>
+              <View style="background-color: purple">
+                <Text>Fourth Column</Text>
+              </View>
+            </GridColumn>
+          </GridRow>
+          <GridRow>
+            <GridColumn>
+              <Text>Third row</Text>
             </GridColumn>
           </GridRow>
         </GridView>
