@@ -54,7 +54,26 @@ const App = () => {
           </View> */}
           <GridRow>
             <GridColumn>
-              <Text>Hello</Text>
+              <View style="background-color: red">
+                <Text>Hello</Text>
+              </View>
+            </GridColumn>
+            <GridColumn>
+              <View style="background-color: blue">
+                <Text>Second Column</Text>
+              </View>
+            </GridColumn>
+          </GridRow>
+          <GridRow>
+            <GridColumn>
+              <View style="background-color: green">
+                <Text>Second row</Text>
+              </View>
+            </GridColumn>
+            <GridColumn>
+              <View style="background-color: purple">
+                <Text>Second Column</Text>
+              </View>
             </GridColumn>
           </GridRow>
         </GridView>

@@ -32,6 +32,17 @@ const setGridViewProps = (
 export class RNGridView extends QWidget implements RNComponent {
   native: any;
   layout?: QGridLayout;
+  childRows: RNGridRow[] = [];
+
+  updateChildren(startIndex = 0): void {
+    for (let i = startIndex; i < this.childRows.length; i++) {
+      const displacedChild = this.childRows[i];
+
+      displacedChild.setParentGridAndUpdateProps(this, i);
+    }
+  }
+
+  /* RNComponent */
 
   setProps(newProps: GridViewProps, oldProps: GridViewProps): void {
     setGridViewProps(this, newProps, oldProps);
@@ -40,9 +51,14 @@ export class RNGridView extends QWidget implements RNComponent {
     this.appendChild(child);
   }
   appendChild(child: RNGridRow): void {
+    const updateChild = () => {
+      child.setParentGridAndUpdateProps(this, this.childRows.length);
+
+      this.childRows.push(child);
+    };
+
     if (this.layout) {
-      // Update child before bailing, just in case
-      child.setParentGridAndUpdateProps(this);
+      updateChild();
 
       return;
     }
@@ -51,51 +67,30 @@ export class RNGridView extends QWidget implements RNComponent {
     this.setLayout(layout);
     this.layout = layout;
 
-    child.setParentGridAndUpdateProps(this);
+    updateChild();
   }
   insertBefore(child: RNGridRow, beforeChild: RNGridRow): void {
-    this.appendChild(child);
+    const prevIndex = this.childRows.indexOf(beforeChild);
+
+    if (prevIndex === -1) {
+      throw new Error(
+        "Attempted to insert child GridRow before nonexistent row"
+      );
+    }
+
+    this.childRows.splice(prevIndex, 0, child);
+    // Update displaced children
+    this.updateChildren(prevIndex);
   }
   removeChild(child: RNGridRow): void {
+    const prevIndex = this.childRows.indexOf(child);
+
+    if (prevIndex !== -1) {
+      this.childRows.splice(prevIndex, 1);
+      this.updateChildren(prevIndex);
+    }
+
     child.parentGrid = undefined;
   }
   static tagName: string = "gridview";
 }
-
-// export class RNGridView extends QWidget implements RNWidget {
-//   setProps(newProps: ViewProps<any>, oldProps: ViewProps<any>): void {
-//     setViewProps(this, newProps, oldProps);
-//   }
-//   insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
-//     if (!this.layout) {
-//       console.warn("parent has no layout to insert child before another child");
-//       return;
-//     }
-//     (this.layout as any).insertChildBefore(child, beforeChild);
-//   }
-//   static tagName = "gridview";
-//   appendInitialChild(child: NodeWidget<any>): void {
-//     console.log("View initial");
-//     this.appendChild(child);
-//   }
-//   appendChild(child: NodeWidget<any>): void {
-//     if (!child) {
-//       return;
-//     }
-//     if (!this.layout) {
-//       const flexLayout = new FlexLayout();
-//       flexLayout.setFlexNode(this.getFlexNode());
-//       this.setLayout(flexLayout);
-//       this.layout = flexLayout;
-//     }
-//     this.layout.addWidget(child);
-//   }
-//   removeChild(child: NodeWidget<any>) {
-//     if (!this.layout) {
-//       console.warn("parent has no layout to remove child from");
-//       return;
-//     }
-//     this.layout.removeWidget(child);
-//     child.close();
-//   }
-// }

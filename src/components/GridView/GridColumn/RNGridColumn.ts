@@ -19,7 +19,11 @@ const setGridColumnProps = (
   console.log(newProps);
 
   if (widget.actualWidget) {
-    parentRow.parentGrid?.layout?.addWidget(widget.actualWidget, 0, 0);
+    parentRow.parentGrid?.layout?.addWidget(
+      widget.actualWidget,
+      parentRow.rowIndex ?? 0,
+      widget.columnIndex ?? 0
+    );
   }
 
   const setter: GridColumnProps = {};
@@ -31,9 +35,11 @@ export class RNGridColumn extends Component implements RNComponent {
   actualWidget?: NodeWidget<any>;
   parentRow?: RNGridRow;
   initialProps?: GridColumnProps;
+  columnIndex?: number;
 
-  setParentRowAndUpdateProps(parentRow: RNGridRow): void {
+  setParentRowAndUpdateProps(parentRow: RNGridRow, index: number): void {
     this.parentRow = parentRow;
+    this.columnIndex = index;
     setGridColumnProps(this, parentRow, this.initialProps ?? {}, {});
   }
 

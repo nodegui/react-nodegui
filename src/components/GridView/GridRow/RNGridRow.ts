@@ -35,10 +35,12 @@ export class RNGridRow extends Component implements RNComponent {
   native: any;
   parentGrid?: RNGridView;
   initialProps?: GridRowProps;
-  childColumns: Set<RNGridColumn> = new Set();
+  childColumns: RNGridColumn[] = [];
+  rowIndex?: number;
 
-  setParentGridAndUpdateProps(parentGrid: RNGridView): void {
+  setParentGridAndUpdateProps(parentGrid: RNGridView, index: number): void {
     this.parentGrid = parentGrid;
+    this.rowIndex = index;
     setGridRowProps(
       this,
       parentGrid,
@@ -48,16 +50,21 @@ export class RNGridRow extends Component implements RNComponent {
       { children: [] }
     );
 
-    console.log(this.childColumns);
-    this.childColumns.forEach((child) =>
-      child.setParentRowAndUpdateProps(this)
-    );
+    this.updateChildren();
+  }
+
+  updateChildren(startIndex = 0): void {
+    for (let i = startIndex; i < this.childColumns.length; i++) {
+      const displacedChild = this.childColumns[i];
+
+      console.log(displacedChild);
+      displacedChild.setParentRowAndUpdateProps(this, i);
+    }
   }
 
   /* RNComponent */
 
   setProps(newProps: GridRowProps, oldProps: GridRowProps): void {
-    console.log("Set row");
     if (this.parentGrid) {
       setGridRowProps(this, this.parentGrid, newProps, oldProps);
     } else {
@@ -65,20 +72,35 @@ export class RNGridRow extends Component implements RNComponent {
     }
   }
   appendInitialChild(child: RNGridColumn): void {
-    this.childColumns.add(child);
-
-    console.log("Grid row initial child");
-    child.setParentRowAndUpdateProps(this);
+    this.appendChild(child);
   }
   appendChild(child: RNGridColumn): void {
-    this.appendInitialChild(child);
+    child.setParentRowAndUpdateProps(this, this.childColumns.length);
+
+    this.childColumns.push(child);
   }
   insertBefore(child: RNGridColumn, beforeChild: RNGridColumn): void {
-    this.appendInitialChild(child);
+    const prevIndex = this.childColumns.indexOf(beforeChild);
+
+    if (prevIndex === -1) {
+      throw new Error(
+        "Attempted to insert child GridColumn before nonexistent column"
+      );
+    }
+
+    this.childColumns.splice(prevIndex, 0, child);
+    // Update displaced children
+    this.updateChildren(prevIndex);
   }
   removeChild(child: RNGridColumn): void {
+    const prevIndex = this.childColumns.indexOf(child);
+
+    if (prevIndex !== -1) {
+      this.childColumns.splice(prevIndex, 1);
+      this.updateChildren(prevIndex);
+    }
+
     child.parentRow = undefined;
-    this.childColumns.delete(child);
   }
   static tagName: string = "gridrow";
 }
