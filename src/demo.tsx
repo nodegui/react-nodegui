@@ -47,50 +47,66 @@ const App = () => {
         `}
         </Text>
       </ScrollArea> */}
-      <View>
-        <GridView style="flex: 1">
-          <GridRow>
-            <GridColumn width={2}>
-              <View style="background-color: red">
-                <Text>Hello</Text>
-              </View>
-            </GridColumn>
-            <GridColumn width={2}>
-              <View style="background-color: blue">
-                <Text>Second Column</Text>
-              </View>
-            </GridColumn>
-          </GridRow>
-          <GridRow height={2}>
-            <GridColumn>
-              <View style="background-color: green">
-                <Text>Second row</Text>
-              </View>
-            </GridColumn>
-            <GridColumn>
-              <View style="background-color: purple">
-                <Text>Second Column</Text>
-              </View>
-            </GridColumn>
-            <GridColumn>
-              <View style="background-color: purple">
-                <Text>Third Column</Text>
-              </View>
-            </GridColumn>
-            <GridColumn>
-              <View style="background-color: purple">
-                <Text>Fourth Column</Text>
-              </View>
-            </GridColumn>
-          </GridRow>
-          <GridRow>
-            <GridColumn>
-              <Text>Third row</Text>
-            </GridColumn>
-          </GridRow>
-        </GridView>
-        <Button text="Button" />
-      </View>
+      {/* <View> */}
+      <GridView
+        style="flex: 1"
+        columnProps={{
+          0: {
+            minWidth: 200,
+          },
+          1: {
+            minWidth: 300,
+          },
+        }}
+        rowProps={{
+          0: {
+            stretch: 2,
+            minHeight: 400,
+          },
+        }}
+      >
+        <GridRow>
+          <GridColumn width={2}>
+            <View style="background-color: red">
+              <Text>Hello</Text>
+            </View>
+          </GridColumn>
+          <GridColumn width={2}>
+            <View style="background-color: blue">
+              <Text>Second Column</Text>
+            </View>
+          </GridColumn>
+        </GridRow>
+        <GridRow height={2}>
+          <GridColumn>
+            <View style="background-color: green">
+              <Text>Second row</Text>
+            </View>
+          </GridColumn>
+          <GridColumn>
+            <View style="background-color: purple">
+              <Text>Second Column</Text>
+            </View>
+          </GridColumn>
+          <GridColumn>
+            <View style="background-color: purple">
+              <Text>Third Column</Text>
+            </View>
+          </GridColumn>
+          <GridColumn>
+            <View style="background-color: purple">
+              <Text>Fourth Column</Text>
+            </View>
+          </GridColumn>
+        </GridRow>
+        <GridRow>
+          <GridColumn>
+            <Text>Third row</Text>
+          </GridColumn>
+        </GridRow>
+      </GridView>
+      {/* <Button text="Button" />
+      </View> */}
     </Window>
   );
 };

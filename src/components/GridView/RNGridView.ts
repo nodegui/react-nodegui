@@ -9,10 +9,30 @@ import {
   updateDisplacedChildren,
 } from "./utils";
 
+export type GridViewColumnProps = {
+  [ColumnIndex: number]: {
+    stretch?: number;
+    minWidth?: number;
+  };
+};
+
+export type GridViewRowProps = {
+  [RowIndex: number]: {
+    stretch?: number;
+    minHeight?: number;
+  };
+};
+
 export interface GridViewProps extends ViewProps<QGridLayoutSignals> {
   children:
     | Array<FunctionComponentElement<GridRowProps>>
     | FunctionComponentElement<GridRowProps>;
+
+  columnProps?: GridViewColumnProps;
+  rowProps?: GridViewRowProps;
+
+  horizontalSpacing?: number;
+  verticalSpacing?: number;
 }
 
 const setGridViewProps = (
@@ -26,6 +46,30 @@ const setGridViewProps = (
         | Array<FunctionComponentElement<GridRowProps>>
         | FunctionComponentElement<GridRowProps>
     ) {},
+    set horizontalSpacing(spacing: number) {
+      widget.layout?.setHorizontalSpacing(spacing);
+    },
+    set verticalSpacing(spacing: number) {
+      widget.layout?.setVerticalSpacing(spacing);
+    },
+    set columnProps(props: GridViewColumnProps) {
+      for (const indexString of Object.keys(props)) {
+        const index = parseInt(indexString, 10);
+        const { stretch, minWidth } = props[index];
+
+        widget.layout?.setColumnStretch(index, stretch ?? 0);
+        widget.layout?.setColumnMinimumWidth(index, minWidth ?? 0);
+      }
+    },
+    set rowProps(props: GridViewRowProps) {
+      for (const indexString of Object.keys(props)) {
+        const index = parseInt(indexString, 10);
+        const { stretch, minHeight } = props[index];
+
+        widget.layout?.setRowStretch(index, stretch ?? 0);
+        widget.layout?.setRowMinimumHeight(index, minHeight ?? 0);
+      }
+    },
   };
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);
@@ -37,6 +81,7 @@ const setGridViewProps = (
 export class RNGridView extends QWidget implements RNComponent {
   native: any;
   layout?: QGridLayout;
+  initialProps?: GridViewProps;
   childRows: Array<DataWithOffset<RNGridRow>> = [];
 
   updateChildren(startIndex = 0): void {
@@ -52,7 +97,11 @@ export class RNGridView extends QWidget implements RNComponent {
   /* RNComponent */
 
   setProps(newProps: GridViewProps, oldProps: GridViewProps): void {
-    setGridViewProps(this, newProps, oldProps);
+    if (this.layout) {
+      setGridViewProps(this, newProps, oldProps);
+    } else {
+      this.initialProps = newProps;
+    }
   }
   appendInitialChild(child: RNGridRow): void {
     this.appendChild(child);
@@ -86,6 +135,13 @@ export class RNGridView extends QWidget implements RNComponent {
     const layout = new QGridLayout();
     this.setLayout(layout);
     this.layout = layout;
+
+    // Newly created layout, so set initial props
+    if (this.initialProps) {
+      setGridViewProps(this, this.initialProps, {
+        children: [],
+      });
+    }
 
     updateChild();
   }

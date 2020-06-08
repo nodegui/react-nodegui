@@ -53,6 +53,7 @@ export class RNGridRow extends Component implements RNComponent {
     setGridRowProps(
       this,
       parentGrid,
+      // TODO: This doesn't apply after the initial render, which will cause a revert to old props
       this.initialProps ?? {
         children: [],
       },
