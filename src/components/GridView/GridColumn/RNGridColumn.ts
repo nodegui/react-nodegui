@@ -17,6 +17,8 @@ const setGridColumnProps = (
   oldProps: GridColumnProps
 ) => {
   if (widget.actualWidget) {
+    // TODO: Optimize this
+    parentRow.parentGrid?.layout?.removeWidget(widget.actualWidget);
     parentRow.parentGrid?.layout?.addWidget(
       widget.actualWidget,
       parentRow.rowIndex ?? 0,
@@ -38,14 +40,30 @@ export class RNGridColumn extends Component implements RNComponent {
   native: any;
   actualWidget?: NodeWidget<any>;
   parentRow?: RNGridRow;
-  initialProps?: GridColumnProps;
+  latestProps?: GridColumnProps;
+  prevProps?: GridColumnProps;
   columnIndex?: number;
   width?: number;
 
   setParentRowAndUpdateProps(parentRow: RNGridRow, index: number): void {
     this.parentRow = parentRow;
     this.columnIndex = index;
-    setGridColumnProps(this, parentRow, this.initialProps ?? {}, {});
+    setGridColumnProps(
+      this,
+      parentRow,
+      this.latestProps ?? {},
+      this.prevProps ?? {}
+    );
+  }
+
+  remove(): void {
+    if (!this.actualWidget) {
+      return;
+    }
+
+    this.parentRow?.parentGrid?.layout?.removeWidget(this.actualWidget);
+    this.actualWidget.close();
+    this.actualWidget = undefined;
   }
 
   /* RNComponent */
@@ -53,9 +71,10 @@ export class RNGridColumn extends Component implements RNComponent {
   setProps(newProps: GridColumnProps, oldProps: GridColumnProps): void {
     if (this.parentRow) {
       setGridColumnProps(this, this.parentRow, newProps, oldProps);
-    } else {
-      this.initialProps = newProps;
     }
+
+    this.latestProps = newProps;
+    this.prevProps = oldProps;
   }
   appendInitialChild(child: NodeWidget<any>): void {
     if (this.actualWidget) {
@@ -70,8 +89,7 @@ export class RNGridColumn extends Component implements RNComponent {
     this.appendInitialChild(child);
   }
   removeChild(child: NodeWidget<any>): void {
-    child.close();
-    this.actualWidget = undefined;
+    this.remove();
   }
   static tagName: string = "gridcolumn";
 }

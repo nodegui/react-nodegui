@@ -23,15 +23,10 @@ export type GridRowProps = {
 const setGridRowProps = (
   widget: RNGridRow,
   parentGrid: RNGridView,
-  newProps: GridRowProps,
-  oldProps: GridRowProps
+  newProps: Omit<GridRowProps, "children">,
+  oldProps: Omit<GridRowProps, "children">
 ) => {
-  const setter: GridRowProps = {
-    set children(
-      children:
-        | Array<FunctionComponentElement<GridColumnProps>>
-        | FunctionComponentElement<GridColumnProps>
-    ) {},
+  const setter: Omit<GridRowProps, "children"> = {
     set height(height: number) {
       widget.height = height;
     },
@@ -42,7 +37,8 @@ const setGridRowProps = (
 export class RNGridRow extends Component implements RNComponent {
   native: any;
   parentGrid?: RNGridView;
-  initialProps?: GridRowProps;
+  latestProps?: GridRowProps;
+  prevProps?: GridRowProps;
   childColumns: Array<DataWithOffset<RNGridColumn>> = [];
   rowIndex?: number;
   height?: number;
@@ -53,11 +49,8 @@ export class RNGridRow extends Component implements RNComponent {
     setGridRowProps(
       this,
       parentGrid,
-      // TODO: This doesn't apply after the initial render, which will cause a revert to old props
-      this.initialProps ?? {
-        children: [],
-      },
-      { children: [] }
+      this.latestProps ?? {},
+      this.prevProps ?? {}
     );
 
     this.updateChildren();
@@ -73,14 +66,19 @@ export class RNGridRow extends Component implements RNComponent {
     );
   }
 
+  remove(): void {
+    this.childColumns.forEach(({ data }) => data.remove());
+  }
+
   /* RNComponent */
 
   setProps(newProps: GridRowProps, oldProps: GridRowProps): void {
     if (this.parentGrid) {
       setGridRowProps(this, this.parentGrid, newProps, oldProps);
-    } else {
-      this.initialProps = newProps;
     }
+
+    this.latestProps = newProps;
+    this.prevProps = oldProps;
   }
   appendInitialChild(child: RNGridColumn): void {
     this.appendChild(child);
@@ -135,6 +133,8 @@ export class RNGridRow extends Component implements RNComponent {
       this.updateChildren(prevIndex);
     }
 
+    // Actually remove child from layout
+    child.remove();
     child.parentRow = undefined;
   }
   static tagName: string = "gridrow";

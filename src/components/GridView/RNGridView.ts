@@ -37,15 +37,10 @@ export interface GridViewProps extends ViewProps<QGridLayoutSignals> {
 
 const setGridViewProps = (
   widget: RNGridView,
-  newProps: GridViewProps,
-  oldProps: GridViewProps
+  newProps: Omit<GridViewProps, "children">,
+  oldProps: Omit<GridViewProps, "children">
 ) => {
-  const setter: GridViewProps = {
-    set children(
-      children:
-        | Array<FunctionComponentElement<GridRowProps>>
-        | FunctionComponentElement<GridRowProps>
-    ) {},
+  const setter: Omit<GridViewProps, "children"> = {
     set horizontalSpacing(spacing: number) {
       widget.layout?.setHorizontalSpacing(spacing);
     },
@@ -138,9 +133,7 @@ export class RNGridView extends QWidget implements RNComponent {
 
     // Newly created layout, so set initial props
     if (this.initialProps) {
-      setGridViewProps(this, this.initialProps, {
-        children: [],
-      });
+      setGridViewProps(this, this.initialProps, {});
     }
 
     updateChild();
@@ -177,6 +170,7 @@ export class RNGridView extends QWidget implements RNComponent {
       this.updateChildren(prevIndex);
     }
 
+    child.remove();
     child.parentGrid = undefined;
   }
   static tagName: string = "gridview";
