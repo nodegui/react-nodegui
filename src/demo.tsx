@@ -1,153 +1,50 @@
 import React, { useState } from "react";
-import { Renderer, Text, Window, View, Button, useEventHandler } from "./index";
-import { GridView } from "./components/GridView";
-import { GridRow } from "./components/GridView/GridRow";
-import { GridColumn } from "./components/GridView/GridColumn";
-import { QPushButtonSignals } from "@nodegui/nodegui";
+import { Renderer, Window, Button } from "./index";
+import { BoxView } from "./components/BoxView";
+import { useEventHandler } from "./hooks";
+import { QPushButtonSignals, Direction } from "@nodegui/nodegui";
 
 const App = () => {
-  const [additionalRows, setAdditionalRows] = useState<string[]>([]);
-  const [rowStretch, setRowStretch] = useState(false);
+  const [additionalButtons, setAdditionalButtons] = useState<string[]>([]);
+  const [direction, setDirection] = useState<Direction>(Direction.LeftToRight);
 
-  const [additionalColumns, setAdditionalColumns] = useState<string[]>([]);
-
-  const insertRowHandler = useEventHandler<QPushButtonSignals>(
+  const addHandler = useEventHandler<QPushButtonSignals>(
     {
       clicked: () =>
-        setAdditionalRows((rows) => [...rows, `Row ${rows.length}`]),
-    },
-    []
-  );
-
-  const removeRowHandler = useEventHandler<QPushButtonSignals>(
-    {
-      clicked: () =>
-        setAdditionalRows((rows) => [...rows.slice(0, rows.length - 1)]),
-    },
-    []
-  );
-
-  const insertColumnHandler = useEventHandler<QPushButtonSignals>(
-    {
-      clicked: () =>
-        setAdditionalColumns((columns) => [
-          ...columns,
-          `Column ${columns.length}`,
+        setAdditionalButtons((buttons) => [
+          ...buttons,
+          `Button ${buttons.length}`,
         ]),
     },
     []
   );
 
-  const removeColumnsHandler = useEventHandler<QPushButtonSignals>(
+  const removeHandler = useEventHandler<QPushButtonSignals>(
     {
       clicked: () =>
-        setAdditionalColumns((columns) => [
-          ...columns.slice(0, columns.length - 1),
-        ]),
+        setAdditionalButtons((buttons) => buttons.slice(0, buttons.length - 1)),
     },
     []
   );
 
-  const toggleRowStretch = useEventHandler<QPushButtonSignals>(
+  const toggleDirection = useEventHandler<QPushButtonSignals>(
     {
-      clicked: () => setRowStretch((value) => !value),
+      clicked: () =>
+        setDirection((prevDirection) => ((prevDirection + 1) % 4) as Direction),
     },
     []
   );
 
   return (
     <Window>
-      <GridView
-        style="flex: 1"
-        columnProps={{
-          0: {
-            minWidth: 200,
-          },
-          1: {
-            minWidth: 300,
-          },
-        }}
-        rowProps={{
-          0: {
-            stretch: rowStretch ? 2 : undefined,
-            minHeight: 400,
-          },
-          1: {
-            stretch: !rowStretch ? 2 : undefined,
-          },
-        }}
-      >
-        <GridRow>
-          <GridColumn width={2}>
-            <View style="background-color: red">
-              <Text>Hello</Text>
-              <Button text="Insert row" on={insertRowHandler} />
-              <Button text="Remove row" on={removeRowHandler} />
-              <Button text="Toggle row stretch" on={toggleRowStretch} />
-              <Button text="Insert column" on={insertColumnHandler} />
-              <Button text="Remove column" on={removeColumnsHandler} />
-            </View>
-          </GridColumn>
-          <GridColumn width={2}>
-            <View style="background-color: blue">
-              <Text>Second Column</Text>
-            </View>
-          </GridColumn>
-          <>
-            {additionalColumns.map((column) => (
-              <GridColumn key={column}>
-                <Text>{column}</Text>
-              </GridColumn>
-            ))}
-          </>
-        </GridRow>
-        <GridRow height={2}>
-          <GridColumn>
-            <View style="background-color: green">
-              <Text>Second row</Text>
-            </View>
-          </GridColumn>
-          <GridColumn>
-            <View style="background-color: purple">
-              <Text>Second Column</Text>
-            </View>
-          </GridColumn>
-          <GridColumn>
-            <View style="background-color: purple">
-              <Text>Third Column</Text>
-            </View>
-          </GridColumn>
-          <GridColumn>
-            <View style="background-color: purple">
-              <Text>Fourth Column</Text>
-            </View>
-          </GridColumn>
-          <>
-            {additionalColumns.map((column) => (
-              <GridColumn key={column}>
-                <Text>Second {column}</Text>
-              </GridColumn>
-            ))}
-          </>
-        </GridRow>
-        <GridRow>
-          <GridColumn>
-            <Text>Third row</Text>
-          </GridColumn>
-        </GridRow>
-        <>
-          {additionalRows.map((row) => (
-            <GridRow key={row}>
-              <GridColumn width={2}>
-                <Text>{row}</Text>
-              </GridColumn>
-              <GridColumn>
-                <Text>Second {row}</Text>
-              </GridColumn>
-            </GridRow>
-          ))}
-        </>
-      </GridView>
+      <BoxView direction={direction}>
+        <Button text="Add" on={addHandler} />
+        <Button text="Remove" on={removeHandler} />
+        <Button text="Toggle direction" on={toggleDirection} />
+        {additionalButtons.map((button) => (
+          <Button key={button} text={button} />
+        ))}
+      </BoxView>
     </Window>
   );
 };
