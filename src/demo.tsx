@@ -1,12 +1,14 @@
 import React from "react";
-import { Renderer, Text, ScrollArea, Window } from "./index";
+import { Renderer, Text, ScrollArea, Window, View, Button } from "./index";
 
 const App = () => {
   return (
     <Window>
-      <ScrollArea>
-        <Text>
-          {`
+      <View style="flex-direction: column">
+        <Button>Test</Button>
+        <ScrollArea>
+          <Text>
+            {`
             Contrary to popular belief, 
             Lorem Ipsum is not simply random text. 
             It has roots in a piece of classical Latin literature from 45 BC, 
@@ -42,8 +44,9 @@ const App = () => {
             sometimes on purpose (injected humour and the like).
 
         `}
-        </Text>
-      </ScrollArea>
+          </Text>
+        </ScrollArea>
+      </View>
     </Window>
   );
 };
