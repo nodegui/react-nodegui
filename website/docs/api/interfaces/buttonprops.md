@@ -35,6 +35,7 @@ Renderer.render(<App />);
 ### Properties
 
 * [attributes](buttonprops.md#optional-attributes)
+* [children](buttonprops.md#optional-children)
 * [cursor](buttonprops.md#optional-cursor)
 * [enabled](buttonprops.md#optional-enabled)
 * [flat](buttonprops.md#optional-flat)
@@ -69,6 +70,16 @@ Renderer.render(<App />);
 
 Prop to set the Widget Attributes. example:
 `<View attributes={{[WidgetAttributes.WA_Disabled]: true}} />`
+
+___
+
+### `Optional` children
+
+• **children**? : *undefined | string*
+
+*Inherited from [AbstractButtonProps](abstractbuttonprops.md).[children](abstractbuttonprops.md#optional-children)*
+
+Alternative method of providing the button text
 
 ___
 

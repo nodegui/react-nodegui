@@ -92,6 +92,241 @@ Renderer.render(<App />);
 
 - You can specify layout properties via inline styles also.
 
+
+## BoxView Layout
+
+BoxView Layout is an implementation of QBoxLayout of NodeGui.
+
+```jsx
+import React, { useState } from "react";
+import { Renderer, Window, BoxView, Button } from "@nodegui/react-nodegui";
+import { useEventHandler } from "./hooks";
+import { QPushButtonSignals, Direction } from "@nodegui/nodegui";
+
+const App = () => {
+  const [additionalButtons, setAdditionalButtons] = useState<string[]>([]);
+  const [direction, setDirection] = useState<Direction>(Direction.LeftToRight);
+
+  const addHandler = useEventHandler<QPushButtonSignals>(
+    {
+      clicked: () =>
+        setAdditionalButtons((buttons) => [
+          ...buttons,
+          `Button ${buttons.length}`,
+        ]),
+    },
+    []
+  );
+
+  const removeHandler = useEventHandler<QPushButtonSignals>(
+    {
+      clicked: () =>
+        setAdditionalButtons((buttons) => buttons.slice(0, buttons.length - 1)),
+    },
+    []
+  );
+
+  const toggleDirection = useEventHandler<QPushButtonSignals>(
+    {
+      clicked: () =>
+        setDirection((prevDirection) => ((prevDirection + 1) % 4) as Direction),
+    },
+    []
+  );
+
+  return (
+    <Window>
+      <BoxView direction={direction}>
+        <Button text="Add" on={addHandler} />
+        <Button text="Remove" on={removeHandler} />
+        <Button text="Toggle direction" on={toggleDirection} />
+        {additionalButtons.map((button) => (
+          <Button key={button} text={button} />
+        ))}
+      </BoxView>
+    </Window>
+  );
+};
+
+Renderer.render(<App />);
+
+
+```
+
+The above code produces
+
+<img src="https://react.nodegui.org/img/docs/box-layout-1.png" alt="box layout example 1" style={{maxWidth: 700, width:'100%'}}/>
+<img src="https://react.nodegui.org/img/docs/box-layout-2.png" alt="box layout example 1" style={{maxWidth: 700, width:'100%'}}/>
+
+
+## GridView Layout
+
+GridView Layout is an implementation of QGridLayout of NodeGui.
+
+
+```jsx
+import React, { useState } from "react";
+import { Renderer, GridView, GridRow, GridColumn Text, Window, View, Button, useEventHandler } from "@nodegui/react-nodegui";
+import { QPushButtonSignals } from "@nodegui/nodegui";
+
+const App = () => {
+  const [additionalRows, setAdditionalRows] = useState<string[]>([]);
+  const [rowStretch, setRowStretch] = useState(false);
+
+  const [additionalColumns, setAdditionalColumns] = useState<string[]>([]);
+
+  const insertRowHandler = useEventHandler<QPushButtonSignals>(
+    {
+      clicked: () =>
+        setAdditionalRows((rows) => [...rows, `Row ${rows.length}`]),
+    },
+    []
+  );
+
+  const removeRowHandler = useEventHandler<QPushButtonSignals>(
+    {
+      clicked: () =>
+        setAdditionalRows((rows) => [...rows.slice(0, rows.length - 1)]),
+    },
+    []
+  );
+
+  const insertColumnHandler = useEventHandler<QPushButtonSignals>(
+    {
+      clicked: () =>
+        setAdditionalColumns((columns) => [
+          ...columns,
+          `Column ${columns.length}`,
+        ]),
+    },
+    []
+  );
+
+  const removeColumnsHandler = useEventHandler<QPushButtonSignals>(
+    {
+      clicked: () =>
+        setAdditionalColumns((columns) => [
+          ...columns.slice(0, columns.length - 1),
+        ]),
+    },
+    []
+  );
+
+  const toggleRowStretch = useEventHandler<QPushButtonSignals>(
+    {
+      clicked: () => setRowStretch((value) => !value),
+    },
+    []
+  );
+
+  return (
+    <Window>
+      <GridView
+        style="flex: 1"
+        columnProps={{
+          0: {
+            minWidth: 200,
+          },
+          1: {
+            minWidth: 300,
+          },
+        }}
+        rowProps={{
+          0: {
+            stretch: rowStretch ? 2 : undefined,
+            minHeight: 400,
+          },
+          1: {
+            stretch: !rowStretch ? 2 : undefined,
+          },
+        }}
+      >
+        <GridRow>
+          <GridColumn width={2}>
+            <View style="background-color: red">
+              <Text>Hello</Text>
+              <Button text="Insert row" on={insertRowHandler} />
+              <Button text="Remove row" on={removeRowHandler} />
+              <Button text="Toggle row stretch" on={toggleRowStretch} />
+              <Button text="Insert column" on={insertColumnHandler} />
+              <Button text="Remove column" on={removeColumnsHandler} />
+            </View>
+          </GridColumn>
+          <GridColumn width={2}>
+            <View style="background-color: blue">
+              <Text>Second Column</Text>
+            </View>
+          </GridColumn>
+          <>
+            {additionalColumns.map((column) => (
+              <GridColumn key={column}>
+                <Text>{column}</Text>
+              </GridColumn>
+            ))}
+          </>
+        </GridRow>
+        <GridRow height={2}>
+          <GridColumn>
+            <View style="background-color: green">
+              <Text>Second row</Text>
+            </View>
+          </GridColumn>
+          <GridColumn>
+            <View style="background-color: purple">
+              <Text>Second Column</Text>
+            </View>
+          </GridColumn>
+          <GridColumn>
+            <View style="background-color: purple">
+              <Text>Third Column</Text>
+            </View>
+          </GridColumn>
+          <GridColumn>
+            <View style="background-color: purple">
+              <Text>Fourth Column</Text>
+            </View>
+          </GridColumn>
+          <>
+            {additionalColumns.map((column) => (
+              <GridColumn key={column}>
+                <Text>Second {column}</Text>
+              </GridColumn>
+            ))}
+          </>
+        </GridRow>
+        <GridRow>
+          <GridColumn>
+            <Text>Third row</Text>
+          </GridColumn>
+        </GridRow>
+        <>
+          {additionalRows.map((row) => (
+            <GridRow key={row}>
+              <GridColumn width={2}>
+                <Text>{row}</Text>
+              </GridColumn>
+              <GridColumn>
+                <Text>Second {row}</Text>
+              </GridColumn>
+            </GridRow>
+          ))}
+        </>
+      </GridView>
+    </Window>
+  );
+};
+
+Renderer.render(<App />);
+
+
+```
+
+The above code produces
+
+<img src="https://react.nodegui.org/img/docs/grid-layout-1.png" alt="grid layout example 1" style={{maxWidth: 700, width:'100%'}}/>
+
+
+
 ## Conclusion
 
 The primary layout in React NodeGui is the Flexbox layout. Flexbox layout can be controlled via stylesheet just as in web. So both paint and layout properties are available at the same place.

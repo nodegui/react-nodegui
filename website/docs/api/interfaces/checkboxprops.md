@@ -36,6 +36,7 @@ Renderer.render(<App />);
 
 * [attributes](checkboxprops.md#optional-attributes)
 * [checked](checkboxprops.md#optional-checked)
+* [children](checkboxprops.md#optional-children)
 * [cursor](checkboxprops.md#optional-cursor)
 * [enabled](checkboxprops.md#optional-enabled)
 * [geometry](checkboxprops.md#optional-geometry)
@@ -77,6 +78,16 @@ ___
 • **checked**? : *undefined | false | true*
 
 This property holds whether the button is checked. [QCheckBox: setChecked](https://docs.nodegui.org/docs/api/QCheckBox/#checkboxsetcheckedcheck)
+
+___
+
+### `Optional` children
+
+• **children**? : *undefined | string*
+
+*Inherited from [AbstractButtonProps](abstractbuttonprops.md).[children](abstractbuttonprops.md#optional-children)*
+
+Alternative method of providing the button text
 
 ___
 

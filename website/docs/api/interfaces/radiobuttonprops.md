@@ -15,6 +15,7 @@ sidebar_label: "RadioButtonProps"
 ### Properties
 
 * [attributes](radiobuttonprops.md#optional-attributes)
+* [children](radiobuttonprops.md#optional-children)
 * [cursor](radiobuttonprops.md#optional-cursor)
 * [enabled](radiobuttonprops.md#optional-enabled)
 * [geometry](radiobuttonprops.md#optional-geometry)
@@ -48,6 +49,16 @@ sidebar_label: "RadioButtonProps"
 
 Prop to set the Widget Attributes. example:
 `<View attributes={{[WidgetAttributes.WA_Disabled]: true}} />`
+
+___
+
+### `Optional` children
+
+• **children**? : *undefined | string*
+
+*Inherited from [AbstractButtonProps](abstractbuttonprops.md).[children](abstractbuttonprops.md#optional-children)*
+
+Alternative method of providing the button text
 
 ___
 

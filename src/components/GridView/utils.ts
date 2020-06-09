@@ -34,17 +34,18 @@ export const offsetForIndex = <T>(
   return offset;
 };
 
-export const updateDisplacedChildren = <TItem, TParent>(
+type Allowed<TItem, TParent> = OnlyType<TItem, SetParentFunc<TParent>>;
+export function updateDisplacedChildren<TItem, TParent>(
   startIndex: number,
   items: Array<
     DataWithOffset<
-      OnlyType<TItem, number> & OnlyType<TItem, SetParentFunc<TParent>>
+      OnlyType<TItem, number> & Allowed<TItem, TParent>
     >
   >,
   parent: TParent,
   sizeKey: keyof OnlyType<TItem, number>,
-  setParentFuncKey: keyof OnlyType<TItem, SetParentFunc<TParent>>
-) => {
+  setParentFuncKey: keyof Allowed<TItem, TParent>
+) {
   let offset = offsetForIndex(startIndex, items, sizeKey);
 
   for (let i = startIndex; i < items.length; i++) {

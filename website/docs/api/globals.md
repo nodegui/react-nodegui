@@ -12,16 +12,21 @@ sidebar_label: "Globals"
 
 ### Classes
 
+* [RNGridColumn](classes/rngridcolumn.md)
+* [RNGridRow](classes/rngridrow.md)
 * [Renderer](classes/renderer.md)
 
 ### Interfaces
 
 * [AbstractButtonProps](interfaces/abstractbuttonprops.md)
 * [AnimatedImageProps](interfaces/animatedimageprops.md)
+* [BoxViewProps](interfaces/boxviewprops.md)
 * [ButtonProps](interfaces/buttonprops.md)
 * [CheckBoxProps](interfaces/checkboxprops.md)
 * [ComboBoxProps](interfaces/comboboxprops.md)
+* [DataWithOffset](interfaces/datawithoffset.md)
 * [DialProps](interfaces/dialprops.md)
+* [GridViewProps](interfaces/gridviewprops.md)
 * [ImageProps](interfaces/imageprops.md)
 * [LineEditProps](interfaces/lineeditprops.md)
 * [PlainTextEditProps](interfaces/plaintexteditprops.md)
@@ -40,10 +45,18 @@ sidebar_label: "Globals"
 
 * [ComboBoxItem](globals.md#comboboxitem)
 * [Geometry](globals.md#geometry)
+* [GridColumnProps](globals.md#gridcolumnprops)
+* [GridRowProps](globals.md#gridrowprops)
+* [GridViewColumnProps](globals.md#gridviewcolumnprops)
+* [GridViewRowProps](globals.md#gridviewrowprops)
+* [KeysOfType](globals.md#keysoftype)
 * [NodeGuiReconciler](globals.md#nodeguireconciler)
+* [OnlyType](globals.md#onlytype)
+* [P](globals.md#p)
 * [Position](globals.md#position)
 * [Range](globals.md#range)
 * [RendererOptions](globals.md#rendereroptions)
+* [SetParentFunc](globals.md#setparentfunc)
 * [Size](globals.md#size)
 * [ViewSize](globals.md#viewsize)
 * [WidgetAttributesMap](globals.md#widgetattributesmap)
@@ -60,12 +73,17 @@ sidebar_label: "Globals"
 * [getLoadedPixmap](globals.md#getloadedpixmap)
 * [getLoadedQMovie](globals.md#getloadedqmovie)
 * [hot](globals.md#hot)
+* [offsetForIndex](globals.md#const-offsetforindex)
 * [setAbstractButtonProps](globals.md#setabstractbuttonprops)
 * [setAnimatedImageProps](globals.md#const-setanimatedimageprops)
+* [setBoxViewProps](globals.md#const-setboxviewprops)
 * [setButtonProps](globals.md#const-setbuttonprops)
 * [setCheckBoxProps](globals.md#const-setcheckboxprops)
 * [setComboBoxProps](globals.md#const-setcomboboxprops)
 * [setDialProps](globals.md#const-setdialprops)
+* [setGridColumnProps](globals.md#const-setgridcolumnprops)
+* [setGridRowProps](globals.md#const-setgridrowprops)
+* [setGridViewProps](globals.md#const-setgridviewprops)
 * [setImageProps](globals.md#const-setimageprops)
 * [setLineEditProps](globals.md#const-setlineeditprops)
 * [setPlainTextEditProps](globals.md#const-setplaintexteditprops)
@@ -75,6 +93,7 @@ sidebar_label: "Globals"
 * [setSliderProps](globals.md#const-setsliderprops)
 * [setSpinBoxProps](globals.md#const-setspinboxprops)
 * [setWindowProps](globals.md#const-setwindowprops)
+* [updateDisplacedChildren](globals.md#updatedisplacedchildren)
 * [useEventHandler](globals.md#useeventhandler)
 
 ### Object literals
@@ -113,9 +132,83 @@ ___
 
 ___
 
+###  GridColumnProps
+
+Ƭ **GridColumnProps**: *object*
+
+#### Type declaration:
+
+* **width**? : *undefined | number*
+
+___
+
+###  GridRowProps
+
+Ƭ **GridRowProps**: *object*
+
+#### Type declaration:
+
+* **children**: *Array‹FunctionComponentElement‹[GridColumnProps](globals.md#gridcolumnprops)›› | FunctionComponentElement‹[GridColumnProps](globals.md#gridcolumnprops)›*
+
+* **height**? : *undefined | number*
+
+___
+
+###  GridViewColumnProps
+
+Ƭ **GridViewColumnProps**: *object*
+
+#### Type declaration:
+
+* \[ **ColumnIndex**: *number*\]: object
+
+* **minWidth**? : *undefined | number*
+
+* **stretch**? : *undefined | number*
+
+___
+
+###  GridViewRowProps
+
+Ƭ **GridViewRowProps**: *object*
+
+#### Type declaration:
+
+* \[ **RowIndex**: *number*\]: object
+
+* **minHeight**? : *undefined | number*
+
+* **stretch**? : *undefined | number*
+
+___
+
+###  KeysOfType
+
+Ƭ **KeysOfType**: *object[keyof T]*
+
+Extract the keys of type `T` matching type `TType`
+
+___
+
 ###  NodeGuiReconciler
 
 Ƭ **NodeGuiReconciler**: *Reconciler‹RNComponent, any, Set‹NodeWidget‹any››, any›*
+
+___
+
+###  OnlyType
+
+Ƭ **OnlyType**: *object*
+
+Show TypeScript that the fields we're interested in are of type `TType`
+
+#### Type declaration:
+
+___
+
+###  P
+
+Ƭ **P**: *[OnlyType](globals.md#onlytype)‹TItem, [SetParentFunc](globals.md#setparentfunc)‹TParent››*
 
 ___
 
@@ -152,6 +245,23 @@ ___
 * **onInit**? : *undefined | function*
 
 * **onRender**? : *undefined | function*
+
+___
+
+###  SetParentFunc
+
+Ƭ **SetParentFunc**: *function*
+
+#### Type declaration:
+
+▸ (`parent`: T, `index`: number): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`parent` | T |
+`index` | number |
 
 ___
 
@@ -257,9 +367,29 @@ Name | Type |
 
 ___
 
+### `Const` offsetForIndex
+
+▸ **offsetForIndex**‹**T**›(`index`: number, `items`: Array‹[DataWithOffset](interfaces/datawithoffset.md)‹[OnlyType](globals.md#onlytype)‹T, number›››, `sizeKey`: keyof OnlyType<T, number>): *number*
+
+**Type parameters:**
+
+▪ **T**
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`index` | number |
+`items` | Array‹[DataWithOffset](interfaces/datawithoffset.md)‹[OnlyType](globals.md#onlytype)‹T, number››› |
+`sizeKey` | keyof OnlyType<T, number> |
+
+**Returns:** *number*
+
+___
+
 ###  setAbstractButtonProps
 
-▸ **setAbstractButtonProps**<**Signals**>(`widget`: QAbstractButton‹Signals›, `newProps`: [AbstractButtonProps](interfaces/abstractbuttonprops.md)‹Signals›, `oldProps`: [AbstractButtonProps](interfaces/abstractbuttonprops.md)‹Signals›): *void*
+▸ **setAbstractButtonProps**‹**Signals**›(`widget`: QAbstractButton‹Signals›, `newProps`: [AbstractButtonProps](interfaces/abstractbuttonprops.md)‹Signals›, `oldProps`: [AbstractButtonProps](interfaces/abstractbuttonprops.md)‹Signals›): *void*
 
 **Type parameters:**
 
@@ -288,6 +418,22 @@ Name | Type |
 `widget` | RNAnimatedImage |
 `newProps` | [AnimatedImageProps](interfaces/animatedimageprops.md) |
 `oldProps` | [AnimatedImageProps](interfaces/animatedimageprops.md) |
+
+**Returns:** *void*
+
+___
+
+### `Const` setBoxViewProps
+
+▸ **setBoxViewProps**(`widget`: RNBoxView, `newProps`: [BoxViewProps](interfaces/boxviewprops.md), `oldProps`: [BoxViewProps](interfaces/boxviewprops.md)): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`widget` | RNBoxView |
+`newProps` | [BoxViewProps](interfaces/boxviewprops.md) |
+`oldProps` | [BoxViewProps](interfaces/boxviewprops.md) |
 
 **Returns:** *void*
 
@@ -352,6 +498,56 @@ Name | Type |
 `widget` | RNDial |
 `newProps` | [DialProps](interfaces/dialprops.md) |
 `oldProps` | [DialProps](interfaces/dialprops.md) |
+
+**Returns:** *void*
+
+___
+
+### `Const` setGridColumnProps
+
+▸ **setGridColumnProps**(`widget`: [RNGridColumn](classes/rngridcolumn.md), `parentRow`: [RNGridRow](classes/rngridrow.md), `newProps`: [GridColumnProps](globals.md#gridcolumnprops), `oldProps`: [GridColumnProps](globals.md#gridcolumnprops)): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`widget` | [RNGridColumn](classes/rngridcolumn.md) |
+`parentRow` | [RNGridRow](classes/rngridrow.md) |
+`newProps` | [GridColumnProps](globals.md#gridcolumnprops) |
+`oldProps` | [GridColumnProps](globals.md#gridcolumnprops) |
+
+**Returns:** *void*
+
+___
+
+### `Const` setGridRowProps
+
+▸ **setGridRowProps**(`widget`: [RNGridRow](classes/rngridrow.md), `parentGrid`: RNGridView, `newProps`: Omit‹[GridRowProps](globals.md#gridrowprops), "children"›, `oldProps`: Omit‹[GridRowProps](globals.md#gridrowprops), "children"›): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`widget` | [RNGridRow](classes/rngridrow.md) |
+`parentGrid` | RNGridView |
+`newProps` | Omit‹[GridRowProps](globals.md#gridrowprops), "children"› |
+`oldProps` | Omit‹[GridRowProps](globals.md#gridrowprops), "children"› |
+
+**Returns:** *void*
+
+___
+
+### `Const` setGridViewProps
+
+▸ **setGridViewProps**(`widget`: RNGridView, `newProps`: Omit‹[GridViewProps](interfaces/gridviewprops.md), "children"›, `oldProps`: Omit‹[GridViewProps](interfaces/gridviewprops.md), "children"›): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`widget` | RNGridView |
+`newProps` | Omit‹[GridViewProps](interfaces/gridviewprops.md), "children"› |
+`oldProps` | Omit‹[GridViewProps](interfaces/gridviewprops.md), "children"› |
 
 **Returns:** *void*
 
@@ -501,9 +697,33 @@ Name | Type |
 
 ___
 
+###  updateDisplacedChildren
+
+▸ **updateDisplacedChildren**‹**TItem**, **TParent**›(`startIndex`: number, `items`: Array‹[DataWithOffset](interfaces/datawithoffset.md)‹[OnlyType](globals.md#onlytype)‹TItem, number› & [P](globals.md#p)‹TItem, TParent›››, `parent`: TParent, `sizeKey`: keyof OnlyType<TItem, number>, `setParentFuncKey`: keyof P<TItem, TParent>): *void*
+
+**Type parameters:**
+
+▪ **TItem**
+
+▪ **TParent**
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`startIndex` | number |
+`items` | Array‹[DataWithOffset](interfaces/datawithoffset.md)‹[OnlyType](globals.md#onlytype)‹TItem, number› & [P](globals.md#p)‹TItem, TParent››› |
+`parent` | TParent |
+`sizeKey` | keyof OnlyType<TItem, number> |
+`setParentFuncKey` | keyof P<TItem, TParent> |
+
+**Returns:** *void*
+
+___
+
 ###  useEventHandler
 
-▸ **useEventHandler**<**Signals**>(`eventHandlerMap`: Partial‹[WidgetEventListeners](globals.md#widgeteventlisteners) | Signals›, `deps`: DependencyList): *object | object*
+▸ **useEventHandler**‹**Signals**›(`eventHandlerMap`: Partial‹[WidgetEventListeners](globals.md#widgeteventlisteners) | Signals›, `deps`: DependencyList): *object | object*
 
 **Type parameters:**
 
