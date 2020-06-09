@@ -70,7 +70,21 @@ Please read: https://github.com/nodegui/.github/blob/master/CONTRIBUTING.md
 
 ## Building
 
-`npm run build [--qt_home_dir=/path/to/qt]`
+`npm run build`
+
+## Using custom Qt
+
+`QT_INSTALL_DIR=/path/to/qt npm install`
+
+`npm run build`
+
+## Updating docs
+
+`npm run docs`
+
+then followed by:
+
+`cd website &&  GIT_USER=<your_git_username> yarn deploy`
 
 ## Funding
 
