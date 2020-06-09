@@ -48,7 +48,7 @@ Flexbox is designed to provide a consistent layout on different screen sizes. Yo
 
 Lets say you want to build a UI that has a parent view which has two child components. One a label with text Hello and another a view with background color white. Now you want the label to occupy 1/3 of the available space while the white colored child view to occupy the remaining 2/3 space.
 
-<img src="https://docs.nodegui.org/img/docs/flex-layout-1.png" alt="flex layout example 1" style={{maxWidth: 700, width:'100%'}}/>
+<img src="https://github.com/nodegui/react-nodegui/raw/gh-pages/img/flex-layout-1.png" alt="flex layout example 1" style={{maxWidth: 700, width:'100%'}}/>
 
 The code for that would look something like this:
 
@@ -155,8 +155,8 @@ Renderer.render(<App />);
 
 The above code produces
 
-<img src="https://react.nodegui.org/img/docs/box-layout-1.png" alt="box layout example 1" style={{maxWidth: 700, width:'100%'}}/>
-<img src="https://react.nodegui.org/img/docs/box-layout-2.png" alt="box layout example 1" style={{maxWidth: 700, width:'100%'}}/>
+<img src="https://github.com/nodegui/react-nodegui/raw/gh-pages/img/box-layout-1.png" alt="box layout example 1" style={{maxWidth: 700, width:'100%'}}/>
+<img src="https://github.com/nodegui/react-nodegui/raw/gh-pages/img/box-layout-2.png" alt="box layout example 1" style={{maxWidth: 700, width:'100%'}}/>
 
 
 ## GridView Layout
@@ -323,7 +323,7 @@ Renderer.render(<App />);
 
 The above code produces
 
-<img src="https://react.nodegui.org/img/docs/grid-layout-1.png" alt="grid layout example 1" style={{maxWidth: 700, width:'100%'}}/>
+<img src="https://github.com/nodegui/react-nodegui/raw/gh-pages/img/grid-layout-1.png" alt="grid layout example 1" style={{maxWidth: 700, width:'100%'}}/>
 
 
 

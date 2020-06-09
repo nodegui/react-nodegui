@@ -43,6 +43,7 @@ sidebar_label: "Globals"
 
 ### Type aliases
 
+* [Allowed](globals.md#allowed)
 * [ComboBoxItem](globals.md#comboboxitem)
 * [Geometry](globals.md#geometry)
 * [GridColumnProps](globals.md#gridcolumnprops)
@@ -52,7 +53,6 @@ sidebar_label: "Globals"
 * [KeysOfType](globals.md#keysoftype)
 * [NodeGuiReconciler](globals.md#nodeguireconciler)
 * [OnlyType](globals.md#onlytype)
-* [P](globals.md#p)
 * [Position](globals.md#position)
 * [Range](globals.md#range)
 * [RendererOptions](globals.md#rendereroptions)
@@ -101,6 +101,12 @@ sidebar_label: "Globals"
 * [defaultOptions](globals.md#const-defaultoptions)
 
 ## Type aliases
+
+###  Allowed
+
+Ƭ **Allowed**: *[OnlyType](globals.md#onlytype)‹TItem, [SetParentFunc](globals.md#setparentfunc)‹TParent››*
+
+___
 
 ###  ComboBoxItem
 
@@ -203,12 +209,6 @@ ___
 Show TypeScript that the fields we're interested in are of type `TType`
 
 #### Type declaration:
-
-___
-
-###  P
-
-Ƭ **P**: *[OnlyType](globals.md#onlytype)‹TItem, [SetParentFunc](globals.md#setparentfunc)‹TParent››*
 
 ___
 
@@ -699,7 +699,7 @@ ___
 
 ###  updateDisplacedChildren
 
-▸ **updateDisplacedChildren**‹**TItem**, **TParent**›(`startIndex`: number, `items`: Array‹[DataWithOffset](interfaces/datawithoffset.md)‹[OnlyType](globals.md#onlytype)‹TItem, number› & [P](globals.md#p)‹TItem, TParent›››, `parent`: TParent, `sizeKey`: keyof OnlyType<TItem, number>, `setParentFuncKey`: keyof P<TItem, TParent>): *void*
+▸ **updateDisplacedChildren**‹**TItem**, **TParent**›(`startIndex`: number, `items`: Array‹[DataWithOffset](interfaces/datawithoffset.md)‹[OnlyType](globals.md#onlytype)‹TItem, number› & [Allowed](globals.md#allowed)‹TItem, TParent›››, `parent`: TParent, `sizeKey`: keyof OnlyType<TItem, number>, `setParentFuncKey`: keyof Allowed<TItem, TParent>): *void*
 
 **Type parameters:**
 
@@ -712,10 +712,10 @@ ___
 Name | Type |
 ------ | ------ |
 `startIndex` | number |
-`items` | Array‹[DataWithOffset](interfaces/datawithoffset.md)‹[OnlyType](globals.md#onlytype)‹TItem, number› & [P](globals.md#p)‹TItem, TParent››› |
+`items` | Array‹[DataWithOffset](interfaces/datawithoffset.md)‹[OnlyType](globals.md#onlytype)‹TItem, number› & [Allowed](globals.md#allowed)‹TItem, TParent››› |
 `parent` | TParent |
 `sizeKey` | keyof OnlyType<TItem, number> |
-`setParentFuncKey` | keyof P<TItem, TParent> |
+`setParentFuncKey` | keyof Allowed<TItem, TParent> |
 
 **Returns:** *void*
 

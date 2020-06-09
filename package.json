@@ -17,7 +17,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc && qode ./dist/demo.js",
-    "docs": "typedoc"
+    "docs": "typedoc && node ./website/docs/scripts/fixdocs.js"
   },
   "dependencies": {
     "@types/react-reconciler": "^0.18.0",
