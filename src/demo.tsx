@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Renderer, Text, ScrollArea, Window, Button } from "./index";
+import { Renderer, Window, Button } from "./index";
 import { BoxView } from "./components/BoxView";
 import { useEventHandler } from "./hooks";
 import { QPushButtonSignals, Direction } from "@nodegui/nodegui";
