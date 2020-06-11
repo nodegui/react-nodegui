@@ -1,8 +1,32 @@
 import React, { useState } from "react";
-import { Renderer, Window, Button } from "./index";
+import { Renderer, Window, Button, SystemTrayIcon } from "./index";
 import { BoxView } from "./components/BoxView";
 import { useEventHandler } from "./hooks";
-import { QPushButtonSignals, Direction } from "@nodegui/nodegui";
+import {
+  QPushButtonSignals,
+  Direction,
+  QIcon,
+  QMenu,
+  QAction,
+  QMessageBox,
+  QPushButton,
+  ButtonRole,
+} from "@nodegui/nodegui";
+import path from "path";
+
+const icon = new QIcon(path.join(__dirname, "../extras/assets/nodegui.png"));
+const menu = new QMenu();
+const action = new QAction();
+action.setText("Message");
+action.addEventListener("triggered", () => {
+  const messageBox = new QMessageBox();
+  messageBox.setText("Welcome to React Nodegui!");
+  const accept = new QPushButton();
+  accept.setText("Accept");
+  messageBox.addButton(accept, ButtonRole.AcceptRole);
+  messageBox.exec();
+});
+menu.addAction(action);
 
 const App = () => {
   const [additionalButtons, setAdditionalButtons] = useState<string[]>([]);
@@ -37,6 +61,12 @@ const App = () => {
 
   return (
     <Window>
+      <SystemTrayIcon
+        contextMenu={menu}
+        icon={icon}
+        tooltip="React Nodegui"
+        visible
+      />
       <BoxView direction={direction}>
         <Button text="Add" on={addHandler} />
         <Button text="Remove" on={removeHandler} />
