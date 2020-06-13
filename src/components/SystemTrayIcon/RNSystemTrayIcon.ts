@@ -15,26 +15,23 @@ import { throwUnsupported } from "../../utils/helpers";
  * ## Example
  * ```javascript
  * import React from "react";
- * import { Renderer, SystemTrayIcon, Window } from "@nodegui/react-nodegui";
+ * import { QIcon, QAction } from "@nodegui/nodegui";
+ * import { Menu, Renderer, SystemTrayIcon, Window } from "@nodegui/react-nodegui";
+ * import path from "path";
  *
  * const icon = new QIcon(path.join(__dirname, "../extras/assets/nodegui.png"));
- * const menu = new QMenu();
  * const action = new QAction();
- * action.setText("Message");
+ * action.setText("Hello");
  * action.addEventListener("triggered", () => {
- *   const messageBox = new QMessageBox();
- *   messageBox.setText("Welcome to React Nodegui!");
- *   const accept = new QPushButton();
- *   accept.setText("Accept");
- *   messageBox.addButton(accept, ButtonRole.AcceptRole);
- *   messageBox.exec();
+ *   console.log("hello");
  * });
- * menu.addAction(action);
  *
  * const App = () => {
  *   return (
  *     <Window>
- *       <SystemTrayIcon contextMenu={menu} icon={icon} tooltip="Hello World" visible />
+ *       <SystemTrayIcon icon={icon} tooltip="Hello World" visible>
+ *         <Menu actions={[action]} />
+ *       </SystemTrayIcon>
  *     </Window>
  *   );
  * };
