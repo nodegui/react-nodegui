@@ -8,6 +8,8 @@ export { AnimatedImage } from "./components/AnimatedImage";
 export { Button } from "./components/Button";
 export { CheckBox } from "./components/CheckBox";
 export { LineEdit } from "./components/LineEdit";
+export { Menu } from "./components/Menu";
+export { MenuBar } from "./components/MenuBar";
 export { PlainTextEdit } from "./components/PlainTextEdit";
 export { ProgressBar } from "./components/ProgressBar";
 export { RadioButton } from "./components/RadioButton";
