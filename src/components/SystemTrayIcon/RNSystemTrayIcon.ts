@@ -9,8 +9,49 @@ import {
 import { RNComponent } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
 
+/**
+ * The SystemTrayIcon component provides the ability to add and manipulate a native system tray icon.
+ * [NodeGui's QSystemTrayIcon](https://docs.nodegui.org/docs/api/generated/classes/qsystemtrayicon).
+ * ## Example
+ * ```javascript
+ * import React from "react";
+ * import { Renderer, SystemTrayIcon, Window } from "@nodegui/react-nodegui";
+ *
+ * const icon = new QIcon(path.join(__dirname, "../extras/assets/nodegui.png"));
+ * const menu = new QMenu();
+ * const action = new QAction();
+ * action.setText("Message");
+ * action.addEventListener("triggered", () => {
+ *   const messageBox = new QMessageBox();
+ *   messageBox.setText("Welcome to React Nodegui!");
+ *   const accept = new QPushButton();
+ *   accept.setText("Accept");
+ *   messageBox.addButton(accept, ButtonRole.AcceptRole);
+ *   messageBox.exec();
+ * });
+ * menu.addAction(action);
+ *
+ * const App = () => {
+ *   return (
+ *     <Window>
+ *       <SystemTrayIcon contextMenu={menu} icon={icon} tooltip="Hello World" visible />
+ *     </Window>
+ *   );
+ * };
+ *
+ * Renderer.render(<App />);
+ *
+ * ```
+ */
 export interface SystemTrayIconProps extends ViewProps<QSystemTrayIconSignals> {
+  /**
+   * Sets a context menu for the system tray. [QSystemTrayIcon: setContextMenu](https://docs.nodegui.org/docs/api/generated/classes/qsystemtrayicon#setcontextmenu)
+   */
   contextMenu?: QMenu;
+
+  /**
+   * Sets an icon for the system tray. [QSystemTrayIcon: setIcon](https://docs.nodegui.org/docs/api/generated/classes/qsystemtrayicon#seticon)
+   */
   icon?: QIcon;
 
   /**
@@ -18,6 +59,9 @@ export interface SystemTrayIconProps extends ViewProps<QSystemTrayIconSignals> {
    */
   id?: string;
 
+  /**
+   * Sets a tooltip for the system tray. [QSystemTrayIcon: setTooltip](https://docs.nodegui.org/docs/api/generated/classes/qsystemtrayicon#settooltip)
+   */
   tooltip?: string;
 }
 
