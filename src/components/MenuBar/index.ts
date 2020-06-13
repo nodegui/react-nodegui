@@ -39,6 +39,4 @@ class MenuBarConfig extends ComponentConfig {
   }
 }
 
-export const MenuBar = registerComponent<MenuBarProps>(
-  new MenuBarConfig()
-);
+export const MenuBar = registerComponent<MenuBarProps>(new MenuBarConfig());
