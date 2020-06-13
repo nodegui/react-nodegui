@@ -1,8 +1,15 @@
-import { QMainWindow, NodeWidget, QMainWindowSignals } from "@nodegui/nodegui";
+import {
+  QMainWindow,
+  NodeWidget,
+  QMainWindowSignals,
+  QMenuBar,
+} from "@nodegui/nodegui";
 import { setViewProps, ViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 
-export interface WindowProps extends ViewProps<QMainWindowSignals> {}
+export interface WindowProps extends ViewProps<QMainWindowSignals> {
+  menuBar?: QMenuBar;
+}
 
 const setWindowProps = (
   window: RNWindow,
@@ -10,7 +17,10 @@ const setWindowProps = (
   oldProps: WindowProps
 ) => {
   const setter: WindowProps = {
-    // TODO add more props
+    set menuBar(menubar: QMenuBar) {
+      window.setMenuBar(menubar);
+      console.log("menubar was set");
+    },
   };
   Object.assign(setter, newProps);
   setViewProps(window, newProps, oldProps);
@@ -30,12 +40,21 @@ export class RNWindow extends QMainWindow implements RNWidget {
     }
     child.close();
   }
-  appendInitialChild(child: NodeWidget<any>): void {
-    if (this.centralWidget) {
-      console.warn("MainWindow can't have more than one child node");
+  appendInitialChild(child: NodeWidget<any> | QMenuBar): void {
+    if (child instanceof QMenuBar) {
+      if (!this.menuBar()) {
+        this.setMenuBar(child);
+      } else {
+        console.warn("MainWindow can't have more than one menubar.");
+      }
       return;
     }
-    this.setCentralWidget(child);
+
+    if (!this.centralWidget) {
+      this.setCentralWidget(child);
+    } else {
+      console.warn("MainWindow can't have more than one child node");
+    }
   }
   appendChild(child: NodeWidget<any>): void {
     this.appendInitialChild(child);

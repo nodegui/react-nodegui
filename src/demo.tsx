@@ -1,18 +1,15 @@
-import React, { useState } from "react";
-import { Renderer, Window, Button, SystemTrayIcon } from "./index";
-import { BoxView } from "./components/BoxView";
-import { useEventHandler } from "./hooks";
+import React from "react";
 import {
-  QPushButtonSignals,
-  Direction,
   QIcon,
   QMenu,
   QAction,
   QMessageBox,
   QPushButton,
   ButtonRole,
+  QApplication,
 } from "@nodegui/nodegui";
 import path from "path";
+import { MenuBar, Menu, SystemTrayIcon, Renderer, Window } from ".";
 
 const icon = new QIcon(path.join(__dirname, "../extras/assets/nodegui.png"));
 const menu = new QMenu();
@@ -28,53 +25,36 @@ action.addEventListener("triggered", () => {
 });
 menu.addAction(action);
 
+const quitAction = new QAction();
+quitAction.setText("Quit");
+quitAction.addEventListener("triggered", () => {
+  const app = QApplication.instance();
+  app.exit(0);
+});
+
+const fileActions: QAction[] = [quitAction];
+
+const sayHi = new QAction();
+sayHi.setText("Hello");
+sayHi.addEventListener("triggered", () => {
+  console.log("hello");
+});
+
+const randActions: QAction[] = [sayHi];
+
 const App = () => {
-  const [additionalButtons, setAdditionalButtons] = useState<string[]>([]);
-  const [direction, setDirection] = useState<Direction>(Direction.LeftToRight);
-
-  const addHandler = useEventHandler<QPushButtonSignals>(
-    {
-      clicked: () =>
-        setAdditionalButtons((buttons) => [
-          ...buttons,
-          `Button ${buttons.length}`,
-        ]),
-    },
-    []
-  );
-
-  const removeHandler = useEventHandler<QPushButtonSignals>(
-    {
-      clicked: () =>
-        setAdditionalButtons((buttons) => buttons.slice(0, buttons.length - 1)),
-    },
-    []
-  );
-
-  const toggleDirection = useEventHandler<QPushButtonSignals>(
-    {
-      clicked: () =>
-        setDirection((prevDirection) => ((prevDirection + 1) % 4) as Direction),
-    },
-    []
-  );
-
   return (
     <Window>
+      <MenuBar>
+        <Menu title={"File"} actions={fileActions} />
+        <Menu title={"Random"} actions={randActions} />
+      </MenuBar>
       <SystemTrayIcon
         contextMenu={menu}
         icon={icon}
         tooltip="React Nodegui"
         visible
       />
-      <BoxView direction={direction}>
-        <Button text="Add" on={addHandler} />
-        <Button text="Remove" on={removeHandler} />
-        <Button text="Toggle direction" on={toggleDirection} />
-        {additionalButtons.map((button) => (
-          <Button key={button} text={button} />
-        ))}
-      </BoxView>
     </Window>
   );
 };
