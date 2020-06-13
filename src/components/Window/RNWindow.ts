@@ -1,4 +1,4 @@
-import { QMainWindow, NodeWidget, QMainWindowSignals, QSystemTrayIcon } from "@nodegui/nodegui";
+import { QMainWindow, NodeWidget, QMainWindowSignals } from "@nodegui/nodegui";
 import { setViewProps, ViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 
@@ -31,10 +31,6 @@ export class RNWindow extends QMainWindow implements RNWidget {
     child.close();
   }
   appendInitialChild(child: NodeWidget<any>): void {
-    if(child instanceof QSystemTrayIcon) {
-      return;
-    }
-    
     if (this.centralWidget) {
       console.warn("MainWindow can't have more than one child node");
       return;
