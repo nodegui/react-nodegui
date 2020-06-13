@@ -26,7 +26,6 @@ class SystemTrayIconConfig extends ComponentConfig {
     if (newProps.visible !== false) {
       instance.show();
     }
-    return;
   }
   commitUpdate(
     instance: RNSystemTrayIcon,
