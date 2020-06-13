@@ -12,6 +12,12 @@ import { throwUnsupported } from "../../utils/helpers";
 export interface SystemTrayIconProps extends ViewProps<QSystemTrayIconSignals> {
   contextMenu?: QMenu;
   icon?: QIcon;
+
+  /**
+   * Sets the object name (id) of the widget in Qt. Object name can be analogous to id of an element in the web world. Using the objectName of the widget one can reference it in the Qt's stylesheet much like what we do with id in the web world. [QWidget: setObjectName](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetobjectnameobjectname)
+   */
+  id?: string;
+
   tooltip?: string;
 }
 
@@ -27,6 +33,9 @@ const setSystemTrayIconProps = (
     set icon(icon: QIcon) {
       widget.setIcon(icon);
     },
+    set id(id: string) {
+      widget.setObjectName(id);
+    },
     set tooltip(tooltip: string) {
       widget.setToolTip(tooltip);
     },
@@ -35,7 +44,6 @@ const setSystemTrayIconProps = (
     },
   };
   Object.assign(setter, newProps);
-  // setViewProps(widget, newProps, oldProps);
 };
 
 /**
