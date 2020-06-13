@@ -1,4 +1,4 @@
-import { ViewProps, setViewProps } from "../View/RNView";
+import { WidgetEventListeners } from "../View/RNView";
 import {
   QSystemTrayIconSignals,
   QSystemTrayIcon,
@@ -6,7 +6,7 @@ import {
   QIcon,
   QMenu,
 } from "@nodegui/nodegui";
-import { RNComponent } from "../config";
+import { RNComponent, RNProps } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
 
 /**
@@ -43,7 +43,7 @@ import { throwUnsupported } from "../../utils/helpers";
  *
  * ```
  */
-export interface SystemTrayIconProps extends ViewProps<QSystemTrayIconSignals> {
+export interface SystemTrayIconProps extends RNProps {
   /**
    * Sets a context menu for the system tray. [QSystemTrayIcon: setContextMenu](https://docs.nodegui.org/docs/api/generated/classes/qsystemtrayicon#setcontextmenu)
    */
@@ -60,9 +60,19 @@ export interface SystemTrayIconProps extends ViewProps<QSystemTrayIconSignals> {
   id?: string;
 
   /**
+   * Prop to set the event listener map. See [Handlong Events](/docs/guides/handle-events)
+   */
+  on?: Partial<WidgetEventListeners | QSystemTrayIconSignals>;
+
+  /**
    * Sets a tooltip for the system tray. [QSystemTrayIcon: setTooltip](https://docs.nodegui.org/docs/api/generated/classes/qsystemtrayicon#settooltip)
    */
   tooltip?: string;
+
+  /**
+   * Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui.org/docs/api/NodeWidget#widgetshow)
+   */
+  visible?: boolean;
 }
 
 const setSystemTrayIconProps = (
@@ -79,6 +89,26 @@ const setSystemTrayIconProps = (
     },
     set id(id: string) {
       widget.setObjectName(id);
+    },
+    set on(
+      listenerMap: Partial<WidgetEventListeners | QSystemTrayIconSignals>
+    ) {
+      const listenerMapLatest: any = Object.assign({}, listenerMap);
+      const oldListenerMap = Object.assign({}, oldProps.on);
+      Object.entries(oldListenerMap).forEach(([eventType, oldEvtListener]) => {
+        const newEvtListener = listenerMapLatest[eventType];
+        if (oldEvtListener !== newEvtListener) {
+          widget.removeEventListener(eventType as any, oldEvtListener);
+        } else {
+          delete listenerMapLatest[eventType];
+        }
+      });
+
+      Object.entries(listenerMapLatest).forEach(
+        ([eventType, newEvtListener]) => {
+          widget.addEventListener(eventType as any, newEvtListener);
+        }
+      );
     },
     set tooltip(tooltip: string) {
       widget.setToolTip(tooltip);
