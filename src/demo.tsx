@@ -1,29 +1,7 @@
 import React from "react";
-import {
-  QIcon,
-  QMenu,
-  QAction,
-  QMessageBox,
-  QPushButton,
-  ButtonRole,
-  QApplication,
-} from "@nodegui/nodegui";
+import { QIcon, QAction, QApplication } from "@nodegui/nodegui";
 import path from "path";
 import { MenuBar, Menu, SystemTrayIcon, Renderer, Window } from ".";
-
-const icon = new QIcon(path.join(__dirname, "../extras/assets/nodegui.png"));
-const menu = new QMenu();
-const action = new QAction();
-action.setText("Message");
-action.addEventListener("triggered", () => {
-  const messageBox = new QMessageBox();
-  messageBox.setText("Welcome to React Nodegui!");
-  const accept = new QPushButton();
-  accept.setText("Accept");
-  messageBox.addButton(accept, ButtonRole.AcceptRole);
-  messageBox.exec();
-});
-menu.addAction(action);
 
 const quitAction = new QAction();
 quitAction.setText("Quit");
@@ -42,19 +20,24 @@ sayHi.addEventListener("triggered", () => {
 
 const randActions: QAction[] = [sayHi];
 
+const trayIcon = new QIcon(
+  path.join(__dirname, "../extras/assets/nodegui.png")
+);
+const separatorAction = new QAction();
+separatorAction.setSeparator(true);
+
+const systemTrayMenuActions = [sayHi, separatorAction, quitAction];
+
 const App = () => {
   return (
     <Window>
+      <SystemTrayIcon icon={trayIcon} tooltip="React Nodegui" visible>
+        <Menu actions={systemTrayMenuActions} />
+      </SystemTrayIcon>
       <MenuBar>
         <Menu title={"File"} actions={fileActions} />
         <Menu title={"Random"} actions={randActions} />
       </MenuBar>
-      <SystemTrayIcon
-        contextMenu={menu}
-        icon={icon}
-        tooltip="React Nodegui"
-        visible
-      />
     </Window>
   );
 };

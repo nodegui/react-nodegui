@@ -45,11 +45,6 @@ import { throwUnsupported } from "../../utils/helpers";
  */
 export interface SystemTrayIconProps extends RNProps {
   /**
-   * Sets a context menu for the system tray. [QSystemTrayIcon: setContextMenu](https://docs.nodegui.org/docs/api/generated/classes/qsystemtrayicon#setcontextmenu)
-   */
-  contextMenu?: QMenu;
-
-  /**
    * Sets an icon for the system tray. [QSystemTrayIcon: setIcon](https://docs.nodegui.org/docs/api/generated/classes/qsystemtrayicon#seticon)
    */
   icon?: QIcon;
@@ -81,9 +76,6 @@ const setSystemTrayIconProps = (
   oldProps: SystemTrayIconProps
 ) => {
   const setter: SystemTrayIconProps = {
-    set contextMenu(contextMenu: QMenu) {
-      widget.setContextMenu(contextMenu);
-    },
     set icon(icon: QIcon) {
       widget.setIcon(icon);
     },
@@ -130,10 +122,18 @@ export class RNSystemTrayIcon extends QSystemTrayIcon implements RNComponent {
     setSystemTrayIconProps(this, newProps, oldProps);
   }
   appendInitialChild(child: NodeWidget<any>): void {
-    throwUnsupported(this);
+    if (child instanceof QMenu) {
+      if (!this.contextMenu) {
+        this.setContextMenu(child);
+      } else {
+        console.warn("SystemTrayIcon can't have more than one Menu.");
+      }
+    } else {
+      console.warn("SystemTrayIcon only supports Menu as its children");
+    }
   }
   appendChild(child: NodeWidget<any>): void {
-    throwUnsupported(this);
+    this.appendInitialChild(child);
   }
   insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
     throwUnsupported(this);
