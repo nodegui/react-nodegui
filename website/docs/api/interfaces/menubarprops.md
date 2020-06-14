@@ -1,40 +1,40 @@
 ---
-id: "windowprops"
-title: "WindowProps"
-sidebar_label: "WindowProps"
+id: "menubarprops"
+title: "MenuBarProps"
+sidebar_label: "MenuBarProps"
 ---
 
 ## Hierarchy
 
-  ↳ [ViewProps](viewprops.md)‹QMainWindowSignals›
+  ↳ [ViewProps](viewprops.md)‹QMenuBarSignals›
 
-  ↳ **WindowProps**
+  ↳ **MenuBarProps**
 
 ## Index
 
 ### Properties
 
-* [attributes](windowprops.md#optional-attributes)
-* [cursor](windowprops.md#optional-cursor)
-* [enabled](windowprops.md#optional-enabled)
-* [geometry](windowprops.md#optional-geometry)
-* [id](windowprops.md#optional-id)
-* [maxSize](windowprops.md#optional-maxsize)
-* [menuBar](windowprops.md#optional-menubar)
-* [minSize](windowprops.md#optional-minsize)
-* [mouseTracking](windowprops.md#optional-mousetracking)
-* [on](windowprops.md#optional-on)
-* [pos](windowprops.md#optional-pos)
-* [ref](windowprops.md#optional-ref)
-* [size](windowprops.md#optional-size)
-* [style](windowprops.md#optional-style)
-* [styleSheet](windowprops.md#optional-stylesheet)
-* [visible](windowprops.md#optional-visible)
-* [windowFlags](windowprops.md#optional-windowflags)
-* [windowIcon](windowprops.md#optional-windowicon)
-* [windowOpacity](windowprops.md#optional-windowopacity)
-* [windowState](windowprops.md#optional-windowstate)
-* [windowTitle](windowprops.md#optional-windowtitle)
+* [attributes](menubarprops.md#optional-attributes)
+* [cursor](menubarprops.md#optional-cursor)
+* [enabled](menubarprops.md#optional-enabled)
+* [geometry](menubarprops.md#optional-geometry)
+* [id](menubarprops.md#optional-id)
+* [maxSize](menubarprops.md#optional-maxsize)
+* [minSize](menubarprops.md#optional-minsize)
+* [mouseTracking](menubarprops.md#optional-mousetracking)
+* [nativeMenuBar](menubarprops.md#optional-nativemenubar)
+* [on](menubarprops.md#optional-on)
+* [pos](menubarprops.md#optional-pos)
+* [ref](menubarprops.md#optional-ref)
+* [size](menubarprops.md#optional-size)
+* [style](menubarprops.md#optional-style)
+* [styleSheet](menubarprops.md#optional-stylesheet)
+* [visible](menubarprops.md#optional-visible)
+* [windowFlags](menubarprops.md#optional-windowflags)
+* [windowIcon](menubarprops.md#optional-windowicon)
+* [windowOpacity](menubarprops.md#optional-windowopacity)
+* [windowState](menubarprops.md#optional-windowstate)
+* [windowTitle](menubarprops.md#optional-windowtitle)
 
 ## Properties
 
@@ -99,12 +99,6 @@ Sets the maximum size of the widget. [QWidget: setMaximumSize](https://docs.node
 
 ___
 
-### `Optional` menuBar
-
-• **menuBar**? : *QMenuBar*
-
-___
-
 ### `Optional` minSize
 
 • **minSize**? : *[Size](../globals.md#size)*
@@ -125,9 +119,15 @@ Sets the property that tells whether mouseTracking is enabled for the widget. [Q
 
 ___
 
+### `Optional` nativeMenuBar
+
+• **nativeMenuBar**? : *undefined | false | true*
+
+___
+
 ### `Optional` on
 
-• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QMainWindowSignals›*
+• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QMenuBarSignals›*
 
 *Inherited from [ViewProps](viewprops.md).[on](viewprops.md#optional-on)*
 

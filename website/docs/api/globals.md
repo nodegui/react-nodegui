@@ -14,6 +14,8 @@ sidebar_label: "Globals"
 
 * [RNGridColumn](classes/rngridcolumn.md)
 * [RNGridRow](classes/rngridrow.md)
+* [RNMenu](classes/rnmenu.md)
+* [RNMenuBar](classes/rnmenubar.md)
 * [Renderer](classes/renderer.md)
 
 ### Interfaces
@@ -29,12 +31,15 @@ sidebar_label: "Globals"
 * [GridViewProps](interfaces/gridviewprops.md)
 * [ImageProps](interfaces/imageprops.md)
 * [LineEditProps](interfaces/lineeditprops.md)
+* [MenuBarProps](interfaces/menubarprops.md)
+* [MenuProps](interfaces/menuprops.md)
 * [PlainTextEditProps](interfaces/plaintexteditprops.md)
 * [ProgressBarProps](interfaces/progressbarprops.md)
 * [RadioButtonProps](interfaces/radiobuttonprops.md)
 * [ScrollAreaProps](interfaces/scrollareaprops.md)
 * [SliderProps](interfaces/sliderprops.md)
 * [SpinBoxProps](interfaces/spinboxprops.md)
+* [SystemTrayIconProps](interfaces/systemtrayiconprops.md)
 * [TabItemProps](interfaces/tabitemprops.md)
 * [TabProps](interfaces/tabprops.md)
 * [TextProps](interfaces/textprops.md)
@@ -66,6 +71,13 @@ sidebar_label: "Globals"
 ### Variables
 
 * [appProxy](globals.md#let-appproxy)
+* [fileActions](globals.md#const-fileactions)
+* [quitAction](globals.md#const-quitaction)
+* [randActions](globals.md#const-randactions)
+* [sayHi](globals.md#const-sayhi)
+* [separatorAction](globals.md#const-separatoraction)
+* [systemTrayMenuActions](globals.md#const-systemtraymenuactions)
+* [trayIcon](globals.md#const-trayicon)
 
 ### Functions
 
@@ -86,12 +98,15 @@ sidebar_label: "Globals"
 * [setGridViewProps](globals.md#const-setgridviewprops)
 * [setImageProps](globals.md#const-setimageprops)
 * [setLineEditProps](globals.md#const-setlineeditprops)
+* [setMenuBarProps](globals.md#const-setmenubarprops)
+* [setMenuProps](globals.md#const-setmenuprops)
 * [setPlainTextEditProps](globals.md#const-setplaintexteditprops)
 * [setProgressBarProps](globals.md#const-setprogressbarprops)
 * [setRadioButtonProps](globals.md#const-setradiobuttonprops)
 * [setScrollAreaProps](globals.md#const-setscrollareaprops)
 * [setSliderProps](globals.md#const-setsliderprops)
 * [setSpinBoxProps](globals.md#const-setspinboxprops)
+* [setSystemTrayIconProps](globals.md#const-setsystemtrayiconprops)
 * [setWindowProps](globals.md#const-setwindowprops)
 * [updateDisplacedChildren](globals.md#updatedisplacedchildren)
 * [useEventHandler](globals.md#useeventhandler)
@@ -314,6 +329,50 @@ ___
 ### `Let` appProxy
 
 • **appProxy**: *[ReactProxyComponent](interfaces/_react_proxy_.reactproxycomponent.md)*
+
+___
+
+### `Const` fileActions
+
+• **fileActions**: *QAction[]* = [quitAction]
+
+___
+
+### `Const` quitAction
+
+• **quitAction**: *QAction‹›* = new QAction()
+
+___
+
+### `Const` randActions
+
+• **randActions**: *QAction[]* = [sayHi]
+
+___
+
+### `Const` sayHi
+
+• **sayHi**: *QAction‹›* = new QAction()
+
+___
+
+### `Const` separatorAction
+
+• **separatorAction**: *QAction‹›* = new QAction()
+
+___
+
+### `Const` systemTrayMenuActions
+
+• **systemTrayMenuActions**: *QAction‹›[]* = [sayHi, separatorAction, quitAction]
+
+___
+
+### `Const` trayIcon
+
+• **trayIcon**: *QIcon‹›* = new QIcon(
+  path.join(__dirname, "../extras/assets/nodegui.png")
+)
 
 ## Functions
 
@@ -585,6 +644,38 @@ Name | Type |
 
 ___
 
+### `Const` setMenuBarProps
+
+▸ **setMenuBarProps**(`widget`: [RNMenuBar](classes/rnmenubar.md), `newProps`: [MenuBarProps](interfaces/menubarprops.md), `oldProps`: [MenuBarProps](interfaces/menubarprops.md)): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`widget` | [RNMenuBar](classes/rnmenubar.md) |
+`newProps` | [MenuBarProps](interfaces/menubarprops.md) |
+`oldProps` | [MenuBarProps](interfaces/menubarprops.md) |
+
+**Returns:** *void*
+
+___
+
+### `Const` setMenuProps
+
+▸ **setMenuProps**(`widget`: [RNMenu](classes/rnmenu.md), `newProps`: [MenuProps](interfaces/menuprops.md), `oldProps`: [MenuProps](interfaces/menuprops.md)): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`widget` | [RNMenu](classes/rnmenu.md) |
+`newProps` | [MenuProps](interfaces/menuprops.md) |
+`oldProps` | [MenuProps](interfaces/menuprops.md) |
+
+**Returns:** *void*
+
+___
+
 ### `Const` setPlainTextEditProps
 
 ▸ **setPlainTextEditProps**(`widget`: RNPlainTextEdit, `newProps`: [PlainTextEditProps](interfaces/plaintexteditprops.md), `oldProps`: [PlainTextEditProps](interfaces/plaintexteditprops.md)): *void*
@@ -676,6 +767,22 @@ Name | Type |
 `widget` | RNSpinBox |
 `newProps` | [SpinBoxProps](interfaces/spinboxprops.md) |
 `oldProps` | [SpinBoxProps](interfaces/spinboxprops.md) |
+
+**Returns:** *void*
+
+___
+
+### `Const` setSystemTrayIconProps
+
+▸ **setSystemTrayIconProps**(`widget`: RNSystemTrayIcon, `newProps`: [SystemTrayIconProps](interfaces/systemtrayiconprops.md), `oldProps`: [SystemTrayIconProps](interfaces/systemtrayiconprops.md)): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`widget` | RNSystemTrayIcon |
+`newProps` | [SystemTrayIconProps](interfaces/systemtrayiconprops.md) |
+`oldProps` | [SystemTrayIconProps](interfaces/systemtrayiconprops.md) |
 
 **Returns:** *void*
 

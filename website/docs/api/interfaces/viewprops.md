@@ -47,6 +47,10 @@ Renderer.render(<App />);
 
   ↳ [LineEditProps](lineeditprops.md)
 
+  ↳ [MenuProps](menuprops.md)
+
+  ↳ [MenuBarProps](menubarprops.md)
+
   ↳ [PlainTextEditProps](plaintexteditprops.md)
 
   ↳ [ProgressBarProps](progressbarprops.md)

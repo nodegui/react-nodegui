@@ -1,42 +1,49 @@
 ---
-id: "windowprops"
-title: "WindowProps"
-sidebar_label: "WindowProps"
+id: "menuprops"
+title: "MenuProps"
+sidebar_label: "MenuProps"
 ---
 
 ## Hierarchy
 
-  ↳ [ViewProps](viewprops.md)‹QMainWindowSignals›
+  ↳ [ViewProps](viewprops.md)‹QMenuSignals›
 
-  ↳ **WindowProps**
+  ↳ **MenuProps**
 
 ## Index
 
 ### Properties
 
-* [attributes](windowprops.md#optional-attributes)
-* [cursor](windowprops.md#optional-cursor)
-* [enabled](windowprops.md#optional-enabled)
-* [geometry](windowprops.md#optional-geometry)
-* [id](windowprops.md#optional-id)
-* [maxSize](windowprops.md#optional-maxsize)
-* [menuBar](windowprops.md#optional-menubar)
-* [minSize](windowprops.md#optional-minsize)
-* [mouseTracking](windowprops.md#optional-mousetracking)
-* [on](windowprops.md#optional-on)
-* [pos](windowprops.md#optional-pos)
-* [ref](windowprops.md#optional-ref)
-* [size](windowprops.md#optional-size)
-* [style](windowprops.md#optional-style)
-* [styleSheet](windowprops.md#optional-stylesheet)
-* [visible](windowprops.md#optional-visible)
-* [windowFlags](windowprops.md#optional-windowflags)
-* [windowIcon](windowprops.md#optional-windowicon)
-* [windowOpacity](windowprops.md#optional-windowopacity)
-* [windowState](windowprops.md#optional-windowstate)
-* [windowTitle](windowprops.md#optional-windowtitle)
+* [actions](menuprops.md#optional-actions)
+* [attributes](menuprops.md#optional-attributes)
+* [cursor](menuprops.md#optional-cursor)
+* [enabled](menuprops.md#optional-enabled)
+* [geometry](menuprops.md#optional-geometry)
+* [id](menuprops.md#optional-id)
+* [maxSize](menuprops.md#optional-maxsize)
+* [minSize](menuprops.md#optional-minsize)
+* [mouseTracking](menuprops.md#optional-mousetracking)
+* [on](menuprops.md#optional-on)
+* [pos](menuprops.md#optional-pos)
+* [ref](menuprops.md#optional-ref)
+* [size](menuprops.md#optional-size)
+* [style](menuprops.md#optional-style)
+* [styleSheet](menuprops.md#optional-stylesheet)
+* [title](menuprops.md#optional-title)
+* [visible](menuprops.md#optional-visible)
+* [windowFlags](menuprops.md#optional-windowflags)
+* [windowIcon](menuprops.md#optional-windowicon)
+* [windowOpacity](menuprops.md#optional-windowopacity)
+* [windowState](menuprops.md#optional-windowstate)
+* [windowTitle](menuprops.md#optional-windowtitle)
 
 ## Properties
+
+### `Optional` actions
+
+• **actions**? : *QAction[]*
+
+___
 
 ### `Optional` attributes
 
@@ -99,12 +106,6 @@ Sets the maximum size of the widget. [QWidget: setMaximumSize](https://docs.node
 
 ___
 
-### `Optional` menuBar
-
-• **menuBar**? : *QMenuBar*
-
-___
-
 ### `Optional` minSize
 
 • **minSize**? : *[Size](../globals.md#size)*
@@ -127,7 +128,7 @@ ___
 
 ### `Optional` on
 
-• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QMainWindowSignals›*
+• **on**? : *Partial‹[WidgetEventListeners](../globals.md#widgeteventlisteners) | QMenuSignals›*
 
 *Inherited from [ViewProps](viewprops.md).[on](viewprops.md#optional-on)*
 
@@ -182,6 +183,12 @@ ___
 *Inherited from [ViewProps](viewprops.md).[styleSheet](viewprops.md#optional-stylesheet)*
 
 Sets the property that holds the widget's style sheet. [QWidget: setStyleSheet](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetstylesheetstylesheet)
+
+___
+
+### `Optional` title
+
+• **title**? : *undefined | string*
 
 ___
 

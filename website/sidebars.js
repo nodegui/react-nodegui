@@ -34,12 +34,15 @@ module.exports = {
       "api/interfaces/gridviewprops",
       "api/interfaces/imageprops",
       "api/interfaces/lineeditprops",
+      "api/interfaces/menubarprops",
+      "api/interfaces/menuprops",
       "api/interfaces/plaintexteditprops",
       "api/interfaces/progressbarprops",
       "api/interfaces/radiobuttonprops",
       "api/interfaces/scrollareaprops",
       "api/interfaces/sliderprops",
       "api/interfaces/spinboxprops",
+      "api/interfaces/systemtrayiconprops",
       "api/interfaces/tabitemprops",
       "api/interfaces/tabprops",
       "api/interfaces/textprops",
@@ -49,6 +52,8 @@ module.exports = {
     "Classes": [
       "api/classes/rngridcolumn",
       "api/classes/rngridrow",
+      "api/classes/rnmenu",
+      "api/classes/rnmenubar",
       "api/classes/renderer"
     ]
   },
