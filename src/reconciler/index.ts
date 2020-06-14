@@ -1,5 +1,5 @@
 import Reconciler from "react-reconciler";
-import { NodeWidget } from "@nodegui/nodegui";
+import { NodeWidget, QSystemTrayIcon, NodeObject } from "@nodegui/nodegui";
 import {
   getComponentByTagName,
   RNWidget,
@@ -9,6 +9,9 @@ import {
 
 export type AppContainer = Set<NodeWidget<any>>;
 export const appContainer: AppContainer = new Set<NodeWidget<any>>();
+
+const shouldIgnoreChild = (child: NodeObject<any>) =>
+  child instanceof QSystemTrayIcon;
 
 const HostConfig: Reconciler.HostConfig<
   string,
@@ -66,7 +69,10 @@ const HostConfig: Reconciler.HostConfig<
       workInProgress
     );
   },
-  appendInitialChild: function(parent: RNWidget, child: NodeWidget<any>) {
+  appendInitialChild: function (parent: RNWidget, child: NodeWidget<any>) {
+    if (shouldIgnoreChild(child)) {
+      return;
+    }
     parent.appendInitialChild(child);
   },
   finalizeInitialChildren: function(
@@ -141,6 +147,9 @@ const HostConfig: Reconciler.HostConfig<
     );
   },
   appendChild: (parent: RNWidget, child: NodeWidget<any>) => {
+    if (shouldIgnoreChild(child)) {
+      return;
+    }
     parent.appendChild(child);
   },
   insertBefore: (
@@ -148,10 +157,15 @@ const HostConfig: Reconciler.HostConfig<
     child: NodeWidget<any>,
     beforeChild: NodeWidget<any>
   ) => {
+    if (shouldIgnoreChild(child)) {
+      return;
+    }
     parent.insertBefore(child, beforeChild);
   },
   removeChild: (parent: RNWidget, child: NodeWidget<any>) => {
-    parent.removeChild(child);
+    if (!shouldIgnoreChild(child)) {
+      parent.removeChild(child);
+    }
     if (child.close) {
       child.close();
     }

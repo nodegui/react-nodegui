@@ -1,6 +1,7 @@
 import React from "react";
-import { Renderer, Window, MenuBar, Menu } from "./index";
-import { QAction, QApplication } from "@nodegui/nodegui";
+import { QIcon, QAction, QApplication } from "@nodegui/nodegui";
+import path from "path";
+import { MenuBar, Menu, SystemTrayIcon, Renderer, Window } from ".";
 
 const quitAction = new QAction();
 quitAction.setText("Quit");
@@ -19,9 +20,20 @@ sayHi.addEventListener("triggered", () => {
 
 const randActions: QAction[] = [sayHi];
 
+const trayIcon = new QIcon(
+  path.join(__dirname, "../extras/assets/nodegui.png")
+);
+const separatorAction = new QAction();
+separatorAction.setSeparator(true);
+
+const systemTrayMenuActions = [sayHi, separatorAction, quitAction];
+
 const App = () => {
   return (
     <Window>
+      <SystemTrayIcon icon={trayIcon} tooltip="React Nodegui" visible>
+        <Menu actions={systemTrayMenuActions} />
+      </SystemTrayIcon>
       <MenuBar>
         <Menu title={"File"} actions={fileActions} />
         <Menu title={"Random"} actions={randActions} />
