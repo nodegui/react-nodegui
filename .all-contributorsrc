@@ -121,6 +121,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "sheepsteak",
+      "name": "Chris Shepherd",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1379888?v=4",
+      "profile": "http://chrisshepherd.me",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
