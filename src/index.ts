@@ -1,5 +1,6 @@
+export { BoxView } from "./components/BoxView";
+export { GridView } from "./components/GridView";
 export { Slider } from "./components/Slider";
-export { Renderer } from "./renderer";
 export { View } from "./components/View";
 export { Window } from "./components/Window";
 export { Text } from "./components/Text";
@@ -21,4 +22,5 @@ export { SystemTrayIcon } from "./components/SystemTrayIcon";
 export { Tabs } from "./components/Tab";
 export { TabItem } from "./components/TabItem";
 export { useEventHandler } from "./hooks";
+export { Renderer } from "./renderer";
 export { hot, appProxy } from "./development/hot-reload";
