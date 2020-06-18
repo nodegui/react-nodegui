@@ -3,7 +3,7 @@ sidebar_label: Layout
 title: Layout
 ---
 
-React NodeGui uses a layout system to automatically arranging child components within a component to ensure that they make good use of the available space.
+React NodeGui uses a layout system to automatically arrange child components within a component to ensure that they make good use of the available space.
 
 ## Fixed Dimensions
 
