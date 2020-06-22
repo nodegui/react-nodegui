@@ -1,11 +1,11 @@
-import { NodeWidget, QAction, QMenu, QMenuSignals } from "@nodegui/nodegui";
-import { ViewProps, setViewProps } from "../View/RNView";
+import { QMenu, QMenuSignals, Component, NodeWidget } from "@nodegui/nodegui";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
+import { RNAction } from "../Action/RNAction";
+import { setViewProps, ViewProps } from "../View/RNView";
 
 export interface MenuProps extends ViewProps<QMenuSignals> {
   title?: string;
-  actions?: QAction[];
 }
 
 const setMenuProps = (
@@ -17,11 +17,6 @@ const setMenuProps = (
     set title(title: string) {
       widget.setTitle(title);
     },
-    set actions(actions: QAction[]) {
-      actions.forEach(action => {
-        widget.addAction(action);
-      });
-    }
   };
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);
@@ -31,17 +26,24 @@ export class RNMenu extends QMenu implements RNWidget {
   setProps(newProps: MenuProps, oldProps: MenuProps): void {
     setMenuProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: Component): void {
+    this.appendChild(child);
+  }
+  appendChild(child: Component): void {
+    if (!(child instanceof RNAction)) {
+      console.warn("Menu only supports Action as its children");
+      return;
+    }
+
+    this.addAction(child);
+  }
+  insertBefore(child: Component, beforeChild: Component): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget<any>): void {
-    throwUnsupported(this);
-  }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
-    throwUnsupported(this);
-  }
-  removeChild(child: NodeWidget<any>): void {
-    throwUnsupported(this);
+  removeChild(child: Component): void {
+    if (child instanceof RNAction) {
+      this.removeAction(child);
+    }
   }
   static tagName = "menu";
-};
+}

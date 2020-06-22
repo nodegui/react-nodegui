@@ -1,3 +1,4 @@
+export { Action } from "./components/Action";
 export { BoxView } from "./components/BoxView";
 export { GridView } from "./components/GridView";
 export { Slider } from "./components/Slider";
