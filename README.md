@@ -144,6 +144,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/gluaxspeed"><img src="https://avatars2.githubusercontent.com/u/16431709?v=4" width="100px;" alt=""/><br /><sub><b>gluaxspeed</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=gluaxspeed" title="Code">💻</a></td>
     <td align="center"><a href="http://chrisshepherd.me"><img src="https://avatars1.githubusercontent.com/u/1379888?v=4" width="100px;" alt=""/><br /><sub><b>Chris Shepherd</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=sheepsteak" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/MistahMojo"><img src="https://avatars1.githubusercontent.com/u/51117537?v=4" width="100px;" alt=""/><br /><sub><b>Jak</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=MistahMojo" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->
