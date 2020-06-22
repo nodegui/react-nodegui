@@ -90,7 +90,7 @@ Renderer.render(<App />);
 In a nutshell, the above code uses the `useEventHandler` hook which is a wrapper over `useMemo`.
 This means, the buttonHandler remains same on every render call and hence the `on` prop to Button doesnt change.
 
-Here `objectNameChanged` is a QEvent while `clicked` and `pressed` are signals. As an app developer it really doesnt mean much but internally they are both two different things in Qt and React NodeGui allows you to use both of them using a single familar `on` prop.
+Here `objectNameChanged` is a QEvent while `clicked` and `pressed` are signals. As an app developer it really doesnt mean much but internally they are both two different things in Qt and React NodeGui allows you to use both of them using a single familiar `on` prop.
 
 Also, another point you see in this typescript code is the QPushButtonSignals. The QPushButtonSignals is a type that allows autocompletion of event handlers as you type them.
 
