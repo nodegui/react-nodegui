@@ -35,6 +35,7 @@ sidebar_label: "TextProps"
 * [size](textprops.md#optional-size)
 * [style](textprops.md#optional-style)
 * [styleSheet](textprops.md#optional-stylesheet)
+* [textInteractionFlags](textprops.md#optional-textinteractionflags)
 * [visible](textprops.md#optional-visible)
 * [windowFlags](textprops.md#optional-windowflags)
 * [windowIcon](textprops.md#optional-windowicon)
@@ -202,6 +203,13 @@ ___
 
 Sets the property that holds the widget's style sheet. [QWidget: setStyleSheet](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetstylesheetstylesheet)
 
+___
+
+### `Optional` textInteractionFlags
+
+• **textInteractionFlags**? : *undefined | [TextInteractionFlag](https://docs.nodegui.org/docs/api/generated/enums/textinteractionflag)*
+
+Sets the widget's interaction flag
 ___
 
 ### `Optional` visible

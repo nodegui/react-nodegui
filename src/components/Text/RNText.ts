@@ -1,4 +1,4 @@
-import { QLabel, NodeWidget, QLabelSignals } from '@nodegui/nodegui';
+import { QLabel, NodeWidget, QLabelSignals, TextInteractionFlag } from '@nodegui/nodegui';
 import { ViewProps, setViewProps } from '../View/RNView';
 import { RNWidget } from '../config';
 import { throwUnsupported } from '../../utils/helpers';
@@ -8,6 +8,7 @@ export interface TextProps extends ViewProps<QLabelSignals> {
   wordWrap?: boolean;
   scaledContents?: boolean;
   openExternalLinks?: boolean;
+  textInteractionFlags?: TextInteractionFlag;
 }
 
 /**
@@ -33,6 +34,9 @@ export const setTextProps = (
     set openExternalLinks(shouldOpenExternalLinks: boolean) {
       widget.setProperty('openExternalLinks', shouldOpenExternalLinks);
     },
+    set textInteractionFlags(interactionFlag: TextInteractionFlag){
+      widget.setProperty('textInteractionFlags', interactionFlag);
+    }
   };
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);
