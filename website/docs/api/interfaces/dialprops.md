@@ -4,23 +4,6 @@ title: "DialProps"
 sidebar_label: "DialProps"
 ---
 
-The Dial provides ability to add and manipulate native dial slider widgets. It is based on
-[NodeGui's QDial](https://docs.nodegui.org/docs/api/generated/classes/qdial/).
-## Example
-```javascript
-import React from "react";
-import { Renderer, Dial, Window } from "@nodegui/react-nodegui";
-const App = () => {
-  return (
-    <Window>
-      <Dial />
-    </Window>
-  );
-};
-Renderer.render(<App />);
-
-```
-
 ## Hierarchy
 
   ↳ [ViewProps](viewprops.md)‹QDialSignals›

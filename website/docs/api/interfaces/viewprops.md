@@ -37,6 +37,10 @@ Renderer.render(<App />);
 
   ↳ **ViewProps**
 
+  ↳ [BoxViewProps](boxviewprops.md)
+
+  ↳ [GridViewProps](gridviewprops.md)
+
   ↳ [SliderProps](sliderprops.md)
 
   ↳ [WindowProps](windowprops.md)
@@ -64,10 +68,6 @@ Renderer.render(<App />);
   ↳ [ComboBoxProps](comboboxprops.md)
 
   ↳ [TabProps](tabprops.md)
-
-  ↳ [BoxViewProps](boxviewprops.md)
-
-  ↳ [GridViewProps](gridviewprops.md)
 
 ## Index
 

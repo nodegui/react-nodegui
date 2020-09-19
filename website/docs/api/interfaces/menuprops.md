@@ -14,7 +14,6 @@ sidebar_label: "MenuProps"
 
 ### Properties
 
-* [actions](menuprops.md#optional-actions)
 * [attributes](menuprops.md#optional-attributes)
 * [cursor](menuprops.md#optional-cursor)
 * [enabled](menuprops.md#optional-enabled)
@@ -38,12 +37,6 @@ sidebar_label: "MenuProps"
 * [windowTitle](menuprops.md#optional-windowtitle)
 
 ## Properties
-
-### `Optional` actions
-
-• **actions**? : *QAction[]*
-
-___
 
 ### `Optional` attributes
 

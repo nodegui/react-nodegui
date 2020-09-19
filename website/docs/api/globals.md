@@ -12,6 +12,7 @@ sidebar_label: "Globals"
 
 ### Classes
 
+* [RNAction](classes/rnaction.md)
 * [RNGridColumn](classes/rngridcolumn.md)
 * [RNGridRow](classes/rngridrow.md)
 * [RNMenu](classes/rnmenu.md)
@@ -21,6 +22,7 @@ sidebar_label: "Globals"
 ### Interfaces
 
 * [AbstractButtonProps](interfaces/abstractbuttonprops.md)
+* [ActionProps](interfaces/actionprops.md)
 * [AnimatedImageProps](interfaces/animatedimageprops.md)
 * [BoxViewProps](interfaces/boxviewprops.md)
 * [ButtonProps](interfaces/buttonprops.md)
@@ -71,13 +73,6 @@ sidebar_label: "Globals"
 ### Variables
 
 * [appProxy](globals.md#let-appproxy)
-* [fileActions](globals.md#const-fileactions)
-* [quitAction](globals.md#const-quitaction)
-* [randActions](globals.md#const-randactions)
-* [sayHi](globals.md#const-sayhi)
-* [separatorAction](globals.md#const-separatoraction)
-* [systemTrayMenuActions](globals.md#const-systemtraymenuactions)
-* [trayIcon](globals.md#const-trayicon)
 
 ### Functions
 
@@ -87,6 +82,7 @@ sidebar_label: "Globals"
 * [hot](globals.md#hot)
 * [offsetForIndex](globals.md#const-offsetforindex)
 * [setAbstractButtonProps](globals.md#setabstractbuttonprops)
+* [setActionProps](globals.md#const-setactionprops)
 * [setAnimatedImageProps](globals.md#const-setanimatedimageprops)
 * [setBoxViewProps](globals.md#const-setboxviewprops)
 * [setButtonProps](globals.md#const-setbuttonprops)
@@ -330,50 +326,6 @@ ___
 
 • **appProxy**: *[ReactProxyComponent](interfaces/_react_proxy_.reactproxycomponent.md)*
 
-___
-
-### `Const` fileActions
-
-• **fileActions**: *QAction[]* = [quitAction]
-
-___
-
-### `Const` quitAction
-
-• **quitAction**: *QAction‹›* = new QAction()
-
-___
-
-### `Const` randActions
-
-• **randActions**: *QAction[]* = [sayHi]
-
-___
-
-### `Const` sayHi
-
-• **sayHi**: *QAction‹›* = new QAction()
-
-___
-
-### `Const` separatorAction
-
-• **separatorAction**: *QAction‹›* = new QAction()
-
-___
-
-### `Const` systemTrayMenuActions
-
-• **systemTrayMenuActions**: *QAction‹›[]* = [sayHi, separatorAction, quitAction]
-
-___
-
-### `Const` trayIcon
-
-• **trayIcon**: *QIcon‹›* = new QIcon(
-  path.join(__dirname, "../extras/assets/nodegui.png")
-)
-
 ## Functions
 
 ### `Const` App
@@ -461,6 +413,22 @@ Name | Type |
 `widget` | QAbstractButton‹Signals› |
 `newProps` | [AbstractButtonProps](interfaces/abstractbuttonprops.md)‹Signals› |
 `oldProps` | [AbstractButtonProps](interfaces/abstractbuttonprops.md)‹Signals› |
+
+**Returns:** *void*
+
+___
+
+### `Const` setActionProps
+
+▸ **setActionProps**(`widget`: [RNAction](classes/rnaction.md), `newProps`: [ActionProps](interfaces/actionprops.md), `oldProps`: [ActionProps](interfaces/actionprops.md)): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`widget` | [RNAction](classes/rnaction.md) |
+`newProps` | [ActionProps](interfaces/actionprops.md) |
+`oldProps` | [ActionProps](interfaces/actionprops.md) |
 
 **Returns:** *void*
 

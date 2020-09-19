@@ -24,6 +24,7 @@ module.exports = {
     "Interfaces": [
       "api/interfaces/_react_proxy_.reactproxycomponent",
       "api/interfaces/abstractbuttonprops",
+      "api/interfaces/actionprops",
       "api/interfaces/animatedimageprops",
       "api/interfaces/boxviewprops",
       "api/interfaces/buttonprops",
@@ -50,6 +51,7 @@ module.exports = {
       "api/interfaces/windowprops"
     ],
     "Classes": [
+      "api/classes/rnaction",
       "api/classes/rngridcolumn",
       "api/classes/rngridrow",
       "api/classes/rnmenu",
