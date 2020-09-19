@@ -4,13 +4,35 @@ import {
   AspectRatioMode,
   NodeWidget,
   QSize,
-  TransformationMode
+  TransformationMode,
 } from "@nodegui/nodegui";
 import { TextProps, setTextProps } from "../Text/RNText";
 import { RNWidget } from "../config";
 import { throwUnsupported, isValidUrl } from "../../utils/helpers";
 import phin from "phin";
 
+/**
+ * The Image component provides the ability to render images. It is based on
+ *  [NodeGui's QPixmap](https://docs.nodegui.org/docs/api/generated/classes/qpixmap).
+ * ## Example
+ * ```javascript
+ * import React from "react";
+ * import { Renderer, Image, Window } from "@nodegui/react-nodegui";
+ * import { AspectRatioMode } from "@nodegui/nodegui";
+ * const App = () => {
+ *   return (
+ *     <Window>
+ *       <Image
+ *         aspectRatioMode={AspectRatioMode.KeepAspectRatio}
+ *         size={{ height: 200, width: 150 }}
+ *         src="https://place-hold.it/200x150"
+ *       ></Image>
+ *     </Window>
+ *   );
+ * };
+ * Renderer.render(<App />);
+ * ```
+ */
 export interface ImageProps extends TextProps {
   src?: string;
   aspectRatioMode?: AspectRatioMode;
@@ -29,7 +51,7 @@ const setImageProps = (
         return;
       }
       getLoadedPixmap(imageUrlOrPath)
-        .then(pixmap => widget.setPixmap(pixmap))
+        .then((pixmap) => widget.setPixmap(pixmap))
         .catch(console.warn);
     },
     set buffer(imageBuffer: Buffer) {
@@ -42,7 +64,7 @@ const setImageProps = (
     },
     set transformationMode(mode: TransformationMode) {
       widget.setTransformationMode(mode);
-    }
+    },
   };
   Object.assign(setter, newProps);
   setTextProps(widget, newProps, oldProps);

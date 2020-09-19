@@ -3,6 +3,23 @@ import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
 
+/**
+ * The Dial provides ability to add and manipulate native dial slider widgets. It is based on
+ * [NodeGui's QDial](https://docs.nodegui.org/docs/api/generated/classes/qdial/).
+ * ## Example
+ * ```javascript
+ * import React from "react";
+ * import { Renderer, Dial, Window } from "@nodegui/react-nodegui";
+ * const App = () => {
+ *   return (
+ *     <Window>
+ *       <Dial />
+ *     </Window>
+ *   );
+ * };
+ * Renderer.render(<App />);
+ * ```
+ */
 export interface DialProps extends ViewProps<QDialSignals> {
   notchesVisible?: boolean;
   wrapping?: boolean;
@@ -23,7 +40,7 @@ const setDialProps = (
     },
     set notchTarget(notchTarget: number) {
       widget.setNotchTarget(notchTarget);
-    }
+    },
   };
   Object.assign(setter, newProps);
   setViewProps(widget, newProps, oldProps);
