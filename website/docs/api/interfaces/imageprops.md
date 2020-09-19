@@ -4,28 +4,6 @@ title: "ImageProps"
 sidebar_label: "ImageProps"
 ---
 
-The Image component provides the ability to render images. It is based on
-[NodeGui's QPixmap](https://docs.nodegui.org/docs/api/generated/classes/qpixmap).
-## Example
-```javascript
-import React from "react";
-import { Renderer, Image, Window } from "@nodegui/react-nodegui";
-import { AspectRatioMode } from "@nodegui/nodegui";
-const App = () => {
-  return (
-    <Window>
-      <Image
-        aspectRatioMode={AspectRatioMode.KeepAspectRatio}
-        size={{ height: 200, width: 150 }}
-        src="https://place-hold.it/200x150"
-      ></Image>
-    </Window>
-  );
-};
-Renderer.render(<App />);
-
-```
-
 ## Hierarchy
 
   ↳ [TextProps](textprops.md)
@@ -56,6 +34,7 @@ Renderer.render(<App />);
 * [src](imageprops.md#optional-src)
 * [style](imageprops.md#optional-style)
 * [styleSheet](imageprops.md#optional-stylesheet)
+* [textInteractionFlags](imageprops.md#optional-textinteractionflags)
 * [transformationMode](imageprops.md#optional-transformationmode)
 * [visible](imageprops.md#optional-visible)
 * [windowFlags](imageprops.md#optional-windowflags)
@@ -247,6 +226,14 @@ ___
 *Inherited from [ViewProps](viewprops.md).[styleSheet](viewprops.md#optional-stylesheet)*
 
 Sets the property that holds the widget's style sheet. [QWidget: setStyleSheet](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetstylesheetstylesheet)
+
+___
+
+### `Optional` textInteractionFlags
+
+• **textInteractionFlags**? : *TextInteractionFlag*
+
+*Inherited from [TextProps](textprops.md).[textInteractionFlags](textprops.md#optional-textinteractionflags)*
 
 ___
 

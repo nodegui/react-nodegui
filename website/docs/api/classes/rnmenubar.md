@@ -34,6 +34,7 @@ sidebar_label: "RNMenuBar"
 
 ### Methods
 
+* [acceptDrops](rnmenubar.md#acceptdrops)
 * [activateWindow](rnmenubar.md#activatewindow)
 * [addAction](rnmenubar.md#addaction)
 * [addEventListener](rnmenubar.md#addeventlistener)
@@ -70,12 +71,14 @@ sidebar_label: "RNMenuBar"
 * [repaint](rnmenubar.md#repaint)
 * [repolish](rnmenubar.md#repolish)
 * [resize](rnmenubar.md#resize)
+* [setAcceptDrops](rnmenubar.md#setacceptdrops)
 * [setAttribute](rnmenubar.md#setattribute)
 * [setContextMenuPolicy](rnmenubar.md#setcontextmenupolicy)
 * [setCursor](rnmenubar.md#setcursor)
 * [setEnabled](rnmenubar.md#setenabled)
 * [setFixedSize](rnmenubar.md#setfixedsize)
 * [setFlexNodeSizeControlled](rnmenubar.md#setflexnodesizecontrolled)
+* [setFocus](rnmenubar.md#setfocus)
 * [setFont](rnmenubar.md#setfont)
 * [setGeometry](rnmenubar.md#setgeometry)
 * [setGraphicsEffect](rnmenubar.md#setgraphicseffect)
@@ -197,7 +200,7 @@ ___
 
 • **nodeChildren**: *Set‹Component›*
 
-*Inherited from void*
+*Inherited from [RNAction](rnaction.md).[nodeChildren](rnaction.md#nodechildren)*
 
 ___
 
@@ -205,7 +208,7 @@ ___
 
 • **nodeParent**? : *Component*
 
-*Inherited from void*
+*Inherited from [RNAction](rnaction.md).[nodeParent](rnaction.md#optional-nodeparent)*
 
 ___
 
@@ -222,6 +225,16 @@ ___
 ▪ **tagName**: *string* = "menubar"
 
 ## Methods
+
+###  acceptDrops
+
+▸ **acceptDrops**(): *boolean*
+
+*Inherited from void*
+
+**Returns:** *boolean*
+
+___
 
 ###  activateWindow
 
@@ -253,7 +266,7 @@ ___
 
 ▸ **addEventListener**‹**SignalType**›(`signalType`: SignalType, `callback`: QMenuBarSignals[SignalType]): *void*
 
-*Inherited from void*
+*Inherited from [RNAction](rnaction.md).[addEventListener](rnaction.md#addeventlistener)*
 
 **Type parameters:**
 
@@ -279,7 +292,7 @@ button.addEventListener('clicked',(checked)=>console.log("clicked"));
 
 ▸ **addEventListener**(`eventType`: WidgetEventTypes, `callback`: function): *void*
 
-*Inherited from void*
+*Inherited from [RNAction](rnaction.md).[addEventListener](rnaction.md#addeventlistener)*
 
 **Parameters:**
 
@@ -433,7 +446,7 @@ ___
 
 ▸ **inherits**(`className`: string): *boolean*
 
-*Inherited from void*
+*Inherited from [RNAction](rnaction.md).[inherits](rnaction.md#inherits)*
 
 **Parameters:**
 
@@ -595,7 +608,7 @@ ___
 
 ▸ **objectName**(): *string*
 
-*Inherited from void*
+*Inherited from [RNAction](rnaction.md).[objectName](rnaction.md#objectname)*
 
 **Returns:** *string*
 
@@ -619,7 +632,7 @@ ___
 
 ▸ **property**(`name`: string): *QVariant*
 
-*Inherited from void*
+*Inherited from [RNAction](rnaction.md).[property](rnaction.md#property)*
 
 **Parameters:**
 
@@ -675,7 +688,7 @@ ___
 
 ▸ **removeEventListener**‹**SignalType**›(`signalType`: SignalType, `callback`: QMenuBarSignals[SignalType]): *void*
 
-*Inherited from void*
+*Inherited from [RNAction](rnaction.md).[removeEventListener](rnaction.md#removeeventlistener)*
 
 **Type parameters:**
 
@@ -692,7 +705,7 @@ Name | Type |
 
 ▸ **removeEventListener**(`eventType`: WidgetEventTypes, `callback`: function): *void*
 
-*Inherited from void*
+*Inherited from [RNAction](rnaction.md).[removeEventListener](rnaction.md#removeeventlistener)*
 
 **Parameters:**
 
@@ -744,6 +757,22 @@ Name | Type |
 ------ | ------ |
 `width` | number |
 `height` | number |
+
+**Returns:** *void*
+
+___
+
+###  setAcceptDrops
+
+▸ **setAcceptDrops**(`on`: boolean): *void*
+
+*Inherited from void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`on` | boolean |
 
 **Returns:** *void*
 
@@ -844,6 +873,22 @@ sets whether the widget's size is controlled by someone else (for example a wind
 Name | Type | Description |
 ------ | ------ | ------ |
 `isSizeControlled` | boolean |   |
+
+**Returns:** *void*
+
+___
+
+###  setFocus
+
+▸ **setFocus**(`reason`: FocusReason): *void*
+
+*Inherited from void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`reason` | FocusReason |
 
 **Returns:** *void*
 
@@ -1002,7 +1047,7 @@ ___
 
 ▸ **setNodeParent**(`parent?`: Component): *void*
 
-*Inherited from void*
+*Inherited from [RNAction](rnaction.md).[setNodeParent](rnaction.md#setnodeparent)*
 
 **Parameters:**
 
@@ -1020,7 +1065,7 @@ ___
 
 *Inherited from void*
 
-*Overrides void*
+*Overrides [RNAction](rnaction.md).[setObjectName](rnaction.md#setobjectname)*
 
 **Parameters:**
 
@@ -1036,7 +1081,7 @@ ___
 
 ▸ **setProperty**(`name`: string, `value`: QVariantType): *boolean*
 
-*Inherited from void*
+*Inherited from [RNAction](rnaction.md).[setProperty](rnaction.md#setproperty)*
 
 **Parameters:**
 

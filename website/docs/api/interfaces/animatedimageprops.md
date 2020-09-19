@@ -33,6 +33,7 @@ sidebar_label: "AnimatedImageProps"
 * [src](animatedimageprops.md#optional-src)
 * [style](animatedimageprops.md#optional-style)
 * [styleSheet](animatedimageprops.md#optional-stylesheet)
+* [textInteractionFlags](animatedimageprops.md#optional-textinteractionflags)
 * [visible](animatedimageprops.md#optional-visible)
 * [windowFlags](animatedimageprops.md#optional-windowflags)
 * [windowIcon](animatedimageprops.md#optional-windowicon)
@@ -217,6 +218,14 @@ ___
 *Inherited from [ViewProps](viewprops.md).[styleSheet](viewprops.md#optional-stylesheet)*
 
 Sets the property that holds the widget's style sheet. [QWidget: setStyleSheet](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetstylesheetstylesheet)
+
+___
+
+### `Optional` textInteractionFlags
+
+• **textInteractionFlags**? : *TextInteractionFlag*
+
+*Inherited from [TextProps](textprops.md).[textInteractionFlags](textprops.md#optional-textinteractionflags)*
 
 ___
 

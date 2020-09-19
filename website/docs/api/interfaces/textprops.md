@@ -207,9 +207,8 @@ ___
 
 ### `Optional` textInteractionFlags
 
-• **textInteractionFlags**? : *undefined | [TextInteractionFlag](https://docs.nodegui.org/docs/api/generated/enums/textinteractionflag)*
+• **textInteractionFlags**? : *TextInteractionFlag*
 
-Sets the widget's interaction flag
 ___
 
 ### `Optional` visible

@@ -51,7 +51,7 @@ sidebar_label: "RNGridRow"
 
 \+ **new RNGridRow**(): *[RNGridRow](rngridrow.md)*
 
-*Inherited from void*
+*Inherited from [RNGridColumn](rngridcolumn.md).[constructor](rngridcolumn.md#constructor)*
 
 **Returns:** *[RNGridRow](rngridrow.md)*
 
@@ -87,7 +87,7 @@ ___
 
 • **nodeChildren**: *Set‹Component›*
 
-*Inherited from void*
+*Inherited from [RNAction](rnaction.md).[nodeChildren](rnaction.md#nodechildren)*
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 • **nodeParent**? : *Component*
 
-*Inherited from void*
+*Inherited from [RNAction](rnaction.md).[nodeParent](rnaction.md#optional-nodeparent)*
 
 ___
 
@@ -192,7 +192,7 @@ ___
 
 ▸ **setNodeParent**(`parent?`: Component): *void*
 
-*Inherited from void*
+*Inherited from [RNAction](rnaction.md).[setNodeParent](rnaction.md#setnodeparent)*
 
 **Parameters:**
 
