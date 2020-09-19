@@ -139,6 +139,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "gregbenner",
+      "name": "Greg B",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1177690?v=4",
+      "profile": "https://gregbenner.life",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

@@ -146,6 +146,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/MistahMojo"><img src="https://avatars1.githubusercontent.com/u/51117537?v=4" width="100px;" alt=""/><br /><sub><b>Jak</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=MistahMojo" title="Code">💻</a></td>
+    <td align="center"><a href="https://gregbenner.life"><img src="https://avatars3.githubusercontent.com/u/1177690?v=4" width="100px;" alt=""/><br /><sub><b>Greg B</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=gregbenner" title="Documentation">📖</a></td>
   </tr>
 </table>
 
