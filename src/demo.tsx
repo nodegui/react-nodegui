@@ -1,7 +1,15 @@
 import React from "react";
 import { QIcon, QApplication, QKeySequence } from "@nodegui/nodegui";
 import path from "path";
-import { Action, MenuBar, Menu, SystemTrayIcon, Renderer, Window } from ".";
+import {
+  Action,
+  Text,
+  MenuBar,
+  Menu,
+  SystemTrayIcon,
+  Renderer,
+  Window,
+} from ".";
 
 const quitAction = (
   <Action
@@ -55,6 +63,7 @@ const App = () => {
           {quitAction}
         </Menu>
       </MenuBar>
+      <Text>Hello</Text>
     </Window>
   );
 };
