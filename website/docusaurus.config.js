@@ -6,27 +6,29 @@ module.exports = {
   favicon: "img/favicon.ico",
   organizationName: "nodegui", // Usually your GitHub org/user name.
   projectName: "react-nodegui", // Usually your repo name.
+  onBrokenLinks: "warn",
+  onDuplicateRoutes: "warn",
   themeConfig: {
     navbar: {
       title: "React NodeGui",
       logo: {
         alt: "NodeGui Logo",
-        src: "img/logo-circle.png"
+        src: "img/logo-circle.png",
       },
-      links: [
+      items: [
         { to: "docs/guides/getting-started", label: "Docs", position: "right" },
         {
           to: "docs/api/interfaces/buttonprops",
           label: "API",
-          position: "right"
+          position: "right",
         },
         { to: "blog", label: "Blog", position: "right" },
         {
           href: "https://github.com/nodegui/react-nodegui",
           label: "GitHub",
-          position: "right"
-        }
-      ]
+          position: "right",
+        },
+      ],
     },
     footer: {
       style: "dark",
@@ -35,66 +37,66 @@ module.exports = {
           title: "Docs",
           items: [
             { to: "docs/guides/getting-started", label: "Getting Started" },
-            { to: "docs/api/interfaces/buttonprops", label: "API" }
-          ]
+            { to: "docs/api/interfaces/buttonprops", label: "API" },
+          ],
         },
         {
           title: "Community",
           items: [
             {
               label: "Spectrum",
-              href: "https://spectrum.chat/nodegui"
+              href: "https://spectrum.chat/nodegui",
             },
             {
               label: "Twitter",
-              to: "https://twitter.com/node_gui"
+              to: "https://twitter.com/node_gui",
             },
             {
               label: "Medium",
-              to: "https://medium.com/nodegui"
-            }
-          ]
+              to: "https://medium.com/nodegui",
+            },
+          ],
         },
         {
           title: "More",
           items: [
             {
               label: "Blog",
-              to: "blog"
+              to: "blog",
             },
             {
               label: "NodeGui",
-              to: "https://nodegui.org"
+              to: "https://nodegui.org",
             },
             {
               label: "FAQ",
-              to: "https://nodegui.org/faq"
-            }
-          ]
-        }
+              to: "https://nodegui.org/faq",
+            },
+          ],
+        },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} NodeGui`
+      copyright: `Copyright © ${new Date().getFullYear()} NodeGui`,
     },
     googleAnalytics: {
-      trackingID: "UA-145065218-2"
+      trackingID: "UA-145065218-2",
     },
     algolia: {
       apiKey: "6ab12d669678aeba3bdf10b89f0c8db3",
       indexName: "nodegui_react",
-      algoliaOptions: {} // Optional, if provided by Algolia
-    }
+      algoliaOptions: {}, // Optional, if provided by Algolia
+    },
   },
   presets: [
     [
       "@docusaurus/preset-classic",
       {
         docs: {
-          sidebarPath: require.resolve("./sidebars.js")
+          sidebarPath: require.resolve("./sidebars.js"),
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css")
-        }
-      }
-    ]
-  ]
+          customCss: require.resolve("./src/css/custom.css"),
+        },
+      },
+    ],
+  ],
 };
