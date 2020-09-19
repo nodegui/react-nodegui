@@ -48,6 +48,7 @@ Visit: https://react.nodegui.org for docs.
 - Read through the [docs](https://react.nodegui.org)
 
 **Community Guides**
+- https://gregbenner.life/node-gui-react-component-by-component/ - An awesome intro to all base components in react nodegui
 
 - https://blog.logrocket.com/electron-alternatives-exploring-nodegui-and-react-nodegui/ - Electron alternatives: Exploring NodeGUI and React NodeGUI by [Siegfried Grimbeek](https://blog.logrocket.com/author/siegfriedgrimbeek/).
 
