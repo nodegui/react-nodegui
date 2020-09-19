@@ -1,6 +1,6 @@
 module.exports = {
-  "api": {
-    "Components": [
+  api: {
+    Components: [
       "api/interfaces/buttonprops",
       "api/interfaces/checkboxprops",
       "api/interfaces/dialprops",
@@ -13,15 +13,11 @@ module.exports = {
       "api/interfaces/spinboxprops",
       "api/interfaces/textprops",
       "api/interfaces/viewprops",
-      "api/interfaces/windowprops"
+      "api/interfaces/windowprops",
     ],
-    "Others": [
-      "api/globals"
-    ],
-    "Modules": [
-      "api/modules/_react_proxy_"
-    ],
-    "Interfaces": [
+    Others: ["api/globals"],
+    Modules: ["api/modules/_react_proxy_"],
+    Interfaces: [
       "api/interfaces/_react_proxy_.reactproxycomponent",
       "api/interfaces/abstractbuttonprops",
       "api/interfaces/actionprops",
@@ -48,18 +44,18 @@ module.exports = {
       "api/interfaces/tabprops",
       "api/interfaces/textprops",
       "api/interfaces/viewprops",
-      "api/interfaces/windowprops"
+      "api/interfaces/windowprops",
     ],
-    "Classes": [
+    Classes: [
       "api/classes/rnaction",
       "api/classes/rngridcolumn",
       "api/classes/rngridrow",
       "api/classes/rnmenu",
       "api/classes/rnmenubar",
-      "api/classes/renderer"
-    ]
+      "api/classes/renderer",
+    ],
   },
-  "guides": {
+  guides: {
     "The Basics": [
       "guides/getting-started",
       "guides/tutorial",
@@ -68,13 +64,14 @@ module.exports = {
       "guides/handle-events",
       "guides/scroll-view",
       "guides/images",
-      "guides/networking"
+      "guides/networking",
+      "guides/packaging",
     ],
-    "Guides": [
+    Guides: [
       "guides/debugging",
       "guides/debugging-in-vscode",
       "guides/using-native-node-modules",
-      "guides/custom-nodegui-native-plugin"
-    ]
-  }
+      "guides/custom-nodegui-native-plugin",
+    ],
+  },
 };
