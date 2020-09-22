@@ -4,6 +4,30 @@ title: "PlainTextEditProps"
 sidebar_label: "PlainTextEditProps"
 ---
 
+he PlainTextEdit component rovides ability to add and manipulate native editable text field widgets. It is based on
+[NodeGui's QPlainTextEdit](https://docs.nodegui.org/docs/api/generated/classes/qplaintextedit/).
+## Example
+```javascript
+import React from "react";
+import { Renderer, PlainTextEdit, Window } from "@nodegui/react-nodegui";
+
+const plainTextRef = React.createRef();
+const App = () => {
+  React.useEffect(() => {
+    plainTextRef.current.addEventListener("textChanged", () =>
+      console.log(plainTextRef.current.toPlainText())
+    );
+  });
+  return (
+    <Window>
+      <PlainTextEdit ref={plainTextRef} />
+    </Window>
+  );
+};
+Renderer.render(<App />);
+
+```
+
 ## Hierarchy
 
   ↳ [ViewProps](viewprops.md)‹QPlainTextEditSignals›
