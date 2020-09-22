@@ -4,6 +4,28 @@ title: "SpinBoxProps"
 sidebar_label: "SpinBoxProps"
 ---
 
+The SpinBox component provides the ability to add and manipulate native spin box widgets.. It is based on
+[NodeGui's QSpinBox](https://docs.nodegui.org/docs/api/generated/classes/qspinbox/).
+## Example
+```javascript
+import React from "react";
+import { Renderer, SpinBox, Window } from "@nodegui/react-nodegui";
+const App = () => {
+  const handleValuehanged = {
+    valueChanged: (newValue) => {
+      console.log(newValue);
+    },
+  };
+  return (
+    <Window>
+      <SpinBox on={handleValuehanged} value={10} />
+    </Window>
+  );
+};
+Renderer.render(<App />);
+
+```
+
 ## Hierarchy
 
   ↳ [ViewProps](viewprops.md)‹QSpinBoxSignals›
