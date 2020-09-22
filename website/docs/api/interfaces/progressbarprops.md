@@ -4,6 +4,26 @@ title: "ProgressBarProps"
 sidebar_label: "ProgressBarProps"
 ---
 
+The ProgressBar component provides ability to add and manipulate native progress bar widgets. It is based on
+[NodeGui's QProgressBar](https://docs.nodegui.org/docs/api/generated/classes/qprogressbar/).
+## Example
+```javascript
+import React from "react";
+import { Renderer, ProgressBar, Window } from "@nodegui/react-nodegui";
+const App = () => {
+  return (
+    <Window>
+      <ProgressBar value={45} />
+    </Window>
+  );
+};
+const buttonStyle = `
+  color: white;
+`;
+Renderer.render(<App />);
+
+```
+
 ## Hierarchy
 
   ↳ [ViewProps](viewprops.md)‹QProgressBarSignals›
