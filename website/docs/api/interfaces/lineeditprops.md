@@ -4,6 +4,26 @@ title: "LineEditProps"
 sidebar_label: "LineEditProps"
 ---
 
+The QLineEdit provides ability to add and manipulate native editable text field widgets. It is based on
+[NodeGui's QLineEdit](https://docs.nodegui.org/docs/api/generated/classes/qlineedit).
+## Example
+```javascript
+import React from "react";
+import { Renderer, LineEdit, Window } from "@nodegui/react-nodegui";
+const App = () => {
+  const handleTextChanged = textValue => {
+    console.log(textValue);
+  };
+  return (
+    <Window>
+      <LineEdit on={{ textChanged: handleTextChanged }} />
+    </Window>
+  );
+};
+Renderer.render(<App />);
+
+```
+
 ## Hierarchy
 
   ↳ [ViewProps](viewprops.md)‹QLineEditSignals›
