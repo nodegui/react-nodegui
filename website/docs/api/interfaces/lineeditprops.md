@@ -4,7 +4,7 @@ title: "LineEditProps"
 sidebar_label: "LineEditProps"
 ---
 
-The QLineEdit provides ability to add and manipulate native editable text field widgets. It is based on
+The LineEdit component provides ability to add and manipulate native editable text field widgets. It is based on
 [NodeGui's QLineEdit](https://docs.nodegui.org/docs/api/generated/classes/qlineedit).
 ## Example
 ```javascript
