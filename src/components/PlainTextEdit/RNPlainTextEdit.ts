@@ -7,6 +7,32 @@ import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
 
+/**
+ * The PlainTextEdit component provides ability to add and manipulate native editable text field widgets. It is based on
+ * [NodeGui's QPlainTextEdit](https://docs.nodegui.org/docs/api/generated/classes/qplaintextedit/).
+ * ## Example
+ * ```javascript
+ * import React from "react";
+ * import { Renderer, PlainTextEdit, Window } from "@nodegui/react-nodegui";
+ * 
+ * const plainTextRef = React.createRef();
+ * const App = () => {
+ * React.useEffect(() => {
+ *   plainTextRef.current.addEventListener("textChanged", () =>
+ *     console.log(plainTextRef.current.toPlainText())
+ *   );
+ * });
+ * return (
+ *   <Window>
+ *     <PlainTextEdit ref={plainTextRef} />
+ *   </Window>
+ *  );
+ * };
+ * Renderer.render(<App />);
+ *
+ * ```
+ */
+
 export interface PlainTextEditProps extends ViewProps<QPlainTextEditSignals> {
   text?: string;
   readOnly?: boolean;
