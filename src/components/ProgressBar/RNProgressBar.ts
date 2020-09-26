@@ -8,6 +8,23 @@ import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
 
+ /**
+ * The ProgressBar component provides ability to add and manipulate native progress bar widgets. It is based on
+ * [NodeGui's QProgressBar](https://docs.nodegui.org/docs/api/generated/classes/qprogressbar/).
+ * ## Example
+ * ```javascript
+ * import React from "react";
+ * import { Renderer, ProgressBar, Window } from "@nodegui/react-nodegui";
+ * const App = () => {
+ *   return (
+ *    <Window>
+ *      <ProgressBar value={45} />
+ *   </Window>
+ *  );
+ * };
+ * Renderer.render(<App />);
+ * ```
+ */
 export interface ProgressBarProps extends ViewProps<QProgressBarSignals> {
   value?: number;
   minimum?: number;
