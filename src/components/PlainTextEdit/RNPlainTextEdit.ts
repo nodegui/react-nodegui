@@ -30,7 +30,8 @@ import { throwUnsupported } from "../../utils/helpers";
  * };
  * Renderer.render(<App />);
  *
-* ```
+ * ```
+ */
 
 export interface PlainTextEditProps extends ViewProps<QPlainTextEditSignals> {
   text?: string;
