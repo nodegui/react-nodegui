@@ -20,7 +20,7 @@
     "docs": "typedoc && node ./website/docs/scripts/fixdocs.js"
   },
   "dependencies": {
-    "@nodegui/nodegui": "^0.25.0",
+    "@nodegui/nodegui": "^0.27.0",
     "@types/react-reconciler": "^0.18.0",
     "phin": "^3.4.1",
     "react-deep-force-update": "^2.1.3",
