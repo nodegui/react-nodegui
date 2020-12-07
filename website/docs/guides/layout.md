@@ -166,7 +166,7 @@ GridView Layout is an implementation of QGridLayout of NodeGui.
 
 ```jsx
 import React, { useState } from "react";
-import { Renderer, GridView, GridRow, GridColumn Text, Window, View, Button, useEventHandler } from "@nodegui/react-nodegui";
+import { Renderer, GridView, GridRow, GridColumn, Text, Window, View, Button, useEventHandler } from "@nodegui/react-nodegui";
 import { QPushButtonSignals } from "@nodegui/nodegui";
 
 const App = () => {

@@ -1,6 +1,8 @@
 export { Action } from "./components/Action";
 export { BoxView } from "./components/BoxView";
 export { GridView } from "./components/GridView";
+export { GridRow } from "./components/GridView/GridRow";
+export { GridColumn } from "./components/GridView/GridColumn";
 export { Slider } from "./components/Slider";
 export { View } from "./components/View";
 export { Window } from "./components/Window";
