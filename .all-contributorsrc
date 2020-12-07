@@ -148,6 +148,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "Eeems",
+      "name": "Nathaniel van Diepen",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1176979?v=4",
+      "profile": "http://eeems.website",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
