@@ -1,7 +1,7 @@
 # React NodeGui
 
 [![Join the NodeGUI community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/nodegui)
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors) [![Meercode CI Score](https://meercode.io/badge/nodegui/react-nodegui?type=ci-score&branch=master)](https://meercode.io/nodegui/react-nodegui)
 
 Build **performant**, **native** and **cross-platform** desktop applications with React.🚀
 
