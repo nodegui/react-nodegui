@@ -75,9 +75,17 @@ const setGridViewProps = (
  */
 export class RNGridView extends QWidget implements RNComponent {
   native: any;
-  layout?: QGridLayout;
+  _layout?: QGridLayout;
   initialProps?: GridViewProps;
   childRows: Array<DataWithOffset<RNGridRow>> = [];
+
+  get layout() {
+    return this.layout;
+  }
+
+  set layout(l: QGridLayout) {
+    this._layout = l;
+  }
 
   updateChildren(startIndex = 0): void {
     updateDisplacedChildren<RNGridRow, RNGridView>(
