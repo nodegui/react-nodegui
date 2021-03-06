@@ -7,9 +7,9 @@ import {
   QIcon,
   FlexLayout,
   WidgetEventTypes,
-  NativeElement,
-  QWidgetSignals
+  QWidgetSignals,
 } from "@nodegui/nodegui";
+import { NativeRawPointer } from "@nodegui/nodegui/dist/lib/core/Component";
 import { RNWidget, RNProps } from "../config";
 
 /**
@@ -189,7 +189,7 @@ export function setViewProps<Signals extends {}>(
         const minSize = newProps.minSize || { width: 0, height: 0 };
         const maxSize = newProps.maxSize || {
           width: 16777215,
-          height: 16777215
+          height: 16777215,
         };
         widget.setMinimumSize(minSize.width, minSize.height);
         widget.setMaximumSize(maxSize.width, maxSize.height);
@@ -226,7 +226,7 @@ export function setViewProps<Signals extends {}>(
       Object.entries(windowFlagsMap).forEach(([flag, value]) => {
         widget.setWindowFlag(Number(flag), value);
       });
-    }
+    },
   };
   Object.assign(setter, newProps);
 }
@@ -302,5 +302,5 @@ type WindowFlagsMap = {
 };
 
 export type WidgetEventListeners = {
-  [key in WidgetEventTypes]: (native?: NativeElement) => void;
+  [key in WidgetEventTypes]: (event?: NativeRawPointer<"QEvent">) => void;
 };
