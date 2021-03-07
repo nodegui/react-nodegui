@@ -31,18 +31,14 @@ const setBoxViewProps = (
  */
 export class RNBoxView extends QWidget implements RNComponent {
   native: any;
-  _layout?: QBoxLayout;
   initialProps?: BoxViewProps;
   children: Array<NodeWidget<any>> = [];
-
   get layout() {
-    return this.layout;
+    return super.layout as QBoxLayout | undefined;
   }
-
-  set layout(l: QBoxLayout) {
-    this._layout = l;
+  set layout(l: QBoxLayout | undefined) {
+    super.layout = l;
   }
-
   setProps(newProps: BoxViewProps, oldProps: BoxViewProps): void {
     if (this.layout) {
       setBoxViewProps(this, newProps, oldProps);
