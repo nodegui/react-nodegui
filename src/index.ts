@@ -24,6 +24,7 @@ export { ComboBox } from "./components/ComboBox";
 export { SystemTrayIcon } from "./components/SystemTrayIcon";
 export { Tabs } from "./components/Tab";
 export { TabItem } from "./components/TabItem";
+export { Dialog } from "./components/Dialog";
 export { useEventHandler } from "./hooks";
 export { Renderer } from "./renderer";
 export { hot, appProxy } from "./development/hot-reload";
