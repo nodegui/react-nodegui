@@ -8,8 +8,8 @@ export interface FileDialogLabelText{
   text: string
 }
 
-export interface DialogOption {
-  option: Option;
+export interface DialogOption<T=Option> {
+  option: T;
   on: boolean;
 }
 

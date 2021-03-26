@@ -8,6 +8,8 @@ export interface DialogProps<T = QDialogSignals> extends ViewProps<T> {
   font?: QFont;
   focus?: FocusReason;
   modal?: boolean;
+  result?: number;
+  reject?: boolean;
   enableSizeGrip?: boolean;
 }
 
@@ -24,6 +26,12 @@ export function setDialogProps(widget: RNDialog, newProps: DialogProps, oldProps
     },
     set modal(modal: boolean) {
       widget.setModal(modal);
+    },
+    set reject(reject: boolean) {
+      reject && widget.reject();
+    },
+    set result(result: number) {
+      widget.setResult(result);
     },
     set enableSizeGrip(sizeGrip: boolean) {
       widget.setSizeGripEnabled(sizeGrip);
