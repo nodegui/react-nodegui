@@ -2,6 +2,7 @@ import React from "react";
 import { Text, Renderer, Window } from ".";
 import { Button } from "./components/Button";
 import { View } from "./components/View";
+
 const App = () => {
   return (
     <Window styleSheet={styleSheet}>
