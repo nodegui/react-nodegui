@@ -3,7 +3,7 @@ import { NodeDialog } from "@nodegui/nodegui/dist/lib/QtWidgets/QDialog";
 import { RNWidget } from "../config";
 import { setViewProps, ViewProps } from "../View/RNView";
 
-export interface DialogProps extends ViewProps<QDialogSignals> {
+export interface DialogProps<T = QDialogSignals> extends ViewProps<T> {
   open?: boolean;
   font?: QFont;
   focus?: FocusReason;
@@ -11,7 +11,7 @@ export interface DialogProps extends ViewProps<QDialogSignals> {
   enableSizeGrip?: boolean;
 }
 
-function setDialogProps(widget: RNDialog, newProps: DialogProps, oldProps: DialogProps) {
+export function setDialogProps(widget: RNDialog, newProps: DialogProps, oldProps: DialogProps) {
   const setter: DialogProps = {
     set open(open: boolean) {
       open ? widget.open() : widget.close();
