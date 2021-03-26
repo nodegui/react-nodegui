@@ -1,15 +1,6 @@
-import {
-  QWidget,
-  WindowState,
-  QCursor,
-  CursorShape,
-  NodeWidget,
-  QIcon,
-  FlexLayout,
-  WidgetEventTypes,
-  QWidgetSignals,
-} from "@nodegui/nodegui";
+import { QWidget, WindowState, QCursor, CursorShape, NodeWidget, QIcon, FlexLayout, WidgetEventTypes, QWidgetSignals } from "@nodegui/nodegui";
 import { NativeRawPointer } from "@nodegui/nodegui/dist/lib/core/Component";
+import { NodeDialog } from "@nodegui/nodegui/dist/lib/QtWidgets/QDialog";
 import { RNWidget, RNProps } from "../config";
 
 /**
@@ -126,11 +117,7 @@ export interface ViewProps<Signals extends {}> extends RNProps {
 /**
  * @ignore
  */
-export function setViewProps<Signals extends {}>(
-  widget: NodeWidget<any>,
-  newProps: ViewProps<Signals>,
-  oldProps: ViewProps<Signals>
-) {
+export function setViewProps<Signals extends {}>(widget: NodeWidget<any>, newProps: ViewProps<Signals>, oldProps: ViewProps<Signals>) {
   const setter: ViewProps<Signals> = {
     set visible(shouldShow: boolean) {
       shouldShow ? widget.show() : widget.hide();
@@ -145,12 +132,7 @@ export function setViewProps<Signals extends {}>(
       widget.setInlineStyle(inlineStyle);
     },
     set geometry(geometry: Geometry) {
-      widget.setGeometry(
-        geometry.x,
-        geometry.y,
-        geometry.width,
-        geometry.height
-      );
+      widget.setGeometry(geometry.x, geometry.y, geometry.width, geometry.height);
     },
     set id(id: string) {
       widget.setObjectName(id);
@@ -211,11 +193,9 @@ export function setViewProps<Signals extends {}>(
         }
       });
 
-      Object.entries(listenerMapLatest).forEach(
-        ([eventType, newEvtListener]) => {
-          widget.addEventListener(eventType as any, newEvtListener);
-        }
-      );
+      Object.entries(listenerMapLatest).forEach(([eventType, newEvtListener]) => {
+        widget.addEventListener(eventType as any, newEvtListener);
+      });
     },
     set attributes(attributesMap: WidgetAttributesMap) {
       Object.entries(attributesMap).forEach(([attribute, value]) => {
@@ -235,15 +215,12 @@ export function setViewProps<Signals extends {}>(
  * @ignore
  */
 export class RNView extends QWidget implements RNWidget {
-  setProps(
-    newProps: ViewProps<QWidgetSignals>,
-    oldProps: ViewProps<QWidgetSignals>
-  ): void {
+  setProps(newProps: ViewProps<QWidgetSignals>, oldProps: ViewProps<QWidgetSignals>): void {
     setViewProps(this, newProps, oldProps);
   }
   insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
-    if (!this.layout) {
-      console.warn("parent has no layout to insert child before another child");
+    if (!this.layout || child instanceof NodeDialog) {
+      !this.layout && console.warn("parent has no layout to insert child before another child");
       return;
     }
     (this.layout as FlexLayout).insertChildBefore(child, beforeChild);
@@ -253,7 +230,7 @@ export class RNView extends QWidget implements RNWidget {
     this.appendChild(child);
   }
   appendChild(child: NodeWidget<any>): void {
-    if (!child) {
+    if (!child || child instanceof NodeDialog) {
       return;
     }
     if (!this.layout) {

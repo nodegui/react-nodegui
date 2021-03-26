@@ -7,6 +7,7 @@ import {
 } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
 import { RNComponent } from "../config";
+import { NodeDialog } from "@nodegui/nodegui/dist/lib/QtWidgets/QDialog";
 
 export interface BoxViewProps extends ViewProps<QBoxLayoutSignals> {
   direction?: Direction;
@@ -50,6 +51,9 @@ export class RNBoxView extends QWidget implements RNComponent {
     this.appendChild(child);
   }
   appendChild(child: NodeWidget<any>): void {
+    if (child instanceof NodeDialog) {
+      return;
+    }
     const updateChild = () => {
       this.layout?.addWidget(child);
       this.children.push(child);
@@ -73,6 +77,9 @@ export class RNBoxView extends QWidget implements RNComponent {
     updateChild();
   }
   insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+    if (child instanceof NodeDialog) {
+      return;
+    }
     const prevIndex = this.children.indexOf(beforeChild);
 
     if (prevIndex === -1) {
