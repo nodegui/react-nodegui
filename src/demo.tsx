@@ -12,8 +12,11 @@ const App = () => {
         <Table
           cellRange={{ row: 3, column: 3 }}
           style="flex: 1;"
+          horizontalHeaderLabels={["What", "How", "When"]}
+          verticalHeaderLabels={["yes", "this", "later"]}
+          hideRows={[0, 2]}
         >
-          <TableItem cellPosition={[0, 0]} text="1"/>
+          <TableItem cellPosition={[0, 0]} text="1" toolTip="Tooltip"/>
           <TableItem cellPosition={[0, 1]} text="2"/>
           <TableItem cellPosition={[0, 2]} text="3"/>
           <TableItem cellPosition={[1, 0]} text="4"/>

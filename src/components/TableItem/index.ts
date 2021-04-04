@@ -2,7 +2,6 @@ import { registerComponent, ComponentConfig } from "../config";
 import { Fiber } from "react-reconciler";
 import { RNTableItem, TableItemProps } from "./RNTableItem";
 import { AppContainer } from "../../reconciler";
-import { CellRange } from "../Table/RNTable";
 
 class TableItemConfig extends ComponentConfig {
   tagName = RNTableItem.tagName;
@@ -18,5 +17,11 @@ class TableItemConfig extends ComponentConfig {
     instance.setProps(newProps, oldProps);
   }
 }
+/**
+ * React implementation of nodegui's [QTableWidgetItem](https://docs.nodegui.org/docs/api/generated/classes/qtablewidgetitem)
+ * 
+ * Can only be used as a child of `<Table/>`
+ * @property `cellPosition` valid position of the item in the Table
+ */
 
 export const TableItem = registerComponent<TableItemProps>(new TableItemConfig());

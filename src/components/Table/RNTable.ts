@@ -45,6 +45,8 @@ export interface TableProps extends ViewProps<QTableWidgetSignals> {
   columnWidth?: ColumnSize[];
   rowHeight?: RowSize[];
   sortingEnabled?: boolean;
+  hideColumns?: number[];
+  hideRows?: number[];
 }
 
 type CustomTableProps = Omit<TableProps, "cellRange">;
@@ -102,6 +104,24 @@ export const setTableProps = (widget: RNTable, newProps: CustomTableProps, oldPr
     },
     set sortingEnabled(sortingEnabled: boolean) {
       widget.setSortingEnabled(sortingEnabled);
+    },
+    set hideColumns(columns: number[]) {
+      const totalColumns = widget.columnCount();
+      for (const column of columns) {
+        if (column > totalColumns || column < totalColumns) {
+          console.warn(`${column} isn't within the range`);
+        }
+        widget.hideColumn(column);
+      }
+    },
+    set hideRows(rows: number[]) {
+      const totalRows = widget.rowCount();
+      for (const row of rows) {
+        if (row > totalRows || row < totalRows) {
+          console.warn(`${row} isn't within the range`);
+        }
+        widget.hideRow(row);
+      }
     },
   };
   Object.assign(setter, newProps);

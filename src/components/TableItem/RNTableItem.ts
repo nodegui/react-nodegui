@@ -7,7 +7,7 @@ export interface TableData{
   value: QVariant;
 }
 
-export type CellPosition = [row: number, column: number]
+export type CellPosition = [number, number]
 
 export interface TableItemProps {
   /**
@@ -22,7 +22,7 @@ export interface TableItemProps {
    * following example makes the item non-editable+selectable. Only can be checked
    * @example 
    * ```javascript
-   * <TableItem flags={ItemFlag.ItemIsEnabled | ItemFlag.ItemIsUserCheckable} .../>
+   * <TableItem flags={ItemFlag.ItemIsEnabled | ItemFlag.ItemIsUserCheckable} {...props}/>
    * ```
    */
   flags?: ItemFlag;
