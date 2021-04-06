@@ -11,7 +11,7 @@ function setErrorPromptProps(widget: RNErrorPrompt, newProps: ErrorPromptProps, 
   const setter: ErrorPromptProps = {
     set message(message: string) {
       widget.showMessage(message);
-      widget.hide();
+      widget.close();
     },
   };
   Object.assign(setter, newProps);
