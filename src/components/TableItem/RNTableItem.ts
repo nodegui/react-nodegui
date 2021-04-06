@@ -19,7 +19,7 @@ export interface TableItemProps {
   /**
    * handle the behavior of the TableItem
    * 
-   * following example makes the item non-editable+selectable. Only can be checked
+   * following example makes the item non-editable+selectable only checkable
    * @example 
    * ```javascript
    * <TableItem flags={ItemFlag.ItemIsEnabled | ItemFlag.ItemIsUserCheckable} {...props}/>

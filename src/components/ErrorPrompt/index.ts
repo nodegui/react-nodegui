@@ -25,6 +25,7 @@ class ErrorPromptConfig extends ComponentConfig {
 }
 /**
  * ErrorPrompt inherits the functionality of nodegui's `QErrorMessage`
+ * @property `message` the message that needs to be displayed
  * @example
  * ```javascriptreact
  * function ErrorApplet(){
