@@ -51,10 +51,24 @@ export interface TableProps extends ViewProps<QTableWidgetSignals> {
 
 type CustomTableProps = Omit<TableProps, "cellRange">;
 
+function verifyRanges({ row: rowCount, column: columnCount }: CellRange, { row, column }: Partial<CellRange>) {
+  if (row && (row < 0 || row > rowCount - 1)) {
+    console.warn(`Row "${row}" is out of range "${rowCount - 1}"`);
+  }
+  if (column && (column < 0 || column > columnCount - 1)) {
+    console.warn(`Column "${column}" is out range "${columnCount - 1}"`);
+  }
+}
+
 /**
  * @ignore
  */
 export const setTableProps = (widget: RNTable, newProps: CustomTableProps, oldProps: CustomTableProps) => {
+  const cellRange: CellRange = {
+    row: widget.rowCount(),
+    column: widget.columnCount(),
+  };
+
   const setter: CustomTableProps = {
     set horizontalHeaderItems(items: HorizontalHeader[]) {
       for (const item of items) {
@@ -65,25 +79,30 @@ export const setTableProps = (widget: RNTable, newProps: CustomTableProps, oldPr
       widget.setHorizontalHeaderLabels(labels);
     },
     set verticalHeaderItems(items: VerticalHeader[]) {
-      for (const item of items) {
-        widget.setVerticalHeaderItem(item.row, item.item);
+      for (const { row, item } of items) {
+        verifyRanges(cellRange, { row });
+        widget.setVerticalHeaderItem(row, item);
       }
     },
     set verticalHeaderLabels(labels: string[]) {
       widget.setVerticalHeaderLabels(labels);
     },
     set cellWidgets(cellWidgets: CellWidget[]) {
-      for (const cellWidget of cellWidgets) {
-        widget.setCellWidget(cellWidget.row, cellWidget.column, cellWidget.widget);
+      for (const { column, row, widget: cellWidget } of cellWidgets) {
+        verifyRanges(cellRange, { row, column });
+        widget.setCellWidget(row, column, cellWidget);
       }
     },
     set currentCell({ row, column }: CellRange) {
+      verifyRanges(cellRange, { row, column });
       widget.setCurrentCell(row, column);
     },
     set sortItems({ column, order }: Sort) {
+      verifyRanges(cellRange, { column });
       widget.sortItems(column, order);
     },
     set selectedColumn(column: number) {
+      verifyRanges(cellRange, { column });
       widget.selectColumn(column);
     },
     set selectedRow(row: number) {
@@ -94,11 +113,13 @@ export const setTableProps = (widget: RNTable, newProps: CustomTableProps, oldPr
     },
     set columnWidth(sizes: ColumnSize[]) {
       for (const { column, width } of sizes) {
+        verifyRanges(cellRange, { column });
         widget.setColumnWidth(column, width);
       }
     },
     set rowHeight(sizes: RowSize[]) {
       for (const { row, width } of sizes) {
+        verifyRanges(cellRange, { row });
         widget.setRowHeight(row, width);
       }
     },
@@ -106,20 +127,14 @@ export const setTableProps = (widget: RNTable, newProps: CustomTableProps, oldPr
       widget.setSortingEnabled(sortingEnabled);
     },
     set hideColumns(columns: number[]) {
-      const totalColumns = widget.columnCount();
       for (const column of columns) {
-        if (column > totalColumns || column < totalColumns) {
-          console.warn(`${column} isn't within the range`);
-        }
+        verifyRanges(cellRange, { column });
         widget.hideColumn(column);
       }
     },
     set hideRows(rows: number[]) {
-      const totalRows = widget.rowCount();
       for (const row of rows) {
-        if (row > totalRows || row < totalRows) {
-          console.warn(`${row} isn't within the range`);
-        }
+        verifyRanges(cellRange, { row });
         widget.hideRow(row);
       }
     },
@@ -145,10 +160,7 @@ export class RNTable extends QTableWidget implements RNComponent {
     }
     const row = this.rowCount();
     const column = this.columnCount();
-    if (cellPosition[0] > row || cellPosition[1] > column) {
-      console.warn("position of this TableItem isn't valid");
-      return;
-    }
+    verifyRanges({ row, column }, { row: cellPosition[0], column: cellPosition[1] });
     this.setItem(cellPosition[0], cellPosition[1], child);
   }
   appendChild(child: RNTableItem): void {
