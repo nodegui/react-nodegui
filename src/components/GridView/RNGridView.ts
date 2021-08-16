@@ -80,7 +80,7 @@ export class RNGridView extends QWidget implements RNComponent {
   childRows: Array<DataWithOffset<RNGridRow>> = [];
 
   get layout() {
-    return this.layout;
+    return this._layout;
   }
 
   set layout(l: QGridLayout) {
