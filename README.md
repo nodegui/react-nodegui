@@ -150,6 +150,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://gregbenner.life"><img src="https://avatars3.githubusercontent.com/u/1177690?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Greg B</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=gregbenner" title="Documentation">📖</a></td>
     <td align="center"><a href="http://eeems.website"><img src="https://avatars1.githubusercontent.com/u/1176979?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nathaniel van Diepen</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=Eeems" title="Code">💻</a></td>
     <td align="center"><a href="http://N/A"><img src="https://avatars.githubusercontent.com/u/61944859?v=4?s=100" width="100px;" alt=""/><br /><sub><b>KR Tirtho</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=KRTirtho" title="Code">💻</a></td>
+    <td align="center"><a href="http://thelmgn.com"><img src="https://avatars.githubusercontent.com/u/12257112?v=4?s=100" width="100px;" alt=""/><br /><sub><b>theLMGN</b></sub></a><br /><a href="https://github.com/nodegui/react-nodegui/commits?author=theLMGN" title="Code">💻</a></td>
   </tr>
 </table>
 
