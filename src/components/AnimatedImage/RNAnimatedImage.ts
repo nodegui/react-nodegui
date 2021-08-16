@@ -20,7 +20,7 @@ const setAnimatedImageProps = (
         return;
       }
       getLoadedQMovie(imageUrlOrPath)
-        .then(movie => {
+        .then((movie) => {
           widget.setMovie(movie);
           widget.movie()?.start();
         })
@@ -31,7 +31,7 @@ const setAnimatedImageProps = (
       movie.loadFromData(imageBuffer);
       widget.setMovie(movie);
       widget.movie()?.start();
-    }
+    },
   };
   Object.assign(setter, newProps);
   setTextProps(widget, newProps, oldProps);

@@ -83,7 +83,7 @@ export class RNGridView extends QWidget implements RNComponent {
     return this._layout;
   }
 
-  set layout(l: QGridLayout) {
+  set layout(l: QGridLayout | undefined) {
     this._layout = l;
   }
 
