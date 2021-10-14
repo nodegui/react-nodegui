@@ -6,8 +6,8 @@ export function throwUnsupported(instance: object) {
 
 export function isValidUrl(str: string) {
   try {
-    new URL(str);
-    return true;
+    const url = new URL(str);
+    return url.protocol === "http" || url.protocol === "https";
   } catch (_) {
     return false;
   }
