@@ -32,6 +32,8 @@ export { InputDialog } from "./components/InputDialog";
 export { ProgressDialog } from "./components/ProgressDialog";
 export { Table } from "./components/Table";
 export { TableItem } from "./components/TableItem";
+export { List } from "./components/List";
+export { ListItem } from "./components/ListItem";
 export { ErrorPrompt } from "./components/ErrorPrompt"
 export { useEventHandler } from "./hooks";
 export { Renderer } from "./renderer";
