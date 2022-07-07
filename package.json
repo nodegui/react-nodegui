@@ -20,7 +20,7 @@
     "docs": "typedoc && node ./website/docs/scripts/fixdocs.js"
   },
   "dependencies": {
-    "@nodegui/nodegui": "^0.36.0",
+    "@nodegui/nodegui": "^0.40.1",
     "@types/react-reconciler": "^0.18.0",
     "phin": "3.5.1",
     "react-deep-force-update": "^2.1.3",
@@ -28,14 +28,15 @@
     "react-reconciler": "^0.25.1"
   },
   "peerDependencies": {
-    "react": "^17.0.2"
+    "react": "^16.14.0"
   },
   "devDependencies": {
-    "@types/node": "^16.6.1",
+    "@types/node": "^16.11.0",
+    "@types/react": "^16.14.0",
     "prettier": "^2.3.2",
-    "react": "^16.13.1",
+    "react": "^16.14.0",
     "typedoc": "^0.17.8",
     "typedoc-plugin-markdown": "^2.4.2",
-    "typescript": "^4.3.5"
+    "typescript": "^4.4.4"
   }
 }
