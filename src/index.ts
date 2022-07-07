@@ -15,6 +15,7 @@ export { LineEdit } from "./components/LineEdit";
 export { Menu } from "./components/Menu";
 export { MenuBar } from "./components/MenuBar";
 export { PlainTextEdit } from "./components/PlainTextEdit";
+export { Calendar } from "./components/Calendar";
 export { ProgressBar } from "./components/ProgressBar";
 export { RadioButton } from "./components/RadioButton";
 export { Dial } from "./components/Dial";
@@ -34,7 +35,7 @@ export { Table } from "./components/Table";
 export { TableItem } from "./components/TableItem";
 export { List } from "./components/List";
 export { ListItem } from "./components/ListItem";
-export { ErrorPrompt } from "./components/ErrorPrompt"
+export { ErrorPrompt } from "./components/ErrorPrompt";
 export { useEventHandler } from "./hooks";
 export { Renderer } from "./renderer";
 export { hot, appProxy } from "./development/hot-reload";
