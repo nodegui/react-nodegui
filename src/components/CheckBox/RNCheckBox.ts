@@ -1,4 +1,4 @@
-import { QCheckBox, NodeWidget, QCheckBoxSignals } from "@nodegui/nodegui";
+import { QCheckBox, QWidget, QCheckBoxSignals } from "@nodegui/nodegui";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
 import {
@@ -55,16 +55,16 @@ export class RNCheckBox extends QCheckBox implements RNWidget {
   setProps(newProps: CheckBoxProps, oldProps: CheckBoxProps): void {
     setCheckBoxProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
   static tagName = "checkbox";

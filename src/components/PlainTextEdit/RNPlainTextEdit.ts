@@ -1,6 +1,6 @@
 import {
   QPlainTextEdit,
-  NodeWidget,
+  QWidget,
   QPlainTextEditSignals
 } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
@@ -66,16 +66,16 @@ export class RNPlainTextEdit extends QPlainTextEdit implements RNWidget {
   setProps(newProps: PlainTextEditProps, oldProps: PlainTextEditProps): void {
     setPlainTextEditProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
   static tagName = "plaintextedit";

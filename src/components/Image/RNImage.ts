@@ -2,7 +2,7 @@ import {
   QLabel,
   QPixmap,
   AspectRatioMode,
-  NodeWidget,
+  QWidget,
   QSize,
   TransformationMode,
 } from "@nodegui/nodegui";
@@ -77,16 +77,16 @@ export class RNImage extends QLabel implements RNWidget {
   setProps(newProps: ImageProps, oldProps: ImageProps): void {
     setImageProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
   static tagName = "image";

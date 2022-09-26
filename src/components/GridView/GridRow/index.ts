@@ -14,7 +14,7 @@ class GridRowConfig extends ComponentConfig {
     context: any,
     workInProgress: Fiber
   ): RNGridRow {
-    const widget = new RNGridRow();
+    const widget = new RNGridRow(null!);
     widget.setProps(newProps, newProps);
     return widget;
   }

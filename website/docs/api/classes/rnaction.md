@@ -85,7 +85,7 @@ Name | Type |
 
 **Returns:** *[RNAction](rnaction.md)*
 
-\+ **new RNAction**(`parent`: NodeWidget‹any›): *[RNAction](rnaction.md)*
+\+ **new RNAction**(`parent`: QWidget‹any›): *[RNAction](rnaction.md)*
 
 *Inherited from [RNAction](rnaction.md).[constructor](rnaction.md#constructor)*
 
@@ -95,7 +95,7 @@ Name | Type |
 
 Name | Type |
 ------ | ------ |
-`parent` | NodeWidget‹any› |
+`parent` | QWidget‹any› |
 
 **Returns:** *[RNAction](rnaction.md)*
 

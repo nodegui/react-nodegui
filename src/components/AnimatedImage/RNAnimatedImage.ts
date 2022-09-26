@@ -1,4 +1,4 @@
-import { QLabel, NodeWidget, QMovie, QSize } from "@nodegui/nodegui";
+import { QLabel, QWidget, QMovie, QSize } from "@nodegui/nodegui";
 import { TextProps, setTextProps } from "../Text/RNText";
 import { RNWidget } from "../config";
 import { throwUnsupported, isValidUrl } from "../../utils/helpers";
@@ -44,16 +44,16 @@ export class RNAnimatedImage extends QLabel implements RNWidget {
   setProps(newProps: AnimatedImageProps, oldProps: AnimatedImageProps): void {
     setAnimatedImageProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
   static tagName = "animatedimage";

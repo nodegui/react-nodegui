@@ -1,5 +1,5 @@
 import { FunctionComponentElement } from "react";
-import { Component, NodeWidget } from "@nodegui/nodegui";
+import { Component, QWidget } from "@nodegui/nodegui";
 import { RNComponent } from "../../config";
 import { RNGridRow } from "../GridRow/RNGridRow";
 
@@ -18,8 +18,8 @@ const setGridColumnProps = (
 ) => {
   if (widget.actualWidget) {
     // TODO: Optimize this
-    parentRow.parentGrid?.layout?.removeWidget(widget.actualWidget);
-    parentRow.parentGrid?.layout?.addWidget(
+    parentRow.parentGrid?.layout()?.removeWidget(widget.actualWidget);
+    parentRow.parentGrid?.layout()?.addWidget(
       widget.actualWidget,
       parentRow.rowIndex ?? 0,
       widget.columnIndex ?? 0,
@@ -38,7 +38,7 @@ const setGridColumnProps = (
 
 export class RNGridColumn extends Component implements RNComponent {
   native: any;
-  actualWidget?: NodeWidget<any>;
+  actualWidget?: QWidget<any>;
   parentRow?: RNGridRow;
   latestProps?: GridColumnProps;
   prevProps?: GridColumnProps;
@@ -61,7 +61,7 @@ export class RNGridColumn extends Component implements RNComponent {
       return;
     }
 
-    this.parentRow?.parentGrid?.layout?.removeWidget(this.actualWidget);
+    this.parentRow?.parentGrid?.layout()?.removeWidget(this.actualWidget);
     this.actualWidget.close();
     this.actualWidget = undefined;
   }
@@ -76,19 +76,19 @@ export class RNGridColumn extends Component implements RNComponent {
     this.latestProps = newProps;
     this.prevProps = oldProps;
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     if (this.actualWidget) {
       throw new Error("Grid column can have only one child");
     }
     this.actualWidget = child;
   }
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     this.appendInitialChild(child);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     this.appendInitialChild(child);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     this.remove();
   }
   static tagName: string = "gridcolumn";

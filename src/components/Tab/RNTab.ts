@@ -3,7 +3,7 @@ import {
   QTabWidgetSignals,
   TabPosition,
   QIcon,
-  NodeWidget
+  QWidget
 } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
 import { RNComponent } from "../config";
@@ -56,13 +56,13 @@ export class RNTab extends QTabWidget implements RNComponent {
     if (!(child instanceof RNTabItem)) {
       throw new Error("Children of tab should be of type TabItem");
     }
-    const index = this.indexOf(beforeChild.actualTabWidget as NodeWidget<any>);
-    this.insertTab(index, child.actualTabWidget as NodeWidget<any>, new QIcon(), "");
+    const index = this.indexOf(beforeChild.actualTabWidget as QWidget<any>);
+    this.insertTab(index, child.actualTabWidget as QWidget<any>, new QIcon(), "");
     child.parentTab = this;
     setTabItemProps(child, this, child.initialProps, {});
   }
   removeChild(child: RNTabItem): void {
-    const childIndex = this.indexOf(child.actualTabWidget as NodeWidget<any>);
+    const childIndex = this.indexOf(child.actualTabWidget as QWidget<any>);
     this.removeTab(childIndex);
   }
   static tagName = "tabwidget";

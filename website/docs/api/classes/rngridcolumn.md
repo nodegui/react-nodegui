@@ -58,7 +58,7 @@ sidebar_label: "RNGridColumn"
 
 ### `Optional` actualWidget
 
-• **actualWidget**? : *NodeWidget‹any›*
+• **actualWidget**? : *QWidget‹any›*
 
 ___
 
@@ -124,13 +124,13 @@ ___
 
 ###  appendChild
 
-▸ **appendChild**(`child`: NodeWidget‹any›): *void*
+▸ **appendChild**(`child`: QWidget‹any›): *void*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`child` | NodeWidget‹any› |
+`child` | QWidget‹any› |
 
 **Returns:** *void*
 
@@ -138,13 +138,13 @@ ___
 
 ###  appendInitialChild
 
-▸ **appendInitialChild**(`child`: NodeWidget‹any›): *void*
+▸ **appendInitialChild**(`child`: QWidget‹any›): *void*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`child` | NodeWidget‹any› |
+`child` | QWidget‹any› |
 
 **Returns:** *void*
 
@@ -152,14 +152,14 @@ ___
 
 ###  insertBefore
 
-▸ **insertBefore**(`child`: NodeWidget‹any›, `beforeChild`: NodeWidget‹any›): *void*
+▸ **insertBefore**(`child`: QWidget‹any›, `beforeChild`: QWidget‹any›): *void*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`child` | NodeWidget‹any› |
-`beforeChild` | NodeWidget‹any› |
+`child` | QWidget‹any› |
+`beforeChild` | QWidget‹any› |
 
 **Returns:** *void*
 
@@ -175,13 +175,13 @@ ___
 
 ###  removeChild
 
-▸ **removeChild**(`child`: NodeWidget‹any›): *void*
+▸ **removeChild**(`child`: QWidget‹any›): *void*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`child` | NodeWidget‹any› |
+`child` | QWidget‹any› |
 
 **Returns:** *void*
 

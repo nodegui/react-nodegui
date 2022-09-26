@@ -124,7 +124,7 @@ sidebar_label: "RNMenu"
 
 **Returns:** *[RNMenu](rnmenu.md)*
 
-\+ **new RNMenu**(`parent`: NodeWidget‹any›): *[RNMenu](rnmenu.md)*
+\+ **new RNMenu**(`parent`: QWidget‹any›): *[RNMenu](rnmenu.md)*
 
 *Inherited from [RNMenu](rnmenu.md).[constructor](rnmenu.md#constructor)*
 
@@ -134,7 +134,7 @@ sidebar_label: "RNMenu"
 
 Name | Type |
 ------ | ------ |
-`parent` | NodeWidget‹any› |
+`parent` | QWidget‹any› |
 
 **Returns:** *[RNMenu](rnmenu.md)*
 
@@ -158,7 +158,7 @@ ___
 
 ### `Optional` layout
 
-• **layout**? : *NodeLayout‹QMenuSignals›*
+• **layout**? : *QLayout‹QMenuSignals›*
 
 *Inherited from void*
 
@@ -959,7 +959,7 @@ ___
 
 ###  setLayout
 
-▸ **setLayout**(`parentLayout`: NodeLayout‹QMenuSignals›): *void*
+▸ **setLayout**(`parentLayout`: QLayout‹QMenuSignals›): *void*
 
 *Inherited from void*
 
@@ -967,7 +967,7 @@ ___
 
 Name | Type |
 ------ | ------ |
-`parentLayout` | NodeLayout‹QMenuSignals› |
+`parentLayout` | QLayout‹QMenuSignals› |
 
 **Returns:** *void*
 

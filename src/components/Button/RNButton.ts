@@ -1,4 +1,4 @@
-import { QPushButton, NodeWidget, QPushButtonSignals } from "@nodegui/nodegui";
+import { QPushButton, QWidget, QPushButtonSignals } from "@nodegui/nodegui";
 import {
   AbstractButtonProps,
   setAbstractButtonProps
@@ -52,16 +52,16 @@ const setButtonProps = (
  * @ignore
  */
 export class RNButton extends QPushButton implements RNWidget {
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
   setProps(newProps: ButtonProps, oldProps: ButtonProps) {

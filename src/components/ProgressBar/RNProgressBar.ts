@@ -1,7 +1,7 @@
 import {
   QProgressBar,
   Orientation,
-  NodeWidget,
+  QWidget,
   QProgressBarSignals
 } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
@@ -62,16 +62,16 @@ export class RNProgressBar extends QProgressBar implements RNWidget {
   setProps(newProps: ProgressBarProps, oldProps: ProgressBarProps): void {
     setProgressBarProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
   static tagName = "progressbar";

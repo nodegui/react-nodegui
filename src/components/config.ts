@@ -1,4 +1,4 @@
-import { NodeWidget, Component } from "@nodegui/nodegui";
+import { QWidget, Component } from "@nodegui/nodegui";
 import { Fiber } from "react-reconciler";
 import { AppContainer } from "../reconciler";
 
@@ -14,16 +14,16 @@ export abstract class RNComponent {
   abstract insertBefore(child: Component, beforeChild: Component): void;
   abstract removeChild(child: Component): void;
 }
-export abstract class RNWidget extends NodeWidget<any> implements RNComponent {
+export abstract class RNWidget extends QWidget<any> implements RNComponent {
   static tagName: string;
   abstract setProps(newProps: RNProps, oldProps: RNProps): void;
-  abstract appendInitialChild(child: NodeWidget<any>): void;
-  abstract appendChild(child: NodeWidget<any>): void;
+  abstract appendInitialChild(child: QWidget<any>): void;
+  abstract appendChild(child: QWidget<any>): void;
   abstract insertBefore(
-    child: NodeWidget<any>,
-    beforeChild: NodeWidget<any>
+    child: QWidget<any>,
+    beforeChild: QWidget<any>
   ): void;
-  abstract removeChild(child: NodeWidget<any>): void;
+  abstract removeChild(child: QWidget<any>): void;
 }
 export abstract class ComponentConfig {
   abstract tagName: string;

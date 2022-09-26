@@ -209,7 +209,7 @@ ___
 
 ###  NodeGuiReconciler
 
-Ƭ **NodeGuiReconciler**: *Reconciler‹RNComponent, any, Set‹NodeWidget‹any››, any›*
+Ƭ **NodeGuiReconciler**: *Reconciler‹RNComponent, any, Set‹QWidget‹any››, any›*
 
 ___
 

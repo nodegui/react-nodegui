@@ -1,4 +1,4 @@
-import { NodeWidget, QFileDialog, DialogLabel, QFileDialogSignals, Option } from "@nodegui/nodegui";
+import { QWidget, QFileDialog, DialogLabel, QFileDialogSignals, Option } from "@nodegui/nodegui";
 import { throwUnsupported } from "../../utils/helpers";
 import { RNWidget } from "../config";
 import { DialogProps, setDialogProps } from "../Dialog/RNDialog";
@@ -47,16 +47,16 @@ export class RNFileDialog extends QFileDialog implements RNWidget {
   setProps(newProps: FileDialogProps, oldProps: FileDialogProps): void {
     setFileDialogProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
   static tagName = "file-dialog";

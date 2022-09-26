@@ -1,4 +1,4 @@
-import { NodeWidget, QColor, QColorDialog, QColorDialogSignals } from "@nodegui/nodegui";
+import { QWidget, QColor, QColorDialog, QColorDialogSignals } from "@nodegui/nodegui";
 import { ColorDialogOption } from "@nodegui/nodegui/dist/lib/QtWidgets/QColorDialog";
 import { throwUnsupported } from "../../utils/helpers";
 import { RNWidget } from "../config";
@@ -31,16 +31,16 @@ export class RNColorDialog extends QColorDialog implements RNWidget {
   setProps(newProps: ColorDialogProps, oldProps: ColorDialogProps): void {
     setColorDialogProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
   static tagName = "color-dialog";

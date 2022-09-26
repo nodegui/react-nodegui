@@ -1,4 +1,4 @@
-import { NodeWidget, QMenu, QMenuBar, QMenuBarSignals } from "@nodegui/nodegui";
+import { QWidget, QMenu, QMenuBar, QMenuBarSignals } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
@@ -35,13 +35,13 @@ export class RNMenuBar extends QMenuBar implements RNWidget {
   appendChild(child: QMenu): void {
     this.appendInitialChild(child);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     console.warn(
       "Updating menubar is not yet supported. Please help by raising a PR"
     );
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     console.warn(
       "Updating menubar is not yet supported. Please help by raising a PR"
     );

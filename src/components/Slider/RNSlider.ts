@@ -1,4 +1,4 @@
-import { QSlider, NodeWidget, QSliderSignals, TickPosition, Orientation } from '@nodegui/nodegui';
+import { QSlider, QWidget, QSliderSignals, TickPosition, Orientation } from '@nodegui/nodegui';
 import { setViewProps, ViewProps } from '../View/RNView';
 import { RNWidget } from '../config';
 import { throwUnsupported } from '../../utils/helpers';
@@ -77,19 +77,19 @@ export class RNSlider extends QSlider implements RNWidget {
     setSliderProps(this, newProps, oldProps);
   }
 
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
 
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
 
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     throwUnsupported(this);
   }
 
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
 

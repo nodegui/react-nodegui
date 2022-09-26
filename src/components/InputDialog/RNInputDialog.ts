@@ -1,4 +1,4 @@
-import { EchoMode, InputDialogOptions, InputMode, NodeWidget, QInputDialog, QInputDialogSignals } from "@nodegui/nodegui";
+import { EchoMode, InputDialogOptions, InputMode, QWidget, QInputDialog, QInputDialogSignals } from "@nodegui/nodegui";
 import { throwUnsupported } from "../../utils/helpers";
 import { RNWidget } from "../config";
 import { DialogProps, setDialogProps } from "../Dialog/RNDialog";
@@ -85,16 +85,16 @@ export class RNInputDialog extends QInputDialog implements RNWidget {
   setProps(newProps: InputDialogProps, oldProps: InputDialogProps): void {
     setInputDialogProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
   static tagName = "input-dialog";

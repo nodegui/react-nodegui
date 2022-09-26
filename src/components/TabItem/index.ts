@@ -14,7 +14,7 @@ class TabItemConfig extends ComponentConfig {
     context: any,
     workInProgress: Fiber
   ): RNTabItem {
-    const item = new RNTabItem();
+    const item = new RNTabItem(null!);
     item.setProps(newProps, {});
     return item;
   }
