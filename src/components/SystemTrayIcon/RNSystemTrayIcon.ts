@@ -47,7 +47,7 @@ export interface SystemTrayIconProps extends RNProps {
   icon?: QIcon;
 
   /**
-   * Sets the object name (id) of the widget in Qt. Object name can be analogous to id of an element in the web world. Using the objectName of the widget one can reference it in the Qt's stylesheet much like what we do with id in the web world. [QWidget: setObjectName](https://docs.nodegui.org/docs/api/QWidget#widgetsetobjectnameobjectname)
+   * Sets the object name (id) of the widget in Qt. Object name can be analogous to id of an element in the web world. Using the objectName of the widget one can reference it in the Qt's stylesheet much like what we do with id in the web world. [QWidget: setObjectName](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetobjectnameobjectname)
    */
   id?: string;
 
@@ -62,7 +62,7 @@ export interface SystemTrayIconProps extends RNProps {
   tooltip?: string;
 
   /**
-   * Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui.org/docs/api/QWidget#widgetshow)
+   * Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetshow)
    */
   visible?: boolean;
 }

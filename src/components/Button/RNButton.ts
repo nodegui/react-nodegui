@@ -8,7 +8,7 @@ import { throwUnsupported } from "../../utils/helpers";
 
 /**
  * The Button component provides ability to add and manipulate native button widgets. It is based on
- * [NodeGui's QPushButton](https://docs.nodegui.org/docs/api/QPushButton).
+ * [NodeGui's QPushButton](https://docs.nodegui.org/docs/api/generated/classes/QPushButton).
  * ## Example
  * ```javascript
  * import React from "react";
@@ -29,7 +29,7 @@ import { throwUnsupported } from "../../utils/helpers";
  */
 export interface ButtonProps extends AbstractButtonProps<QPushButtonSignals> {
   /**
-   * Sets whether the button border is raised. [QPushButton: setFlat](https://docs.nodegui.org/docs/api/QPushButton#buttonsetflatisflat)
+   * Sets whether the button border is raised. [QPushButton: setFlat](https://docs.nodegui.org/docs/api/generated/classes/QPushButton#buttonsetflatisflat)
    */
   flat?: boolean;
 }

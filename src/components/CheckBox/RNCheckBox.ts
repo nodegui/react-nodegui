@@ -8,7 +8,7 @@ import {
 
 /**
  * The CheckBox component provides ability to add and manipulate native button widgets. It is based on
- * [NodeGui's QCheckBox](https://docs.nodegui.org/docs/api/QCheckBox).
+ * [NodeGui's QCheckBox](https://docs.nodegui.org/docs/api/generated/classes/QCheckBox).
  * ## Example
  * ```javascript
  * import React from "react";
@@ -29,7 +29,7 @@ import {
  */
 export interface CheckBoxProps extends AbstractButtonProps<QCheckBoxSignals> {
   /**
-   * This property holds whether the button is checked. [QCheckBox: setChecked](https://docs.nodegui.org/docs/api/QCheckBox/#checkboxsetcheckedcheck)
+   * This property holds whether the button is checked. [QCheckBox: setChecked](https://docs.nodegui.org/docs/api/generated/classes/QCheckBox/#checkboxsetcheckedcheck)
    */
   checked?: boolean;
 }
