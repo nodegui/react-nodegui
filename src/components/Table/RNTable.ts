@@ -155,7 +155,7 @@ export class RNTable extends QTableWidget implements RNComponent {
   }
   appendInitialChild(child: RNTableItem): void {
     const { cellPosition } = child;
-    if (!this.layout) {
+    if (!this.layout()) {
       this.setLayout(new FlexLayout());
     }
     const row = this.rowCount();

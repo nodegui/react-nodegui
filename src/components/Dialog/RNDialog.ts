@@ -51,7 +51,7 @@ export class RNDialog extends QDialog implements RNWidget {
     if (!child || child instanceof QDialog) {
       return;
     }
-    if (!this.layout) {
+    if (!this.layout()) {
       const flexLayout = new FlexLayout();
       flexLayout.setFlexNode(this.getFlexNode());
       this.setLayout(flexLayout);
@@ -64,7 +64,7 @@ export class RNDialog extends QDialog implements RNWidget {
     }
   }
   removeChild(child: QWidget<any>): void {
-    if (!this.layout) {
+    if (!this.layout()) {
       console.warn("parent has no layout to remove child from");
       return;
     }

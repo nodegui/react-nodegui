@@ -241,7 +241,7 @@ export class RNView extends QWidget implements RNWidget {
     this.layout()!.addWidget(child);
   }
   removeChild(child: QWidget<any>) {
-    if (!this.layout) {
+    if (!this.layout()) {
       console.warn("parent has no layout to remove child from");
       return;
     }
