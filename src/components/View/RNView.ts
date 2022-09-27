@@ -1,4 +1,4 @@
-import { QWidget, WindowState, QCursor, CursorShape, QIcon, FlexLayout, WidgetEventTypes, QWidgetSignals } from "@nodegui/nodegui";
+import { QWidget, WindowState, QCursor, CursorShape, QIcon, FlexLayout, WidgetEventTypes, QWidgetSignals, QLayout, QObjectSignals } from "@nodegui/nodegui";
 import { NativeRawPointer } from "@nodegui/nodegui/dist/lib/core/Component";
 import { QDialog } from "@nodegui/nodegui/dist/lib/QtWidgets/QDialog";
 import { RNWidget, RNProps } from "../config";
@@ -215,6 +215,15 @@ export function setViewProps<Signals extends {}>(widget: QWidget<any>, newProps:
  * @ignore
  */
 export class RNView extends QWidget implements RNWidget {
+  private _layout: QLayout<QObjectSignals> | null = null;
+
+  layout() {
+    return this._layout;
+  }
+  setLayout(layout: QLayout<QObjectSignals>) {
+    this._layout = layout;
+    super.setLayout(layout);
+  }
   setProps(newProps: ViewProps<QWidgetSignals>, oldProps: ViewProps<QWidgetSignals>): void {
     setViewProps(this, newProps, oldProps);
   }
