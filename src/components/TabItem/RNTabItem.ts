@@ -1,4 +1,4 @@
-import { NodeWidget, QIcon, Component } from "@nodegui/nodegui";
+import { QWidget, QIcon, Component } from "@nodegui/nodegui";
 import { RNComponent, RNProps } from "../config";
 import { RNTab } from "../Tab/RNTab";
 
@@ -41,7 +41,7 @@ export const setTabItemProps = (
  */
 export class RNTabItem extends Component implements RNComponent {
   native: any;
-  actualTabWidget?: NodeWidget<any>;
+  actualTabWidget?: QWidget<any>;
   initialProps: TabItemProps = {};
   parentTab?: RNTab;
 
@@ -52,19 +52,19 @@ export class RNTabItem extends Component implements RNComponent {
       this.initialProps = newProps;
     }
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     if (this.actualTabWidget) {
       throw new Error("Tab Item can have only one child");
     }
     this.actualTabWidget = child;
   }
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     this.appendInitialChild(child);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     this.appendInitialChild(child);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     child.close();
     delete this.actualTabWidget;
   }

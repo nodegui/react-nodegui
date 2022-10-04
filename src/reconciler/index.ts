@@ -1,5 +1,5 @@
 import Reconciler from "react-reconciler";
-import { NodeWidget, QSystemTrayIcon, NodeObject } from "@nodegui/nodegui";
+import { QWidget, QSystemTrayIcon, QObject } from "@nodegui/nodegui";
 import {
   getComponentByTagName,
   RNWidget,
@@ -7,10 +7,10 @@ import {
   RNComponent
 } from "../components/config";
 
-export type AppContainer = Set<NodeWidget<any>>;
-export const appContainer: AppContainer = new Set<NodeWidget<any>>();
+export type AppContainer = Set<QWidget<any>>;
+export const appContainer: AppContainer = new Set<QWidget<any>>();
 
-const shouldIgnoreChild = (child: NodeObject<any>) =>
+const shouldIgnoreChild = (child: QObject<any>) =>
   child instanceof QSystemTrayIcon;
 
 const HostConfig: Reconciler.HostConfig<
@@ -69,7 +69,7 @@ const HostConfig: Reconciler.HostConfig<
       workInProgress
     );
   },
-  appendInitialChild: function (parent: RNWidget, child: NodeWidget<any>) {
+  appendInitialChild: function (parent: RNWidget, child: QWidget<any>) {
     if (shouldIgnoreChild(child)) {
       return;
     }
@@ -100,7 +100,7 @@ const HostConfig: Reconciler.HostConfig<
     const { commitMount } = getComponentByTagName(type);
     return commitMount(instance, newProps, internalInstanceHandle);
   },
-  appendChildToContainer: function(container, child: NodeWidget<any>) {
+  appendChildToContainer: function(container, child: QWidget<any>) {
     container.add(child);
   },
   insertInContainerBefore: (container, child, beforeChild) => {
@@ -146,7 +146,7 @@ const HostConfig: Reconciler.HostConfig<
       finishedWork
     );
   },
-  appendChild: (parent: RNWidget, child: NodeWidget<any>) => {
+  appendChild: (parent: RNWidget, child: QWidget<any>) => {
     if (shouldIgnoreChild(child)) {
       return;
     }
@@ -154,15 +154,15 @@ const HostConfig: Reconciler.HostConfig<
   },
   insertBefore: (
     parent: RNWidget,
-    child: NodeWidget<any>,
-    beforeChild: NodeWidget<any>
+    child: QWidget<any>,
+    beforeChild: QWidget<any>
   ) => {
     if (shouldIgnoreChild(child)) {
       return;
     }
     parent.insertBefore(child, beforeChild);
   },
-  removeChild: (parent: RNWidget, child: NodeWidget<any>) => {
+  removeChild: (parent: RNWidget, child: QWidget<any>) => {
     if (!shouldIgnoreChild(child)) {
       parent.removeChild(child);
     }
@@ -195,10 +195,10 @@ const HostConfig: Reconciler.HostConfig<
     return false;
   },
   //@ts-ignore
-  hideInstance: (instance: NodeWidget<any>) => {
+  hideInstance: (instance: QWidget<any>) => {
     instance.hide();
   },
-  unhideInstance: (instance: NodeWidget<any>, Props: RNProps) => {
+  unhideInstance: (instance: QWidget<any>, Props: RNProps) => {
     instance.show();
   },
   hideTextInstance: (instance: any) => {
@@ -207,7 +207,7 @@ const HostConfig: Reconciler.HostConfig<
       "hideTextInstance called when platform doesnt have host level text"
     );
   },
-  unhideTextInstance: (instance: NodeWidget<any>, Props: RNProps) => {
+  unhideTextInstance: (instance: QWidget<any>, Props: RNProps) => {
     // noop since we dont have any host text
     console.warn(
       "unhideTextInstance called when platform doesnt have host level text"

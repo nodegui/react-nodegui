@@ -6,7 +6,7 @@ sidebar_label: "ViewProps"
 
 The View component can be used to encapsulate other components and provide structure.
 It functions similar to a div in the web world. It is based on
-[NodeGui's QWidget](https://docs.nodegui.org/docs/api/QWidget).
+[NodeGui's QWidget](https://docs.nodegui.org/docs/api/generated/classes/QWidget).
 ## Example
 ```javascript
 import React from "react";
@@ -109,7 +109,7 @@ ___
 
 • **cursor**? : *CursorShape | QCursor*
 
-Sets the window mouse cursor. [QWidget: setCursor](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetcursorcursor)
+Sets the window mouse cursor. [QWidget: setCursor](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetcursorcursor)
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 • **enabled**? : *undefined | false | true*
 
-Sets the property that tells whether the widget is enabled. In general an enabled widget handles keyboard and mouse events; a disabled widget does not. [QWidget: setEnabled](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetenabledenabled)
+Sets the property that tells whether the widget is enabled. In general an enabled widget handles keyboard and mouse events; a disabled widget does not. [QWidget: setEnabled](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetenabledenabled)
 
 ___
 
@@ -125,7 +125,7 @@ ___
 
 • **geometry**? : *[Geometry](../globals.md#geometry)*
 
-Sets the screen position as well as size of the widget. [QWidget: setGeometry](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetgeometryx-y-width-height)
+Sets the screen position as well as size of the widget. [QWidget: setGeometry](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetgeometryx-y-width-height)
 
 ___
 
@@ -133,7 +133,7 @@ ___
 
 • **id**? : *undefined | string*
 
-Sets the object name (id) of the widget in Qt. Object name can be analogous to id of an element in the web world. Using the objectName of the widget one can reference it in the Qt's stylesheet much like what we do with id in the web world. [QWidget: setObjectName](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetobjectnameobjectname)
+Sets the object name (id) of the widget in Qt. Object name can be analogous to id of an element in the web world. Using the objectName of the widget one can reference it in the Qt's stylesheet much like what we do with id in the web world. [QWidget: setObjectName](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetobjectnameobjectname)
 
 ___
 
@@ -141,7 +141,7 @@ ___
 
 • **maxSize**? : *[Size](../globals.md#size)*
 
-Sets the maximum size of the widget. [QWidget: setMaximumSize](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetmaximumsizewidth-height)
+Sets the maximum size of the widget. [QWidget: setMaximumSize](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetmaximumsizewidth-height)
 
 ___
 
@@ -149,7 +149,7 @@ ___
 
 • **minSize**? : *[Size](../globals.md#size)*
 
-Sets the minimum size of the widget. [QWidget: setMinimumSize](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetminimumsizewidth-height)
+Sets the minimum size of the widget. [QWidget: setMinimumSize](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetminimumsizewidth-height)
 
 ___
 
@@ -157,7 +157,7 @@ ___
 
 • **mouseTracking**? : *undefined | false | true*
 
-Sets the property that tells whether mouseTracking is enabled for the widget. [QWidget: setMouseTracking](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetmousetrackingismousetracked)
+Sets the property that tells whether mouseTracking is enabled for the widget. [QWidget: setMouseTracking](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetmousetrackingismousetracked)
 
 ___
 
@@ -173,7 +173,7 @@ ___
 
 • **pos**? : *[Position](../globals.md#position)*
 
-Sets the screen position of the widget. [QWidget: move](https://docs.nodegui.org/docs/api/NodeWidget#widgetmovex-y)
+Sets the screen position of the widget. [QWidget: move](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetmovex-y)
 
 ___
 
@@ -189,7 +189,7 @@ ___
 
 • **size**? : *[ViewSize](../globals.md#viewsize)*
 
-Sets both the minimum and maximum sizes of the widget. [QWidget: setFixedSize](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetfixedsizewidth-height)
+Sets both the minimum and maximum sizes of the widget. [QWidget: setFixedSize](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetfixedsizewidth-height)
 
 ___
 
@@ -197,7 +197,7 @@ ___
 
 • **style**? : *undefined | string*
 
-Sets the inline stylesheet property. [QWidget: setInlineStyle](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetinlinestylestyle)
+Sets the inline stylesheet property. [QWidget: setInlineStyle](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetinlinestylestyle)
 
 ___
 
@@ -205,7 +205,7 @@ ___
 
 • **styleSheet**? : *undefined | string*
 
-Sets the property that holds the widget's style sheet. [QWidget: setStyleSheet](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetstylesheetstylesheet)
+Sets the property that holds the widget's style sheet. [QWidget: setStyleSheet](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetstylesheetstylesheet)
 
 ___
 
@@ -213,7 +213,7 @@ ___
 
 • **visible**? : *undefined | false | true*
 
-Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui.org/docs/api/NodeWidget#widgetshow)
+Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetshow)
 
 ___
 
@@ -230,7 +230,7 @@ ___
 
 • **windowIcon**? : *QIcon*
 
-Sets the window icon. [QWidget: setWindowIcon](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetwindowiconicon)
+Sets the window icon. [QWidget: setWindowIcon](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetwindowiconicon)
 
 ___
 
@@ -238,7 +238,7 @@ ___
 
 • **windowOpacity**? : *undefined | number*
 
-This property holds the level of opacity for the window. [QWidget: setWindowOpacity](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetwindowopacityopacity)
+This property holds the level of opacity for the window. [QWidget: setWindowOpacity](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetwindowopacityopacity)
 
 ___
 
@@ -246,7 +246,7 @@ ___
 
 • **windowState**? : *WindowState*
 
-Sets the window state. [QWidget: setWindowState](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetwindowstatestate)
+Sets the window state. [QWidget: setWindowState](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetwindowstatestate)
 
 ___
 
@@ -254,4 +254,4 @@ ___
 
 • **windowTitle**? : *undefined | string*
 
-Sets the window title property. [QWidget: setWindowTitle](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetwindowtitletitle)
+Sets the window title property. [QWidget: setWindowTitle](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetwindowtitletitle)

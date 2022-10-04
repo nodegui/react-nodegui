@@ -14,7 +14,7 @@ class GridColumnConfig extends ComponentConfig {
     context: any,
     workInProgress: Fiber
   ): RNGridColumn {
-    const widget = new RNGridColumn();
+    const widget = new RNGridColumn(null!);
     widget.setProps(newProps, newProps);
     return widget;
   }

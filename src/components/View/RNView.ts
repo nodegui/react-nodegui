@@ -1,12 +1,12 @@
-import { QWidget, WindowState, QCursor, CursorShape, NodeWidget, QIcon, FlexLayout, WidgetEventTypes, QWidgetSignals } from "@nodegui/nodegui";
+import { QWidget, WindowState, QCursor, CursorShape, QIcon, FlexLayout, WidgetEventTypes, QWidgetSignals, QLayout, QObjectSignals } from "@nodegui/nodegui";
 import { NativeRawPointer } from "@nodegui/nodegui/dist/lib/core/Component";
-import { NodeDialog } from "@nodegui/nodegui/dist/lib/QtWidgets/QDialog";
+import { QDialog } from "@nodegui/nodegui/dist/lib/QtWidgets/QDialog";
 import { RNWidget, RNProps } from "../config";
 
 /**
  * The View component can be used to encapsulate other components and provide structure.
  * It functions similar to a div in the web world. It is based on
- * [NodeGui's QWidget](https://docs.nodegui.org/docs/api/QWidget).
+ * [NodeGui's QWidget](https://docs.nodegui.org/docs/api/generated/classes/QWidget).
  * ## Example
  * ```javascript
  *import React from "react";
@@ -30,67 +30,67 @@ import { RNWidget, RNProps } from "../config";
 
 export interface ViewProps<Signals extends {}> extends RNProps {
   /**
-   * Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui.org/docs/api/NodeWidget#widgetshow)
+   * Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetshow)
    */
   visible?: boolean;
   /**
-   * Sets the property that holds the widget's style sheet. [QWidget: setStyleSheet](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetstylesheetstylesheet)
+   * Sets the property that holds the widget's style sheet. [QWidget: setStyleSheet](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetstylesheetstylesheet)
    */
   styleSheet?: string;
   /**
-   * Sets the inline stylesheet property. [QWidget: setInlineStyle](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetinlinestylestyle)
+   * Sets the inline stylesheet property. [QWidget: setInlineStyle](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetinlinestylestyle)
    */
   style?: string;
   /**
-   * Sets the screen position as well as size of the widget. [QWidget: setGeometry](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetgeometryx-y-width-height)
+   * Sets the screen position as well as size of the widget. [QWidget: setGeometry](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetgeometryx-y-width-height)
    */
   geometry?: Geometry;
   /**
-   * Sets the object name (id) of the widget in Qt. Object name can be analogous to id of an element in the web world. Using the objectName of the widget one can reference it in the Qt's stylesheet much like what we do with id in the web world. [QWidget: setObjectName](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetobjectnameobjectname)
+   * Sets the object name (id) of the widget in Qt. Object name can be analogous to id of an element in the web world. Using the objectName of the widget one can reference it in the Qt's stylesheet much like what we do with id in the web world. [QWidget: setObjectName](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetobjectnameobjectname)
    */
   id?: string;
   /**
-   * Sets the property that tells whether mouseTracking is enabled for the widget. [QWidget: setMouseTracking](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetmousetrackingismousetracked)
+   * Sets the property that tells whether mouseTracking is enabled for the widget. [QWidget: setMouseTracking](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetmousetrackingismousetracked)
    */
   mouseTracking?: boolean;
   /**
-   * Sets the property that tells whether the widget is enabled. In general an enabled widget handles keyboard and mouse events; a disabled widget does not. [QWidget: setEnabled](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetenabledenabled)
+   * Sets the property that tells whether the widget is enabled. In general an enabled widget handles keyboard and mouse events; a disabled widget does not. [QWidget: setEnabled](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetenabledenabled)
    */
   enabled?: boolean;
   /**
-   * This property holds the level of opacity for the window. [QWidget: setWindowOpacity](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetwindowopacityopacity)
+   * This property holds the level of opacity for the window. [QWidget: setWindowOpacity](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetwindowopacityopacity)
    */
   windowOpacity?: number;
   /**
-   * Sets the window title property. [QWidget: setWindowTitle](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetwindowtitletitle)
+   * Sets the window title property. [QWidget: setWindowTitle](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetwindowtitletitle)
    */
   windowTitle?: string;
   /**
-   * Sets the window state. [QWidget: setWindowState](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetwindowstatestate)
+   * Sets the window state. [QWidget: setWindowState](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetwindowstatestate)
    */
   windowState?: WindowState;
   /**
-   * Sets the window mouse cursor. [QWidget: setCursor](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetcursorcursor)
+   * Sets the window mouse cursor. [QWidget: setCursor](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetcursorcursor)
    */
   cursor?: CursorShape | QCursor;
   /**
-   * Sets the window icon. [QWidget: setWindowIcon](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetwindowiconicon)
+   * Sets the window icon. [QWidget: setWindowIcon](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetwindowiconicon)
    */
   windowIcon?: QIcon;
   /**
-   * Sets the minimum size of the widget. [QWidget: setMinimumSize](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetminimumsizewidth-height)
+   * Sets the minimum size of the widget. [QWidget: setMinimumSize](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetminimumsizewidth-height)
    */
   minSize?: Size;
   /**
-   * Sets the maximum size of the widget. [QWidget: setMaximumSize](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetmaximumsizewidth-height)
+   * Sets the maximum size of the widget. [QWidget: setMaximumSize](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetmaximumsizewidth-height)
    */
   maxSize?: Size;
   /**
-   * Sets both the minimum and maximum sizes of the widget. [QWidget: setFixedSize](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetfixedsizewidth-height)
+   * Sets both the minimum and maximum sizes of the widget. [QWidget: setFixedSize](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetfixedsizewidth-height)
    */
   size?: ViewSize;
   /**
-   * Sets the screen position of the widget. [QWidget: move](https://docs.nodegui.org/docs/api/NodeWidget#widgetmovex-y)
+   * Sets the screen position of the widget. [QWidget: move](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetmovex-y)
    */
   pos?: Position;
   /**
@@ -117,7 +117,7 @@ export interface ViewProps<Signals extends {}> extends RNProps {
 /**
  * @ignore
  */
-export function setViewProps<Signals extends {}>(widget: NodeWidget<any>, newProps: ViewProps<Signals>, oldProps: ViewProps<Signals>) {
+export function setViewProps<Signals extends {}>(widget: QWidget<any>, newProps: ViewProps<Signals>, oldProps: ViewProps<Signals>) {
   const setter: ViewProps<Signals> = {
     set visible(shouldShow: boolean) {
       shouldShow ? widget.show() : widget.hide();
@@ -215,38 +215,46 @@ export function setViewProps<Signals extends {}>(widget: NodeWidget<any>, newPro
  * @ignore
  */
 export class RNView extends QWidget implements RNWidget {
+  private _layout: QLayout<QObjectSignals> | null = null;
+
+  layout() {
+    return this._layout;
+  }
+  setLayout(layout: QLayout<QObjectSignals>) {
+    this._layout = layout;
+    super.setLayout(layout);
+  }
   setProps(newProps: ViewProps<QWidgetSignals>, oldProps: ViewProps<QWidgetSignals>): void {
     setViewProps(this, newProps, oldProps);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
-    if (!this.layout || child instanceof NodeDialog) {
-      !this.layout && console.warn("parent has no layout to insert child before another child");
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
+    if (!this.layout() || child instanceof QDialog) {
+      !this.layout() && console.warn("parent has no layout to insert child before another child");
       return;
     }
-    (this.layout as FlexLayout).insertChildBefore(child, beforeChild);
+    (this.layout() as FlexLayout).insertChildBefore(child, beforeChild);
   }
   static tagName = "view";
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     this.appendChild(child);
   }
-  appendChild(child: NodeWidget<any>): void {
-    if (!child || child instanceof NodeDialog) {
+  appendChild(child: QWidget<any>): void {
+    if (!child || child instanceof QDialog) {
       return;
     }
-    if (!this.layout) {
+    if (!this.layout()) {
       const flexLayout = new FlexLayout();
       flexLayout.setFlexNode(this.getFlexNode());
       this.setLayout(flexLayout);
-      this.layout = flexLayout;
     }
-    this.layout.addWidget(child);
+    this.layout()!.addWidget(child);
   }
-  removeChild(child: NodeWidget<any>) {
-    if (!this.layout) {
+  removeChild(child: QWidget<any>) {
+    if (!this.layout()) {
       console.warn("parent has no layout to remove child from");
       return;
     }
-    this.layout.removeWidget(child);
+    this.layout()!.removeWidget(child);
     child.close();
   }
 }

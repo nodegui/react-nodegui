@@ -1,4 +1,4 @@
-import { NodeWidget, QListWidgetItem, QIcon } from "@nodegui/nodegui";
+import { QWidget, QListWidgetItem, QIcon } from "@nodegui/nodegui";
 import { RNComponent } from "../config";
 
 export interface ListItemProps {
@@ -30,24 +30,24 @@ export const setListItemProps = (
   */
 export class RNListItem extends QListWidgetItem implements RNComponent {
   native: any;
-  actualListItemWidget?: NodeWidget<any>;
+  actualListItemWidget?: QWidget<any>;
 
   setProps(newProps: ListItemProps, oldProps: ListItemProps): void {
     setListItemProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     if (this.actualListItemWidget) {
       throw new Error("ListItem can have only one child");
     }
     this.actualListItemWidget = child;
   }
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     this.appendInitialChild(child);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     this.appendInitialChild(child);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     if (child) {
       child.close();
     }

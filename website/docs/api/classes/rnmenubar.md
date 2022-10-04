@@ -124,7 +124,7 @@ sidebar_label: "RNMenuBar"
 
 **Returns:** *[RNMenuBar](rnmenubar.md)*
 
-\+ **new RNMenuBar**(`parent`: NodeWidget‹any›): *[RNMenuBar](rnmenubar.md)*
+\+ **new RNMenuBar**(`parent`: QWidget‹any›): *[RNMenuBar](rnmenubar.md)*
 
 *Inherited from [RNMenuBar](rnmenubar.md).[constructor](rnmenubar.md#constructor)*
 
@@ -134,7 +134,7 @@ sidebar_label: "RNMenuBar"
 
 Name | Type |
 ------ | ------ |
-`parent` | NodeWidget‹any› |
+`parent` | QWidget‹any› |
 
 **Returns:** *[RNMenuBar](rnmenubar.md)*
 
@@ -180,7 +180,7 @@ ___
 
 ### `Optional` layout
 
-• **layout**? : *NodeLayout‹QMenuBarSignals›*
+• **layout**? : *QLayout‹QMenuBarSignals›*
 
 *Inherited from void*
 
@@ -460,14 +460,14 @@ ___
 
 ###  insertBefore
 
-▸ **insertBefore**(`child`: NodeWidget‹any›, `beforeChild`: NodeWidget‹any›): *void*
+▸ **insertBefore**(`child`: QWidget‹any›, `beforeChild`: QWidget‹any›): *void*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`child` | NodeWidget‹any› |
-`beforeChild` | NodeWidget‹any› |
+`child` | QWidget‹any› |
+`beforeChild` | QWidget‹any› |
 
 **Returns:** *void*
 
@@ -672,13 +672,13 @@ ___
 
 ###  removeChild
 
-▸ **removeChild**(`child`: NodeWidget‹any›): *void*
+▸ **removeChild**(`child`: QWidget‹any›): *void*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`child` | NodeWidget‹any› |
+`child` | QWidget‹any› |
 
 **Returns:** *void*
 
@@ -963,7 +963,7 @@ ___
 
 ###  setLayout
 
-▸ **setLayout**(`parentLayout`: NodeLayout‹QMenuBarSignals›): *void*
+▸ **setLayout**(`parentLayout`: QLayout‹QMenuBarSignals›): *void*
 
 *Inherited from void*
 
@@ -971,7 +971,7 @@ ___
 
 Name | Type |
 ------ | ------ |
-`parentLayout` | NodeLayout‹QMenuBarSignals› |
+`parentLayout` | QLayout‹QMenuBarSignals› |
 
 **Returns:** *void*
 

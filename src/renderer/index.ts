@@ -1,7 +1,7 @@
 import reconciler, { appContainer } from "../reconciler";
 import ReactReconciler, { Reconciler } from "react-reconciler";
 import React from "react";
-import { NodeWidget } from "@nodegui/nodegui";
+import { QWidget } from "@nodegui/nodegui";
 import { RNComponent } from "../components/config";
 //@ts-ignore
 import deepForceUpdate from "react-deep-force-update";
@@ -9,7 +9,7 @@ import deepForceUpdate from "react-deep-force-update";
 type NodeGuiReconciler = Reconciler<
   RNComponent,
   any,
-  Set<NodeWidget<any>>,
+  Set<QWidget<any>>,
   any
 >;
 

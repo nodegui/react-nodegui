@@ -1,4 +1,4 @@
-import { FlexLayout, NodeWidget, QTableWidget, QTableWidgetItem, QTableWidgetSignals, SortOrder } from "@nodegui/nodegui";
+import { FlexLayout, QWidget, QTableWidget, QTableWidgetItem, QTableWidgetSignals, SortOrder } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
 import { RNComponent } from "../config";
 import { RNTableItem } from "../TableItem/RNTableItem";
@@ -15,7 +15,7 @@ interface VerticalHeader extends Omit<CellRange, "column"> {
 }
 
 interface CellWidget extends CellRange {
-  widget: NodeWidget<any>;
+  widget: QWidget<any>;
 }
 
 interface Sort extends Omit<CellRange, "row"> {
@@ -150,12 +150,12 @@ export class RNTable extends QTableWidget implements RNComponent {
   setProps(newProps: CustomTableProps, oldProps: CustomTableProps): void {
     setTableProps(this, newProps, oldProps);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     child.close();
   }
   appendInitialChild(child: RNTableItem): void {
     const { cellPosition } = child;
-    if (!this.layout) {
+    if (!this.layout()) {
       this.setLayout(new FlexLayout());
     }
     const row = this.rowCount();

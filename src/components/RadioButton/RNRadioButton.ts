@@ -1,6 +1,6 @@
 import {
   QRadioButton,
-  NodeWidget,
+  QWidget,
   QRadioButtonSignals
 } from "@nodegui/nodegui";
 import { RNWidget } from "../config";
@@ -34,16 +34,16 @@ export class RNRadioButton extends QRadioButton implements RNWidget {
   setProps(newProps: RadioButtonProps, oldProps: RadioButtonProps): void {
     setRadioButtonProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
   static tagName = "radiobutton";

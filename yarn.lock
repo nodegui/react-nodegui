@@ -25,25 +25,27 @@
     node-fetch "^2.6.0"
     progress "^2.0.3"
 
-"@nodegui/nodegui@^0.36.0":
-  version "0.36.0"
-  resolved "https://registry.yarnpkg.com/@nodegui/nodegui/-/nodegui-0.36.0.tgz#8ae819c23c7ea89d29c75a60785d9013c4950b6b"
-  integrity sha512-8vCf31gXQdLQordqu1b5weI8zsLczY/pWeAF2j0MPo7YcGARyx6uRaSDYhNJa+WcQZeZiYIbREluqvGSiJ7zUA==
+"@nodegui/nodegui@^0.57.1":
+  version "0.57.1"
+  resolved "https://registry.yarnpkg.com/@nodegui/nodegui/-/nodegui-0.57.1.tgz#dcab2a3c9beeb744669c87f18809f03b44074dfd"
+  integrity sha512-husxEJeohB6WHoxa+ob9/BoNhPc/WJL3NQOGmfjb6DZMuPe3bwVu/E/63bvGp7SZbZ3hsIM8l4J5x99U/4WYbA==
   dependencies:
     "@nodegui/artifact-installer" "^1.1.0"
-    "@nodegui/qode" "^16.4.0"
+    "@nodegui/qode" "^16.4.3"
     cmake-js "^6.2.1"
     cross-env "^7.0.3"
     cuid "^2.1.8"
     manage-path "^2.0.0"
     memoize-one "^5.2.1"
     node-addon-api "^4.0.0"
+    postcss "^7.0.17"
     postcss-nodegui-autoprefixer "0.0.7"
+    tar "^6.0.1"
 
-"@nodegui/qode@^16.4.0":
-  version "16.4.0"
-  resolved "https://registry.yarnpkg.com/@nodegui/qode/-/qode-16.4.0.tgz#d18b9c569b51b131331729ea095402bc2e028c19"
-  integrity sha512-uNoTR9f02F/SmK+xzvlXJs/yuW0zYcuPZf99v4z7tPeugLukrPbE2MJfsq8edGNfWxu3d+pRwMN+UNYSq0dLgQ==
+"@nodegui/qode@^16.4.3":
+  version "16.4.3"
+  resolved "https://registry.yarnpkg.com/@nodegui/qode/-/qode-16.4.3.tgz#ddae8f683ef958676b0a4d69e972f471d6bfd359"
+  integrity sha512-WllfJVXffr3Rn7BSfo5cubZ5hx4OnQ7iqY/kj+2jwqUepzlRFKCvn9/vAJ/VXmiB0GZGcaCGM0U3rZGADdU5mw==
   dependencies:
     env-paths "^2.2.1"
     make-dir "^3.1.0"
@@ -51,10 +53,10 @@
     progress "^2.0.3"
     tar "^6.1.6"
 
-"@types/node@^16.6.1":
-  version "16.6.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.6.1.tgz#aee62c7b966f55fc66c7b6dfa1d58db2a616da61"
-  integrity sha512-Sr7BhXEAer9xyGuCN3Ek9eg9xPviCF2gfu9kTfuU2HkTVAMYSDeX40fvpmo72n5nansg3nsBjuQBrsS28r+NUw==
+"@types/node@^16.11.0":
+  version "16.11.62"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.62.tgz#bab2e6208531321d147eda20c38e389548cd5ffc"
+  integrity sha512-K/ggecSdwAAy2NUW4WKmF4Rc03GKbsfP+k326UWgckoS+Rzd2PaWbjk76dSmqdLQvLTJAO9axiTUJ6488mFsYQ==
 
 "@types/prop-types@*":
   version "15.7.4"
@@ -68,10 +70,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*":
-  version "17.0.18"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.18.tgz#4109cbbd901be9582e5e39e3d77acd7b66bb7fbe"
-  integrity sha512-YTLgu7oS5zvSqq49X5Iue5oAbVGhgPc5Au29SJC4VeE17V6gASoOxVkUDy9pXFMRFxCWCD9fLeweNFizo3UzOg==
+"@types/react@^16.14.0", "@types/react@*":
+  version "16.14.32"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.14.32.tgz#d4e4fe5ece3c27fcb4608b1f4a614f7dec881392"
+  integrity sha512-hvEy4vGVADbtj/U6+CA5SRC5QFIjdxD7JslAie8EuAYZwhYY9bgforpXNyF1VFzhnkEOesDy1278t1wdjN74cw==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -819,7 +821,7 @@ react-reconciler@^0.25.1:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
-react@^16.13.1:
+react@^16.14.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
   integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
@@ -1010,6 +1012,18 @@ tar@^4:
     safe-buffer "^5.2.1"
     yallist "^3.1.1"
 
+tar@^6.0.1:
+  version "6.1.11"
+  resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.11.tgz#6760a38f003afa1b2ffd0ffe9e9abbd0eab3d621"
+  integrity sha512-an/KZQzQUkZCkuoAA64hM92X0Urb6VpRhAFllDzz44U2mcD5scmT3zBc4VgVpkugF580+DQn8eAFSyoQt0tznA==
+  dependencies:
+    chownr "^2.0.0"
+    fs-minipass "^2.0.0"
+    minipass "^3.0.0"
+    minizlib "^2.1.1"
+    mkdirp "^1.0.3"
+    yallist "^4.0.0"
+
 tar@^6.1.6:
   version "6.1.8"
   resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.8.tgz#4fc50cfe56511c538ce15b71e05eebe66530cbd4"
@@ -1058,10 +1072,10 @@ typedoc@^0.17.8:
     shelljs "^0.8.4"
     typedoc-default-themes "^0.10.2"
 
-typescript@^4.3.5:
-  version "4.3.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
-  integrity sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==
+typescript@^4.4.4:
+  version "4.8.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.8.3.tgz#d59344522c4bc464a65a730ac695007fdb66dd88"
+  integrity sha512-goMHfm00nWPa8UvR/CPSvykqf6dVV8x/dp0c5mFTMTIu0u0FlGWRioyy7Nn0PGAdHxpJZnuO/ut+PpQ8UiHAig==
 
 uglify-js@^3.1.4:
   version "3.14.1"

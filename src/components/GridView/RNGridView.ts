@@ -1,5 +1,5 @@
 import { FunctionComponentElement } from "react";
-import { QGridLayoutSignals, QGridLayout, QWidget } from "@nodegui/nodegui";
+import { QGridLayoutSignals, QGridLayout, QWidget, QLayout, QObjectSignals } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
 import { RNComponent } from "../config";
 import { RNGridRow, GridRowProps } from "./GridRow/RNGridRow";
@@ -42,18 +42,18 @@ const setGridViewProps = (
 ) => {
   const setter: Omit<GridViewProps, "children"> = {
     set horizontalSpacing(spacing: number) {
-      widget.layout?.setHorizontalSpacing(spacing);
+      widget.layout()?.setHorizontalSpacing(spacing);
     },
     set verticalSpacing(spacing: number) {
-      widget.layout?.setVerticalSpacing(spacing);
+      widget.layout()?.setVerticalSpacing(spacing);
     },
     set columnProps(props: GridViewColumnProps) {
       for (const indexString of Object.keys(props)) {
         const index = parseInt(indexString, 10);
         const { stretch, minWidth } = props[index];
 
-        widget.layout?.setColumnStretch(index, stretch ?? 0);
-        widget.layout?.setColumnMinimumWidth(index, minWidth ?? 0);
+        widget.layout()?.setColumnStretch(index, stretch ?? 0);
+        widget.layout()?.setColumnMinimumWidth(index, minWidth ?? 0);
       }
     },
     set rowProps(props: GridViewRowProps) {
@@ -61,8 +61,8 @@ const setGridViewProps = (
         const index = parseInt(indexString, 10);
         const { stretch, minHeight } = props[index];
 
-        widget.layout?.setRowStretch(index, stretch ?? 0);
-        widget.layout?.setRowMinimumHeight(index, minHeight ?? 0);
+        widget.layout()?.setRowStretch(index, stretch ?? 0);
+        widget.layout()?.setRowMinimumHeight(index, minHeight ?? 0);
       }
     },
   };
@@ -75,16 +75,15 @@ const setGridViewProps = (
  */
 export class RNGridView extends QWidget implements RNComponent {
   native: any;
-  _layout?: QGridLayout;
   initialProps?: GridViewProps;
   childRows: Array<DataWithOffset<RNGridRow>> = [];
 
-  get layout() {
-    return this._layout;
+  layout(): QGridLayout | null {
+    return super.layout() as any;
   }
 
-  set layout(l: QGridLayout | undefined) {
-    this._layout = l;
+  setLayout(layout: QGridLayout): void {
+    super.setLayout(layout);
   }
 
   updateChildren(startIndex = 0): void {
@@ -100,7 +99,7 @@ export class RNGridView extends QWidget implements RNComponent {
   /* RNComponent */
 
   setProps(newProps: GridViewProps, oldProps: GridViewProps): void {
-    if (this.layout) {
+    if (this.layout()) {
       setGridViewProps(this, newProps, oldProps);
     } else {
       this.initialProps = newProps;
@@ -129,7 +128,7 @@ export class RNGridView extends QWidget implements RNComponent {
       });
     };
 
-    if (this.layout) {
+    if (this.layout()) {
       updateChild();
 
       return;
@@ -137,7 +136,6 @@ export class RNGridView extends QWidget implements RNComponent {
 
     const layout = new QGridLayout();
     this.setLayout(layout);
-    this.layout = layout;
 
     // Newly created layout, so set initial props
     if (this.initialProps) {

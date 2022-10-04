@@ -36,7 +36,7 @@ export class RNList extends QListWidget implements RNComponent {
     this.appendChild(child);
   }
   appendChild(child: RNListItem): void {
-    if (!this.layout) {
+    if (!this.layout()) {
       this.setLayout(new FlexLayout());
     }
 

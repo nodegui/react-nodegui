@@ -1,4 +1,4 @@
-import { QMenu, QMenuSignals, Component, NodeWidget } from "@nodegui/nodegui";
+import { QMenu, QMenuSignals, Component, QWidget } from "@nodegui/nodegui";
 import { RNWidget } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
 import { RNAction } from "../Action/RNAction";

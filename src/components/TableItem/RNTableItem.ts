@@ -1,4 +1,4 @@
-import { QTableWidgetItem, NodeWidget, ItemFlag, CheckState, QVariant, QBrush, QIcon, QFont, QSize, AlignmentFlag } from "@nodegui/nodegui";
+import { QTableWidgetItem, QWidget, ItemFlag, CheckState, QVariant, QBrush, QIcon, QFont, QSize, AlignmentFlag } from "@nodegui/nodegui";
 import { RNComponent } from "../config";
 import { throwUnsupported } from "../../utils/helpers";
 
@@ -100,16 +100,16 @@ export class RNTableItem extends QTableWidgetItem implements RNComponent {
     this.cellPosition = newProps.cellPosition;
     setTableItemProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
   static tagName = "table-item";

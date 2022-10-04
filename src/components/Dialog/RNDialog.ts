@@ -1,9 +1,8 @@
-import { FlexLayout, FocusReason, NodeWidget, QDialog, QDialogSignals, QFont } from "@nodegui/nodegui";
-import { NodeDialog } from "@nodegui/nodegui/dist/lib/QtWidgets/QDialog";
+import { FlexLayout, FocusReason, QWidget, QDialog, QDialogSignals, QFont } from "@nodegui/nodegui";
 import { RNWidget } from "../config";
 import { setViewProps, ViewProps } from "../View/RNView";
 
-export interface DialogProps<T = QDialogSignals> extends ViewProps<T> {
+export interface DialogProps<T extends {} = QDialogSignals> extends ViewProps<T> {
   open?: boolean;
   font?: QFont;
   focus?: FocusReason;
@@ -45,32 +44,31 @@ export class RNDialog extends QDialog implements RNWidget {
   setProps(newProps: DialogProps, oldProps: DialogProps): void {
     setDialogProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     this.appendChild(child);
   }
-  appendChild(child: NodeWidget<any>): void {
-    if (!child || child instanceof NodeDialog) {
+  appendChild(child: QWidget<any>): void {
+    if (!child || child instanceof QDialog) {
       return;
     }
-    if (!this.layout) {
+    if (!this.layout()) {
       const flexLayout = new FlexLayout();
       flexLayout.setFlexNode(this.getFlexNode());
       this.setLayout(flexLayout);
-      this.layout = flexLayout;
     }
-    this.layout.addWidget(child);
+    this.layout()!.addWidget(child);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
-    if (child! instanceof NodeDialog) {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
+    if (child! instanceof QDialog) {
       this.appendChild(child);
     }
   }
-  removeChild(child: NodeWidget<any>): void {
-    if (!this.layout) {
+  removeChild(child: QWidget<any>): void {
+    if (!this.layout()) {
       console.warn("parent has no layout to remove child from");
       return;
     }
-    this.layout.removeWidget(child);
+    this.layout()!.removeWidget(child);
     child.close();
   }
   static tagName = "dialog";

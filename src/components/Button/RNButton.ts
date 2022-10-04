@@ -1,4 +1,4 @@
-import { QPushButton, NodeWidget, QPushButtonSignals } from "@nodegui/nodegui";
+import { QPushButton, QWidget, QPushButtonSignals } from "@nodegui/nodegui";
 import {
   AbstractButtonProps,
   setAbstractButtonProps
@@ -8,7 +8,7 @@ import { throwUnsupported } from "../../utils/helpers";
 
 /**
  * The Button component provides ability to add and manipulate native button widgets. It is based on
- * [NodeGui's QPushButton](https://docs.nodegui.org/docs/api/QPushButton).
+ * [NodeGui's QPushButton](https://docs.nodegui.org/docs/api/generated/classes/QPushButton).
  * ## Example
  * ```javascript
  * import React from "react";
@@ -29,7 +29,7 @@ import { throwUnsupported } from "../../utils/helpers";
  */
 export interface ButtonProps extends AbstractButtonProps<QPushButtonSignals> {
   /**
-   * Sets whether the button border is raised. [QPushButton: setFlat](https://docs.nodegui.org/docs/api/QPushButton#buttonsetflatisflat)
+   * Sets whether the button border is raised. [QPushButton: setFlat](https://docs.nodegui.org/docs/api/generated/classes/QPushButton#buttonsetflatisflat)
    */
   flat?: boolean;
 }
@@ -52,16 +52,16 @@ const setButtonProps = (
  * @ignore
  */
 export class RNButton extends QPushButton implements RNWidget {
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
   setProps(newProps: ButtonProps, oldProps: ButtonProps) {

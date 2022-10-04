@@ -2,12 +2,13 @@ import {
   QWidget,
   QBoxLayoutSignals,
   QBoxLayout,
-  NodeWidget,
   Direction,
+  QLayout,
+  QObjectSignals,
 } from "@nodegui/nodegui";
 import { ViewProps, setViewProps } from "../View/RNView";
 import { RNComponent } from "../config";
-import { NodeDialog } from "@nodegui/nodegui/dist/lib/QtWidgets/QDialog";
+import { QDialog } from "@nodegui/nodegui/dist/lib/QtWidgets/QDialog";
 
 export interface BoxViewProps extends ViewProps<QBoxLayoutSignals> {
   direction?: Direction;
@@ -20,7 +21,7 @@ const setBoxViewProps = (
 ) => {
   const setter: BoxViewProps = {
     set direction(direction: Direction) {
-      widget.layout?.setDirection(direction);
+      widget.layout()?.setDirection(direction);
     },
   };
   Object.assign(setter, newProps);
@@ -33,33 +34,36 @@ const setBoxViewProps = (
 export class RNBoxView extends QWidget implements RNComponent {
   native: any;
   initialProps?: BoxViewProps;
-  children: Array<NodeWidget<any>> = [];
-  get layout() {
-    return super.layout as QBoxLayout | undefined;
+  _children: Array<QWidget<any>> = [];
+
+  layout(): QBoxLayout | null {
+    return super.layout() as any;
   }
-  set layout(l: QBoxLayout | undefined) {
-    super.layout = l;
+
+  setLayout(layout: QBoxLayout): void {
+    super.setLayout(layout);
   }
+
   setProps(newProps: BoxViewProps, oldProps: BoxViewProps): void {
-    if (this.layout) {
+    if (this.layout()) {
       setBoxViewProps(this, newProps, oldProps);
     } else {
       this.initialProps = newProps;
     }
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     this.appendChild(child);
   }
-  appendChild(child: NodeWidget<any>): void {
-    if (child instanceof NodeDialog) {
+  appendChild(child: QWidget<any>): void {
+    if (child instanceof QDialog) {
       return;
     }
     const updateChild = () => {
-      this.layout?.addWidget(child);
-      this.children.push(child);
+      this.layout()?.addWidget(child);
+      this._children.push(child);
     };
 
-    if (this.layout) {
+    if (this.layout()) {
       updateChild();
 
       return;
@@ -67,7 +71,6 @@ export class RNBoxView extends QWidget implements RNComponent {
 
     const layout = new QBoxLayout(Direction.LeftToRight);
     this.setLayout(layout);
-    this.layout = layout;
 
     // Newly created layout, so set initial props
     if (this.initialProps) {
@@ -76,11 +79,11 @@ export class RNBoxView extends QWidget implements RNComponent {
 
     updateChild();
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
-    if (child instanceof NodeDialog) {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
+    if (child instanceof QDialog) {
       return;
     }
-    const prevIndex = this.children.indexOf(beforeChild);
+    const prevIndex = this._children.indexOf(beforeChild);
 
     if (prevIndex === -1) {
       throw new Error(
@@ -88,14 +91,14 @@ export class RNBoxView extends QWidget implements RNComponent {
       );
     }
 
-    this.children.splice(prevIndex, 0, child);
-    this.layout?.insertWidget(prevIndex, child);
+    this._children.splice(prevIndex, 0, child);
+    this.layout()?.insertWidget(prevIndex, child);
   }
-  removeChild(child: NodeWidget<any>): void {
-    const prevIndex = this.children.indexOf(child);
+  removeChild(child: QWidget<any>): void {
+    const prevIndex = this._children.indexOf(child);
 
     if (prevIndex !== -1) {
-      this.children.splice(prevIndex, 1);
+      this._children.splice(prevIndex, 1);
     }
 
     child.close();

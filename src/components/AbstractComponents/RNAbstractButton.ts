@@ -4,7 +4,7 @@ import { QAbstractButton } from "@nodegui/nodegui";
 
 /**
  * The Button component provides ability to add and manipulate native button widgets. It is based on
- * [NodeGui's QPushButton](https://docs.nodegui.org/docs/api/QPushButton).
+ * [NodeGui's QPushButton](https://docs.nodegui.org/docs/api/generated/classes/QPushButton).
  * ## Example
  * ```javascript
  * import React from "react";
@@ -30,15 +30,15 @@ export interface AbstractButtonProps<Signals extends QAbstractButtonSignals>
    */
   children?: string;
   /**
-   * Sets the given text to the button. [QPushButton: setText](https://docs.nodegui.org/docs/api/QPushButton#buttonsettexttext)
+   * Sets the given text to the button. [QPushButton: setText](https://docs.nodegui.org/docs/api/generated/classes/QPushButton#buttonsettexttext)
    */
   text?: string;
   /**
-   * Sets an icon in the button. [QPushButton: setIcon](https://docs.nodegui.org/docs/api/QPushButton#buttonseticonicon)
+   * Sets an icon in the button. [QPushButton: setIcon](https://docs.nodegui.org/docs/api/generated/classes/QPushButton#buttonseticonicon)
    */
   icon?: QIcon;
   /**
-   * Sets an icon size in the button. [QPushButton: setIconSize](https://docs.nodegui.org/docs/api/QPushButton#buttonseticonsize)
+   * Sets an icon size in the button. [QPushButton: setIconSize](https://docs.nodegui.org/docs/api/generated/classes/QPushButton#buttonseticonsize)
    */
   iconSize?: QSize;
 }

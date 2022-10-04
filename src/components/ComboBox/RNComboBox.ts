@@ -1,6 +1,6 @@
 import {
   QComboBox,
-  NodeWidget,
+  QWidget,
   QSize,
   QVariant,
   SizeAdjustPolicy,
@@ -52,7 +52,7 @@ const setComboBoxProps = (
       widget.setProperty("count", count);
     },
     set iconSize(iconSize: QSize) {
-      widget.setProperty("iconSize", iconSize.native);
+      widget.setProperty("iconSize", iconSize.native!);
     },
     set frame(frame: boolean) {
       widget.setProperty("frame", frame);
@@ -61,7 +61,7 @@ const setComboBoxProps = (
       widget.setProperty("currentIndex", currentIndex);
     },
     set currentData(value: QVariant) {
-      widget.setProperty("currentData", value.native);
+      widget.setProperty("currentData", value.native!);
     },
     set currentText(text: string) {
       widget.setProperty("currentText", text);
@@ -102,16 +102,16 @@ export class RNComboBox extends QComboBox implements RNWidget {
   setProps(newProps: ComboBoxProps, oldProps: ComboBoxProps): void {
     setComboBoxProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
   static tagName = "combobox";

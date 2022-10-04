@@ -2,7 +2,7 @@ import { WidgetEventListeners } from "../View/RNView";
 import {
   QSystemTrayIconSignals,
   QSystemTrayIcon,
-  NodeWidget,
+  QWidget,
   QIcon,
   QMenu,
 } from "@nodegui/nodegui";
@@ -47,7 +47,7 @@ export interface SystemTrayIconProps extends RNProps {
   icon?: QIcon;
 
   /**
-   * Sets the object name (id) of the widget in Qt. Object name can be analogous to id of an element in the web world. Using the objectName of the widget one can reference it in the Qt's stylesheet much like what we do with id in the web world. [QWidget: setObjectName](https://docs.nodegui.org/docs/api/NodeWidget#widgetsetobjectnameobjectname)
+   * Sets the object name (id) of the widget in Qt. Object name can be analogous to id of an element in the web world. Using the objectName of the widget one can reference it in the Qt's stylesheet much like what we do with id in the web world. [QWidget: setObjectName](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetsetobjectnameobjectname)
    */
   id?: string;
 
@@ -62,7 +62,7 @@ export interface SystemTrayIconProps extends RNProps {
   tooltip?: string;
 
   /**
-   * Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui.org/docs/api/NodeWidget#widgetshow)
+   * Shows or hides the widget and its children. [QWidget: show](https://docs.nodegui.org/docs/api/generated/classes/QWidget#widgetshow)
    */
   visible?: boolean;
 }
@@ -114,13 +114,15 @@ const setSystemTrayIconProps = (
  */
 export class RNSystemTrayIcon extends QSystemTrayIcon implements RNComponent {
   static tagName = "systemtrayicon";
+  contextMenu: QMenu | null = null;
 
   setProps(newProps: SystemTrayIconProps, oldProps: SystemTrayIconProps): void {
     setSystemTrayIconProps(this, newProps, oldProps);
   }
-  appendInitialChild(child: NodeWidget<any>): void {
+  appendInitialChild(child: QWidget<any>): void {
     if (child instanceof QMenu) {
       if (!this.contextMenu) {
+        this.contextMenu = child;
         this.setContextMenu(child);
       } else {
         console.warn("SystemTrayIcon can't have more than one Menu.");
@@ -129,13 +131,13 @@ export class RNSystemTrayIcon extends QSystemTrayIcon implements RNComponent {
       console.warn("SystemTrayIcon only supports Menu as its children");
     }
   }
-  appendChild(child: NodeWidget<any>): void {
+  appendChild(child: QWidget<any>): void {
     this.appendInitialChild(child);
   }
-  insertBefore(child: NodeWidget<any>, beforeChild: NodeWidget<any>): void {
+  insertBefore(child: QWidget<any>, beforeChild: QWidget<any>): void {
     throwUnsupported(this);
   }
-  removeChild(child: NodeWidget<any>): void {
+  removeChild(child: QWidget<any>): void {
     throwUnsupported(this);
   }
 }
