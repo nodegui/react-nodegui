@@ -64,6 +64,14 @@ $ npm start
 
 [quick-start]: https://github.com/nodegui/react-nodegui-starter
 
+## In case it throws timeout error during npm/yarn install.
+This is a common issue with react-nodegui installation, happening may be due to slow computer, or internet connection. So this may save  a lot of your time.
+
+1. Clean npm/yarn cache. Delete `node_modules` folder.
+2. Delete `nodegui-mini-qt-nodejs` folder inside `/home/<user>/.cache/`.
+3. Set timeout for package manager(npm/yarn) to 1000000.
+4. Install again, make sure you have used correct way to set timeout for package manager. For yarn you can do it directly, pass command line argument like this- `yarn install --network-timeout 1000000`.
+
 ## What else other than a basic window?
 
 React NodeGui has support for basic components like View (similar to div), CheckBox, PushButton and many more.
