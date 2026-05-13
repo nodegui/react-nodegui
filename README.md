@@ -51,9 +51,30 @@ Visit: https://react.nodegui.org for docs.
 - Read through the [docs](https://react.nodegui.org)
 
 **Community Guides**
+
 - https://gregbenner.life/node-gui-react-component-by-component/ - An awesome intro to all base components in react nodegui
 
 - https://blog.logrocket.com/electron-alternatives-exploring-nodegui-and-react-nodegui/ - Electron alternatives: Exploring NodeGUI and React NodeGUI by [Siegfried Grimbeek](https://blog.logrocket.com/author/siegfriedgrimbeek/).
+
+## SVG
+
+React NodeGUI supports rendering simple SVG trees by serializing SVG-like React components and rendering them as an image.
+
+```jsx
+import React from "react";
+import { Renderer, Svg, Rect, Circle, Window } from "@nodegui/react-nodegui";
+
+const App = () => (
+  <Window>
+    <Svg width={160} height={120} viewBox="0 0 160 120">
+      <Rect x={10} y={10} width={140} height={100} fill="#20242a" rx={12} />
+      <Circle cx={80} cy={60} r={32} fill="#61dafb" />
+    </Svg>
+  </Window>
+);
+
+Renderer.render(<App />);
+```
 
 **Talks/Podcasts**
 
