@@ -8,6 +8,7 @@ export { View } from "./components/View";
 export { Window } from "./components/Window";
 export { Text } from "./components/Text";
 export { Image } from "./components/Image";
+export { Svg } from "./components/Svg";
 export { AnimatedImage } from "./components/AnimatedImage";
 export { Button } from "./components/Button";
 export { CheckBox } from "./components/CheckBox";
