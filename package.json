@@ -17,7 +17,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc && qode ./dist/demo.js",
-    "docs": "typedoc && node ./website/docs/scripts/fixdocs.js"
+    "docs": "typedoc && node ./website/docs/scripts/fixdocs.js",
+    "verify:svg": "npm run build && qode ./dist/development/svg-acceptance.js"
   },
   "dependencies": {
     "@nodegui/nodegui": "^0.57.1",

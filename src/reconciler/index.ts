@@ -6,6 +6,7 @@ import {
   RNProps,
   RNComponent
 } from "../components/config";
+import { createSvgTextNode, RNSvgTextNode } from "../components/Svg/RNSvg";
 
 export type AppContainer = Set<QWidget<any>>;
 export const appContainer: AppContainer = new Set<QWidget<any>>();
@@ -48,6 +49,9 @@ const HostConfig: Reconciler.HostConfig<
     context,
     workInProgress
   ) {
+    if (context && context.isInSvgTree) {
+      return createSvgTextNode(String(newText));
+    }
     // throw new Error(`Can't create text without <Text> for text: ${newText}`);
     console.warn(
       "createTextInstance called in reconciler when platform doesnt have host level text. "
@@ -171,6 +175,10 @@ const HostConfig: Reconciler.HostConfig<
     }
   },
   commitTextUpdate: (textInstance, oldText, newText) => {
+    if (textInstance instanceof RNSvgTextNode) {
+      textInstance.setText(String(newText));
+      return;
+    }
     //noop since we manage all text using Text component
     console.warn(
       "commitTextUpdate called when platform doesnt have host level text"

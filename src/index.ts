@@ -9,6 +9,19 @@ export { Window } from "./components/Window";
 export { Text } from "./components/Text";
 export { Image } from "./components/Image";
 export { AnimatedImage } from "./components/AnimatedImage";
+export {
+  Svg,
+  G,
+  Group,
+  Rect,
+  Circle,
+  Ellipse,
+  Line,
+  Polygon,
+  Polyline,
+  Path,
+  SvgText,
+} from "./components/Svg";
 export { Button } from "./components/Button";
 export { CheckBox } from "./components/CheckBox";
 export { LineEdit } from "./components/LineEdit";

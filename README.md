@@ -55,6 +55,32 @@ Visit: https://react.nodegui.org for docs.
 
 - https://blog.logrocket.com/electron-alternatives-exploring-nodegui-and-react-nodegui/ - Electron alternatives: Exploring NodeGUI and React NodeGUI by [Siegfried Grimbeek](https://blog.logrocket.com/author/siegfriedgrimbeek/).
 
+## SVG
+
+React NodeGUI can render inline SVG trees by serializing SVG-like React components and rendering the result with Qt's SVG widget.
+
+```jsx
+import React from "react";
+import { Renderer, Svg, Rect, Circle, Path, Window } from "@nodegui/react-nodegui";
+
+const App = () => (
+  <Window>
+    <Svg width={160} height={120} viewBox="0 0 160 120">
+      <Rect x={10} y={10} width={140} height={100} rx={12} fill="#20242a" />
+      <Circle cx={80} cy={60} r={28} fill="#61dafb" />
+      <Path d="M68 60l9 9 18-22" fill="none" stroke="#20242a" strokeWidth={8} />
+    </Svg>
+  </Window>
+);
+
+Renderer.render(<App />);
+```
+
+For complete SVG documents, pass `src`, `buffer`, or `content` to `Svg`.
+
+Most inline SVG primitives can be used as lowercase JSX tags or via the exported helpers like `Rect` and `Circle`.
+Use `SvgText` for SVG text nodes.
+
 **Talks/Podcasts**
 
 - [NodeGui and React NodeGui at KarmaJS Nov 2019 meetup: https://www.youtube.com/watch?v=8jH5gaEEDv4](https://www.youtube.com/watch?v=8jH5gaEEDv4)
@@ -75,6 +101,10 @@ Please read: https://github.com/nodegui/.github/blob/master/CONTRIBUTING.md
 ## Building
 
 `npm run build`
+
+## Verification
+
+`npm run verify:svg`
 
 ## Using custom Qt
 
